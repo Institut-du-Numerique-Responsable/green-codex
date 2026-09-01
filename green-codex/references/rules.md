@@ -11,6 +11,11 @@ is present), `FAIL` (a concrete violation is found), or `REVIEW_REQUIRED` (the r
 verified automatically). A finding must cite the identifier, file and line, impact, severity,
 and a verification command or measurement. Do not mark a rule `PASS` from a declaration alone.
 
+Reported gains must identify the workload, baseline, hardware or cloud context, measurement method,
+sample size and uncertainty. Do not copy a percentage from a vendor, benchmark or case study as a
+guarantee. Case studies (for example public-sector or railway deployments) belong in project notes,
+not in a compliance rule.
+
 ## Universal rules
 
 - Confirm the user need before adding functionality; prefer the smallest viable solution.
@@ -68,12 +73,18 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
   size, use cursor or bounded pagination, and return only required fields. Test the maximum size.
 - **API-EFF-002 — Response budget:** document a target response size and request count for the main
   user journey; fail the check when the budget regresses without an approved exception.
+- **API-EFF-003 — Page-size safety:** define a documented default and maximum page size. A default
+  of 100 items is a reasonable starting point for many APIs, but the value must follow payload size,
+  latency and user needs; reject unbounded or unexplained values.
 - **WEB-EFF-001 — Deferred payloads:** non-critical scripts, images and embeds must be lazy or
   deferred. Verify with a production build and a network trace.
 - **WEB-EFF-002 — Media budget:** provide responsive dimensions and modern formats with a fallback;
   no media asset may exceed the repository's documented size limit without justification.
 - **WEB-EFF-003 — Idle work:** do not use frequent polling or continuous animation for a state that
   can be event-driven. If polling is unavoidable, document its interval, stop condition and cost.
+- **WEB-EFF-004 — Motion and autoplay:** never autoplay video or audio with sound. Respect
+  `prefers-reduced-motion` and cap non-essential animation or rendering work; verify on a low-power
+  device or throttled profile.
 
 ### Databases and storage
 
@@ -97,6 +108,9 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
 - **DB-EFF-009 — Data modelling:** avoid unnecessary duplication and define a consistency boundary.
   Normalise when it reduces storage and update anomalies; allow measured denormalisation when it
   materially reduces repeated reads or compute, with an explicit refresh strategy.
+- **DB-EFF-010 — Safe prepared queries:** use parameterised statements for external input and reuse
+  prepared plans when the driver supports it. Verify both injection resistance and query latency;
+  security takes precedence over a speculative micro-optimisation.
 
 ### Infrastructure and operations
 
@@ -111,6 +125,9 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
 - **INFRA-EFF-004 — Compute model:** select serverless, containers or VMs from measured idle time,
   startup cost, utilisation, workload duration, portability and operational overhead. No model is
   inherently more sustainable for every workload.
+- **INFRA-EFF-005 — Interruptible capacity:** use Spot or preemptible capacity only for workloads
+  that tolerate interruption, checkpoint safely and do not expose personal data through requeued
+  work. Compare interruption, retry and migration energy with the expected saving.
 - **OPS-EFF-001 — Retention and observability:** set retention by data class and purpose; delete or
   archive logs and traces on schedule (for example with Elasticsearch ILM). Alert on growth and on
   a configurable deviation from a representative baseline, not an unexplained universal percentage.
@@ -158,6 +175,19 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
   runtime or failures.
 - **AI-EFF-005 — AI budget:** define a per-request or per-job token, time, cost or energy budget,
   enforce it at runtime, and test refusal or fallback when the budget is exceeded.
+- **AI-EFF-006 — Optimised inference:** evaluate batching, quantisation, pruning or a specialised
+  runtime (such as ONNX Runtime) only when quality, safety, latency and energy are measured before
+  and after. Never assume INT8, pruning or a particular GPU is universally better.
+
+### Measurement and continuous improvement
+
+- **MEASURE-EFF-001 — Representative benchmark:** benchmark a critical path against a fixed,
+  versioned workload and environment. Record CPU time, peak memory, transferred bytes and, when
+  feasible, energy or SCI; fail or flag regressions against an agreed budget.
+- **MEASURE-EFF-002 — CI energy tests:** add energy or resource sampling to CI only when the runner,
+  workload and noise are controlled. Use tools such as EcoIndex, GreenFrame, Scaphandre, PowerAPI,
+  CodeCarbon or Cloud Carbon Footprint as appropriate, and report confidence or `REVIEW_REQUIRED`
+  when a hosted runner cannot provide reliable measurements.
 
 ## Frontend, HTML, CSS, and media
 

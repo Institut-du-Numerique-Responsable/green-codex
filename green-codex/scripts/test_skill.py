@@ -28,7 +28,7 @@ def main():
         require(RULES, criterion)
     for section in ("Universal rules", "Enforceable sobriety rules", "Frontend", "Backend", "Responsible AI", "Audit format"):
         require(RULES, section)
-    for rule_id in ("CODE-EFF-001", "CODE-EFF-008", "CODE-EFF-012", "API-EFF-001", "WEB-EFF-001", "DB-EFF-001", "DB-EFF-005", "INFRA-EFF-001", "OPS-EFF-003", "NET-EFF-002", "HW-EFF-001", "AI-EFF-001"):
+    for rule_id in ("CODE-EFF-001", "CODE-EFF-008", "CODE-EFF-012", "API-EFF-001", "API-EFF-003", "WEB-EFF-001", "DB-EFF-001", "DB-EFF-005", "DB-EFF-010", "INFRA-EFF-001", "INFRA-EFF-005", "OPS-EFF-003", "NET-EFF-002", "HW-EFF-001", "AI-EFF-001", "AI-EFF-006", "MEASURE-EFF-001"):
         require(RULES, rule_id)
     print("Green Codex skill checks passed")
 
