@@ -23,6 +23,8 @@ def main():
             raise AssertionError(f"missing required file: {path}")
     require(SKILL, "name: green-codex")
     require(SKILL, "references/rules.md")
+    require(SKILL, "Language rule routing")
+    require(SKILL, "`LANG-*` section")
     for criterion in ("RGESN", "GR491", "Opquast", "RGAA"):
         require(CRITERIA, criterion)
         require(RULES, criterion)

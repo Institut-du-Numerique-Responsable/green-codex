@@ -32,6 +32,40 @@ still be wasteful when poorly designed.
 8. Report findings with file and line references, impact, confidence, and a concrete fix. Separate
    observed facts from recommendations.
 
+## Language rule routing
+
+Detect the languages and frameworks from file extensions, build manifests, lockfiles and runtime
+configuration before reviewing code. Read and apply every matching `LANG-*` section in
+`references/rules.md`; do not substitute a generic rule when a language-specific rule exists.
+
+| Evidence found | Required rule families |
+| --- | --- |
+| `.java`, Maven or Gradle | `LANG-JAVA-*` |
+| `.kt` | `LANG-KOTLIN-*` |
+| `.scala` | `LANG-SCALA-*` |
+| `.rs` | `LANG-RUST-*` |
+| `.c`, `.h` | `LANG-C-*` |
+| `.cc`, `.cpp`, `.cxx`, `.hpp` | `LANG-CPP-*` |
+| `.go` | `LANG-GO-*` |
+| `.py` | `LANG-PYTHON-*` |
+| `.js`, `.jsx`, `.ts`, `.tsx`, Node manifests | `LANG-JS-*` plus detected framework rules |
+| `.php` | `LANG-PHP-*` |
+| `.rb` | `LANG-RUBY-*` |
+| `.nim` | `LANG-NIM-*` |
+| `.zig` | `LANG-ZIG-*` |
+| `.jl` | `LANG-JULIA-*` |
+| `.sql` | `LANG-SQL-*` |
+| PL/SQL packages, procedures or `.pls`/`.pkb` | `LANG-PLSQL-*` |
+| `.html`, `.htm` | `LANG-HTML-*` |
+| `.css`, `.scss`, `.less` | `LANG-CSS-*` |
+| React, Vue, Angular, Svelte, Preact, Astro or Solid manifests/source | matching framework family |
+| Bash, Zsh, Tcsh or shell scripts | `LANG-SHELL-*` |
+
+For each detected family, report at least one outcome for every applicable rule: `PASS`, `FAIL`,
+or `REVIEW_REQUIRED`. Include the command, benchmark, profile, query plan, network trace or test
+that supports the outcome. When a framework is layered on JavaScript or TypeScript, apply both the
+base `LANG-JS-*` rules and the framework rules.
+
 ## Review output
 
 When auditing, group results by severity (blocking, important, improvement), cite the applicable
