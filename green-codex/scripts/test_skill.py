@@ -26,8 +26,10 @@ def main():
     for criterion in ("RGESN", "GR491", "Opquast", "RGAA"):
         require(CRITERIA, criterion)
         require(RULES, criterion)
-    for section in ("Universal rules", "Frontend", "Backend", "Responsible AI", "Audit format"):
+    for section in ("Universal rules", "Enforceable sobriety rules", "Frontend", "Backend", "Responsible AI", "Audit format"):
         require(RULES, section)
+    for rule_id in ("CODE-EFF-001", "CODE-EFF-006", "API-EFF-001", "WEB-EFF-001", "DB-EFF-001", "DB-EFF-005"):
+        require(RULES, rule_id)
     print("Green Codex skill checks passed")
 
 

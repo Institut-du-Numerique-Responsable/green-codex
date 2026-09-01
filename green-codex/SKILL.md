@@ -14,13 +14,16 @@ AI, sustainable software, or an environmental audit of code or a digital service
 2. Inspect the smallest relevant set of files and existing project guidance before proposing changes.
 3. Apply the relevant checks in `references/criteria.md`; do not invent a criterion or claim a
    compliance level without evidence.
-4. Prefer measurable, reversible improvements: reduce transferred bytes, requests, CPU and memory
+4. Apply the enforceable sobriety rules in `references/rules.md` (identifiers `CODE-*`, `API-*`,
+   `WEB-*`, and `DB-*`) when code, APIs, storage, or databases are in scope. Report `PASS`, `FAIL`,
+   or `REVIEW_REQUIRED` for each applicable rule.
+5. Prefer measurable, reversible improvements: reduce transferred bytes, requests, CPU and memory
    work, storage, build output, and unnecessary polling. Preserve functionality and accessibility.
-5. For accessibility, check semantic HTML, keyboard operation, focus, contrast, names and errors;
+6. For accessibility, check semantic HTML, keyboard operation, focus, contrast, names and errors;
    keep official acronyms such as RGAA and RGESN unchanged.
-6. For AI features, consider model size, prompt and context volume, caching, rate limits, data
+7. For AI features, consider model size, prompt and context volume, caching, rate limits, data
    minimisation, human oversight, and disclosure of AI-generated content.
-7. Report findings with file and line references, impact, confidence, and a concrete fix. Separate
+8. Report findings with file and line references, impact, confidence, and a concrete fix. Separate
    observed facts from recommendations.
 
 ## Review output
