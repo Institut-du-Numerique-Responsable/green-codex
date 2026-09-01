@@ -1,4 +1,4 @@
 interface:
-  display_name: "Green IT Engineering"
+  display_name: "Green Codex"
   short_description: "Apply Green IT and responsible digital practices"
   default_prompt: "Audit or improve this project using Green IT practices."
