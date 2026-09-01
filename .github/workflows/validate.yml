@@ -3,6 +3,7 @@ name: Validate skill
 on:
   push:
     branches: [main]
+    tags: ['v*.*.*']
   pull_request:
 
 permissions:
@@ -31,3 +32,6 @@ jobs:
           PY
       - name: Validate release helper
         run: bash scripts/test-release-version.sh
+      - name: Validate release tag
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: bash scripts/verify-version-release.sh VERSION "$GITHUB_REF_NAME"
