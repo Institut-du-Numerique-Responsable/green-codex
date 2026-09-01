@@ -1,5 +1,9 @@
 # Green Codex
 
+[![Version](https://img.shields.io/github/v/release/Institut-du-Numerique-Responsable/green-codex?sort=semver)](https://github.com/Institut-du-Numerique-Responsable/green-codex/releases)
+[![CI](https://github.com/Institut-du-Numerique-Responsable/green-codex/actions/workflows/validate.yml/badge.svg)](https://github.com/Institut-du-Numerique-Responsable/green-codex/actions/workflows/validate.yml)
+[![License](https://img.shields.io/badge/license-MIT%20%2B%20CC%20BY%204.0-yellow.svg)](LICENSE)
+
 Green Codex is a Codex skill for applying Green IT and responsible digital practices while
 designing, implementing, reviewing, or auditing software and digital services.
 
@@ -47,6 +51,20 @@ must distinguish observed evidence from recommendations and must not trade away 
 correctness, accessibility, or resilience for an environmental score.
 
 Issues and pull requests are welcome in the [GitHub repository](https://github.com/Institut-du-Numerique-Responsable/green-codex).
+See [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), and
+[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) before contributing.
+
+## Release process
+
+The version is stored in `VERSION` and must match the release tag (`vX.Y.Z`). Run both validation
+commands, update `CHANGELOG.md`, and create a GitHub release from the tag. See the CI workflow for
+the checks executed on every pull request.
+
+## License
+
+Code and test scripts are MIT licensed. Documentation and rule content are available under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). See [LICENSE](LICENSE) and
+[LICENSE-CC-BY-4.0](LICENSE-CC-BY-4.0).
 
 ## Sources
 

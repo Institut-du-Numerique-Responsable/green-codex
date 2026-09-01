@@ -1,0 +1,31 @@
+name: Validate skill
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Set up Python
+        uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5.6.0
+        with:
+          python-version: '3.11'
+      - name: Test package
+        run: python green-codex/scripts/test_skill.py
+      - name: Validate skill format
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          skill = Path('green-codex/SKILL.md').read_text(encoding='utf-8')
+          assert skill.startswith('---\n') and '\nname: green-codex\n' in skill
+          assert (Path('green-codex/references') / 'rules.md').is_file()
+          assert (Path('green-codex/references') / 'criteria.md').is_file()
+          print('Skill format checks passed')
+          PY
