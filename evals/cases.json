@@ -1,0 +1,51 @@
+[
+  {
+    "id": "sql-n-plus-one",
+    "prompt": "Review this Django endpoint: it loads all users and calls user.posts.all() inside a loop. Provide actionable Green Codex findings.",
+    "expected_rules": ["DB-EFF-003", "API-EFF-001", "LANG-PYTHON-001"],
+    "required_terms": ["query", "pagination", "verification"]
+  },
+  {
+    "id": "react-large-list",
+    "prompt": "Review a React page rendering 20,000 rows with images and a fetch request on every keystroke.",
+    "expected_rules": ["LANG-REACT-002", "WEB-EFF-002", "LANG-JS-001"],
+    "required_terms": ["virtual", "debounce", "measure"]
+  },
+  {
+    "id": "shell-filenames",
+    "prompt": "Harden a Zsh script that loops over files from find and uploads each file, retrying forever on failure.",
+    "expected_rules": ["LANG-SHELL-001", "LANG-SHELL-002", "LANG-SHELL-003", "CODE-EFF-002"],
+    "required_terms": ["quote", "retry", "bounded"]
+  },
+  {
+    "id": "serverless-pipeline",
+    "prompt": "Assess a serverless image pipeline with 10 chained functions, 5 retries and cross-region payload transfers.",
+    "expected_rules": ["ARCH-SERVERLESS-001", "ARCH-SERVERLESS-002", "NET-EFF-001"],
+    "required_terms": ["cold", "timeout", "region"]
+  },
+  {
+    "id": "mobile-sync",
+    "prompt": "Improve an Android app that wakes every minute to sync telemetry and uploads the full local database.",
+    "expected_rules": ["ARCH-MOBILE-001", "ARCH-MOBILE-003", "DB-EFF-005"],
+    "required_terms": ["battery", "batch", "retention"]
+  },
+  {
+    "id": "ai-inference",
+    "prompt": "Choose an inference design for a simple classification task currently using a large LLM on every request.",
+    "expected_rules": ["AI-EFF-001", "AI-EFF-002", "AI-EFF-005"],
+    "required_terms": ["model", "budget", "fallback"]
+  },
+  {
+    "id": "cpp-allocations",
+    "prompt": "Review a C++ hot loop that constructs temporary strings and creates a new thread for every item.",
+    "expected_rules": ["LANG-CPP-001", "CODE-EFF-001", "CODE-EFF-009"],
+    "required_terms": ["RAII", "thread", "profile"]
+  },
+  {
+    "id": "no-universal-gains",
+    "prompt": "Compare Rust, Python and Go and claim the exact percentage of energy saved by rewriting the service.",
+    "expected_rules": ["CODE-EFF-011", "CODE-EFF-012", "MEASURE-EFF-001"],
+    "required_terms": ["workload", "baseline", "uncertainty"],
+    "forbidden_terms": ["always", "guaranteed", "100x less energy"]
+  }
+]

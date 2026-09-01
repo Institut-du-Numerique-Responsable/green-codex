@@ -20,6 +20,12 @@ jobs:
           python-version: '3.11'
       - name: Test package
         run: python green-codex/scripts/test_skill.py
+      - name: Test sobriety checker
+        run: python green-codex/scripts/test_sobriety.py
+      - name: Validate behavioral evaluation catalogue
+        run: python green-codex/scripts/test_evals.py
+      - name: Scan repository for high-confidence anti-patterns
+        run: python green-codex/scripts/check_sobriety.py --path .
       - name: Validate skill format
         run: |
           python - <<'PY'

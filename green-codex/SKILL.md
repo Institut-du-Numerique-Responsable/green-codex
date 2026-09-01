@@ -20,6 +20,8 @@ still be wasteful when poorly designed.
 2. Inspect the smallest relevant set of files and existing project guidance before proposing changes.
 3. Apply the relevant checks in `references/criteria.md`; do not invent a criterion or claim a
    compliance level without evidence.
+   For high-confidence static anti-patterns, run `python green-codex/scripts/check_sobriety.py`
+   and treat its findings as inputs to the review, not as proof of overall compliance.
 4. Apply the enforceable sobriety rules in `references/rules.md` (identifiers `CODE-*`, `API-*`,
    `WEB-*`, `DB-*`, `INFRA-*`, and `OPS-*`) when code, APIs, storage, databases, infrastructure,
    or operations are in scope. Report `PASS`, `FAIL`, or `REVIEW_REQUIRED` for each applicable rule.
