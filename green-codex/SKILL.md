@@ -8,6 +8,12 @@ description: Apply Green IT and responsible digital practices when designing, co
 Use this skill when a request concerns eco-design, digital sobriety, accessibility, responsible
 AI, sustainable software, or an environmental audit of code or a digital service.
 
+No programming language, framework, database or hosting provider is inherently “green”. Assess the
+way it is used: architecture, algorithms, configuration, workload, lifecycle, accessibility and
+measured resource impact. A familiar or interpreted technology can be the most responsible choice
+when it meets the budget and avoids unnecessary migration; a compiled or lightweight technology can
+still be wasteful when poorly designed.
+
 ## Working method
 
 1. Identify the technology, lifecycle stage, and user or environmental risk in scope.
@@ -15,8 +21,8 @@ AI, sustainable software, or an environmental audit of code or a digital service
 3. Apply the relevant checks in `references/criteria.md`; do not invent a criterion or claim a
    compliance level without evidence.
 4. Apply the enforceable sobriety rules in `references/rules.md` (identifiers `CODE-*`, `API-*`,
-   `WEB-*`, and `DB-*`) when code, APIs, storage, or databases are in scope. Report `PASS`, `FAIL`,
-   or `REVIEW_REQUIRED` for each applicable rule.
+   `WEB-*`, `DB-*`, `INFRA-*`, and `OPS-*`) when code, APIs, storage, databases, infrastructure,
+   or operations are in scope. Report `PASS`, `FAIL`, or `REVIEW_REQUIRED` for each applicable rule.
 5. Prefer measurable, reversible improvements: reduce transferred bytes, requests, CPU and memory
    work, storage, build output, and unnecessary polling. Preserve functionality and accessibility.
 6. For accessibility, check semantic HTML, keyboard operation, focus, contrast, names and errors;

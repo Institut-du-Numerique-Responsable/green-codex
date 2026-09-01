@@ -227,8 +227,10 @@ and other server-side code. Additionally:
 
 ## Language-specific sobriety guidance
 
-Use these rules in addition to the universal rules. They are defaults for review, not reasons to
-rewrite a working system without a measured benefit. Cite the language identifier in findings.
+Use these rules in addition to the universal rules. No language or framework is inherently green:
+sobriety depends on implementation, workload, configuration and lifecycle. These are defaults for
+review, not reasons to rewrite a working system without a measured benefit. Cite the language
+identifier in findings.
 
 ### Java (`LANG-JAVA-*`)
 
