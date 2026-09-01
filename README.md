@@ -75,6 +75,8 @@ The skill is then available when Codex selects it automatically, or explicitly w
 - `green-codex/references/criteria.md`: compact criteria map and evidence checklist;
 - `green-codex/references/rules.md`: complete rules for frontend, backend, data,
   accessibility, web quality, and responsible AI;
+- `evals/cases.json`: realistic behavioral evaluation scenarios;
+- `evals/README.md`: procedure for running evaluations against saved Codex responses;
 - `green-codex/agents/openai.yaml`: UI metadata for skill discovery.
 
 Run the package smoke test and the Codex skill validator before publishing changes:
@@ -83,6 +85,22 @@ Run the package smoke test and the Codex skill validator before publishing chang
 python3 green-codex/scripts/test_skill.py
 python3 ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py green-codex
 ```
+
+### Automated sobriety checks
+
+The repository includes a dependency-free static checker for high-confidence anti-patterns. It
+reports SQL `SELECT *`, media autoplay and unbounded JavaScript polling, with file and line
+references. It intentionally stays conservative: a clean scan is not a compliance claim, and
+performance, energy, accessibility and architecture still require targeted tests or measurements.
+
+```bash
+python3 green-codex/scripts/test_sobriety.py
+python3 green-codex/scripts/check_sobriety.py --path .
+python3 green-codex/scripts/check_sobriety.py --path . --format json
+```
+
+The same checks run in the `validate` GitHub Actions workflow. Project-specific thresholds and
+additional rules should be added only with a regression test and documented evidence.
 
 ## Use and contribution
 
