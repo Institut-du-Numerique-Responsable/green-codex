@@ -241,11 +241,19 @@ identifier in findings.
 - **LANG-JAVA-003:** for batch jobs, compare JVM, GraalVM native image and another suitable runtime
   using startup, throughput, peak memory and energy; never disable GC without a benchmark and leak
   safeguards.
+- **LANG-JAVA-004:** prefer primitive arrays and bounded collections in hot paths; inspect JFR or
+  allocation profiles before replacing clear object-oriented code.
+- **LANG-JAVA-005:** batch JDBC writes with a bounded transaction and fetch size; avoid one commit
+  or network round trip per row.
 
 ### Kotlin and Scala (`LANG-KOTLIN-*`, `LANG-SCALA-*`)
 
 - **LANG-KOTLIN-001:** avoid accidental boxing, intermediate collection chains and unbounded
   coroutines; use sequences or streaming only when profiling shows a benefit.
+- **LANG-KOTLIN-002:** give coroutine scopes explicit lifetimes and dispatchers; cancel children
+  deterministically and bound channel buffers.
+- **LANG-SCALA-002:** use iterators or views for large transformations and bound parallel collections;
+  measure scheduler overhead before enabling parallelism.
 - **LANG-SCALA-001:** avoid unnecessary materialisation of collections and excessive implicit or
   effect layers in hot paths; benchmark lazy versus strict evaluation.
 
@@ -253,10 +261,22 @@ identifier in findings.
 
 - **LANG-RUST-001:** prefer borrowing, slices and iterators over cloning or collecting; measure
   allocations and preserve clear ownership and error handling.
+- **LANG-RUST-002:** use bounded async runtimes, channels and task sets; propagate cancellation and
+  avoid blocking an async executor thread.
+- **LANG-RUST-003:** choose an allocator or `Vec` capacity from measured growth; avoid premature
+  capacity over-allocation and verify with heap profiling.
 - **LANG-C-001:** bound buffers and loops, release every allocation on every path, and run a
   sanitizer or leak check for changed native code.
+- **LANG-C-002:** prefer streaming and caller-provided buffers for large data; document ownership,
+  alignment and maximum sizes at every public boundary.
+- **LANG-C-003:** use compiler optimisation only after a reproducible benchmark; keep undefined
+  behaviour fixes and warnings enabled rather than trading correctness for speed.
 - **LANG-CPP-001:** prefer RAII, move semantics and views (`std::span`/equivalent) over raw owning
   pointers and needless copies; verify with sanitizers and an allocation profile.
+- **LANG-CPP-002:** reserve containers only from measured bounds and use standard algorithms; avoid
+  repeated reallocation and implicit temporary strings in hot paths.
+- **LANG-CPP-003:** bound thread pools and futures, use cancellation or deadlines, and verify no
+  task remains alive after shutdown.
 
 ### Go (`LANG-GO-*`)
 
@@ -264,6 +284,10 @@ identifier in findings.
   with `context` and ensure every goroutine has a termination path.
 - **LANG-GO-002:** reuse buffers carefully (`sync.Pool` only for measured hot paths) and inspect
   escape analysis before changing allocations.
+- **LANG-GO-003:** stream encodings and HTTP bodies instead of converting them to `[]byte` copies;
+  set client, idle-connection and response-size limits.
+- **LANG-GO-004:** use `pprof` and benchmarks to validate CPU, heap and blocking improvements; do not
+  increase `GOMAXPROCS` or parallelism without workload evidence.
 
 ### Python (`LANG-PYTHON-*`)
 
@@ -273,6 +297,10 @@ identifier in findings.
   only after profiling; do not rewrite Python solely from a language stereotype.
 - **LANG-PYTHON-003:** bound multiprocessing workers, queues and serialisation; close files and
   clients with context managers.
+- **LANG-PYTHON-004:** avoid per-item Python callbacks in large data paths; use vectorised/native
+  operations only when profiling shows lower total CPU and memory.
+- **LANG-PYTHON-005:** reuse sessions and HTTP connections, set timeouts, and stream uploads and
+  downloads; never use an unbounded `read()` on external input.
 
 ### JavaScript and TypeScript (`LANG-JS-*`)
 
@@ -282,6 +310,10 @@ identifier in findings.
   promises, event listeners and in-memory caches.
 - **LANG-JS-003:** on Node.js, stream large payloads and reuse bounded HTTP/database clients;
   never load an unbounded response into memory.
+- **LANG-JS-004:** use `AbortController` and deadlines for fetches, clear timers and listeners, and
+  bound promise concurrency with a queue.
+- **LANG-JS-005:** avoid serialising large objects repeatedly; prefer structured streaming or a
+  compact representation when a measured transfer or CPU budget requires it.
 
 ### HTML5 and CSS3 (`LANG-HTML-*`, `LANG-CSS-*`)
 
@@ -289,10 +321,14 @@ identifier in findings.
   avoid JavaScript widgets when the platform element meets the need.
 - **LANG-HTML-002:** declare media dimensions, responsive sources and lazy loading for non-critical
   content; never autoplay audio or video with sound.
+- **LANG-HTML-003:** keep the initial document useful without non-essential JavaScript and avoid
+  duplicate navigation, tracking and preload hints; verify first-content payload size.
 - **LANG-CSS-001:** remove unused rules, limit selector and DOM complexity, and prefer system fonts
   or a small, subsetted WOFF2 set. Verify production CSS size.
 - **LANG-CSS-002:** animate only `transform` and `opacity`, honour reduced motion, and avoid
   continuous effects or broad `will-change` declarations.
+- **LANG-CSS-003:** prefer media queries and container queries over JavaScript-driven layout work;
+  remove unused selectors and verify computed-style cost on representative pages.
 
 ### React (`LANG-REACT-*`)
 
@@ -300,6 +336,8 @@ identifier in findings.
   and prevent avoidable re-renders with profiling evidence.
 - **LANG-REACT-002:** split routes and optional features, virtualise long lists, and do not ship a
   client-side runtime for content that can be rendered statically or on the server.
+- **LANG-REACT-003:** use stable keys and selectors, avoid effect-driven derived state, and verify
+  render count with the React profiler before adding memoisation.
 
 ### Vue (`LANG-VUE-*`)
 
@@ -307,6 +345,8 @@ identifier in findings.
   and profile watcher churn before adding optimisation layers.
 - **LANG-VUE-002:** lazy-load routes and optional components; keep hydration limited to interactive
   islands when the application architecture permits it.
+- **LANG-VUE-003:** use `v-once` or shallow state for immutable large content where appropriate and
+  clean watchers on unmount; verify update scope with devtools profiling.
 
 ### Angular (`LANG-ANGULAR-*`)
 
@@ -314,6 +354,8 @@ identifier in findings.
   identity, and avoid work in templates; verify change-detection frequency with profiling.
 - **LANG-ANGULAR-002:** use route-level lazy loading and remove unused polyfills, modules and locale
   data from production bundles.
+- **LANG-ANGULAR-003:** use `trackBy`/identity tracking and teardown subscriptions; avoid template
+  methods that recompute on every change-detection pass.
 
 ### Svelte (`LANG-SVELTE-*`)
 
@@ -321,6 +363,8 @@ identifier in findings.
   broad subscriptions and unnecessary client hydration.
 - **LANG-SVELTE-002:** prefer static rendering for non-interactive content and measure generated
   JavaScript rather than assuming compile-time output is always smaller.
+- **LANG-SVELTE-003:** unsubscribe stores and actions on teardown and keep reactive statements
+  narrow; verify update counts for large lists.
 
 ### Preact (`LANG-PREACT-*`)
 
@@ -328,6 +372,8 @@ identifier in findings.
   verify bundle size and runtime behaviour against the existing implementation.
 - **LANG-PREACT-002:** split optional features and avoid shipping compatibility layers that are not
   needed by the target browsers.
+- **LANG-PREACT-003:** avoid recreating context values and callbacks on every render; profile before
+  adding memoisation or a state library.
 
 ### Astro (`LANG-ASTRO-*`)
 
@@ -335,6 +381,8 @@ identifier in findings.
   interaction requires them; verify hydrated JavaScript per route.
 - **LANG-ASTRO-002:** optimise content and media at build time, while preserving accessible
   fallbacks when client JavaScript is unavailable.
+- **LANG-ASTRO-003:** choose the smallest client directive (`load`, `idle`, `visible` or `media`)
+  that meets the interaction requirement and verify hydrated bytes per route.
 
 ### Solid (`LANG-SOLID-*`)
 
@@ -342,18 +390,26 @@ identifier in findings.
   updates touch only the required DOM nodes.
 - **LANG-SOLID-002:** lazy-load routes and widgets and measure hydration and bundle budgets on low-
   power devices.
+- **LANG-SOLID-003:** avoid broad reactive effects and preserve stable list identities; verify that
+  updates touch only the intended nodes.
 
 ### PHP and Ruby (`LANG-PHP-*`, `LANG-RUBY-*`)
 
 - **LANG-PHP-001:** stream exports and responses, reuse persistent clients where safe, and avoid
   rendering unbounded collections in a template.
+- **LANG-PHP-002:** use generators and bounded iterators for imports; configure OPcache and measure
+  its memory trade-off rather than enabling every cache blindly.
 - **LANG-RUBY-001:** avoid object churn in hot loops and unbounded ActiveRecord relations; use
   `find_each`/batching and profile GC before changing allocation behaviour.
+- **LANG-RUBY-002:** stream enumerables and responses, bound Sidekiq/job concurrency and retries,
+  and release database connections on every path.
 
 ### Julia (`LANG-JULIA-*`)
 
 - **LANG-JULIA-001:** avoid type instability and unintended allocations in hot functions; use
   profiling and allocation reports before introducing in-place mutation.
+- **LANG-JULIA-002:** precompile stable workloads and bound threaded tasks; compare compilation,
+  warm-up and steady-state energy before choosing a long-running deployment.
 
 ### SQL and PL/SQL (`LANG-SQL-*`, `LANG-PLSQL-*`)
 
@@ -362,17 +418,25 @@ identifier in findings.
 - **LANG-SQL-002:** use parameterised statements, set transaction scope deliberately, and avoid
   repeated commits or round trips in a batch. Verify query count and lock duration in an integration
   test.
+- **LANG-SQL-003:** use set-based operations, window functions and bulk loading instead of row-by-row
+  client loops; compare execution time, memory, locks and temporary storage.
 - **LANG-PLSQL-001:** prefer set-based SQL over row-by-row loops; use `BULK COLLECT`/`FORALL` with
   a bounded batch size when procedural work is necessary, and measure PGA memory and redo volume.
 - **LANG-PLSQL-002:** avoid unbounded cursors and dynamic SQL; close cursors deterministically and
   validate identifiers when dynamic statements cannot be avoided.
+- **LANG-PLSQL-003:** commit in bounded batches appropriate to undo/redo capacity, instrument PGA and
+  TEMP usage, and make restart/checkpoint behaviour explicit.
 
 ### Nim and Zig (`LANG-NIM-*`, `LANG-ZIG-*`)
 
 - **LANG-NIM-001:** keep compile-time generation bounded and inspect generated code when it affects
   build or runtime size; avoid needless copies in sequences.
+- **LANG-NIM-002:** select ARC/ORC/GC and allocation strategies from measured latency and memory
+  needs; ensure deterministic cleanup for file and network resources.
 - **LANG-ZIG-001:** make allocator ownership explicit, use bounded allocators for services, and
   test allocation failure and cleanup paths.
+- **LANG-ZIG-002:** use slices and fixed buffers where bounds are known, avoid needless sentinel
+  copies, and profile allocator contention in concurrent code.
 
 ### Shell, Bash, Zsh and Tcsh (`LANG-SHELL-*`)
 
@@ -384,6 +448,10 @@ identifier in findings.
   trap and fail predictably with strict-mode settings appropriate to the script.
 - **LANG-SHELL-004:** for large data, stream rather than creating intermediate copies; measure
   whether compression reduces total CPU plus I/O before enabling it.
+- **LANG-SHELL-005:** prefer `awk`, `sed` or a single pipeline over repeatedly invoking `grep`,
+  `cut` or `expr`; preserve readability and quote data at every boundary.
+- **LANG-SHELL-006:** use `mktemp`, traps and bounded work directories; never write unbounded output
+  to logs or temporary storage.
 
 ## Web quality and accessibility
 
