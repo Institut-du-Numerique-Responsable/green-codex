@@ -73,7 +73,7 @@ The skill is then available when Codex selects it automatically, or explicitly w
 
 - `green-codex/SKILL.md`: workflow and decision guidance;
 - `green-codex/references/criteria.md`: compact criteria map and evidence checklist;
-- `green-codex/references/rules.md`: complete English rules for frontend, backend, data,
+- `green-codex/references/rules.md`: complete rules for frontend, backend, data,
   accessibility, web quality, and responsible AI;
 - `green-codex/agents/openai.yaml`: UI metadata for skill discovery.
 

@@ -79,4 +79,4 @@ tests, linters, and data validators. Add a regression test for a new rule when p
 commit secrets, build caches, dependency directories, or local reports unless explicitly requested.
 
 Read `references/criteria.md` for the compact mapping of RGESN, GR491, Opquast, and RGAA concerns,
-and `references/rules.md` for the complete English rule set.
+and `references/rules.md` for the complete rule set.
