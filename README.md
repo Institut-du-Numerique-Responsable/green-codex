@@ -75,6 +75,8 @@ The skill is then available when Codex selects it automatically, or explicitly w
 - `green-codex/references/criteria.md`: compact criteria map and evidence checklist;
 - `green-codex/references/rules.md`: complete rules for frontend, backend, data,
   accessibility, web quality, and responsible AI;
+- `evals/cases.json`: realistic behavioral evaluation scenarios;
+- `evals/README.md`: procedure for running evaluations against saved Codex responses;
 - `green-codex/agents/openai.yaml`: UI metadata for skill discovery.
 
 Run the package smoke test and the Codex skill validator before publishing changes:
