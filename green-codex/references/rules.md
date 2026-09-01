@@ -225,6 +225,104 @@ and other server-side code. Additionally:
 - C/C++/Rust: release resources on every path; measure allocations and avoid needless copies.
 - SQL: use projections, predicates, pagination, and verified indexes; never use unbounded queries.
 
+## Language-specific sobriety guidance
+
+Use these rules in addition to the universal rules. They are defaults for review, not reasons to
+rewrite a working system without a measured benefit. Cite the language identifier in findings.
+
+### Java (`LANG-JAVA-*`)
+
+- **LANG-JAVA-001:** bound executor pools, queues and caches; size `-Xms`/`-Xmx` from a measured
+  workload rather than copying production values.
+- **LANG-JAVA-002:** use try-with-resources for files, sockets and JDBC; profile allocation and GC
+  before introducing object pools or changing collectors.
+- **LANG-JAVA-003:** for batch jobs, compare JVM, GraalVM native image and another suitable runtime
+  using startup, throughput, peak memory and energy; never disable GC without a benchmark and leak
+  safeguards.
+
+### Kotlin and Scala (`LANG-KOTLIN-*`, `LANG-SCALA-*`)
+
+- **LANG-KOTLIN-001:** avoid accidental boxing, intermediate collection chains and unbounded
+  coroutines; use sequences or streaming only when profiling shows a benefit.
+- **LANG-SCALA-001:** avoid unnecessary materialisation of collections and excessive implicit or
+  effect layers in hot paths; benchmark lazy versus strict evaluation.
+
+### Rust, C and C++ (`LANG-RUST-*`, `LANG-C-*`, `LANG-CPP-*`)
+
+- **LANG-RUST-001:** prefer borrowing, slices and iterators over cloning or collecting; measure
+  allocations and preserve clear ownership and error handling.
+- **LANG-C-001:** bound buffers and loops, release every allocation on every path, and run a
+  sanitizer or leak check for changed native code.
+- **LANG-CPP-001:** prefer RAII, move semantics and views (`std::span`/equivalent) over raw owning
+  pointers and needless copies; verify with sanitizers and an allocation profile.
+
+### Go (`LANG-GO-*`)
+
+- **LANG-GO-001:** bound goroutines, channels, worker pools and retries; propagate cancellation
+  with `context` and ensure every goroutine has a termination path.
+- **LANG-GO-002:** reuse buffers carefully (`sync.Pool` only for measured hot paths) and inspect
+  escape analysis before changing allocations.
+
+### Python (`LANG-PYTHON-*`)
+
+- **LANG-PYTHON-001:** use generators, iterators and chunked I/O for large data; avoid repeated
+  list or DataFrame copies.
+- **LANG-PYTHON-002:** move proven CPU hot paths to vectorised/native libraries or another runtime
+  only after profiling; do not rewrite Python solely from a language stereotype.
+- **LANG-PYTHON-003:** bound multiprocessing workers, queues and serialisation; close files and
+  clients with context managers.
+
+### JavaScript and TypeScript (`LANG-JS-*`)
+
+- **LANG-JS-001:** avoid layout thrashing and repeated renders; batch DOM updates and debounce
+  high-frequency handlers.
+- **LANG-JS-002:** use code splitting and dynamic imports for optional features; bound timers,
+  promises, event listeners and in-memory caches.
+- **LANG-JS-003:** on Node.js, stream large payloads and reuse bounded HTTP/database clients;
+  never load an unbounded response into memory.
+
+### PHP and Ruby (`LANG-PHP-*`, `LANG-RUBY-*`)
+
+- **LANG-PHP-001:** stream exports and responses, reuse persistent clients where safe, and avoid
+  rendering unbounded collections in a template.
+- **LANG-RUBY-001:** avoid object churn in hot loops and unbounded ActiveRecord relations; use
+  `find_each`/batching and profile GC before changing allocation behaviour.
+
+### Julia (`LANG-JULIA-*`)
+
+- **LANG-JULIA-001:** avoid type instability and unintended allocations in hot functions; use
+  profiling and allocation reports before introducing in-place mutation.
+
+### SQL and PL/SQL (`LANG-SQL-*`, `LANG-PLSQL-*`)
+
+- **LANG-SQL-001:** use explicit projections, predicates and bounded pagination; inspect the query
+  plan for high-volume statements and reject accidental full-table scans.
+- **LANG-SQL-002:** use parameterised statements, set transaction scope deliberately, and avoid
+  repeated commits or round trips in a batch. Verify query count and lock duration in an integration
+  test.
+- **LANG-PLSQL-001:** prefer set-based SQL over row-by-row loops; use `BULK COLLECT`/`FORALL` with
+  a bounded batch size when procedural work is necessary, and measure PGA memory and redo volume.
+- **LANG-PLSQL-002:** avoid unbounded cursors and dynamic SQL; close cursors deterministically and
+  validate identifiers when dynamic statements cannot be avoided.
+
+### Nim and Zig (`LANG-NIM-*`, `LANG-ZIG-*`)
+
+- **LANG-NIM-001:** keep compile-time generation bounded and inspect generated code when it affects
+  build or runtime size; avoid needless copies in sequences.
+- **LANG-ZIG-001:** make allocator ownership explicit, use bounded allocators for services, and
+  test allocation failure and cleanup paths.
+
+### Shell, Bash, Zsh and Tcsh (`LANG-SHELL-*`)
+
+- **LANG-SHELL-001:** avoid spawning external processes in loops; use built-ins, batch operations
+  and one streaming pipeline where this preserves readability and safety.
+- **LANG-SHELL-002:** use null-delimited, safe filename handling (`find -print0`/`xargs -0` or an
+  equivalent) and quote expansions; correctness and security take precedence over micro-optimisation.
+- **LANG-SHELL-003:** bound retries, polling and recursive traversal; clean temporary files with a
+  trap and fail predictably with strict-mode settings appropriate to the script.
+- **LANG-SHELL-004:** for large data, stream rather than creating intermediate copies; measure
+  whether compression reduces total CPU plus I/O before enabling it.
+
 ## Web quality and accessibility
 
 - Use semantic structure, visible focus, keyboard operation, correct language, labels, error text,
