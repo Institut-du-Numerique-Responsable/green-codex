@@ -76,3 +76,11 @@ Code and test scripts are MIT licensed. Documentation and rule content are avail
 Green Codex is a reusable engineering guide, not a replacement for the official referentials or
 for a formal compliance audit. Teams should always verify the current versions and document their
 evidence.
+
+## Website and discoverability
+
+The project website is published from [`docs/`](docs/) with a lightweight, accessible landing page,
+structured metadata, a sitemap, `robots.txt`, and an `llms.txt` summary for search engines and AI
+assistants:
+
+<https://institut-du-numerique-responsable.github.io/green-codex/>

@@ -29,3 +29,5 @@ jobs:
           assert (Path('green-codex/references') / 'criteria.md').is_file()
           print('Skill format checks passed')
           PY
+      - name: Validate release helper
+        run: bash scripts/test-release-version.sh

@@ -1,0 +1,18 @@
+# Green Codex
+
+Green Codex is an open Codex skill for Green IT, responsible digital engineering, accessibility,
+web quality, and responsible AI.
+
+## Scope
+
+- Apply evidence-based eco-design guidance during coding and architecture work.
+- Review code for energy, data, network, storage, performance, and lifecycle impact.
+- Preserve accessibility and resilience while reducing unnecessary computation and transfer.
+- Use RGESN, GR491, Opquast, and RGAA as source frameworks.
+
+## Links
+
+- Repository: https://github.com/Institut-du-Numerique-Responsable/green-codex
+- Documentation: https://institut-du-numerique-responsable.github.io/green-codex/
+- Releases: https://github.com/Institut-du-Numerique-Responsable/green-codex/releases
+- Licence: https://creativecommons.org/licenses/by/4.0/
