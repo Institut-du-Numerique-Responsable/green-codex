@@ -281,6 +281,66 @@ rewrite a working system without a measured benefit. Cite the language identifie
 - **LANG-JS-003:** on Node.js, stream large payloads and reuse bounded HTTP/database clients;
   never load an unbounded response into memory.
 
+### HTML5 and CSS3 (`LANG-HTML-*`, `LANG-CSS-*`)
+
+- **LANG-HTML-001:** use semantic HTML5 elements, native controls and correct `lang` metadata;
+  avoid JavaScript widgets when the platform element meets the need.
+- **LANG-HTML-002:** declare media dimensions, responsive sources and lazy loading for non-critical
+  content; never autoplay audio or video with sound.
+- **LANG-CSS-001:** remove unused rules, limit selector and DOM complexity, and prefer system fonts
+  or a small, subsetted WOFF2 set. Verify production CSS size.
+- **LANG-CSS-002:** animate only `transform` and `opacity`, honour reduced motion, and avoid
+  continuous effects or broad `will-change` declarations.
+
+### React (`LANG-REACT-*`)
+
+- **LANG-REACT-001:** keep component state local where possible, memoise only measured hot paths,
+  and prevent avoidable re-renders with profiling evidence.
+- **LANG-REACT-002:** split routes and optional features, virtualise long lists, and do not ship a
+  client-side runtime for content that can be rendered statically or on the server.
+
+### Vue (`LANG-VUE-*`)
+
+- **LANG-VUE-001:** use computed values and stable keys, avoid deep reactive state for large data,
+  and profile watcher churn before adding optimisation layers.
+- **LANG-VUE-002:** lazy-load routes and optional components; keep hydration limited to interactive
+  islands when the application architecture permits it.
+
+### Angular (`LANG-ANGULAR-*`)
+
+- **LANG-ANGULAR-001:** use `OnPush` or signal-based change detection where compatible, track list
+  identity, and avoid work in templates; verify change-detection frequency with profiling.
+- **LANG-ANGULAR-002:** use route-level lazy loading and remove unused polyfills, modules and locale
+  data from production bundles.
+
+### Svelte (`LANG-SVELTE-*`)
+
+- **LANG-SVELTE-001:** keep reactive declarations and stores scoped to the data they need; avoid
+  broad subscriptions and unnecessary client hydration.
+- **LANG-SVELTE-002:** prefer static rendering for non-interactive content and measure generated
+  JavaScript rather than assuming compile-time output is always smaller.
+
+### Preact (`LANG-PREACT-*`)
+
+- **LANG-PREACT-001:** use Preact when its compatibility and accessibility meet the requirements;
+  verify bundle size and runtime behaviour against the existing implementation.
+- **LANG-PREACT-002:** split optional features and avoid shipping compatibility layers that are not
+  needed by the target browsers.
+
+### Astro (`LANG-ASTRO-*`)
+
+- **LANG-ASTRO-001:** keep pages static by default and add interactive islands only where user
+  interaction requires them; verify hydrated JavaScript per route.
+- **LANG-ASTRO-002:** optimise content and media at build time, while preserving accessible
+  fallbacks when client JavaScript is unavailable.
+
+### Solid (`LANG-SOLID-*`)
+
+- **LANG-SOLID-001:** scope fine-grained reactive dependencies and avoid broad effects; verify that
+  updates touch only the required DOM nodes.
+- **LANG-SOLID-002:** lazy-load routes and widgets and measure hydration and bundle budgets on low-
+  power devices.
+
 ### PHP and Ruby (`LANG-PHP-*`, `LANG-RUBY-*`)
 
 - **LANG-PHP-001:** stream exports and responses, reuse persistent clients where safe, and avoid
