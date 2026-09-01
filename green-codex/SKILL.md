@@ -35,4 +35,5 @@ Before changing generated artefacts, locate the source of truth and its generato
 tests, linters, and data validators. Add a regression test for a new rule when practical. Never
 commit secrets, build caches, dependency directories, or local reports unless explicitly requested.
 
-Read `references/criteria.md` for the compact mapping of RGESN, GR491, Opquast, and RGAA concerns.
+Read `references/criteria.md` for the compact mapping of RGESN, GR491, Opquast, and RGAA concerns,
+and `references/rules.md` for the complete English rule set.

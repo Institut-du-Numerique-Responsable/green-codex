@@ -29,7 +29,16 @@ The skill is then available when Codex selects it automatically, or explicitly w
 
 - `green-codex/SKILL.md`: workflow and decision guidance;
 - `green-codex/references/criteria.md`: compact criteria map and evidence checklist;
+- `green-codex/references/rules.md`: complete English rules for frontend, backend, data,
+  accessibility, web quality, and responsible AI;
 - `green-codex/agents/openai.yaml`: UI metadata for skill discovery.
+
+Run the package smoke test and the Codex skill validator before publishing changes:
+
+```bash
+python3 green-codex/scripts/test_skill.py
+python3 ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py green-codex
+```
 
 ## Use and contribution
 
@@ -45,3 +54,7 @@ Issues and pull requests are welcome in the [GitHub repository](https://github.c
 - [GR491](https://gr491.isit-europe.org/)
 - [Opquast](https://checklists.opquast.com/fr/qualite-numerique/)
 - [RGAA](https://accessibilite.numerique.gouv.fr/)
+
+Green Codex is a reusable engineering guide, not a replacement for the official referentials or
+for a formal compliance audit. Teams should always verify the current versions and document their
+evidence.
