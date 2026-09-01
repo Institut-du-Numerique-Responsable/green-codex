@@ -43,6 +43,24 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
   Compare before and after on a representative scenario.
 - **CODE-EFF-007 — Dependencies:** every new runtime dependency must have a documented purpose,
   measured cost and maintenance status. Reject duplicate functionality or an oversized dependency.
+- **CODE-EFF-008 — Complexity:** for a hot path or growing dataset, document the expected
+  complexity and avoid an avoidable quadratic algorithm. Prefer `O(n log n)` or better when it
+  preserves correctness; prove the change with a benchmark on representative and worst-case data.
+- **CODE-EFF-009 — Allocations and structures:** avoid temporary allocations and copies in a hot
+  path. Choose a data structure for the access pattern and memory footprint, supported by a
+  benchmark or allocation profile. Do not prescribe one language or collection universally.
+- **CODE-EFF-010 — Production logging:** logs must be level-controlled, sampled where appropriate,
+  and exclude duplicate or high-cardinality payloads. Verify that normal traffic does not create
+  unnecessary CPU, memory or disk I/O.
+- **CODE-EFF-011 — Language fit:** choose a runtime using measured CPU, memory, energy, latency,
+  portability and maintenance constraints. Rust, Go, Java/GraalVM or another compiled alternative
+  may suit sustained CPU-intensive work; replacing an interpreted language is not automatic.
+- **CODE-EFF-012 — Energy measurement:** for material performance changes, record the workload,
+  duration, hardware or cloud context, method and uncertainty. Use SCI-compatible tooling such as
+  GreenFrame, Scaphandre or PowerAPI when available; never present an estimate as a fact.
+- **CODE-EFF-013 — Leak detection:** run memory/resource leak checks for long-lived or native
+  components when supported by the stack (for example Valgrind or a JVM profiler). Document any
+  justified exception.
 
 ### APIs and frontend
 
@@ -73,6 +91,73 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
   and an archival policy before introducing a high-volume data source.
 - **DB-EFF-007 — Duplicate storage:** do not persist the same derived or binary data in multiple
   places unless the performance trade-off is measured and documented.
+- **DB-EFF-008 — Compression:** compress large or repetitive payloads when CPU cost and latency are
+  lower than storage and network savings. Benchmark the selected codec (for example Zstandard)
+  instead of assuming one codec is always best.
+- **DB-EFF-009 — Data modelling:** avoid unnecessary duplication and define a consistency boundary.
+  Normalise when it reduces storage and update anomalies; allow measured denormalisation when it
+  materially reduces repeated reads or compute, with an explicit refresh strategy.
+
+### Infrastructure and operations
+
+- **INFRA-EFF-001 — Workload placement:** choose a region, provider and architecture using energy
+  intensity, availability, latency, data residency, accessibility and cost evidence. Renewable-
+  energy claims must cite a current provider source; never assume a region is fully renewable.
+- **INFRA-EFF-002 — Load shifting:** move deferrable, non-critical work to lower-carbon or lower-
+  demand periods when deadlines, data residency and reliability permit. Record the schedule and a
+  safe fallback; do not delay interactive or safety-critical work.
+- **INFRA-EFF-003 — Elasticity:** scale idle, stateless capacity down or to zero when safe,
+  including non-production environments. Define warm-up, state, queue and recovery limits first.
+- **INFRA-EFF-004 — Compute model:** select serverless, containers or VMs from measured idle time,
+  startup cost, utilisation, workload duration, portability and operational overhead. No model is
+  inherently more sustainable for every workload.
+- **OPS-EFF-001 — Retention and observability:** set retention by data class and purpose; delete or
+  archive logs and traces on schedule (for example with Elasticsearch ILM). Alert on growth and on
+  a configurable deviation from a representative baseline, not an unexplained universal percentage.
+- **OPS-EFF-002 — Facility evidence:** for owned or procured infrastructure, track PUE or an
+  equivalent facility metric and set a context-appropriate target. Consider liquid cooling or heat
+  reuse only for suitable high-density deployments, backed by lifecycle and safety assessment.
+- **OPS-EFF-003 — Hardware lifecycle:** specify service life, repairability, reuse and end-of-life
+  channels in procurement. Prefer refurbished equipment when security, support and performance
+  requirements are met; verify labels such as TCO Certified, Energy Star or Blauer Engel.
+
+### Networks and digital services
+
+- **NET-EFF-001 — Avoidable transfer:** identify and remove non-essential requests and duplicate
+  downloads in the main user journeys. Verify with a production network trace and request budget.
+- **NET-EFF-002 — Caching:** cache immutable or safely cacheable responses at the browser, edge or
+  service layer with an explicit TTL and invalidation strategy. Do not cache personal or rapidly
+  changing data without a privacy and correctness review.
+- **NET-EFF-003 — Protocol choice:** select HTTP/2, HTTP/3 or another protocol based on measured
+  latency, reliability, compatibility and energy impact. A newer protocol is not automatically more
+  sustainable; record the tested network conditions.
+- **NET-EFF-004 — Critical path:** preload or prefetch only resources proven critical to the next
+  interaction. Lazy-load everything else and verify the decision with a trace.
+
+### Hardware and facilities
+
+- **HW-EFF-001 — Service life:** define a target service life and repair or upgrade path for
+  devices and servers. A five-year target is a useful default, not a guarantee when security or
+  support constraints require replacement.
+- **HW-EFF-002 — Circular procurement:** compare new, refurbished, modular and repairable equipment
+  using lifecycle, warranty, security and performance evidence. Verify environmental labels rather
+  than treating one label as sufficient proof.
+- **HW-EFF-003 — End of life:** document secure data erasure, reuse, take-back and recycling routes
+  before purchasing equipment; retain evidence of the channel used.
+
+### AI workloads
+
+- **AI-EFF-001 — Necessity:** confirm that automation or an AI model is needed; prefer a deterministic
+  rule or conventional algorithm for a simple task when it meets the requirement.
+- **AI-EFF-002 — Model fit:** select the smallest model meeting quality, safety and latency needs.
+  Compare model size, context, tokens, memory, energy and error rates on a representative test set.
+- **AI-EFF-003 — Dataset efficiency:** remove duplicates and stale data, minimise context and cache
+  stable results where safe. Document quality and privacy checks after reduction.
+- **AI-EFF-004 — Hardware fit:** choose accelerator and deployment mode from measured utilisation,
+  latency, memory and energy. A low-power GPU is not automatically preferable if it increases
+  runtime or failures.
+- **AI-EFF-005 — AI budget:** define a per-request or per-job token, time, cost or energy budget,
+  enforce it at runtime, and test refusal or fallback when the budget is exceeded.
 
 ## Frontend, HTML, CSS, and media
 
