@@ -189,6 +189,60 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
   CodeCarbon or Cloud Carbon Footprint as appropriate, and report confidence or `REVIEW_REQUIRED`
   when a hosted runner cannot provide reliable measurements.
 
+## Modern architecture guidance
+
+Apply these rules when the architecture is present. Evaluate control planes, observability, retries,
+replicas and data movement as well as application code.
+
+### Serverless and edge (`ARCH-SERVERLESS-*`, `ARCH-EDGE-*`)
+
+- **ARCH-SERVERLESS-001:** bound function memory, timeout, concurrency and retry settings; measure
+  cold-start, warm execution and idle overhead for the actual invocation distribution.
+- **ARCH-SERVERLESS-002:** keep functions cohesive and payloads small; avoid chaining functions or
+  cross-region transfers when one bounded operation is sufficient.
+- **ARCH-EDGE-001:** use edge execution only when reduced transfer or latency offsets replication,
+  invalidation and deployment overhead; document residency and consistency behaviour.
+- **ARCH-EDGE-002:** set cache keys, TTLs and purge limits explicitly; never cache personal data at
+  a shared edge without privacy and correctness review.
+
+### Mobile and offline-first (`ARCH-MOBILE-*`)
+
+- **ARCH-MOBILE-001:** minimise wakeups, background refresh, radio use and sensor sampling; verify
+  battery impact on representative devices.
+- **ARCH-MOBILE-002:** ship only needed features and assets, bound local caches, and provide an
+  offline or degraded path when it improves resilience.
+- **ARCH-MOBILE-003:** batch synchronisation under suitable power and connectivity conditions;
+  make retries resumable and avoid re-uploading data.
+
+### IoT and embedded (`ARCH-IOT-*`, `ARCH-EMBEDDED-*`)
+
+- **ARCH-IOT-001:** define sampling frequency, payload size, sleep cycle and firmware-update budget;
+  increase fidelity only when the decision benefit is demonstrated.
+- **ARCH-IOT-002:** batch telemetry with bounded local storage and back-pressure; define loss, retry
+  and deduplication behaviour before increasing transmission frequency.
+- **ARCH-EMBEDDED-001:** use fixed or bounded memory and peripheral power states; test worst-case
+  stack, heap and energy on target hardware.
+
+### Distributed systems and microservices (`ARCH-DIST-*`)
+
+- **ARCH-DIST-001:** justify each service boundary; prefer a modular monolith when independent
+  scaling, ownership or failure isolation is not evidenced.
+- **ARCH-DIST-002:** bound fan-out, retries, queues, replicas and cross-service payloads; use
+  idempotency and back-pressure to prevent retry storms.
+- **ARCH-DIST-003:** measure replication, serialisation and coordination overhead before adding
+  replicas, zones or consensus layers.
+
+### NoSQL and data platforms (`ARCH-NOSQL-*`, `ARCH-DATA-*`)
+
+- **ARCH-NOSQL-001:** model access patterns before selecting partition keys or indexes; test hot
+  partitions, scans, item growth and consistency cost.
+- **ARCH-NOSQL-002:** bound scans, fan-out reads, TTLs and secondary indexes; archive or delete
+  expired items instead of relying on an unbounded table.
+- **ARCH-DATA-001:** make pipeline stages incremental and restartable; avoid full-table recompute,
+  duplicate materialisation and unnecessary format conversions.
+- **ARCH-DATA-002:** define retention, partitioning, compression and freshness budgets for data
+  platforms; monitor resources per unit of useful output.
+
 ## Frontend, HTML, CSS, and media
 
 - Keep transferred bytes and request count low; load non-critical scripts with `defer` or `async`.
