@@ -25,6 +25,9 @@ def main():
     require(SKILL, "references/rules.md")
     require(SKILL, "Language rule routing")
     require(SKILL, "`LANG-*` section")
+    require(SKILL, "A named person's advice, a quotation")
+    require(SKILL, "requires a verifiable primary source linked to the exact claim")
+    require(SKILL, "remove the attribution and quotation marks")
     for criterion in ("RGESN", "GR491", "Opquast", "RGAA"):
         require(CRITERIA, criterion)
         require(RULES, criterion)
