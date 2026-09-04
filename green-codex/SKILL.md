@@ -58,6 +58,13 @@ automation, or instruction files, read and apply `references/usage-practices.md`
 project-authored practices adapted to Codex. Do not load that reference for an ordinary code audit
 unless Codex usage is also in scope.
 
+## Responsible use of Codex itself
+
+When the request concerns Codex context, prompts, tasks, agents, models, reasoning effort,
+automation, or instruction files, read and apply `references/usage-practices.md`. It contains 14
+project-authored practices adapted to Codex. Do not load that reference for an ordinary code audit
+unless Codex usage is also in scope.
+
 ## Language rule routing
 
 Detect the languages and frameworks from file extensions, build manifests, lockfiles and runtime
