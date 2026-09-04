@@ -34,6 +34,13 @@ still be wasteful when poorly designed.
 8. Report findings with file and line references, impact, confidence, and a concrete fix. Separate
    observed facts from recommendations.
 
+## Responsible use of Codex itself
+
+When the request concerns Codex context, prompts, tasks, agents, models, reasoning effort,
+automation, or instruction files, read and apply `references/usage-practices.md`. It contains 14
+project-authored practices adapted to Codex. Do not load that reference for an ordinary code audit
+unless Codex usage is also in scope.
+
 ## Language rule routing
 
 Detect the languages and frameworks from file extensions, build manifests, lockfiles and runtime
@@ -89,4 +96,5 @@ tests, linters, and data validators. Add a regression test for a new rule when p
 commit secrets, build caches, dependency directories, or local reports unless explicitly requested.
 
 Read `references/criteria.md` for the compact mapping of RGESN, GR491, Opquast, and RGAA concerns,
-and `references/rules.md` for the complete rule set.
+`references/rules.md` for the complete software rule set, and `references/usage-practices.md` when
+the responsible use of Codex itself is in scope.
