@@ -18,7 +18,9 @@ The official acronyms are kept unchanged.
 - responsible use of AI, including model size, context, caching, and data minimisation;
 - 14 responsible Codex usage practices for context, briefs, durable guidance, verification, and
   proportionate compute;
-- evidence-based audits with severity, confidence, and verification steps.
+- evidence-based audits with severity, confidence, and verification steps;
+- service utility, device longevity, inclusive access, retirement and rebound effects;
+- reproducible measurement separating resource proxies, energy and modelled environmental impacts.
 
 ## How the NR rules are applied
 
@@ -33,19 +35,25 @@ When the skill is used, Codex follows this sequence:
    technologies from source files, manifests, lockfiles and runtime configuration.
 2. **Route the rules.** It applies the universal rules and every relevant family in
    [`green-codex/references/rules.md`](green-codex/references/rules.md): `CODE-*`, `API-*`,
-   `WEB-*`, `DB-*`, `INFRA-*`, `OPS-*`, `NET-*`, `HW-*`, `AI-*`, and the matching `LANG-*` rules.
+   `WEB-*`, `DB-*`, `INFRA-*`, `OPS-*`, `NET-*`, `HW-*`, `AI-*`, `SERVICE-*`, `MEASURE-*`,
+   applicable `ARCH-*`, and matching `LANG-*` rules.
    A React project therefore receives both `LANG-JS-*` and `LANG-REACT-*`; SQL and PL/SQL receive
    their respective rule sets.
 3. **Turn guidance into action.** For each applicable rule, it proposes a concrete change or
    confirms that the current implementation is adequate. Examples include bounding pagination,
    removing `SELECT *`, preventing N+1 queries, streaming large files, limiting retries, lazy
    loading media, or setting a data-retention period.
-4. **Require evidence.** Every rule is reported as `PASS`, `FAIL`, or `REVIEW_REQUIRED` and includes
-   the file and line, environmental or user impact, severity, confidence, and a verification
+4. **Require evidence.** Each applicable rule assessed is reported as `PASS`, `FAIL`, or
+   `REVIEW_REQUIRED` and includes the file and line (or service evidence), environmental or user
+   impact, severity, confidence, and a verification
    method such as a test, benchmark, query plan, allocation profile, network trace or SCI estimate.
 5. **Preserve responsible trade-offs.** No optimisation may weaken security, correctness,
    accessibility, resilience, privacy or user needs. A language change, cloud move or model
    reduction is recommended only when its benefit is demonstrated for the real workload.
+
+Targeted changes receive targeted checks; full audits also document coverage and exclusions.
+Project rule identifiers are not official criterion numbers. Selected RGESN mappings are recorded
+with their edition in the criteria reference; this does not establish formal compliance.
 
 Example finding:
 
@@ -75,6 +83,7 @@ The skill is then available when Codex selects it automatically, or explicitly w
 
 - `green-codex/SKILL.md`: workflow and decision guidance;
 - `green-codex/references/criteria.md`: compact criteria map and evidence checklist;
+- `green-codex/references/measurement.md`: comparison protocol, evidence levels and carbon boundaries;
 - `green-codex/references/rules.md`: complete rules for frontend, backend, data,
   accessibility, web quality, and responsible AI;
 - `green-codex/references/usage-practices.md`: 14 project-authored practices adapted to Codex,

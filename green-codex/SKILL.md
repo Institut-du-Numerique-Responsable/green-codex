@@ -16,23 +16,40 @@ still be wasteful when poorly designed.
 
 ## Working method
 
-1. Identify the technology, lifecycle stage, and user or environmental risk in scope.
-2. Inspect the smallest relevant set of files and existing project guidance before proposing changes.
-3. Apply the relevant checks in `references/criteria.md`; do not invent a criterion or claim a
-   compliance level without evidence.
-   For high-confidence static anti-patterns, run `python green-codex/scripts/check_sobriety.py`
-   and treat its findings as inputs to the review, not as proof of overall compliance.
-4. Apply the enforceable sobriety rules in `references/rules.md` (identifiers `CODE-*`, `API-*`,
-   `WEB-*`, `DB-*`, `INFRA-*`, and `OPS-*`) when code, APIs, storage, databases, infrastructure,
-   or operations are in scope. Report `PASS`, `FAIL`, or `REVIEW_REQUIRED` for each applicable rule.
-5. Prefer measurable, reversible improvements: reduce transferred bytes, requests, CPU and memory
-   work, storage, build output, and unnecessary polling. Preserve functionality and accessibility.
-6. For accessibility, check semantic HTML, keyboard operation, focus, contrast, names and errors;
-   keep official acronyms such as RGAA and RGESN unchanged.
-7. For AI features, consider model size, prompt and context volume, caching, rate limits, data
-   minimisation, human oversight, and disclosure of AI-generated content.
-8. Report findings with file and line references, impact, confidence, and a concrete fix. Separate
-   observed facts from recommendations.
+1. Establish the requested scope: targeted change, review, or service-wide audit. Reuse known user
+   needs and project budgets; do not turn a small edit into a full audit or remove functionality
+   without authorisation. Inspect only relevant files and project guidance.
+2. For design or a service audit, evaluate necessity, reuse and simpler alternatives first. Then
+   assess equipment longevity and likely lifecycle hotspots before micro-optimising code.
+3. Select applicable families below and in `references/criteria.md`. Rule IDs are project-authored,
+   not official criterion numbers. Read only relevant sections of `references/rules.md` using its
+   headings or identifier prefixes; do not load unrelated languages or architectures.
+4. Establish a representative baseline and a useful functional unit (e.g. one completed search).
+   For resource comparisons, carbon claims or material optimisations, read
+   `references/measurement.md`. Missing measurements mean unknown gains, not zero impact.
+5. Prioritise observed hotspots by expected total benefit, confidence, implementation cost and
+   regression risk. Prefer reversible changes. Preserve accessibility, privacy, security,
+   correctness and resilience; measure transfers between client, network and server costs.
+6. Verify the affected behaviour and compare the agreed budgets. For each applicable rule assessed,
+   report `PASS`, `FAIL`, or `REVIEW_REQUIRED` with evidence. A tool's clean result proves only its
+   narrow checks. Run `scripts/check_sobriety.py` relative to this skill directory with an explicit
+   `--path` pointing to the project under review when its static checks are relevant.
+
+## Scope rule routing
+
+| Scope | Sections/families in `references/rules.md` |
+| --- | --- |
+| Service design or full audit | Universal rules, `SERVICE-*`, then relevant rows below |
+| Device support, inclusion, engagement or lifecycle review | Relevant `SERVICE-*`; retirement also `DB-EFF-005`, `OPS-EFF-001` |
+| Runtime, APIs, data | `CODE-*`, `API-*`, `DB-*`, matching languages |
+| User journeys, content, web | `WEB-*`, `NET-*`, Web quality and accessibility, matching languages/frameworks |
+| Infrastructure, procurement, operation | `INFRA-*`, `OPS-*`, `HW-*`, `NET-*` |
+| AI features or inference | `AI-*`, Responsible AI, `CODE-*`, `MEASURE-*` |
+| Resource or environmental comparison | `MEASURE-*`, `CODE-EFF-012`, `references/measurement.md` |
+| Serverless, edge, mobile, IoT, embedded, distributed, NoSQL, data platforms | Matching `ARCH-*` sections plus relevant rows above |
+
+In a full audit, list the assessed families, exclusions with reasons, and evidence gaps. Outside
+that mode, report affected rules and material findings only; do not enumerate the entire catalogue.
 
 ## Responsible use of Codex itself
 
@@ -44,7 +61,7 @@ unless Codex usage is also in scope.
 ## Language rule routing
 
 Detect the languages and frameworks from file extensions, build manifests, lockfiles and runtime
-configuration before reviewing code. Read and apply every matching `LANG-*` section in
+configuration before reviewing code. Read and apply each in-scope matching `LANG-*` section in
 `references/rules.md`; do not substitute a generic rule when a language-specific rule exists.
 
 | Evidence found | Required rule families |
@@ -70,16 +87,17 @@ configuration before reviewing code. Read and apply every matching `LANG-*` sect
 | React, Vue, Angular, Svelte, Preact, Astro or Solid manifests/source | matching framework family |
 | Bash, Zsh, Tcsh or shell scripts | `LANG-SHELL-*` |
 
-For each detected family, report at least one outcome for every applicable rule: `PASS`, `FAIL`,
-or `REVIEW_REQUIRED`. Include the command, benchmark, profile, query plan, network trace or test
-that supports the outcome. When a framework is layered on JavaScript or TypeScript, apply both the
-base `LANG-JS-*` rules and the framework rules.
+Detection alone does not make every rule applicable: browser DOM rules do not apply to a Node-only
+worker, for example. Include the command, benchmark, profile, query plan, network trace or test
+supporting each assessed outcome. For JavaScript/TypeScript frameworks, apply both the relevant
+base `LANG-JS-*` rules and framework rules.
 
 ## Review output
 
-When auditing, group results by severity (blocking, important, improvement), cite the applicable
-reference, and include a short measurement or verification plan. Do not optimise for a score at the
-expense of security, correctness, resilience, or user needs.
+When auditing, give scope and limitations, then prioritised findings: rule/status, file:line or
+service evidence, observation, impact, confidence, action, and verification. Close with remaining
+measurement gaps and next actions. Distinguish technical efficiency from environmental impact;
+never convert an EcoIndex, Lighthouse score or a clean scan into RGESN/RGAA compliance.
 
 ## Source attribution
 

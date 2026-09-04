@@ -7,9 +7,14 @@ the reference.
 ## How to apply a rule
 
 Every applicable rule has an identifier and must produce one of three outcomes: `PASS` (evidence
-is present), `FAIL` (a concrete violation is found), or `REVIEW_REQUIRED` (the rule cannot be
-verified automatically). A finding must cite the identifier, file and line, impact, severity,
+is sufficient), `FAIL` (a concrete violation is found), or `REVIEW_REQUIRED` (available evidence
+is insufficient). Evidence may be automated or manual. A finding must cite the identifier, file and line, impact, severity,
 and a verification command or measurement. Do not mark a rule `PASS` from a declaration alone.
+
+For governance or service findings, cite the actual document, configuration, interview or missing
+evidence instead of inventing a file location. `REVIEW_REQUIRED` also covers missing manual tests
+or measurements. Exclude genuinely inapplicable rules with a reason in full audits. These IDs are
+project rules, not a formal conformance checklist; official mappings are in `criteria.md`.
 
 Reported gains must identify the workload, baseline, hardware or cloud context, measurement method,
 sample size and uncertainty. Do not copy a percentage from a vendor, benchmark or case study as a
@@ -29,6 +34,32 @@ not in a compliance rule.
 ## Enforceable sobriety rules
 
 These rules are deliberately technology-neutral. Apply the relevant ones and record exceptions.
+
+### Service purpose, inclusion and lifecycle
+
+- **SERVICE-EFF-001 — Useful service:** for new services or major features, document the user task,
+  expected usage and alternatives, including reuse or a non-digital route where suitable. Verify
+  the need against user research or existing usage evidence. Flag unsupported assumptions without
+  cancelling an authorised feature or changing its purpose unilaterally.
+- **SERVICE-EFF-002 — Device longevity:** define minimum supported device, browser and connectivity
+  profiles from the intended audience. Test the essential journey on constrained hardware and
+  slow networks; check whether new requirements would exclude usable older devices. Keep security
+  updates supported and offer a lighter path where feasible; never retain a vulnerable dependency
+  solely to preserve compatibility.
+- **SERVICE-EFF-003 — User control:** avoid engagement-only infinite scroll, unsolicited refresh,
+  prefetch and notifications. Let users finish a task and stop activity; verify idle network/CPU
+  and explicit controls. Bounded pagination must remain navigable by keyboard and assistive tools.
+- **SERVICE-EFF-004 — Accountability:** for service audits, identify an owner, dated evidence,
+  justified exclusions, improvement priorities and a review date. Propose an ecodesign declaration
+  from verified evidence; do not publish it or assert certification on the user's behalf.
+- **SERVICE-EFF-005 — Retirement:** define ownership and review dates for features, content and
+  environments. Plan retirement with data export, retention obligations, restore requirements and
+  dependency checks. Recommend cleanup from evidence of disuse; obtain appropriate authority
+  before deleting production data or disabling a service.
+- **SERVICE-EFF-006 — Inclusive access:** verify that the essential task remains understandable,
+  accessible and usable under degraded connectivity. Avoid mandatory accounts, tracking or heavy
+  downloads where unnecessary. Prefer accessible text alternatives when media is optional, while
+  preserving captions, descriptions and assistive functionality users need.
 
 ### Code and runtime
 
@@ -61,8 +92,9 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
   portability and maintenance constraints. Rust, Go, Java/GraalVM or another compiled alternative
   may suit sustained CPU-intensive work; replacing an interpreted language is not automatic.
 - **CODE-EFF-012 — Energy measurement:** for material performance changes, record the workload,
-  duration, hardware or cloud context, method and uncertainty. Use SCI-compatible tooling such as
-  GreenFrame, Scaphandre or PowerAPI when available; never present an estimate as a fact.
+  duration, hardware or cloud context, method and uncertainty. Follow `measurement.md`; distinguish
+  metered energy, modelled estimates and resource proxies. Select tooling for the observable
+  component; a profiler or energy sampler alone does not calculate a complete SCI.
 - **CODE-EFF-013 — Leak detection:** run memory/resource leak checks for long-lived or native
   components when supported by the stack (for example Valgrind or a JVM profiler). Document any
   justified exception.
@@ -82,9 +114,10 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
   no media asset may exceed the repository's documented size limit without justification.
 - **WEB-EFF-003 — Idle work:** do not use frequent polling or continuous animation for a state that
   can be event-driven. If polling is unavoidable, document its interval, stop condition and cost.
-- **WEB-EFF-004 — Motion and autoplay:** never autoplay video or audio with sound. Respect
-  `prefers-reduced-motion` and cap non-essential animation or rendering work; verify on a low-power
-  device or throttled profile.
+- **WEB-EFF-004 — Motion and autoplay:** disable automatic audio/video playback, including muted
+  video. Use an appropriate poster and explicit play action; defer optional media downloads until
+  requested. Disable non-essential automatic animation, respect `prefers-reduced-motion`, and
+  verify both playback and idle transfers on a constrained device or throttled profile.
 
 ### Databases and storage
 
@@ -149,7 +182,8 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
   latency, reliability, compatibility and energy impact. A newer protocol is not automatically more
   sustainable; record the tested network conditions.
 - **NET-EFF-004 — Critical path:** preload or prefetch only resources proven critical to the next
-  interaction. Lazy-load everything else and verify the decision with a trace.
+  interaction. Defer optional resources, but do not lazy-load an above-the-fold/LCP image or delay
+  essential controls. Verify the decision with a trace and task completion under slow connectivity.
 
 ### Hardware and facilities
 
@@ -166,8 +200,9 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
 
 - **AI-EFF-001 — Necessity:** confirm that automation or an AI model is needed; prefer a deterministic
   rule or conventional algorithm for a simple task when it meets the requirement.
-- **AI-EFF-002 — Model fit:** select the smallest model meeting quality, safety and latency needs.
-  Compare model size, context, tokens, memory, energy and error rates on a representative test set.
+- **AI-EFF-002 — Model fit:** select the least resource-intensive solution meeting quality, safety
+  and latency needs on a representative test set. Include retries, retrieval, tools and human
+  rework per successful task; fewer parameters or tokens alone do not prove lower total impact.
 - **AI-EFF-003 — Dataset efficiency:** remove duplicates and stale data, minimise context and cache
   stable results where safe. Document quality and privacy checks after reduction.
 - **AI-EFF-004 — Hardware fit:** choose accelerator and deployment mode from measured utilisation,
@@ -188,6 +223,14 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
   workload and noise are controlled. Use tools such as EcoIndex, GreenFrame, Scaphandre, PowerAPI,
   CodeCarbon or Cloud Carbon Footprint as appropriate, and report confidence or `REVIEW_REQUIRED`
   when a hosted runner cannot provide reliable measurements.
+- **MEASURE-EFF-003 — Functional unit and boundary:** define useful output and include material
+  client, network, server and third-party costs. Compare equivalent quality and service levels.
+  State exclusions, embodied hardware allocation and unavailable data before claiming lifecycle
+  or carbon savings; use `measurement.md` for the evidence protocol.
+- **MEASURE-EFF-004 — Rebound and burden shifting:** report both resources per successful task
+  and total workload over a stated period. Check growth, retries, extra usage and migration costs;
+  consider energy, carbon, water and material impacts where data is available. Flag unknowns and
+  trade-offs rather than treating a lower unit cost as proof of lower total environmental impact.
 
 ## Modern architecture guidance
 
@@ -374,7 +417,7 @@ identifier in findings.
 - **LANG-HTML-001:** use semantic HTML5 elements, native controls and correct `lang` metadata;
   avoid JavaScript widgets when the platform element meets the need.
 - **LANG-HTML-002:** declare media dimensions, responsive sources and lazy loading for non-critical
-  content; never autoplay audio or video with sound.
+  content; apply `WEB-EFF-004` to disable automatic playback, including muted video.
 - **LANG-HTML-003:** keep the initial document useful without non-essential JavaScript and avoid
   duplicate navigation, tracking and preload hints; verify first-content payload size.
 - **LANG-CSS-001:** remove unused rules, limit selector and DOM complexity, and prefer system fonts
@@ -517,7 +560,8 @@ identifier in findings.
 
 ## Responsible AI
 
-- Use the smallest capable model and context. Cache stable prompts and outputs where safe.
+- Use `AI-EFF-002` to compare total resources per successful task. Minimise context and cache
+  stable prompts and outputs where safe, with privacy boundaries, expiry and invalidation.
 - Minimise personal and confidential data sent to a model. Set budgets, rate limits, and timeouts.
 - Keep a human review path for consequential outputs. Disclose AI assistance where transparency is
   required and retain a provenance note when it is available.
