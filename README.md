@@ -16,6 +16,8 @@ The official acronyms are kept unchanged.
 - energy, data, storage, network, and infrastructure efficiency;
 - accessible and resilient user interfaces;
 - responsible use of AI, including model size, context, caching, and data minimisation;
+- 14 responsible Codex usage practices for context, briefs, durable guidance, verification, and
+  proportionate compute;
 - evidence-based audits with severity, confidence, and verification steps.
 
 ## How the NR rules are applied
@@ -75,6 +77,8 @@ The skill is then available when Codex selects it automatically, or explicitly w
 - `green-codex/references/criteria.md`: compact criteria map and evidence checklist;
 - `green-codex/references/rules.md`: complete rules for frontend, backend, data,
   accessibility, web quality, and responsible AI;
+- `green-codex/references/usage-practices.md`: 14 project-authored practices adapted to Codex,
+  with official sources for Codex-specific mechanisms;
 - `evals/cases.json`: realistic behavioral evaluation scenarios;
 - `evals/README.md`: procedure for running evaluations against saved Codex responses;
 - `green-codex/agents/openai.yaml`: UI metadata for skill discovery.
