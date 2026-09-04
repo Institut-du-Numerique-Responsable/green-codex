@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Require primary sources for named attributions and quotations in skill guidance.
+- Add 14 responsible-use practices adapted to Codex, without unsupported personal attribution.
 
 ## 1.0.0 - 2026-09-01
 
