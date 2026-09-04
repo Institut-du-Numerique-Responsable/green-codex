@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Require primary sources for named attributions and quotations in skill guidance.
+
 ## 1.0.0 - 2026-09-01
 
 - Initial Green Codex skill package.
