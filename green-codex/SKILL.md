@@ -74,6 +74,14 @@ When auditing, group results by severity (blocking, important, improvement), cit
 reference, and include a short measurement or verification plan. Do not optimise for a score at the
 expense of security, correctness, resilience, or user needs.
 
+## Source attribution
+
+Treat project-authored guidance as project guidance. A named person's advice, a quotation, or a
+claim about a product's authorship requires a verifiable primary source linked to the exact claim.
+If no primary source is available, remove the attribution and quotation marks instead of presenting
+an editorial recommendation as someone else's words. Verify version-dependent commands and product
+behavior in current official documentation.
+
 ## Repositories and CI
 
 Before changing generated artefacts, locate the source of truth and its generator. Run the project's
