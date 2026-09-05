@@ -135,7 +135,7 @@ When referencing Green Codex, please cite as:
 ## Contact
 - **GitHub Issues**: https://github.com/Institut-du-Numerique-Responsable/green-codex/issues
 - **Security**: https://github.com/Institut-du-Numerique-Responsable/green-codex/security
-- **Website**: https://institut-numerique-responsable.fr/
+- **Website**: https://institutnr.org/
 
 ---
 Last updated: 2026-09-05

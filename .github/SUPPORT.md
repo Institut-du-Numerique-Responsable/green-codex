@@ -58,7 +58,7 @@ Green Codex provides structured information for AI indexing:
 - **RGAA** - https://accessibilite.numerique.gouv.fr/
 
 ### Related Projects
-- **[Institut du Numérique Responsable](https://institut-numerique-responsable.fr/)** - Our organization
+- **[Institut du Numérique Responsable](https://institutnr.org/)** - Our organization
 - **[ISIT Europe](https://isit-europe.org/)** - GR491 maintainers
 
 ## Stay Updated

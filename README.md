@@ -3,7 +3,7 @@
 [![Version](https://img.shields.io/github/v/release/Institut-du-Numerique-Responsable/green-codex?sort=semver)](https://github.com/Institut-du-Numerique-Responsable/green-codex/releases)
 [![CI](https://github.com/Institut-du-Numerique-Responsable/green-codex/actions/workflows/validate.yml/badge.svg)](https://github.com/Institut-du-Numerique-Responsable/green-codex/actions/workflows/validate.yml)
 [![License](https://img.shields.io/badge/license-MIT%20%2B%20CC%20BY%204.0-yellow.svg)](LICENSE)
-[![INR](https://img.shields.io/badge/INR-Institut%20du%20Num%C3%A9rique%20Responsable-4CAF50?logo=leaf&style=flat)](https://institut-numerique-responsable.fr/)
+[![INR](https://img.shields.io/badge/INR-Institut%20du%20Num%C3%A9rique%20Responsable-4CAF50?logo=leaf&style=flat)](https://institutnr.org/)
 
 Green Codex is a Codex skill for applying Green IT and responsible digital practices while
 designing, implementing, reviewing, or auditing software and digital services.
@@ -140,7 +140,7 @@ Code and test scripts are MIT licensed. Documentation and rule content are avail
 
 ## Team
 
-Green Codex is maintained by a core team at the [Institut du Numérique Responsable (INR)](https://institut-numerique-responsable.fr/):
+Green Codex is maintained by a core team at the Institut du Numérique Responsable (INR):
 
 | Name | GitHub | Role |
 |------|-------|------|

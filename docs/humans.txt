@@ -8,7 +8,7 @@ Vincent Courboulay - @vincentcourboulay - GitHub: https://github.com/vincentcour
 INR Team - @Guillaume-INR - GitHub: https://github.com/Guillaume-INR - INR
 
 /* ORGANIZATION */
-Institut du Numérique Responsable (INR) - https://institut-numerique-responsable.fr/
+Institut du Numérique Responsable (INR) - https://institutnr.org/
 A non-profit organization dedicated to digital sobriety and responsible technology.
 
 /* THANKS */
