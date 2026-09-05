@@ -54,7 +54,7 @@ They review pull requests, manage releases, and ensure the quality of the skill 
 | **Bug Reports** | [GitHub Issues](https://github.com/Institut-du-Numerique-Responsable/green-codex/issues) | 24-48h |
 | **Feature Requests** | [GitHub Issues](https://github.com/Institut-du-Numerique-Responsable/green-codex/issues) | 48-72h |
 | **Security Issues** | [SECURITY.md](SECURITY.md) (Private disclosure) | 14 jours |
-| **General Questions** | [GitHub Discussions](https://github.com/Institut-du-Numerique-Responsable/green-codex/discussions) | Variable |
+| **General Questions** | [GitHub Issues](https://github.com/Institut-du-Numerique-Responsable/green-codex/issues) | Variable |
 
 ---
 
