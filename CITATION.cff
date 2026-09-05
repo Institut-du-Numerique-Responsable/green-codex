@@ -3,7 +3,6 @@ message: If you use Green Codex, please cite it as below.
 title: Green Codex
 type: software
 version: 1.0.0
-doi: 10.5281/zenodo.XXXXXXX
 url: https://github.com/Institut-du-Numerique-Responsable/green-codex
 repository: https://github.com/Institut-du-Numerique-Responsable/green-codex
 repository-code: https://github.com/Institut-du-Numerique-Responsable/green-codex
@@ -13,7 +12,6 @@ copyright: 2026 Institut du Numérique Responsable (INR)
 authors:
   - family-names: Gallon
     given-names: Guillaume
-    orcid: https://orcid.org/0000-0000-0000-0000
     affiliation: Institut du Numérique Responsable
     email: guillaume.gallon@institut-numerique-responsable.fr
   - family-names: Bourgeois
@@ -58,4 +56,4 @@ references:
     title: RGAA - Référentiel Général d'Amélioration de l'Accessibilité
     url: https://accessibilite.numerique.gouv.fr/
     author: French Government
-commit: ebd4300
+commit: 435303e

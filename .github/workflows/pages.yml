@@ -31,4 +31,4 @@ jobs:
           path: docs
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@d6db901330b362b4b7e7e3b17500c3c7f5e6f9c # v4.0.5
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
