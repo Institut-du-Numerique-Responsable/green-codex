@@ -1,0 +1,47 @@
+# Labeler configuration for Green Codex
+# See: https://github.com/actions/labeler
+
+# Label: skill
+skill:
+  - green-codex/**
+
+# Label: docs
+docs:
+  - '*.md'
+  - docs/**
+  - CONTRIBUTING.md
+  - README.md
+  - CHANGELOG.md
+
+# Label: workflow
+workflow:
+  - .github/workflows/**
+
+# Label: script
+script:
+  - scripts/**
+  - '*.sh'
+  - '*.py'
+
+# Label: configuration
+configuration:
+  - .github/**
+  - .gitattributes
+  - .gitignore
+
+# Label: security
+security:
+  - SECURITY.md
+  - .github/workflows/gitleaks.yml
+
+# Label: rules
+rules:
+  - green-codex/references/rules.md
+  - green-codex/references/criteria.md
+
+# Label: dependencies
+dependencies:
+  - .github/dependabot.yml
+  - '*.lock'
+  - 'requirements*.txt'
+  - 'package*.json'

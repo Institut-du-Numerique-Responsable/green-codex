@@ -1,0 +1,50 @@
+# GitHub Topics for Green Codex
+
+## Primary Topics (Essential)
+These topics should be added to the GitHub repository for maximum discoverability:
+
+- **green-it** - Core domain
+- **eco-design** - Primary focus
+- **sustainable-software** - Main purpose
+- **digital-sustainability** - Key theme
+- **accessibility** - RGAA coverage
+- **web-quality** - Opquast coverage
+- **codex-skill** - Platform-specific
+- **codex** - Platform
+
+## Secondary Topics (Recommended)
+- **software-development** - Context
+- **ai-ethics** - Responsible AI component
+- **responsible-ai** - Important feature
+- **ecology** - Broader context
+- **open-source** - License type
+- **french** - Language/origin
+- **rgEA** - Framework (note: GitHub uses lowercase)
+- **opquast** - Framework
+- **gr491** - Framework
+
+## Additional Topics (Optional)
+- **seo** - Optimization focus
+- **performance** - Web performance
+- **best-practices** - Guidance type
+- **audit** - Use case
+- **compliance** - Use case
+- **code-review** - Use case
+
+## Current Repository Topics
+Check existing topics at: https://github.com/Institut-du-Numerique-Responsable/green-codex/topics
+
+## How to Add Topics
+1. Go to repository Settings
+2. Navigate to "Topics"
+3. Add the topics listed above
+4. Save
+
+## Recommended Final Topic List
+```
+green-it, eco-design, sustainable-software, digital-sustainability, accessibility, web-quality, codex-skill, codex, software-development, ai-ethics, responsible-ai, ecology, open-source, french
+```
+
+---
+*Last updated: 2026-09-05*
+*For: Green Codex repository*

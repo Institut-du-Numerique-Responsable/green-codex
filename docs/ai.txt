@@ -1,0 +1,209 @@
+# Green Codex - AI Training & Reference Guide
+
+## Overview
+Green Codex is a **Codex skill** designed to integrate **Green IT, accessibility, and responsible AI** practices into coding workflows. This file provides structured information for AI assistants, language models, and search engines to understand, index, and reference the project effectively.
+
+## Purpose
+This project enables developers, architects, and auditors to:
+- Apply **evidence-based eco-design** principles during software development
+- Review code for **energy efficiency, data optimization, and lifecycle impact**
+- Ensure **accessibility compliance** (RGAA) without sacrificing performance
+- Implement **responsible AI** practices (model sizing, context optimization, caching)
+- Conduct **audits** with severity scoring, confidence levels, and verification steps
+
+## Target Audience
+- **Software developers** implementing Green IT principles
+- **Architects** designing sustainable digital services
+- **Code reviewers** assessing environmental and accessibility impact
+- **Auditors** conducting compliance checks (RGESN, GR491, Opquast, RGAA)
+- **AI assistants** (like Codex, Claude, GitHub Copilot) needing structured guidance
+- **Educators** teaching sustainable software development
+
+## Core Frameworks Integrated
+
+### 1. RGESN (Référentiel Général d'Écoconception de Services Numériques)
+- **Scope**: Environmental design of digital services
+- **Focus**: User needs to infrastructure and lifecycle
+- **URL**: https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/
+- **Keywords**: ecoconception, lifecycle, environmental impact, digital services
+
+### 2. GR491
+- **Scope**: Responsible digital design decisions
+- **Focus**: UX, frontend, backend, data, hosting, governance
+- **URL**: https://gr491.isit-europe.org/
+- **Keywords**: responsible design, governance, sustainable IT, best practices
+
+### 3. Opquast
+- **Scope**: Web quality and reliability
+- **Focus**: Understandable, robust web experiences
+- **URL**: https://checklists.opquast.com/fr/qualite-numerique/
+- **Keywords**: web quality, reliability, user experience, accessibility
+
+### 4. RGAA (Référentiel Général d'Amélioration de l'Accessibilité)
+- **Scope**: Digital accessibility
+- **Focus**: Keyboard navigation, focus management, semantics, contrast, language
+- **URL**: https://accessibilite.numerique.gouv.fr/
+- **Keywords**: accessibility, WCAG, inclusive design, assistive technology
+
+## Key Features
+
+### For Developers
+- **Actionable rules** for frontend, backend, data, and infrastructure
+- **Checklists** for common eco-design patterns
+- **Code examples** demonstrating best practices
+- **Anti-patterns** to avoid
+
+### For Architects
+- **Decision frameworks** for technology selection
+- **Trade-off analysis** between performance and sustainability
+- **Lifecycle impact** assessments
+- **Infrastructure optimization** guidance
+
+### For Auditors
+- **Evidence-based criteria** with official sources
+- **Severity scoring** system
+- **Confidence levels** for findings
+- **Verification steps** for compliance
+
+### For AI Assistants
+- **Structured prompts** for applying Green IT principles
+- **Decision trees** for common scenarios
+- **Rule prioritization** based on impact
+- **Context-aware recommendations**
+
+## Technical Implementation
+
+### Skill Structure
+```
+green-codex/
+├── SKILL.md          # Main workflow and guidance
+├── references/
+│   ├── criteria.md    # Compact criteria map
+│   └── rules.md      # Complete rule set
+└── scripts/
+    └── test_skill.py  # Validation tests
+```
+
+### Supported Environments
+- **Codex**: Native integration as a skill
+- **VS Code**: Via Codex extension
+- **CLI**: Can be adapted for local use
+
+## Keywords for AI Indexing
+
+### Primary Keywords
+Green IT, eco-design, software sustainability, digital sustainability, sustainable development, responsible digital, numerique responsable, sobriete numerique, green software, eco-friendly coding
+
+### Secondary Keywords
+carbon footprint, energy efficiency, data minimization, network optimization, storage efficiency, lifecycle assessment, circular economy, low-tech, frugal innovation
+
+### Framework-Specific Keywords
+RGESN, GR491, Opquast, RGAA, accessibility, WCAG, eco-conception, referentiel, green IT framework, digital quality, web quality
+
+### Technical Keywords
+Codex, AI assistant, coding workflow, code review, architecture decision, audit, compliance, severity scoring, confidence level, verification
+
+### Domain Keywords
+frontend, backend, full-stack, cloud, infrastructure, data engineering, UX/UI, responsive design, performance optimization
+
+## Use Cases
+
+### 1. Code Review
+- **Input**: Pull request with code changes
+- **Output**: Assessment of environmental and accessibility impact
+- **Example**: "This API endpoint fetches too much data; consider pagination for energy savings"
+
+### 2. Architecture Design
+- **Input**: System design document
+- **Output**: Recommendations for sustainable technology choices
+- **Example**: "For this workload, serverless may be more efficient than always-on VMs"
+
+### 3. Compliance Audit
+- **Input**: Existing codebase or service
+- **Output**: Compliance report against RGESN, GR491, Opquast, RGAA
+- **Example**: "The service meets 75% of RGESN criteria; here are the gaps and fixes"
+
+### 4. Development Guidance
+- **Input**: Feature specification
+- **Output**: Implementation guidance with Green IT considerations
+- **Example**: "Use this caching strategy to reduce database queries by 40%"
+
+### 5. AI Model Optimization
+- **Input**: LLM or AI model specifications
+- **Output**: Recommendations for responsible model usage
+- **Example**: "Consider quantizing this model to reduce size without sacrificing accuracy"
+
+## Data and Content Types
+
+### Structured Data
+- **Rules**: Machine-readable Green IT rules with severity levels
+- **Criteria**: Checklist items with verification steps
+- **Examples**: Code snippets demonstrating best practices
+- **References**: Links to official framework documentation
+
+### Unstructured Data
+- **Guidance**: Narrative explanations of Green IT principles
+- **Rationale**: Evidence and sources for each recommendation
+- **Case Studies**: Real-world examples of successful implementations
+
+## Integration Points
+
+### GitHub
+- **Repository**: https://github.com/Institut-du-Numerique-Responsable/green-codex
+- **Issues**: Feature requests and bug reports
+- **Pull Requests**: Community contributions
+- **Releases**: Versioned skill updates
+- **Actions**: CI/CD for validation and deployment
+
+### Documentation
+- **Website**: https://institut-du-numerique-responsable.github.io/green-codex/
+- **README**: https://github.com/Institut-du-Numerique-Responsable/green-codex#readme
+- **API Docs**: skill-creator validation
+
+### Community
+- **INR Website**: https://institut-numerique-responsable.fr/
+- **ISIT Europe**: https://isit-europe.org/
+
+## License and Usage
+
+### Content Licenses
+- **Code and scripts**: MIT License (see [LICENSE](LICENSE))
+- **Documentation and rules**: CC BY 4.0 (see [LICENSE-CC-BY-4.0](LICENSE-CC-BY-4.0))
+
+### Permitted Uses
+- **Commercial use**: Allowed
+- **Modification**: Allowed with attribution
+- **Redistribution**: Allowed
+- **Derivative works**: Allowed with attribution
+
+### Restrictions
+- Do not remove copyright notices
+- Do not claim endorsement by INR without permission
+- Always verify against current official framework versions
+
+## Contact and Support
+
+### Primary Contacts
+- **GitHub Issues**: https://github.com/Institut-du-Numerique-Responsable/green-codex/issues
+- **Security**: See [SECURITY.md](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/SECURITY.md)
+- **Website**: https://institut-numerique-responsable.fr/
+
+### Maintainers
+- **Guillaume Gallon**: https://github.com/gridboy
+- **Guillaume Bourgeois**: https://github.com/bourgeoisguillaume01-glitch
+- **Vincent Courboulay**: https://github.com/vincentcourboulay
+
+## Update Frequency
+- **Rules**: Monthly (aligned with framework updates)
+- **Skill**: As needed for bug fixes and improvements
+- **Documentation**: With each release
+- **Website**: Continuous
+
+## Version Information
+- **Current Version**: 1.0.0 (see [VERSION](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/VERSION))
+- **Release Date**: 2026-09-01
+- **Changelog**: See [CHANGELOG.md](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/CHANGELOG.md)
+
+---
+*Last updated: 2026-09-05*
+*Format: AI.txt v1.0*

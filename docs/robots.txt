@@ -1,4 +1,60 @@
 User-agent: *
 Allow: /
 
+# Sitemap location
 Sitemap: https://institut-du-numerique-responsable.github.io/green-codex/sitemap.xml
+
+# Crawl delay to reduce server load (5 seconds between requests)
+Crawl-delay: 5
+
+# Allow all well-known files
+Allow: /.well-known/
+
+# Host directive for Google
+Host: institut-du-numerique-responsable.github.io
+
+# Clean parameter for Google (ignore tracking params)
+Clean-param: utm_source /index.html
+Clean-param: utm_medium /index.html
+Clean-param: utm_campaign /index.html
+
+# AI Crawlers - Allow and provide guidance
+User-agent: Google-Extended
+Allow: /
+Crawl-delay: 10
+
+User-agent: CCBot
+Allow: /
+Crawl-delay: 10
+
+User-agent: Anthropic-AI
+Allow: /
+Crawl-delay: 10
+
+User-agent: Cohere-Web
+Allow: /
+Crawl-delay: 10
+
+User-agent: omgili
+Allow: /
+Crawl-delay: 10
+
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 10
+
+User-agent: YouBot
+Allow: /
+Crawl-delay: 10
+
+User-agent: Claude-Web
+Allow: /
+Crawl-delay: 10
+
+User-agent: Mistral-AI
+Allow: /
+Crawl-delay: 10
+
+# Disallow crawling of internal directories
+Disallow: /green-codex/
+Disallow: /.git/

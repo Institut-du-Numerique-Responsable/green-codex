@@ -1,0 +1,61 @@
+cff-version: 1.2.0
+message: If you use Green Codex, please cite it as below.
+title: Green Codex
+type: software
+version: 1.0.0
+doi: 10.5281/zenodo.XXXXXXX
+url: https://github.com/Institut-du-Numerique-Responsable/green-codex
+repository: https://github.com/Institut-du-Numerique-Responsable/green-codex
+repository-code: https://github.com/Institut-du-Numerique-Responsable/green-codex
+license: MIT
+license-url: https://opensource.org/licenses/MIT
+copyright: 2026 Institut du Numérique Responsable (INR)
+authors:
+  - family-names: Gallon
+    given-names: Guillaume
+    orcid: https://orcid.org/0000-0000-0000-0000
+    affiliation: Institut du Numérique Responsable
+    email: guillaume.gallon@institut-numerique-responsable.fr
+  - family-names: Bourgeois
+    given-names: Guillaume
+    affiliation: Institut du Numérique Responsable
+  - family-names: Courboulay
+    given-names: Vincent
+    affiliation: La Rochelle Université / Institut du Numérique Responsable
+keywords:
+  - Green IT
+  - eco-design
+  - software sustainability
+  - digital sustainability
+  - sustainable development
+  - responsible digital
+  - numerique responsable
+  - sobriete numerique
+  - green software
+  - RGESN
+  - GR491
+  - Opquast
+  - RGAA
+  - accessibility
+  - responsible AI
+  - AI assistant
+  - Codex skill
+  - coding workflow
+description: Green Codex is a Codex skill for applying Green IT and responsible digital practices while designing, implementing, reviewing, or auditing software and digital services. It distills guidance from RGESN, GR491, Opquast, and RGAA into a practical workflow for AI coding assistants.
+references:
+  - type: webpage
+    title: RGESN - Référentiel Général d'Écoconception de Services Numériques
+    url: https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/
+    author: French Government
+  - type: webpage
+    title: GR491 - Green IT Reference Framework
+    url: https://gr491.isit-europe.org/
+    author: ISIT Europe
+  - type: webpage
+    title: Opquast - Web Quality Checklists
+    url: https://checklists.opquast.com/fr/qualite-numerique/
+  - type: webpage
+    title: RGAA - Référentiel Général d'Amélioration de l'Accessibilité
+    url: https://accessibilite.numerique.gouv.fr/
+    author: French Government
+commit: ebd4300
