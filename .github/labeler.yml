@@ -32,7 +32,6 @@ configuration:
 # Label: security
 security:
   - SECURITY.md
-  - .github/workflows/gitleaks.yml
 
 # Label: rules
 rules:
