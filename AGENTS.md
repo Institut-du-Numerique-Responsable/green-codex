@@ -2,7 +2,7 @@
 
 ## Documentation & communication
 
-- Code comments: simple, comprehensible, explain the "why" not the "what" — no jargon without reason.
-- Commit messages: clear subject + body when the "why" isn't obvious. Someone unfamiliar with the change should understand it without digging into the diff.
-- Pull request descriptions: state what changed and why in plain language, understandable by a non-expert reviewer.
-- Merge commit messages: keep the default squash message readable (title + PR body) — don't leave vague auto-generated text.
+- Code comments must be simple and comprehensible. Explain why the code exists, not what it does. Avoid jargon unless it is necessary.
+- Commit messages must have a clear subject line. Add a body only when the reason for the change is not obvious from the diff. Someone unfamiliar with the change must understand it without reading the code.
+- Pull request descriptions must state what changed and why, in plain language. A non-expert reviewer must be able to understand it.
+- Merge commit messages must stay readable. Keep the default squash message (title plus PR body). Do not leave vague or auto-generated text.
