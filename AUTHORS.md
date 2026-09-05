@@ -15,7 +15,7 @@ The following individuals are **CODEOWNERS** and have administrative access to t
 
 ## Institut du Numérique Responsable (INR)
 
-Green Codex is developed and maintained by the [Institut du Numérique Responsable (INR)](https://institut-numerique-responsable.fr/), a leading organization in:
+Green Codex is developed and maintained by the Institut du Numérique Responsable (INR), a leading organization in:
 - Digital sobriety and eco-design
 - Responsible AI and sustainable IT
 - Accessibility and web quality (RGAA, Opquast)

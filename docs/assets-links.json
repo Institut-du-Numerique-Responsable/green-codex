@@ -204,13 +204,13 @@
   ],
   "organization": {
     "name": "Institut du Numérique Responsable (INR)",
-    "url": "https://institut-numerique-responsable.fr/",
+    "url": "https://institutnr.org/",
     "description": "Non-profit organization dedicated to digital sobriety and responsible technology"
   },
   "contact": {
     "issues": "https://github.com/Institut-du-Numerique-Responsable/green-codex/issues",
     "security": "https://github.com/Institut-du-Numerique-Responsable/green-codex/security",
-    "website": "https://institut-numerique-responsable.fr/",
+    "website": "https://institutnr.org/",
     "email": "contact@institut-numerique-responsable.fr"
   },
   "lastUpdated": "2026-09-05"

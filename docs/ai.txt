@@ -161,7 +161,7 @@ frontend, backend, full-stack, cloud, infrastructure, data engineering, UX/UI, r
 - **API Docs**: skill-creator validation
 
 ### Community
-- **INR Website**: https://institut-numerique-responsable.fr/
+- **INR Website**: https://institutnr.org/
 - **ISIT Europe**: https://isit-europe.org/
 
 ## License and Usage
@@ -186,7 +186,7 @@ frontend, backend, full-stack, cloud, infrastructure, data engineering, UX/UI, r
 ### Primary Contacts
 - **GitHub Issues**: https://github.com/Institut-du-Numerique-Responsable/green-codex/issues
 - **Security**: See [SECURITY.md](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/SECURITY.md)
-- **Website**: https://institut-numerique-responsable.fr/
+- **Website**: https://institutnr.org/
 
 ### Maintainers
 - **Guillaume Gallon**: https://github.com/gridboy
