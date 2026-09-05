@@ -28,9 +28,9 @@ jobs:
         
       - name: Check for broken links
         run: |
-          if markdown-link-check --quiet **.md 2>&1 | grep -q "DEAD"; then
+          if markdown-link-check --quiet --config .markdown-link-check.json **.md 2>&1 | grep -q "DEAD"; then
             echo "Broken links found!"
-            markdown-link-check **.md
+            markdown-link-check --config .markdown-link-check.json **.md
             exit 1
           else
             echo "No broken links found."
