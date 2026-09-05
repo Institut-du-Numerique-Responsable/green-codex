@@ -26,7 +26,6 @@ jobs:
             --check-filenames \
             --check-hidden \
             --ignore-words .codespell-ignore \
-            --exclude-dir node_modules \
             .
         
       - name: Check for misspellings
