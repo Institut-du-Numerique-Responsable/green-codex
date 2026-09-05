@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
           
@@ -32,7 +32,7 @@ jobs:
           echo "See [CHANGELOG.md](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/${GITHUB_REF_NAME}/CHANGELOG.md) for full details." >> release_notes.md
           
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           body_file: release_notes.md
           draft: false
