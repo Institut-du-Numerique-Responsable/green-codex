@@ -21,9 +21,11 @@ jobs:
           
       - name: Run Gitleaks
         uses: gitleaks/gitleaks-action@v2
+        with:
+          config-path: .gitleaks.toml
+          output: gitleaks-results.sarif
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITLEAKS_CONFIG: .gitleaks.toml
         
       - name: Upload results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3
