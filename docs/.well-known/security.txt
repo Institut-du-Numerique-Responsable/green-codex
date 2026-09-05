@@ -1,0 +1,82 @@
+Contact: mailto:security@institut-numerique-responsable.fr
+Expires: 2027-09-05T00:00:00Z
+
+# Security Policy for Green Codex
+
+## Preferred Languages
+- English
+- French
+
+## Encryption
+- If you need to send sensitive information, use our PGP key (available upon request)
+- Or use GitHub's private security advisory feature
+
+## Acknowledgements
+- We will acknowledge your report within 14 days
+- We will coordinate a fix and disclosure timeline with you
+- We will keep you informed about the progress
+
+## Scope
+- All Green Codex repositories under Institut-du-Numerique-Responsable
+- Official website: https://institut-du-numerique-responsable.github.io/green-codex/
+- GitHub organization: https://github.com/Institut-du-Numerique-Responsable
+
+## In Scope
+- Security vulnerabilities in the skill code
+- Security vulnerabilities in the documentation site
+- Prompt injection risks in AI guidance
+- Accidental disclosure of sensitive data
+- Dependency vulnerabilities
+
+## Out of Scope
+- General bug reports (use GitHub Issues)
+- Feature requests (use GitHub Issues)
+- Questions about usage (use GitHub Discussions)
+
+## Disclosure Policy
+- We follow coordinated vulnerability disclosure
+- Public disclosure only after fix is deployed
+- Credit will be given to reporters (unless anonymous)
+
+## Security Measures
+- Secret scanning enabled on all public repositories
+- Push protection enabled to prevent accidental secret commits
+- Regular dependency updates via Dependabot
+- Code review required for all changes
+
+---
+# Security Contacts
+
+## Primary
+- Email: security@institut-numerique-responsable.fr
+- GitHub Security Advisories: https://github.com/Institut-du-Numerique-Responsable/green-codex/security/advisories
+
+## Maintainers
+- Guillaume Gallon (@gridboy)
+- Guillaume Bourgeois (@bourgeoisguillaume01-glitch)
+- Vincent Courboulay (@vincentcourboulay)
+
+## Response Time
+- Critical vulnerabilities: 24-48 hours
+- High severity: 3-5 business days
+- Medium severity: 7-14 business days
+- Low severity: 14-30 business days
+
+---
+# Security Best Practices for Contributors
+
+## Do NOT
+- Commit secrets, API keys, or credentials
+- Include personal or sensitive data
+- Use weak or hardcoded passwords
+- Share sensitive information in public issues
+
+## DO
+- Use environment variables for secrets
+- Enable GitHub secret scanning on your forks
+- Report vulnerabilities privately
+- Keep dependencies updated
+
+---
+*This file follows RFC 9116 (security.txt)
+*Last updated: 2026-09-05*

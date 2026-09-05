@@ -1,0 +1,13 @@
+{
+  "config": {
+    "ignorePattern": [
+      "^(https?:)?//localhost",
+      "^(https?:)?//127\\.0\\.0\\.1",
+      "^(https?:)?//.*\\.local$",
+      "^(https?:)?//example\\.com",
+      "https://institut-numerique-responsable\\.fr/"
+    ],
+    "ignoreAnchors": true,
+    "checkImages": true
+  }
+}
