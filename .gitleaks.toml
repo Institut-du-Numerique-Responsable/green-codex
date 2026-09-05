@@ -1,0 +1,45 @@
+# Gitleaks configuration for Green Codex
+# See: https://github.com/gitleaks/gitleaks
+
+title = "Green Codex Gitleaks Configuration"
+
+[extend]
+useDefault = true
+
+[[rules]]
+  id = "green-codex-custom"
+  description = "Custom patterns for Green Codex"
+  regex = '''(?i)(api[_-]?key|secret|token|password|credential)'''
+  tags = ["custom"]
+
+[[rules]]
+  id = "inr-secrets"
+  description = "INR-specific secrets"
+  regex = '''(?i)(inr[_-]?token|nr[_-]?key)'''
+  tags = ["inr"]
+
+# Enable all default rules
+[[rules]]
+  source = "github"
+  
+[[rules]]
+  source = "gitlab"
+  
+[[rules]]
+  source = "aws"
+  
+[[rules]]
+  source = "azure"
+  
+[[rules]]
+  source = "google"
+
+# Exclude test files
+[exclude]
+  paths = [
+    "test_.*\\.(py|sh|js)",
+    "*.test.*",
+    "test-data/",
+    "fixtures/",
+    "docs/example"
+  ]

@@ -1,0 +1,90 @@
+{
+  "name": "Green Codex",
+  "short_name": "GreenCodex",
+  "description": "Green IT guidance for coding assistants - Apply RGESN, GR491, Opquast, and RGAA rules in your workflow",
+  "start_url": "/green-codex/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f4f7f1",
+  "theme_color": "#17352f",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/og-image.svg",
+      "sizes": "1200x630",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "iarc_ad_id": null,
+  "iarc_org_id": null,
+  "lang": "en-US",
+  "orientation": "any",
+  "categories": ["productivity", "utilities", "education"],
+  "screenshots": [
+    {
+      "src": "/images/og-image.svg",
+      "sizes": "1200x630",
+      "type": "image/svg+xml",
+      "form_factor": "wide",
+      "label": "Green Codex - Build less. Measure what matters."
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Install",
+      "short_name": "Install",
+      "description": "Install Green Codex skill",
+      "url": "/#installation"
+    },
+    {
+      "name": "Documentation",
+      "short_name": "Docs",
+      "description": "View documentation",
+      "url": "/"
+    },
+    {
+      "name": "Contribute",
+      "short_name": "Contribute",
+      "description": "Learn how to contribute",
+      "url": "/#use-and-contribution"
+    }
+  ],
+  "handle_links": "preferred",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui", "browser"],
+  "protocol_handlers": [
+    {
+      "protocol": "web+green-codex",
+      "url": "/?ref=%s"
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "files",
+          "accept": ["image/*", "application/pdf"]
+        }
+      ]
+    }
+  }
+}

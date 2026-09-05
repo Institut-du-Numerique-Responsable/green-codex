@@ -1,0 +1,43 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Verify version and tag consistency
+        run: bash scripts/verify-version-release.sh VERSION "${GITHUB_REF_NAME}"
+        
+      - name: Generate release notes
+        run: |
+          # Extract changelog for this version
+          VERSION=${GITHUB_REF_NAME#v}
+          CHANGELOG=$(sed -n "/^## ${VERSION}/,/^## /p" CHANGELOG.md | head -n -1)
+          echo "${CHANGELOG}" > release_notes.md
+          echo "" >> release_notes.md
+          echo "---" >> release_notes.md
+          echo "See [CHANGELOG.md](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/${GITHUB_REF_NAME}/CHANGELOG.md) for full details." >> release_notes.md
+          
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body_file: release_notes.md
+          draft: false
+          prerelease: false
+          generate_release_notes: false
+          
+      - name: Clean up
+        run: rm -f release_notes.md

@@ -3,6 +3,15 @@
 Thank you for helping improve Green Codex. Contributions should make the guidance clearer,
 more evidence-based, and easier to apply across projects.
 
+## Maintainers
+
+The project is actively maintained by the **Green Codex Core Team** at the Institut du Numérique Responsable (INR):
+- [@gridboy](https://github.com/gridboy) (Guillaume Gallon)
+- [@bourgeoisguillaume01-glitch](https://github.com/bourgeoisguillaume01-glitch) (Guillaume Bourgeois)
+- [@vincentcourboulay](https://github.com/vincentcourboulay) (Vincent Courboulay)
+
+For a complete list, see [MAINTAINERS.md](MAINTAINERS.md).
+
 ## Workflow
 
 1. Open an issue for a new rule, a correction, or a change with a broad impact.
