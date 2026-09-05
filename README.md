@@ -3,6 +3,7 @@
 [![Version](https://img.shields.io/github/v/release/Institut-du-Numerique-Responsable/green-codex?sort=semver)](https://github.com/Institut-du-Numerique-Responsable/green-codex/releases)
 [![CI](https://github.com/Institut-du-Numerique-Responsable/green-codex/actions/workflows/validate.yml/badge.svg)](https://github.com/Institut-du-Numerique-Responsable/green-codex/actions/workflows/validate.yml)
 [![License](https://img.shields.io/badge/license-MIT%20%2B%20CC%20BY%204.0-yellow.svg)](LICENSE)
+[![INR](https://img.shields.io/badge/INR-Institut%20du%20Num%C3%A9rique%20Responsable-4CAF50?logo=leaf&style=flat)](https://institut-numerique-responsable.fr/)
 
 Green Codex is a Codex skill for applying Green IT and responsible digital practices while
 designing, implementing, reviewing, or auditing software and digital services.
@@ -65,6 +66,18 @@ the checks executed on every pull request.
 Code and test scripts are MIT licensed. Documentation and rule content are available under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). See [LICENSE](LICENSE) and
 [LICENSE-CC-BY-4.0](LICENSE-CC-BY-4.0).
+
+## Team
+
+Green Codex is maintained by a core team at the [Institut du Numérique Responsable (INR)](https://institut-numerique-responsable.fr/):
+
+| Name | GitHub | Role |
+|------|-------|------|
+| Guillaume Gallon | [@gridboy](https://github.com/gridboy) | Maintainer |
+| Guillaume Bourgeois | [@bourgeoisguillaume01-glitch](https://github.com/bourgeoisguillaume01-glitch) | Maintainer |
+| Vincent Courboulay | [@vincentcourboulay](https://github.com/vincentcourboulay) | Maintainer |
+
+See [AUTHORS.md](AUTHORS.md) for the full contributor list.
 
 ## Sources
 

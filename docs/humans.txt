@@ -1,0 +1,24 @@
+/* TEAM */
+The Green Codex project is developed by a team of experts in Green IT, digital sustainability, and responsible AI.
+
+/* MAIN CONTRIBUTORS */
+Guillaume Gallon - @gridboy - GitHub: https://github.com/gridboy - INR
+Guillaume Bourgeois - @bourgeoisguillaume01-glitch - GitHub: https://github.com/bourgeoisguillaume01-glitch - INR
+Vincent Courboulay - @vincentcourboulay - GitHub: https://github.com/vincentcourboulay - La Rochelle Université / INR
+INR Team - @Guillaume-INR - GitHub: https://github.com/Guillaume-INR - INR
+
+/* ORGANIZATION */
+Institut du Numérique Responsable (INR) - https://institut-numerique-responsable.fr/
+A non-profit organization dedicated to digital sobriety and responsible technology.
+
+/* THANKS */
+Thanks to all contributors, reviewers, and the Green IT community for their support.
+Special thanks to the creators and maintainers of RGESN, GR491, Opquast, and RGAA.
+
+/* TECHNOLOGIES */
+Codex Skills Framework - https://github.com features/codex
+GitHub Pages - https://pages.github.com/
+
+/* SITE */
+Last update: 2026-09-05
+Standards: HTML5, Accessibility (RGAA), Eco-design (RGESN)

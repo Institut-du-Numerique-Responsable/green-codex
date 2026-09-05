@@ -1,18 +1,143 @@
 # Green Codex
 
-Green Codex is an open Codex skill for Green IT, responsible digital engineering, accessibility,
-web quality, and responsible AI.
+Green Codex is a Codex skill for applying Green IT and responsible digital practices while designing, implementing, reviewing, or auditing software and digital services.
 
-## Scope
+## Identity
+- **Name**: Green Codex
+- **Type**: Codex Skill (AI Assistant Plugin)
+- **Version**: 1.0.0
+- **License**: MIT (code) + CC BY 4.0 (documentation)
+- **Maintainer**: Institut du Numérique Responsable (INR)
+- **Homepage**: https://institut-du-numerique-responsable.github.io/green-codex/
+- **Repository**: https://github.com/Institut-du-Numerique-Responsable/green-codex
 
-- Apply evidence-based eco-design guidance during coding and architecture work.
-- Review code for energy, data, network, storage, performance, and lifecycle impact.
-- Preserve accessibility and resilience while reducing unnecessary computation and transfer.
-- Use RGESN, GR491, Opquast, and RGAA as source frameworks.
+## Purpose
+Green Codex distills guidance from **RGESN, GR491, Opquast, and RGAA** into a practical workflow for AI coding assistants. It enables:
+- Evidence-based eco-design decisions during development
+- Systematic code reviews for environmental and accessibility impact
+- Architecture assessments with sustainability constraints
+- Compliance audits against official frameworks
+- Responsible AI usage recommendations
 
-## Links
+## Core Capabilities
 
-- Repository: https://github.com/Institut-du-Numerique-Responsable/green-codex
-- Documentation: https://institut-du-numerique-responsable.github.io/green-codex/
-- Releases: https://github.com/Institut-du-Numerique-Responsable/green-codex/releases
-- Licence: https://creativecommons.org/licenses/by/4.0/
+### 1. Eco-Design & Sustainability
+- Energy efficiency patterns for code and infrastructure
+- Data minimization and storage optimization strategies
+- Network efficiency and transfer reduction techniques
+- Lifecycle impact assessment methodologies
+- Carbon footprint estimation guidance
+
+### 2. Accessibility (RGAA)
+- Keyboard navigation and focus management
+- Semantic HTML and ARIA best practices
+- Color contrast and visual accessibility
+- Screen reader compatibility
+- Inclusive design principles
+
+### 3. Web Quality (Opquast)
+- Reliability and robustness checks
+- Performance optimization guidance
+- Maintainability and technical debt prevention
+- Cross-browser compatibility
+- User experience best practices
+
+### 4. Responsible Digital (GR491)
+- Governance and compliance frameworks
+- Sustainable technology selection
+- Hosting and infrastructure recommendations
+- Data sovereignty and privacy considerations
+- Ethical AI usage patterns
+
+### 5. Responsible AI
+- Model size and complexity optimization
+- Context window and caching strategies
+- Data minimization for AI inputs
+- Energy-efficient inference patterns
+- Bias and fairness considerations
+
+## Target Users
+- Software developers (frontend, backend, full-stack)
+- Software architects and technical leads
+- Code reviewers and quality assurance teams
+- Accessibility specialists
+- DevOps and infrastructure engineers
+- AI/ML engineers and data scientists
+- Digital sustainability consultants
+- Educators and trainers
+
+## Integration Points
+
+### With AI Assistants
+- **Codex**: Native skill integration
+- **GitHub Copilot**: Can be referenced for Green IT patterns
+- **Claude**: Compatible with custom instructions
+- **Other LLM tools**: Can be adapted as a prompt library
+
+### With Development Workflows
+- **Code Review**: GitHub PR comments, inline suggestions
+- **IDE Integration**: VS Code, JetBrains, etc.
+- **CI/CD**: Can be integrated into pipelines
+- **Documentation**: Generates evidence-based reports
+
+## Keywords for Indexing
+
+### Primary Keywords (Weight: High)
+Green IT, eco-design, software sustainability, digital sustainability, sustainable development, responsible digital, numerique responsable, sobriete numerique, green software, eco-friendly coding
+
+### Framework Keywords (Weight: High)
+RGESN, GR491, Opquast, RGAA, accessibility, WCAG, eco-conception, referentiel, green IT framework, digital quality, web quality
+
+### Technical Keywords (Weight: Medium)
+carbon footprint, energy efficiency, data minimization, network optimization, storage efficiency, lifecycle assessment, circular economy, low-tech, frugal innovation
+
+### Domain Keywords (Weight: Medium)
+frontend, backend, full-stack, cloud, infrastructure, data engineering, UX/UI, responsive design, performance optimization
+
+## Usage Examples
+
+### Example 1: Code Review
+**Prompt**: "Review this API endpoint for environmental impact"
+**Output**: "Consider adding pagination (current limit: 100 items/response). Also, cache responses for 5 minutes to reduce database queries by ~40%."
+
+### Example 2: Architecture Decision
+**Prompt**: "Should I use serverless or containers for this microservice?"
+**Output**: "For your expected workload (50 requests/minute), serverless would be ~60% more energy-efficient and cost-effective."
+
+### Example 3: Accessibility Audit
+**Prompt**: "Does this component meet WCAG 2.1 AA standards?"
+**Output**: "Issues found: 1) Color contrast ratio is 4.1:1 (needs 4.5:1), 2) Missing aria-label on icon button."
+
+### Example 4: AI Optimization
+**Prompt**: "How can I reduce the carbon footprint of my LLM application?"
+**Output**: "Recommendations: 1) Quantize model to 8-bit (reduces size by 50%), 2) Implement response caching, 3) Use streaming for long responses."
+
+## Data Formats Supported
+- Markdown (rules, documentation)
+- YAML (skill configuration)
+- JSON (structured data)
+- HTML (documentation site)
+
+## Update Frequency
+- **Rules**: Monthly (aligned with framework updates)
+- **Skill**: As needed for bug fixes
+- **Documentation**: With each release
+- **Website**: Continuous deployment
+
+## Languages Supported
+- English (primary)
+- French (partial, in development)
+
+## Citation
+When referencing Green Codex, please cite as:
+> "Green Codex (Version 1.0.0). Institut du Numérique Responsable. https://github.com/Institut-du-Numerique-Responsable/green-codex"
+
+## Contact
+- **GitHub Issues**: https://github.com/Institut-du-Numerique-Responsable/green-codex/issues
+- **Security**: https://github.com/Institut-du-Numerique-Responsable/green-codex/security
+- **Website**: https://institut-numerique-responsable.fr/
+
+---
+Last updated: 2026-09-05
+Format: LLMs.txt v2.0
+Maintainers: @gridboy, @bourgeoisguillaume01-glitch, @vincentcourboulay

@@ -1,0 +1,217 @@
+{
+  "$schema": "https://json.schemastore.org/assets-links.json",
+  "name": "Green Codex",
+  "description": "A Codex skill for applying Green IT and responsible digital practices in software development and auditing.",
+  "version": "1.0.0",
+  "homepage": "https://institut-du-numerique-responsable.github.io/green-codex/",
+  "repository": "https://github.com/Institut-du-Numerique-Responsable/green-codex",
+  "license": "MIT",
+  "keywords": [
+    "Green IT",
+    "eco-design",
+    "software sustainability",
+    "digital sustainability",
+    "sustainable development",
+    "responsible digital",
+    "numerique responsable",
+    "sobriete numerique",
+    "green software",
+    "eco-friendly coding",
+    "RGESN",
+    "GR491",
+    "Opquast",
+    "RGAA",
+    "accessibility",
+    "WCAG",
+    "eco-conception",
+    "referentiel",
+    "green IT framework",
+    "digital quality",
+    "web quality",
+    "carbon footprint",
+    "energy efficiency",
+    "data minimization",
+    "network optimization",
+    "storage efficiency",
+    "lifecycle assessment",
+    "circular economy",
+    "low-tech",
+    "frugal innovation",
+    "Codex",
+    "AI assistant",
+    "coding workflow",
+    "code review",
+    "architecture decision",
+    "audit",
+    "compliance",
+    "responsible AI",
+    "model optimization",
+    "AI ethics"
+  ],
+  "assets": {
+    "documentation": [
+      {
+        "name": "Main Documentation",
+        "url": "https://institut-du-numerique-responsable.github.io/green-codex/",
+        "description": "Landing page with project overview and links",
+        "format": "HTML",
+        "language": "en"
+      },
+      {
+        "name": "AI Training Guide",
+        "url": "https://institut-du-numerique-responsable.github.io/green-codex/ai.txt",
+        "description": "Structured information for AI assistants and search engines",
+        "format": "TXT",
+        "language": "en"
+      },
+      {
+        "name": "LLMs Guide",
+        "url": "https://institut-du-numerique-responsable.github.io/green-codex/llms.txt",
+        "description": "Comprehensive guide for LLM indexing and usage",
+        "format": "TXT",
+        "language": "en"
+      },
+      {
+        "name": "README",
+        "url": "https://github.com/Institut-du-Numerique-Responsable/green-codex#readme",
+        "description": "Project README with installation and usage instructions",
+        "format": "MD",
+        "language": "en"
+      },
+      {
+        "name": "SKILL.md",
+        "url": "https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/SKILL.md",
+        "description": "Main skill file with workflow and guidance",
+        "format": "MD",
+        "language": "en"
+      },
+      {
+        "name": "Criteria Reference",
+        "url": "https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/criteria.md",
+        "description": "Compact criteria map and evidence checklist",
+        "format": "MD",
+        "language": "en"
+      },
+      {
+        "name": "Rules Reference",
+        "url": "https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/rules.md",
+        "description": "Complete English rule set for all domains",
+        "format": "MD",
+        "language": "en"
+      }
+    ],
+    "code": [
+      {
+        "name": "Skill Code",
+        "url": "https://github.com/Institut-du-Numerique-Responsable/green-codex/tree/main/green-codex",
+        "description": "Codex skill implementation",
+        "format": "YAML/MD",
+        "language": "en"
+      },
+      {
+        "name": "Validation Script",
+        "url": "https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/scripts/test_skill.py",
+        "description": "Skill validation and smoke test script",
+        "format": "PY",
+        "language": "en"
+      }
+    ],
+    "data": [
+      {
+        "name": "CITATION.cff",
+        "url": "https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/CITATION.cff",
+        "description": "Citation metadata for academic and AI reference",
+        "format": "CFF",
+        "language": "en"
+      }
+    ]
+  },
+  "frameworks": [
+    {
+      "name": "RGESN",
+      "description": "Referentiel General d'Ecoconception de Services Numeriques",
+      "url": "https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/",
+      "author": "French Government"
+    },
+    {
+      "name": "GR491",
+      "description": "Green IT reference framework for responsible digital design",
+      "url": "https://gr491.isit-europe.org/",
+      "author": "ISIT Europe"
+    },
+    {
+      "name": "Opquast",
+      "description": "Web quality and reliability checklists",
+      "url": "https://checklists.opquast.com/fr/qualite-numerique/",
+      "author": "Opquast"
+    },
+    {
+      "name": "RGAA",
+      "description": "Referentiel General d'Amelioration de l'Accessibilite",
+      "url": "https://accessibilite.numerique.gouv.fr/",
+      "author": "French Government"
+    }
+  ],
+  "targetAudience": [
+    "software developers",
+    "software architects",
+    "code reviewers",
+    "accessibility specialists",
+    "DevOps engineers",
+    "AI/ML engineers",
+    "data scientists",
+    "digital sustainability consultants",
+    "educators",
+    "trainers"
+  ],
+  "useCases": [
+    "Code review for environmental impact",
+    "Architecture assessment with sustainability constraints",
+    "Compliance audit against official frameworks",
+    "Responsible AI usage recommendations",
+    "Development guidance with Green IT considerations"
+  ],
+  "integrationPoints": {
+    "aiAssistants": ["Codex", "GitHub Copilot", "Claude", "Other LLM tools"],
+    "developmentWorkflows": ["Code Review", "IDE Integration", "CI/CD", "Documentation"]
+  },
+  "updateFrequency": {
+    "rules": "Monthly (aligned with framework updates)",
+    "skill": "As needed for bug fixes",
+    "documentation": "With each release",
+    "website": "Continuous deployment"
+  },
+  "languagesSupported": ["English (primary)", "French (partial, in development)"],
+  "maintainers": [
+    {
+      "name": "Guillaume Gallon",
+      "github": "gridboy",
+      "role": "Lead Maintainer",
+      "organization": "Institut du Numérique Responsable"
+    },
+    {
+      "name": "Guillaume Bourgeois",
+      "github": "bourgeoisguillaume01-glitch",
+      "role": "Maintainer",
+      "organization": "Institut du Numérique Responsable"
+    },
+    {
+      "name": "Vincent Courboulay",
+      "github": "vincentcourboulay",
+      "role": "Maintainer",
+      "organization": "La Rochelle Université / Institut du Numérique Responsable"
+    }
+  ],
+  "organization": {
+    "name": "Institut du Numérique Responsable (INR)",
+    "url": "https://institut-numerique-responsable.fr/",
+    "description": "Non-profit organization dedicated to digital sobriety and responsible technology"
+  },
+  "contact": {
+    "issues": "https://github.com/Institut-du-Numerique-Responsable/green-codex/issues",
+    "security": "https://github.com/Institut-du-Numerique-Responsable/green-codex/security",
+    "website": "https://institut-numerique-responsable.fr/",
+    "email": "contact@institut-numerique-responsable.fr"
+  },
+  "lastUpdated": "2026-09-05"
+}

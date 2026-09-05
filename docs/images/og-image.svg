@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#f4f7f1"/>
+  <rect x="0" y="0" width="1200" height="80" fill="#17352f"/>
+  <text x="60" y="50" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#d1ef4a">Green Codex</text>
+  <rect x="60" y="120" width="1080" height="490" fill="#ffffff" stroke="#cbd9d0" stroke-width="2"/>
+  <text x="120" y="200" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="700" fill="#17352f" letter-spacing="-0.05em">Build less.</text>
+  <text x="120" y="270" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="700" fill="#17352f" letter-spacing="-0.05em">Measure what matters.</text>
+  <text x="120" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#4d6860">Green IT guidance for coding assistants</text>
+  <text x="120" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#4d6860">Based on RGESN • GR491 • Opquast • RGAA</text>
+  <text x="120" y="500" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#4d6860">institut-numerique-responsable.fr</text>
+  <rect x="920" y="480" width="120" height="40" fill="#d1ef4a" rx="8"/>
+  <text x="980" y="508" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#17352f" text-anchor="middle">INR</text>
+</svg>
