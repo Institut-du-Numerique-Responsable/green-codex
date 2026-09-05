@@ -24,14 +24,13 @@ jobs:
           markdown-link-check \
             --quiet \
             --config .markdown-link-check.json \
-            --ignore-patterns "institut-numerique-responsable" \
             **.md
         
       - name: Check for broken links
         run: |
-          if markdown-link-check --quiet --config .markdown-link-check.json --ignore-patterns "institut-numerique-responsable" **.md 2>&1 | grep -q "DEAD"; then
+          if markdown-link-check --quiet --config .markdown-link-check.json **.md 2>&1 | grep -q "DEAD"; then
             echo "Broken links found!"
-            markdown-link-check --config .markdown-link-check.json --ignore-patterns "institut-numerique-responsable" **.md
+            markdown-link-check --config .markdown-link-check.json **.md
             exit 1
           else
             echo "No broken links found."
