@@ -11,6 +11,10 @@ designing, implementing, reviewing, or auditing software and digital services.
 It distils guidance from RGESN, GR491, Opquast, and RGAA into a practical workflow for Codex.
 The official acronyms are kept unchanged.
 
+The current package is version `1.0.0` (see [`VERSION`](VERSION)). Rule identifiers such as
+`CODE-EFF-*` and `LANG-*` belong to this project; they are routing and engineering guidance, not
+official criterion numbers or a compliance score.
+
 ## What it covers
 
 - digital and software eco-design;
@@ -22,6 +26,13 @@ The official acronyms are kept unchanged.
 - evidence-based audits with severity, confidence, and verification steps;
 - service utility, device longevity, inclusive access, retirement and rebound effects;
 - reproducible measurement separating resource proxies, energy and modelled environmental impacts.
+
+The catalogue also routes guidance for serverless and edge deployments, mobile and offline-first
+services, IoT and embedded systems, distributed systems, NoSQL and data platforms, and the
+following languages and frameworks: Java, Kotlin, Scala, Rust, C, C++, Go, Python, JavaScript,
+TypeScript, PHP, Ruby, Julia, Nim, Zig, Shell, SQL, PL/SQL, HTML, CSS, React, Vue, Angular,
+Svelte, Preact, Astro and Solid. Detection narrows the review; it does not make every rule
+applicable to every file.
 
 ## How the NR rules are applied
 
@@ -56,6 +67,26 @@ Targeted changes receive targeted checks; full audits also document coverage and
 Project rule identifiers are not official criterion numbers. Selected RGESN mappings are recorded
 with their edition in the criteria reference; this does not establish formal compliance.
 
+## Responsible use of Codex
+
+When the task concerns Codex itself, the skill applies the 14 project-authored practices in
+[`green-codex/references/usage-practices.md`](green-codex/references/usage-practices.md). They
+cover relevant initial context, forks and task boundaries, deliberate compaction, the maintained
+code map, complete briefs, bounded delegation, durable project guidance, proportionate
+verification, model and reasoning selection, justified parallel work, and minimal non-interactive
+runs. These practices are editorial guidance adapted to Codex, not personal advice attributed to
+an individual.
+
+## Measurement and evidence
+
+For comparisons or environmental claims, read the
+[`measurement.md`](green-codex/references/measurement.md) protocol. It defines the useful task and
+functional unit, equivalent baseline, measurement boundary, workload conditions, uncertainty and
+lifecycle trade-offs. Resource proxies, token counts, latency and cost are not direct carbon
+measurements. Where the SCI method is applicable, the report records operational and embodied
+components, factors, allocation, period and uncertainty; missing evidence remains
+`REVIEW_REQUIRED`.
+
 Example finding:
 
 ```text
@@ -86,9 +117,13 @@ The skill is then available when Codex selects it automatically, or explicitly w
 - `green-codex/references/criteria.md`: compact criteria map and evidence checklist;
 - `green-codex/references/measurement.md`: comparison protocol, evidence levels and carbon boundaries;
 - `green-codex/references/rules.md`: complete rules for frontend, backend, data,
-  accessibility, web quality, and responsible AI;
+  accessibility, web quality, responsible AI, modern architectures, operations and
+  language/framework-specific guidance;
 - `green-codex/references/usage-practices.md`: 14 project-authored practices adapted to Codex,
   with official sources for Codex-specific mechanisms;
+- `green-codex/scripts/check_sobriety.py`: conservative static checks for selected high-confidence
+  anti-patterns;
+- `green-codex/scripts/run_evals.py`: lexical screening for the behavioural evaluation catalogue;
 - `evals/cases.json`: realistic behavioral evaluation scenarios;
 - `evals/README.md`: procedure for running evaluations against saved Codex responses;
 - `green-codex/agents/openai.yaml`: UI metadata for skill discovery.
@@ -156,10 +191,16 @@ See [AUTHORS.md](AUTHORS.md) for the full contributor list.
 - [GR491](https://gr491.isit-europe.org/)
 - [Opquast](https://checklists.opquast.com/fr/qualite-numerique/)
 - [RGAA](https://accessibilite.numerique.gouv.fr/)
+- [SCI specification](https://sci.greensoftware.foundation/)
+- [Codex CLI command reference](https://developers.openai.com/codex/cli/reference)
+- [Codex guidance for `AGENTS.md`](https://developers.openai.com/codex/guides/agents-md)
+- [OpenAI prompting guidance](https://learn.chatgpt.com/docs/prompting)
+- [OpenAI best practices](https://learn.chatgpt.com/guides/best-practices)
+- [OpenAI model guidance](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-5.5)
 
 Green Codex is a reusable engineering guide, not a replacement for the official referentials or
-for a formal compliance audit. Teams should always verify the current versions and document their
-evidence.
+for a formal compliance audit. The project records checked editions where relevant, but teams
+should verify current versions and document their own evidence before making a formal claim.
 
 ## Website and discoverability
 
