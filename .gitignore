@@ -2,3 +2,7 @@
 graphify-out/
 __pycache__/
 *.pyc
+
+# Local Codex workspace files
+.codex/
+.Codex/
