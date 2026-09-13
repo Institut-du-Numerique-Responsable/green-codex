@@ -40,5 +40,5 @@ before merging. Do not include secrets, generated caches, personal data, or unre
 ## Licensing
 
 By contributing, you agree that your contributions are distributed under the project licences:
-MIT for executable code and CC BY 4.0 for documentation and rule content, unless a file states
+Apache-2.0 for executable code and CC BY 4.0 for documentation and rule content, unless a file states
 otherwise.

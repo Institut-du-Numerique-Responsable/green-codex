@@ -24,8 +24,8 @@ What is your question about Green Codex?
 
 - [ ] [Documentation](https://institut-du-numerique-responsable.github.io/green-codex/)
 - [ ] [README.md](../../README.md)
-- [ ] Existing [Issues](../../issues)
-- [ ] [Discussions](../../discussions)
+- [ ] Search existing issues: https://github.com/Institut-du-Numerique-Responsable/green-codex/issues
+- [ ] Search the project documentation before opening a new issue
 
 ---
 *For technical support, please check the documentation first.*

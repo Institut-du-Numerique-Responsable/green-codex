@@ -6,8 +6,8 @@ version: 1.0.0
 url: https://github.com/Institut-du-Numerique-Responsable/green-codex
 repository: https://github.com/Institut-du-Numerique-Responsable/green-codex
 repository-code: https://github.com/Institut-du-Numerique-Responsable/green-codex
-license: MIT
-license-url: https://opensource.org/licenses/MIT
+license: Apache-2.0 AND CC-BY-4.0
+license-url: https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/LICENSE
 copyright: 2026 Institut du Numérique Responsable (INR)
 authors:
   - family-names: Gallon

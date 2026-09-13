@@ -6,7 +6,7 @@ Green Codex is a Codex skill for applying Green IT and responsible digital pract
 - **Name**: Green Codex
 - **Type**: Codex Skill (AI Assistant Plugin)
 - **Version**: 1.0.0
-- **License**: MIT (code) + CC BY 4.0 (documentation)
+- **License**: Apache-2.0 (code) + CC BY 4.0 (documentation)
 - **Maintainer**: Institut du Numérique Responsable (INR)
 - **Homepage**: https://institut-du-numerique-responsable.github.io/green-codex/
 - **Repository**: https://github.com/Institut-du-Numerique-Responsable/green-codex
