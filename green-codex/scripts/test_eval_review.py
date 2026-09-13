@@ -29,10 +29,18 @@ def main():
         (root / "reviews.json").write_text(json.dumps(review))
         run = {"model": "synthetic fixture", "date": "2026-09-13", "skill_sha256": "a" * 64,
                "settings": {"context": "synthetic"}, "limitations": ["Not a model benchmark."]}
+        review["fixture"]["run_sha256"] = digest(json.dumps(run, sort_keys=True, ensure_ascii=False))
+        (root / "reviews.json").write_text(json.dumps(review))
         (root / "run.json").write_text(json.dumps(run))
         command += ["--reviews", str(root / "reviews.json"), "--run", str(root / "run.json")]
         result = subprocess.run(command, capture_output=True, text=True)
         assert result.returncode == 0, result.stdout + result.stderr
+        for key, value in {"model": "different model", "skill_sha256": "b" * 64,
+                           "settings": {"context": "different"}}.items():
+            (root / "run.json").write_text(json.dumps({**run, key: value}))
+            result = subprocess.run(command, capture_output=True, text=True)
+            assert result.returncode == 1 and "REVIEW_REQUIRED" in result.stdout, result.stdout
+        (root / "run.json").write_text(json.dumps(run))
         (root / "fixture.md").write_text(response + " Edited after review.")
         result = subprocess.run(command, capture_output=True, text=True)
         assert result.returncode == 1 and "REVIEW_REQUIRED" in result.stdout, result.stdout

@@ -42,7 +42,7 @@
       "name": "Install",
       "short_name": "Install",
       "description": "Install Green Codex skill",
-      "url": "./#installation"
+      "url": "./#use"
     },
     {
       "name": "Documentation",
@@ -54,7 +54,7 @@
       "name": "Contribute",
       "short_name": "Contribute",
       "description": "Learn how to contribute",
-      "url": "./#use-and-contribution"
+      "url": "./#license"
     }
   ],
   "handle_links": "preferred",
@@ -64,27 +64,5 @@
   "edge_side_panel": {
     "preferred_width": 400
   },
-  "display_override": ["window-controls-overlay", "standalone", "minimal-ui", "browser"],
-  "protocol_handlers": [
-    {
-      "protocol": "web+green-codex",
-      "url": "./?ref=%s"
-    }
-  ],
-  "share_target": {
-    "action": "/share",
-    "method": "POST",
-    "enctype": "multipart/form-data",
-    "params": {
-      "title": "title",
-      "text": "text",
-      "url": "url",
-      "files": [
-        {
-          "name": "files",
-          "accept": ["image/*", "application/pdf"]
-        }
-      ]
-    }
-  }
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui", "browser"]
 }

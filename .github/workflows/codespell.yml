@@ -21,20 +21,8 @@ jobs:
         
       - name: Run codespell
         run: |
-          codespell \
-      --skip '*.min.*' \
-      --skip '.git/**' \
+          git ls-files -z | xargs -0 codespell \
+            --skip '*.min.*' \
             --check-filenames \
             --check-hidden \
-            --ignore-words .codespell-ignore \
-            .
-        
-      - name: Check for misspellings
-        run: |
-          if [ $(codespell --count) -gt 0 ]; then
-            echo "Spelling errors found!"
-            codespell --skip '*.min.*' --check-filenames --check-hidden
-            exit 1
-          else
-            echo "No spelling errors found."
-          fi
+            --ignore-words .codespell-ignore

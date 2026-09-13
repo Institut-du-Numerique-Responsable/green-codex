@@ -1,0 +1,21 @@
+{
+  "model": "Codex (runtime identifies as GPT-6; exact backend unknown)",
+  "date": "2026-09-13",
+  "skill_sha256": "3052cf50f7cdda5745f695a09b72dbd30050a05473ce64e6cbd8e4e246c8485f",
+  "reference_sha256": {
+    "green-codex/SKILL.md": "cd90c1ff0b1d68fa449721766445fd897c3de810d722b9a1e0f64a9e7ac5da18",
+    "green-codex/references/criteria.md": "1447e9c1fd4b5cb8a26b55d8fc95df19456598ec2c1d17f487f883f075d6c7f0",
+    "green-codex/references/measurement.md": "339e2dc553b749da18cec84dd2bc58c35d484e9893ce4cda43598e7993f659a7",
+    "green-codex/references/rules.md": "7b5d9779e68195db1c39c01ae17c454da84af60132daa94724d19f1ad7513ab3"
+  },
+  "settings": {
+    "context": "Fresh agent /root/real_eval; case rubric and tests withheld",
+    "model_override": false,
+    "tools": "Read-only shell; apply_patch to save the response"
+  },
+  "limitations": [
+    "One case only; not a baseline-versus-candidate comparison.",
+    "Exact backend version and inference settings are unavailable.",
+    "Some reference tool outputs were automatically compressed."
+  ]
+}
