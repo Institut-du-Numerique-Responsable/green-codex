@@ -19,6 +19,12 @@ jobs:
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v5.6.0
         with:
           python-version: '3.11'
+      - name: Install metadata validator
+        run: python -m pip install cffconvert==2.0.0
+      - name: Validate citation against the CFF schema
+        run: cffconvert --validate
+      - name: Validate workflows and website navigation
+        run: python scripts/check-metadata.py
       - name: Test package
         run: python green-codex/scripts/test_skill.py
       - name: Test sobriety checker

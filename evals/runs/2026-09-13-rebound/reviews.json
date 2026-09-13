@@ -1,0 +1,19 @@
+{
+  "rebound-total-impact": {
+    "reviewer": "Codex /root; separate from generator /root/real_eval",
+    "verdict": "PASS",
+    "response_sha256": "2670e696782bc16d2ff4f196daac643976ab78bee22d8ef92d20b05ba020371d",
+    "case_sha256": "a6aa4b0a238d5a6feae3866c165fd9fad7504f78c056a2968fed59b8280dd425",
+    "run_sha256": "93babd4d1cc1e3116f5415f87091f091edb52c74d407142c869ee8d5cc52ad8e",
+    "checks": {
+      "Computes task energy as 10 kWh before and 16 kWh after: a 60% increase.": {
+        "passed": true,
+        "evidence": "Computes 10 kWh/month, 16 kWh/month and 60% increase correctly."
+      },
+      "Does not equate task energy with complete environmental impact or prove traffic growth was caused by efficiency.": {
+        "passed": true,
+        "evidence": "Explicitly excludes idle energy, distinguishes environmental impact and declines causal inference from traffic growth."
+      }
+    }
+  }
+}

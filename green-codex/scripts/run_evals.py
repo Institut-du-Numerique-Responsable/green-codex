@@ -27,6 +27,8 @@ def semantic_review(case, response, review, run):
         return "REVIEW_REQUIRED", "run metadata invalid"
     if not isinstance(review, dict) or not review.get("reviewer"):
         return "REVIEW_REQUIRED", "independent semantic review missing"
+    if review.get("run_sha256") != digest(json.dumps(run, sort_keys=True, ensure_ascii=False)):
+        return "REVIEW_REQUIRED", "review does not match this run"
     if review.get("response_sha256") != digest(response) or review.get("case_sha256") != digest(json.dumps(case, sort_keys=True, ensure_ascii=False)):
         return "REVIEW_REQUIRED", "review does not match this response and case"
     checks = review.get("checks", {})
