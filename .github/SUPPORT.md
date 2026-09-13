@@ -16,7 +16,7 @@ Thank you for using Green Codex! Here's how to get help and contribute.
 ### Community Support
 - **GitHub Discussions** - For general questions and discussions
 - **GitHub Issues** - For bug reports and feature requests
-- **Email** - contact@institut-numerique-responsable.fr
+- **Email** - Use the contact details published at https://institutnr.org/
 
 ## Reporting Issues
 
@@ -31,8 +31,8 @@ Please include:
 ### Security Vulnerabilities
 **DO NOT** report security vulnerabilities in public issues. Instead:
 - Use our private security advisory: https://github.com/Institut-du-Numerique-Responsable/green-codex/security/advisories
-- Or email: security@institut-numerique-responsable.fr
-- See [security.txt](https://institut-du-numerique-responsable.github.io/green-codex/.well-known/security.txt) for details
+- Or use the private security advisory linked above.
+- See [security.txt](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/docs/.well-known/security.txt) for details
 
 ## Contributing
 
@@ -65,7 +65,7 @@ Green Codex provides structured information for AI indexing:
 
 - **Releases** - https://github.com/Institut-du-Numerique-Responsable/green-codex/releases
 - **Changelog** - https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/CHANGELOG.md
-- **Follow INR** - [@INR_NumResponsable](https://twitter.com/INR_NumResponsable) on Twitter
+- **Follow INR** - Updates are published through the INR website: https://institutnr.org/
 
 ## Frequently Asked Questions
 
@@ -86,7 +86,7 @@ RGESN, GR491, Opquast, and RGAA are fully integrated.
 Yes! French translations are particularly welcome. See CONTRIBUTING.md.
 
 ### Is Green Codex free to use?
-Yes! Code is MIT licensed, documentation is CC BY 4.0 licensed.
+Yes! Code is Apache-2.0 licensed, documentation is CC BY 4.0 licensed.
 
 ---
 *Last updated: 2026-09-05*

@@ -2,7 +2,7 @@
 
 [![Version](https://img.shields.io/github/v/release/Institut-du-Numerique-Responsable/green-codex?sort=semver)](https://github.com/Institut-du-Numerique-Responsable/green-codex/releases)
 [![CI](https://github.com/Institut-du-Numerique-Responsable/green-codex/actions/workflows/validate.yml/badge.svg)](https://github.com/Institut-du-Numerique-Responsable/green-codex/actions/workflows/validate.yml)
-[![License](https://img.shields.io/badge/license-MIT%20%2B%20CC%20BY%204.0-yellow.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-Apache--2.0%20%2B%20CC%20BY%204.0-yellow.svg)](LICENSE)
 [![INR](https://img.shields.io/badge/INR-Institut%20du%20Num%C3%A9rique%20Responsable-4CAF50?logo=leaf&style=flat)](https://institutnr.org/)
 
 Green Codex is a Codex skill for applying Green IT and responsible digital practices while
@@ -169,7 +169,7 @@ the checks executed on every pull request.
 
 ## License
 
-Code and test scripts are MIT licensed. Documentation and rule content are available under
+Code and test scripts are Apache-2.0 licensed. Documentation and rule content are available under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). See [LICENSE](LICENSE) and
 [LICENSE-CC-BY-4.0](LICENSE-CC-BY-4.0).
 

@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "homepage": "https://institut-du-numerique-responsable.github.io/green-codex/",
   "repository": "https://github.com/Institut-du-Numerique-Responsable/green-codex",
-  "license": "MIT",
+  "license": "Apache-2.0 AND CC-BY-4.0",
   "keywords": [
     "Green IT",
     "eco-design",

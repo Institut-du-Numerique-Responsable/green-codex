@@ -46,6 +46,36 @@ def main():
         clean.mkdir()
         (clean / "query.sql").write_text("SELECT id, name FROM users LIMIT 100;\n", encoding="utf-8")
         assert run_checker(clean).returncode == 0
+
+        assert run_checker(root / "missing").returncode == 2
+        unreadable = root / "invalid.sql"
+        unreadable.write_bytes(b"\xff")
+        assert run_checker(unreadable).returncode == 2
+
+        sql = root / "comments.sql"
+        sql.write_text("-- SELECT * is forbidden\n/* SELECT *\n */\nSELECT 'SELECT *', id FROM users;\n")
+        assert run_checker(sql).returncode == 0
+        sql.write_text("-- comment\nSELECT\n * FROM users;\n")
+        report = run_checker(sql, "--format", "json")
+        assert report.returncode == 1
+        assert json.loads(report.stdout)[0]["line"] == 2
+
+        media = root / "multiline.html"
+        media.write_text("<!-- <video autoplay> -->\n<video\n autoplay\n src='x.mp4'></video>\n")
+        report = run_checker(media, "--format", "json")
+        assert report.returncode == 1
+        assert len(json.loads(report.stdout)) == 1
+        assert json.loads(report.stdout)[0]["line"] == 2
+        media.write_text("<video data-autoplay='yes' title='autoplay'></video>\n")
+        assert run_checker(media).returncode == 0
+
+        polling = root / "bounded.js"
+        polling.write_text("const timer = setInterval(refresh, 1000);\nsetTimeout(() => clearInterval(timer), 5000);\n")
+        report = run_checker(polling, "--format", "json")
+        assert report.returncode == 0
+        assert json.loads(report.stdout)[0]["status"] == "REVIEW_REQUIRED"
+        polling.write_text("// setInterval(refresh, 100);\nconst example = 'setInterval(refresh, 100)';\n")
+        assert json.loads(run_checker(polling, "--format", "json").stdout) == []
     print("Sobriety checker tests passed")
 
 

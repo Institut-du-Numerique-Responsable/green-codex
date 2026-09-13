@@ -10,10 +10,11 @@ For each case, run the prompt with the skill and save the response as
 python3 green-codex/scripts/run_evals.py --responses evals/responses
 ```
 
-The evaluator checks that every expected rule identifier is cited, that the response contains an
-actionable vocabulary and that forbidden overclaims are absent. Missing responses are reported as
-`REVIEW_REQUIRED`; they are not silently treated as passing. The case schema itself is checked in
-CI with `python3 green-codex/scripts/test_evals.py`.
+The evaluator first performs lexical screening, then requires an independent semantic review bound
+to the exact case and response hashes. Supply `--reviews reviews.json --run run.json` for a
+review-backed result; without those files every lexical match remains `REVIEW_REQUIRED`. Missing
+responses are reported as `REVIEW_REQUIRED`; they are not silently treated as passing. The case
+schema and review binding are checked in CI with `test_evals.py` and `test_eval_review.py`.
 
 These automated checks are lexical screening, not proof of correct reasoning. Review each response
 against its `review_checks` when present, and check the actual recommendation, arithmetic, evidence

@@ -167,7 +167,7 @@ frontend, backend, full-stack, cloud, infrastructure, data engineering, UX/UI, r
 ## License and Usage
 
 ### Content Licenses
-- **Code and scripts**: MIT License (see [LICENSE](LICENSE))
+- **Code and scripts**: Apache-2.0 License (see [LICENSE](LICENSE))
 - **Documentation and rules**: CC BY 4.0 (see [LICENSE-CC-BY-4.0](LICENSE-CC-BY-4.0))
 
 ### Permitted Uses

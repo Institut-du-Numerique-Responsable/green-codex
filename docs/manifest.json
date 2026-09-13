@@ -3,19 +3,19 @@
   "short_name": "GreenCodex",
   "description": "Green IT guidance for coding assistants - Apply RGESN, GR491, Opquast, and RGAA rules in your workflow",
   "start_url": "/green-codex/",
-  "scope": "/",
+  "scope": "/green-codex/",
   "display": "standalone",
   "background_color": "#f4f7f1",
   "theme_color": "#17352f",
   "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     },
     {
-      "src": "/images/og-image.svg",
+      "src": "images/og-image.svg",
       "sizes": "1200x630",
       "type": "image/svg+xml",
       "purpose": "any"
@@ -30,7 +30,7 @@
   "categories": ["productivity", "utilities", "education"],
   "screenshots": [
     {
-      "src": "/images/og-image.svg",
+      "src": "images/og-image.svg",
       "sizes": "1200x630",
       "type": "image/svg+xml",
       "form_factor": "wide",
@@ -42,19 +42,19 @@
       "name": "Install",
       "short_name": "Install",
       "description": "Install Green Codex skill",
-      "url": "/#installation"
+      "url": "./#installation"
     },
     {
       "name": "Documentation",
       "short_name": "Docs",
       "description": "View documentation",
-      "url": "/"
+      "url": "./"
     },
     {
       "name": "Contribute",
       "short_name": "Contribute",
       "description": "Learn how to contribute",
-      "url": "/#use-and-contribution"
+      "url": "./#use-and-contribution"
     }
   ],
   "handle_links": "preferred",
@@ -68,7 +68,7 @@
   "protocol_handlers": [
     {
       "protocol": "web+green-codex",
-      "url": "/?ref=%s"
+      "url": "./?ref=%s"
     }
   ],
   "share_target": {
