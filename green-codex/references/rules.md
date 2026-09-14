@@ -41,6 +41,8 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
   expected usage and alternatives, including reuse or a non-digital route where suitable. Verify
   the need against user research or existing usage evidence. Flag unsupported assumptions without
   cancelling an authorised feature or changing its purpose unilaterally.
+  For a practical assessment of utility, actual usage and usability, use
+  [the 3U test guide](three-u.md); code alone cannot establish actual adoption.
 - **SERVICE-EFF-002 — Device longevity:** define minimum supported device, browser and connectivity
   profiles from the intended audience. Test the essential journey on constrained hardware and
   slow networks; check whether new requirements would exclude usable older devices. Keep security

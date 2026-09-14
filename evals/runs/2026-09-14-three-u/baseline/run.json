@@ -1,0 +1,22 @@
+{
+  "model": "Codex (runtime identifies GPT-6; exact backend unknown)",
+  "date": "2026-09-14",
+  "skill_sha256": "5a2bcd40934bb6dc8f8cea73425672e1ee3028d3807f46dcec1d7bd9490ee96a",
+  "reference_sha256": {
+    "green-codex/SKILL.md": "5a2bcd40934bb6dc8f8cea73425672e1ee3028d3807f46dcec1d7bd9490ee96a",
+    "green-codex/references/rules.md": "a2258dd9dec33895d9dc158ef4d5e0279e4bc94e40092866a3bd16ac27a78289",
+    "green-codex/references/responsible-ai-charter.md": "a39b6e399f727e2e135aa1329210afc3de4c76e7349e4c11a91b8a7d542e3d54",
+    "green-codex/references/criteria.md": "cd6753ad8a2759c20e548842111e4f91dc86aff314ca1699cd3bfd9cf3783576"
+  },
+  "settings": {
+    "context": "Fresh separate agent for each variant; no eval or other answer access",
+    "tools": "Read SKILL and relevant reference sections; write answer only",
+    "sampling": "Exact backend and sampling settings unavailable"
+  },
+  "limitations": [
+    "One response per variant to one synthetic scenario; no statistical or causal improvement claim.",
+    "Automatic tool output compression occurred; exact expanded context not logged.",
+    "Candidate first attempt hit a quota limit before saving an answer; resumed after the limit.",
+    "No application tests, interviews or usage observation executed."
+  ]
+}

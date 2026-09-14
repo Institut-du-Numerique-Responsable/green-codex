@@ -1,5 +1,12 @@
 # Behavioral evaluations
 
+The `three-u-pilot` scenario checks practical utility, actual adoption and
+usability judgments from a small pilot, with errors, missing adoption criteria
+and a keyboard blocker. It tests the skill's reasoning about supplied evidence,
+not whether a real service satisfies the 3U.
+See [the real paired responses and review](runs/2026-09-14-three-u/README.md):
+candidate passes semantic review, while both answers fail literal rule-ID checks.
+
 [The September 14 charter comparison](runs/2026-09-14-charter/README.md) records
 two real paired samples and independent reviews. Both variants pass the semantic
 checks; the candidate adds explicit charter rule traceability. Five other charter

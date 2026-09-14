@@ -19,8 +19,9 @@ still be wasteful when poorly designed.
 1. Establish the requested scope: targeted change, review, or service-wide audit. Reuse known user
    needs and project budgets; do not turn a small edit into a full audit or remove functionality
    without authorisation. Inspect only relevant files and project guidance.
-2. For design or a service audit, evaluate necessity, reuse and simpler alternatives first. Then
-   assess equipment longevity and likely lifecycle hotspots before micro-optimising code.
+2. For design or a service audit, start with the 3U: useful, actually used, and usable
+   (`references/three-u.md`). Reuse evidence and choose small realistic tests against the
+   current or simpler alternative. Then assess longevity and likely lifecycle hotspots.
 3. Select applicable families below and in `references/criteria.md`. Rule IDs are project-authored,
    not official criterion numbers. Read only relevant sections of `references/rules.md` using its
    headings or identifier prefixes; do not load unrelated languages or architectures.
@@ -39,7 +40,7 @@ still be wasteful when poorly designed.
 
 | Scope | Sections/families in `references/rules.md` |
 | --- | --- |
-| Service design or full audit | Universal rules, `SERVICE-*`, then relevant rows below |
+| Service design, value, adoption, usability or 3U assessment | `references/three-u.md`, `SERVICE-EFF-001`, `SERVICE-EFF-006`, then affected rules |
 | Device support, inclusion, engagement or lifecycle review | Relevant `SERVICE-*`; retirement also `DB-EFF-005`, `OPS-EFF-001` |
 | Runtime, APIs, data | `CODE-*`, `API-*`, `DB-*`, matching languages |
 | User journeys, content, web | `WEB-*`, `NET-*`, Web quality and accessibility, matching languages/frameworks |
@@ -52,10 +53,11 @@ still be wasteful when poorly designed.
 In a full audit, list the assessed families, exclusions with reasons, and evidence gaps. Outside
 that mode, report affected rules and material findings only; do not enumerate the entire catalogue.
 
-For an AI task, including responsible use of Codex itself, read the affected
-sections of `references/responsible-ai-charter.md`. It maps the INR/ISIT charter's
-four axes to daily actions, application tests and human evidence. Apply only
-relevant commitments; a small non-AI edit does not require the whole charter.
+Use the 3U as the practical starting point when assessing an AI service's value or
+readiness. Consult `references/responsible-ai-charter.md` for a requested charter
+assessment or a relevant issue such as data permissions, sources or risky actions;
+do not load all commitments for every AI task. A small non-AI edit needs neither a
+3U study nor the whole charter.
 Do not certify an organisation, regulatory compliance or a charter signature
 from code, a supplier declaration or passing tests.
 

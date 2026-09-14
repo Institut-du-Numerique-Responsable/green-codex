@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Start service assessments with realistic 3U tests (utile, utilisé, utilisable);
+  keep the full AI charter as an on-demand reference rather than a daily checklist.
+
 - Map the INR/ISIT responsible AI charter to scoped daily actions, ten human,
   ethical and trust rules, and existing environmental rules.
 - Add seven behavioural scenarios for charter application and evidence limits,
