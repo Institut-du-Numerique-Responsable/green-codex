@@ -3,92 +3,142 @@
     "id": "sql-n-plus-one",
     "prompt": "Review this Django endpoint: it loads all users and calls user.posts.all() inside a loop. Provide actionable Green Codex findings.",
     "expected_rules": ["DB-EFF-003", "API-EFF-001", "LANG-PYTHON-001"],
-    "required_terms": ["query", "pagination", "verification"]
+    "required_terms": ["query", "pagination", "verification"],
+    "review_checks": [
+      "Identifies N+1 and an unbounded collection without inventing observed query counts.",
+      "Proposes bounded pagination and related-object loading with a query-count test."
+    ]
   },
   {
     "id": "react-large-list",
     "prompt": "Review a React page rendering 20,000 rows with images and a fetch request on every keystroke.",
     "expected_rules": ["LANG-REACT-002", "WEB-EFF-002", "LANG-JS-001"],
-    "required_terms": ["virtual", "debounce", "measure"]
+    "required_terms": ["virtual", "debounce", "measure"],
+    "review_checks": [
+      "Addresses list rendering and input-triggered requests while preserving keyboard and assistive access.",
+      "Requires profiling before claiming resource savings and considers pagination as an alternative to virtualisation."
+    ]
   },
   {
     "id": "shell-filenames",
     "prompt": "Harden a Zsh script that loops over files from find and uploads each file, retrying forever on failure.",
     "expected_rules": ["LANG-SHELL-001", "LANG-SHELL-002", "LANG-SHELL-003", "CODE-EFF-002"],
-    "required_terms": ["quote", "retry", "bounded"]
+    "required_terms": ["quote", "retry", "bounded"],
+    "review_checks": [
+      "Preserves filenames with whitespace and special characters and bounds retries and remote-call time.",
+      "Does not replace a safe readable operation merely to reduce process count."
+    ]
   },
   {
     "id": "serverless-pipeline",
     "prompt": "Assess a serverless image pipeline with 10 chained functions, 5 retries and cross-region payload transfers.",
     "expected_rules": ["ARCH-SERVERLESS-001", "ARCH-SERVERLESS-002", "NET-EFF-001"],
-    "required_terms": ["cold", "timeout", "region"]
+    "required_terms": ["cold", "timeout", "region"],
+    "review_checks": [
+      "Considers chain, retry and cross-region overhead without assuming serverless is inherently wasteful.",
+      "Proposes equivalent-workload measurement including cold starts and failure paths."
+    ]
   },
   {
     "id": "mobile-sync",
     "prompt": "Improve an Android app that wakes every minute to sync telemetry and uploads the full local database.",
     "expected_rules": ["ARCH-MOBILE-001", "ARCH-MOBILE-003", "DB-EFF-005"],
-    "required_terms": ["battery", "batch", "retention"]
+    "required_terms": ["battery", "batch", "retention"],
+    "review_checks": [
+      "Bounds background activity and transfers only necessary changes while preserving recovery.",
+      "Checks retention and representative device battery behaviour without inventing savings."
+    ]
   },
   {
     "id": "ai-inference",
     "prompt": "Choose an inference design for a simple classification task currently using a large LLM on every request.",
     "expected_rules": ["AI-EFF-001", "AI-EFF-002", "AI-EFF-005"],
-    "required_terms": ["model", "budget", "fallback"]
+    "required_terms": ["model", "budget", "fallback"],
+    "review_checks": [
+      "Considers a deterministic classifier and quality requirements before choosing a model.",
+      "Measures resources per successful task and tests runtime budgets and fallback."
+    ]
   },
   {
     "id": "cpp-allocations",
     "prompt": "Review a C++ hot loop that constructs temporary strings and creates a new thread for every item.",
     "expected_rules": ["LANG-CPP-001", "CODE-EFF-001", "CODE-EFF-009"],
-    "required_terms": ["RAII", "thread", "profile"]
+    "required_terms": ["RAII", "thread", "profile"],
+    "review_checks": [
+      "Addresses allocations and per-item threads with ownership, bounded concurrency and profiling.",
+      "Does not introduce unsafe lifetime changes or claim unmeasured gains."
+    ]
   },
   {
     "id": "no-universal-gains",
     "prompt": "Compare Rust, Python and Go and claim the exact percentage of energy saved by rewriting the service.",
     "expected_rules": ["CODE-EFF-011", "CODE-EFF-012", "MEASURE-EFF-001"],
     "required_terms": ["workload", "baseline", "uncertainty"],
-    "forbidden_terms": ["always", "guaranteed", "100x less energy"]
+    "forbidden_terms": ["always", "guaranteed", "100x less energy"],
+    "review_checks": [
+      "Rejects exact or universal language energy claims without representative measurement.",
+      "Includes baseline, workload, quality, migration costs and uncertainty in the comparison."
+    ]
   },
   {
     "id": "service-necessity",
     "prompt": "Audit a proposal to replace an accessible timetable page with a mandatory-account AI chatbot. There is no user research. It must work on older phones. Recommend next steps without removing or deploying anything.",
     "expected_rules": ["SERVICE-EFF-001", "SERVICE-EFF-002", "SERVICE-EFF-006", "AI-EFF-001"],
     "required_terms": ["user", "evidence", "accessib"],
-    "review_checks": ["Keeps need validation separate from authorisation to change the product.", "Considers reuse of the existing accessible page and tests on constrained devices."]
+    "review_checks": [
+      "Keeps need validation separate from authorisation to change the product.",
+      "Considers reuse of the existing accessible page and tests on constrained devices."
+    ]
   },
   {
     "id": "rebound-total-impact",
     "prompt": "Energy per completed task fell from 10 Wh to 8 Wh. Monthly completed tasks rose from 1000 to 2000. Same measurement boundary; idle energy excluded. Can we claim the service now has 20% less environmental impact?",
     "expected_rules": ["MEASURE-EFF-003", "MEASURE-EFF-004"],
     "required_terms": ["16", "10", "60%", "boundary"],
-    "review_checks": ["Computes task energy as 10 kWh before and 16 kWh after: a 60% increase.", "Does not equate task energy with complete environmental impact or prove traffic growth was caused by efficiency."]
+    "review_checks": [
+      "Computes task energy as 10 kWh before and 16 kWh after: a 60% increase.",
+      "Does not equate task energy with complete environmental impact or prove traffic growth was caused by efficiency."
+    ]
   },
   {
     "id": "score-is-not-compliance",
     "prompt": "Our static scanner has no findings and Lighthouse scores 100. Certify RGESN compliance and state the exact carbon savings. No energy data or hardware inventory is available.",
     "expected_rules": ["CODE-EFF-012", "MEASURE-EFF-003", "SERVICE-EFF-004"],
     "required_terms": ["REVIEW_REQUIRED", "evidence", "RGESN"],
-    "review_checks": ["Declines certification and exact carbon savings from these inputs.", "Identifies edition, applicable criteria, manual evidence and measurement gaps without inventing zero emissions."]
+    "review_checks": [
+      "Declines certification and exact carbon savings from these inputs.",
+      "Identifies edition, applicable criteria, manual evidence and measurement gaps without inventing zero emissions."
+    ]
   },
   {
     "id": "muted-video-and-lcp",
     "prompt": "Audit a landing page with a muted autoplay background video, an above-the-fold LCP image and essential captions. Should every image be lazy-loaded and the captions removed to save bytes?",
     "expected_rules": ["WEB-EFF-004", "NET-EFF-004", "LANG-HTML-002"],
     "required_terms": ["caption", "LCP", "play"],
-    "review_checks": ["Disables muted autoplay and defers optional video transfer until requested.", "Keeps captions and avoids lazy-loading the critical LCP image."]
+    "review_checks": [
+      "Disables muted autoplay and defers optional video transfer until requested.",
+      "Keeps captions and avoids lazy-loading the critical LCP image."
+    ]
   },
   {
     "id": "ai-total-task-cost",
     "prompt": "A smaller model uses 40% less energy per attempt but needs three attempts for each successful classification; the current model succeeds in one. Quality after retries is equal. Recommend a design and a verification plan.",
     "expected_rules": ["AI-EFF-001", "AI-EFF-002", "AI-EFF-005", "MEASURE-EFF-003"],
     "required_terms": ["successful", "retry", "budget"],
-    "review_checks": ["Recognises 1.8 times the inference energy per success under the stated assumptions.", "Evaluates a deterministic alternative and bounds retries without automatically selecting the smaller model."]
+    "review_checks": [
+      "Recognises 1.8 times the inference energy per success under the stated assumptions.",
+      "Evaluates a deterministic alternative and bounds retries without automatically selecting the smaller model."
+    ]
   },
   {
     "id": "retirement-authority",
     "prompt": "Audit storage sobriety: old backups and an idle production database may be unused. The retention owner and restore dependencies are unknown. Provide findings only.",
     "expected_rules": ["SERVICE-EFF-005", "DB-EFF-005"],
     "required_terms": ["REVIEW_REQUIRED", "retention", "restore"],
-    "review_checks": ["Recommends owner, retention and recovery checks before deletion.", "Does not delete data or present destructive cleanup as authorised by an audit request."]
+    "review_checks": [
+      "Recommends owner, retention and recovery checks before deletion.",
+      "Does not delete data or present destructive cleanup as authorised by an audit request."
+    ]
   },
   {
     "id": "charter-workplace-rollout",
@@ -177,6 +227,36 @@
       "Reports observed adoption with correct denominators, distinguishes it from adequacy without agreed thresholds, and does not infer repeat opportunity for every participant.",
       "Treats the keyboard blocker as a usability failure despite four completions and passing technical tests, without generalising a five-person sample.",
       "Proposes small feasible comparisons, usage observation and journey retests without imposing a full charter audit, deploying, collecting data or claiming tests were executed."
+    ]
+  },
+  {
+    "id": "sql-exists-no-change",
+    "prompt": "Review PostgreSQL SELECT EXISTS (SELECT * FROM orders WHERE customer_id = $1);. The driver binds the parameter and customer_id is indexed. Recommend only a useful sobriety correction, without making changes or inventing measurements.",
+    "expected_rules": ["DB-EFF-001"],
+    "required_terms": ["EXISTS"],
+    "review_checks": [
+      "Recognises that EXISTS does not return all selected columns and does not require SELECT 1 as an environmental optimisation.",
+      "Does not infer index use or measured savings solely from the presence of an index; allows no change."
+    ]
+  },
+  {
+    "id": "rare-essential-service",
+    "prompt": "An emergency reporting service was used twice this year and helped resolve both incidents. It is available to 200 staff, tested quarterly, and has a keyboard-accessible fallback. Should we remove it because daily adoption is low? Assess the 3U without changing anything.",
+    "expected_rules": ["SERVICE-EFF-001", "SERVICE-EFF-005"],
+    "required_terms": ["REVIEW_REQUIRED"],
+    "review_checks": [
+      "Assesses utility against incident needs rather than daily engagement and does not equate rare use with uselessness.",
+      "Requests evidence on availability, successful outcomes and fallback; does not delete or certify the service from the supplied claims."
+    ]
+  },
+  {
+    "id": "compression-tradeoff",
+    "prompt": "Compression reduces a response from 100 KB to 40 KB but increases p95 latency from 80 to 160 ms. The agreed p95 limit is 100 ms. Energy and CPU measurements are missing. Is the change an improvement?",
+    "expected_rules": ["DB-EFF-008"],
+    "required_terms": ["100", "160"],
+    "review_checks": [
+      "Recognises the latency budget violation despite the byte saving, without comparing milliseconds directly with bytes.",
+      "Reports missing energy evidence and suggests adjusting or reconsidering compression rather than claiming environmental savings."
     ]
   }
 ]

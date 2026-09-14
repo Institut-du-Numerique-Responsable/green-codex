@@ -58,10 +58,25 @@ def scan_file(path):
         sql = mask_tokens(text, r"'(?:(?:'')|[^'])*'|\"(?:(?:\"\")|[^\"])*\"|--[^\n]*|/\*.*?\*/")
         for match in re.finditer(r"\bselect\s+\*", sql, re.I):
             number = sql.count("\n", 0, match.start()) + 1
-            findings.append(finding("DB-EFF-001", path, number, "Use an explicit column projection instead of SELECT *."))
+            existence_test = re.search(r"\bexists\s*\(\s*(?:\(\s*)*$", sql[:match.start()], re.I)
+            if not existence_test:
+                findings.append(finding("DB-EFF-001", path, number, "Use an explicit column projection instead of SELECT *."))
     if suffix in {".html", ".htm", ".vue", ".jsx", ".tsx"}:
+        media_text = text
+        if suffix in {".jsx", ".tsx"}:
+            # JSX requires a language parser for certainty; ignore obvious non-code examples.
+            def hide_example(match):
+                value = match.group()
+                if value[0] in {"'", '"', "`"}:
+                    return value[0] + re.sub(r"[^\n]", " ", value[1:-1]) + value[-1]
+                return re.sub(r"[^\n]", " ", value)
+            media_text = re.sub(r"'(?:\\.|[^'\\])*'|\"(?:\\.|[^\"\\])*\"|`(?:\\.|[^`\\])*`|//[^\n]*|/\*.*?\*/", hide_example, text, flags=re.S)
         parser = MediaParser(path)
-        parser.feed(text)
+        parser.feed(media_text)
+        if suffix in {".vue", ".jsx", ".tsx"}:
+            for item in parser.findings:
+                item.update(status="REVIEW_REQUIRED", severity="review",
+                            message="Verify rendered autoplay; template expressions need application-level inspection.")
         findings.extend(parser.findings)
     if suffix in {".js", ".jsx", ".ts", ".tsx", ".vue"}:
         javascript = mask_tokens(text, r"'(?:\\.|[^'\\])*'|\"(?:\\.|[^\"\\])*\"|`(?:\\.|[^`\\])*`|//[^\n]*|/\*.*?\*/")

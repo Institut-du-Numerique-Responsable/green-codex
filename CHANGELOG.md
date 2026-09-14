@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Fix SQL existence-test and JSX example false positives; template media requires review.
+- Separate evaluation format checks from bound semantic verdicts, with optional strict mode.
+- Make verification proportional, consolidate three aliases and clarify 3U/charter routing.
+- Add counterexamples and specific semantic criteria to all evaluation scenarios.
+
 - Start service assessments with realistic 3U tests (utile, utilisé, utilisable);
   keep the full AI charter as an on-demand reference rather than a daily checklist.
 

@@ -60,6 +60,24 @@ def main():
         assert report.returncode == 1
         assert json.loads(report.stdout)[0]["line"] == 2
 
+        sql.write_text("SELECT EXISTS (/* existence only */ SELECT * FROM orders WHERE customer_id = $1);\n")
+        assert json.loads(run_checker(sql, "--format", "json").stdout) == []
+        sql.write_text("SELECT EXISTS ((SELECT * FROM orders));\n")
+        assert json.loads(run_checker(sql, "--format", "json").stdout) == []
+        sql.write_text("SELECT * FROM orders WHERE EXISTS (SELECT * FROM users);\n")
+        findings = json.loads(run_checker(sql, "--format", "json").stdout)
+        assert len(findings) == 1 and findings[0]["status"] == "FAIL"
+
+        jsx = root / "example.tsx"
+        jsx.write_text('// Example: <video autoPlay />\nconst example = "<video autoPlay />";\nexport const Page = () => <p>No video</p>;\n')
+        assert json.loads(run_checker(jsx, "--format", "json").stdout) == []
+        jsx.write_text('export const Page = () => <video autoPlay />;\n')
+        findings = json.loads(run_checker(jsx, "--format", "json").stdout)
+        assert len(findings) == 1 and findings[0]["status"] == "REVIEW_REQUIRED"
+        jsx.write_text('export const Page = () => <video src="movie.mp4" autoPlay />;\n')
+        findings = json.loads(run_checker(jsx, "--format", "json").stdout)
+        assert len(findings) == 1 and findings[0]["status"] == "REVIEW_REQUIRED"
+
         media = root / "multiline.html"
         media.write_text("<!-- <video autoplay> -->\n<video\n autoplay\n src='x.mp4'></video>\n")
         report = run_checker(media, "--format", "json")

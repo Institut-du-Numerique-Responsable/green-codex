@@ -6,7 +6,7 @@ the reference.
 
 ## How to apply a rule
 
-Every applicable rule has an identifier and must produce one of three outcomes: `PASS` (evidence
+Every assessed rule has an identifier and produces one of three outcomes: `PASS` (evidence
 is sufficient), `FAIL` (a concrete violation is found), or `REVIEW_REQUIRED` (available evidence
 is insufficient). Evidence may be automated or manual. A finding must cite the identifier, file and line, impact, severity,
 and a verification command or measurement. Do not mark a rule `PASS` from a declaration alone.
@@ -65,9 +65,9 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
 
 ### Code and runtime
 
-- **CODE-EFF-001 — Bound work:** every loop, recursion, batch, retry policy, queue, cache and
-  concurrency pool must have a documented upper bound or an explicit termination condition.
-  Verify with a test covering the bound and a worst-case input.
+- **CODE-EFF-001 — Bound work:** bound externally driven or potentially growing work, retries,
+  queues, caches and concurrency. Test limits where failure could exhaust resources; inspection
+  can suffice for a fixed-size loop with an evident termination condition.
 - **CODE-EFF-002 — Bound remote calls:** do not perform network or service calls inside an
   unbounded loop. Set a timeout and a maximum retry count; verify with a mocked call counter.
 - **CODE-EFF-003 — Avoid repeated work:** cache or memoise stable results when the cache cost is
@@ -76,11 +76,12 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
   memory. Use streaming, iterators or pagination and test with data larger than the normal case.
 - **CODE-EFF-005 — Resource lifetime:** files, sockets, database handles, workers and temporary
   storage must be released on success and failure paths. Verify with a repeated-run or leak test.
-- **CODE-EFF-006 — Resource budget:** define a measurable budget for at least two of CPU time,
-  peak memory, transferred bytes, requests or artifact size for performance-sensitive changes.
-  Compare before and after on a representative scenario.
-- **CODE-EFF-007 — Dependencies:** every new runtime dependency must have a documented purpose,
-  measured cost and maintenance status. Reject duplicate functionality or an oversized dependency.
+- **CODE-EFF-006 — Resource budget:** for performance-sensitive changes, select metrics that resolve
+  the decision: CPU, memory, bytes, requests or artifact size. Compare a representative baseline
+  against the relevant budget; no fixed number of metrics is required.
+- **CODE-EFF-007 — Dependencies:** check the purpose and maintenance of new runtime dependencies.
+  Measure cost when bundle size, startup, resource use or duplication is material to the decision;
+  avoid requiring a benchmark for every small addition.
 - **CODE-EFF-008 — Complexity:** for a hot path or growing dataset, document the expected
   complexity and avoid an avoidable quadratic algorithm. Prefer `O(n log n)` or better when it
   preserves correctness; prove the change with a benchmark on representative and worst-case data.
@@ -107,9 +108,9 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
   size, use cursor or bounded pagination, and return only required fields. Test the maximum size.
 - **API-EFF-002 — Response budget:** document a target response size and request count for the main
   user journey; fail the check when the budget regresses without an approved exception.
-- **API-EFF-003 — Page-size safety:** define a documented default and maximum page size. A default
-  of 100 items is a reasonable starting point for many APIs, but the value must follow payload size,
-  latency and user needs; reject unbounded or unexplained values.
+- **API-EFF-003 — Page-size safety (compatibility alias):** use `API-EFF-001` for default and maximum
+  sizes selected from payload size, latency and user needs. Do not duplicate a finding; this
+  identifier remains valid in archived evaluations.
 - **WEB-EFF-001 — Deferred payloads:** non-critical scripts, images and embeds must be lazy or
   deferred. Verify with a production build and a network trace.
 - **WEB-EFF-002 — Media budget:** provide responsive dimensions and modern formats with a fallback;
@@ -123,8 +124,10 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
 
 ### Databases and storage
 
-- **DB-EFF-001 — Explicit projection:** production queries must select named columns; `SELECT *`
-  is prohibited except in documented schema-inspection tooling. Add a query test or static check.
+- **DB-EFF-001 — Explicit projection:** select required columns when rows are returned to a caller.
+  `EXISTS (SELECT * ...)` does not transfer every column and does not justify a rewrite by itself.
+  Allow documented schema-inspection tooling. Verify actual excess projection; do not claim
+  savings from a syntactic substitution alone.
 - **DB-EFF-002 — Bounded reads:** every user- or service-facing list query must have a limit,
   cursor, date window or other proven bound. Verify that an omitted bound fails safely.
 - **DB-EFF-003 — No N+1:** a collection read must not issue one query per item. Verify with a query
@@ -137,9 +140,10 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
   and an archival policy before introducing a high-volume data source.
 - **DB-EFF-007 — Duplicate storage:** do not persist the same derived or binary data in multiple
   places unless the performance trade-off is measured and documented.
-- **DB-EFF-008 — Compression:** compress large or repetitive payloads when CPU cost and latency are
-  lower than storage and network savings. Benchmark the selected codec (for example Zstandard)
-  instead of assuming one codec is always best.
+- **DB-EFF-008 — Compression:** compare stored/transferred bytes while respecting CPU and latency
+  budgets. Compare energy or monetary cost only with an explicit model and consistent units;
+  milliseconds cannot be compared directly with bytes. Benchmark the relevant workload rather
+  than assuming one codec is always best.
 - **DB-EFF-009 — Data modelling:** avoid unnecessary duplication and define a consistency boundary.
   Normalise when it reduces storage and update anomalies; allow measured denormalisation when it
   materially reduces repeated reads or compute, with an explicit refresh strategy.
@@ -368,8 +372,9 @@ identifier in findings.
   sanitizer or leak check for changed native code.
 - **LANG-C-002:** prefer streaming and caller-provided buffers for large data; document ownership,
   alignment and maximum sizes at every public boundary.
-- **LANG-C-003:** use compiler optimisation only after a reproducible benchmark; keep undefined
-  behaviour fixes and warnings enabled rather than trading correctness for speed.
+- **LANG-C-003:** keep standard supported optimisation settings; benchmark unusual or aggressive
+  changes when their benefit or correctness is uncertain. Preserve warnings and undefined-behaviour
+  fixes rather than trading correctness for speed.
 - **LANG-CPP-001:** prefer RAII, move semantics and views (`std::span`/equivalent) over raw owning
   pointers and needless copies; verify with sanitizers and an allocation profile.
 - **LANG-CPP-002:** reserve containers only from measured bounds and use standard algorithms; avoid
@@ -396,8 +401,8 @@ identifier in findings.
   only after profiling; do not rewrite Python solely from a language stereotype.
 - **LANG-PYTHON-003:** bound multiprocessing workers, queues and serialisation; close files and
   clients with context managers.
-- **LANG-PYTHON-004:** avoid per-item Python callbacks in large data paths; use vectorised/native
-  operations only when profiling shows lower total CPU and memory.
+- **LANG-PYTHON-004:** compatibility alias for `LANG-PYTHON-002` on per-item callbacks in large data
+  paths. Retain this identifier for existing references without duplicating findings.
 - **LANG-PYTHON-005:** reuse sessions and HTTP connections, set timeouts, and stream uploads and
   downloads; never use an unbounded `read()` on external input.
 
@@ -489,8 +494,8 @@ identifier in findings.
   updates touch only the required DOM nodes.
 - **LANG-SOLID-002:** lazy-load routes and widgets and measure hydration and bundle budgets on low-
   power devices.
-- **LANG-SOLID-003:** avoid broad reactive effects and preserve stable list identities; verify that
-  updates touch only the intended nodes.
+- **LANG-SOLID-003:** compatibility alias for `LANG-SOLID-001` on reactive effects and list updates.
+  Keep stable list identities without duplicating findings under both identifiers.
 
 ### PHP and Ruby (`LANG-PHP-*`, `LANG-RUBY-*`)
 

@@ -19,10 +19,11 @@ prompt pattern.
 
 ### USAGE-CODEX-CTX-02 — Fork before a risky exploration
 
-Before trying a materially different approach that may be discarded, use `/fork` in the
+When preserving a separate exploration has a concrete benefit, consider `/fork` in the
 interactive CLI to clone the current chat, or `codex fork` to clone a saved session. This preserves
 the original transcript while the alternative is explored separately. A fork does not rewind to
 an earlier turn, so it should not be presented as an undo mechanism.
+A short reversible exploration can stay in the current task; a fork is not mandatory.
 
 ### USAGE-CODEX-CTX-03 — Start a new task for unrelated work
 

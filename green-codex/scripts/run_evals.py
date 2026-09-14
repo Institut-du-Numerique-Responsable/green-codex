@@ -42,7 +42,7 @@ def semantic_review(case, response, review, run):
             return "FAIL", f"semantic review: {check}"
     if review.get("verdict") not in {"PASS", "FAIL"}:
         return "REVIEW_REQUIRED", "semantic verdict missing"
-    return review["verdict"], "lexical screening and recorded semantic review"
+    return review["verdict"], "recorded semantic review bound to response, case and run"
 
 
 def evaluate(case, response):
@@ -60,6 +60,7 @@ def main():
     parser.add_argument("--responses", type=Path, required=True)
     parser.add_argument("--reviews", type=Path, help="Independent semantic reviews bound to response and case hashes")
     parser.add_argument("--run", type=Path, help="Model, date, skill hash, settings and limitations for this run")
+    parser.add_argument("--strict-format", action="store_true", help="Also fail the exit status for literal rule/term/status mismatches")
     parser.add_argument("--case", action="append", dest="case_ids", help="Evaluate only this case (repeatable); output reports partial coverage")
     args = parser.parse_args()
     cases = json.loads(args.cases.read_text(encoding="utf-8"))
@@ -84,13 +85,11 @@ def main():
         response = response_path.read_text(encoding="utf-8")
         result = evaluate(case, response)
         missing_rules, missing_terms, forbidden, statuses = result
-        if missing_rules or missing_terms or forbidden or statuses == 0:
-            print(f"FAIL {case['id']}: rules={missing_rules} terms={missing_terms} forbidden={forbidden} statuses={statuses}")
-            failed = True
-        else:
-            status, reason = semantic_review(case, response, reviews.get(case["id"]), run)
-            print(f"{status} {case['id']}: {reason}")
-            failed = failed or status != "PASS"
+        format_failed = bool(missing_rules or missing_terms or forbidden or statuses == 0)
+        print(f"FORMAT {'FAIL' if format_failed else 'PASS'} {case['id']}: rules={missing_rules} terms={missing_terms} flagged_terms={forbidden} statuses={statuses}")
+        status, reason = semantic_review(case, response, reviews.get(case["id"]), run)
+        print(f"SEMANTIC {status} {case['id']}: {reason}")
+        failed = failed or status != "PASS" or (args.strict_format and format_failed)
     return 1 if failed else 0
 
 

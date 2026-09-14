@@ -7,7 +7,9 @@ certification or requirement to audit every small code change.
 
 ## A small, realistic test
 
-Choose one essential task, its intended users and the current alternative. Agree
+Choose one essential task, its intended users and the current alternative. Confirm
+why the task matters using user evidence (`SERVICE-EFF-001`); faster execution of
+an unnecessary task does not establish utility. Then agree
 what benefit matters, acceptable quality and the observation period before
 interpreting results. Use existing evidence first. A short worksheet and a few
 observed tasks can start an investigation; they do not prove population-wide fit.
@@ -23,6 +25,9 @@ not universal pass thresholds. Match the sample, period and acceptable risk to
 the task; disclose gaps and avoid statistical claims from small samples. For a
 one-off task, repeat usage may be irrelevant: record that limit rather than
 inventing a retention requirement.
+Successful uses do not establish the number of opportunities: two resolved incidents
+prove two successful uses, not that only two incidents occurred. Keep that denominator
+unknown unless the supplied evidence counts all relevant opportunities.
 
 Use aggregated counts, an existing authorised log or a voluntary tally where
 possible. Do not install tracking, collect sensitive task contents, rank workers
