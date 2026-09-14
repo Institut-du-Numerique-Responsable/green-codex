@@ -45,11 +45,19 @@ still be wasteful when poorly designed.
 | User journeys, content, web | `WEB-*`, `NET-*`, Web quality and accessibility, matching languages/frameworks |
 | Infrastructure, procurement, operation | `INFRA-*`, `OPS-*`, `HW-*`, `NET-*` |
 | AI features or inference | `AI-*`, Responsible AI, `CODE-*`, `MEASURE-*` |
+| Responsible AI design, procurement, rollout, use or charter audit | `references/responsible-ai-charter.md` plus applicable `AI-*` and `MEASURE-*` rules |
 | Resource or environmental comparison | `MEASURE-*`, `CODE-EFF-012`, `references/measurement.md` |
 | Serverless, edge, mobile, IoT, embedded, distributed, NoSQL, data platforms | Matching `ARCH-*` sections plus relevant rows above |
 
 In a full audit, list the assessed families, exclusions with reasons, and evidence gaps. Outside
 that mode, report affected rules and material findings only; do not enumerate the entire catalogue.
+
+For an AI task, including responsible use of Codex itself, read the affected
+sections of `references/responsible-ai-charter.md`. It maps the INR/ISIT charter's
+four axes to daily actions, application tests and human evidence. Apply only
+relevant commitments; a small non-AI edit does not require the whole charter.
+Do not certify an organisation, regulatory compliance or a charter signature
+from code, a supplier declaration or passing tests.
 
 ## Responsible use of Codex itself
 
