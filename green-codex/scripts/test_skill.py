@@ -9,6 +9,7 @@ SKILL = ROOT / "SKILL.md"
 CRITERIA = ROOT / "references" / "criteria.md"
 RULES = ROOT / "references" / "rules.md"
 USAGE_PRACTICES = ROOT / "references" / "usage-practices.md"
+AI_CHARTER = ROOT / "references" / "responsible-ai-charter.md"
 METADATA = ROOT / "agents" / "openai.yaml"
 
 
@@ -19,7 +20,7 @@ def require(path, text):
 
 
 def main():
-    for path in (SKILL, CRITERIA, RULES, USAGE_PRACTICES, METADATA):
+    for path in (SKILL, CRITERIA, RULES, USAGE_PRACTICES, AI_CHARTER, METADATA):
         if not path.is_file():
             raise AssertionError(f"missing required file: {path}")
     require(SKILL, "name: green-codex")
@@ -30,6 +31,7 @@ def main():
     require(SKILL, "requires a verifiable primary source linked to the exact claim")
     require(SKILL, "remove the attribution and quotation marks")
     require(SKILL, "references/usage-practices.md")
+    require(SKILL, "references/responsible-ai-charter.md")
     for criterion in ("RGESN", "GR491", "Opquast", "RGAA"):
         require(CRITERIA, criterion)
         require(RULES, criterion)

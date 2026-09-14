@@ -33,6 +33,12 @@ removes an accessibility feature.
 
 ## Evidence checklist
 
+For AI tasks, the INR/ISIT charter's human, ethical, trust and environmental axes
+are mapped separately in [responsible-ai-charter.md](responsible-ai-charter.md).
+Its traceability table distinguishes engineering tests from human and organisational
+evidence; it does not add a certification or imply equivalence with these referentials.
+
+
 - transfer size and request count before and after;
 - CPU, memory, storage, and energy proxy where measurable;
 - cacheability, compression, image and video dimensions;

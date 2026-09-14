@@ -69,6 +69,31 @@ with their edition in the criteria reference; this does not establish formal com
 
 ## Responsible use of Codex
 
+### Responsible AI charter
+
+For AI work, Green Codex also applies the INR/ISIT responsible AI charter through
+[a dedicated reference](green-codex/references/responsible-ai-charter.md). It maps
+the charter's sixteen commitments across four axes: people, inclusion and ethics,
+trust, and environmental responsibility. Ten `AI-CHARTER-*` rules address the
+first three axes; existing AI and measurement rules cover frugality and lifecycle.
+
+Daily application is scoped to the task: check data and tool permissions for an
+AI agent, source disclosure for a chatbot, human oversight for risky decisions,
+or staff participation and training for a workplace rollout. A non-AI helper
+does not trigger an organisational audit. Use `$green-codex` with a bounded request,
+for example: "Review this AI support agent against the responsible AI charter;
+identify affected commitments, evidence gaps and tests without changing anything."
+
+Some product behaviours are testable automatically: tenant isolation, approval
+bypass, retrieval failures and resource budgets. Accessibility journeys need
+manual checks too; participation, training and purchasing commitments require
+human evidence. Findings use `PASS`, `FAIL` or `REVIEW_REQUIRED` for their assessed
+scope. Passing tests never certifies an organisation or compliance with the AI Act.
+The [evaluation catalogue](evals/README.md) includes seven charter scenarios,
+including a control against expanding a small unrelated task into a charter audit.
+
+### Codex usage practices
+
 When the task concerns Codex itself, the skill applies the 14 project-authored practices in
 [`green-codex/references/usage-practices.md`](green-codex/references/usage-practices.md). They
 cover relevant initial context, forks and task boundaries, deliberate compaction, the maintained
@@ -116,6 +141,7 @@ The skill is then available when Codex selects it automatically, or explicitly w
 - `green-codex/SKILL.md`: workflow and decision guidance;
 - `green-codex/references/criteria.md`: compact criteria map and evidence checklist;
 - `green-codex/references/measurement.md`: comparison protocol, evidence levels and carbon boundaries;
+- `green-codex/references/responsible-ai-charter.md`: charter traceability, daily actions and evidence requirements;
 - `green-codex/references/rules.md`: complete rules for frontend, backend, data,
   accessibility, web quality, responsible AI, modern architectures, operations and
   language/framework-specific guidance;

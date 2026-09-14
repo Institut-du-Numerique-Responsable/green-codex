@@ -1,0 +1,23 @@
+{
+  "model": "Codex (runtime identifies GPT-6; exact backend unknown)",
+  "date": "2026-09-14",
+  "skill_sha256": "cd90c1ff0b1d68fa449721766445fd897c3de810d722b9a1e0f64a9e7ac5da18",
+  "reference_sha256": {
+    "green-codex/SKILL.md": "cd90c1ff0b1d68fa449721766445fd897c3de810d722b9a1e0f64a9e7ac5da18",
+    "green-codex/references/criteria.md": "1447e9c1fd4b5cb8a26b55d8fc95df19456598ec2c1d17f487f883f075d6c7f0",
+    "green-codex/references/rules.md": "7b5d9779e68195db1c39c01ae17c454da84af60132daa94724d19f1ad7513ab3",
+    "green-codex/references/measurement.md": "339e2dc553b749da18cec84dd2bc58c35d484e9893ce4cda43598e7993f659a7"
+  },
+  "settings": {
+    "context": "Fresh separate agents per scenario, no baseline/candidate or eval access",
+    "tools": "Read skill and relevant references, save exact answer; no application execution",
+    "sampling": "Exact backend and sampling settings unavailable",
+    "loaded_references": "Union of references read; measurement.md read only for workplace scenario; rules.md read in relevant sections"
+  },
+  "limitations": [
+    "Two scenarios, one response per variant and scenario; no statistical or causal performance claim.",
+    "Automatic tool output compression occurred; exact expanded context was not logged.",
+    "Baseline predates charter identifiers, so lexical failures on those identifiers are expected.",
+    "Application tests are proposed only, not executed."
+  ]
+}

@@ -1,11 +1,27 @@
 # Behavioral evaluations
 
+[The September 14 charter comparison](runs/2026-09-14-charter/README.md) records
+two real paired samples and independent reviews. Both variants pass the semantic
+checks; the candidate adds explicit charter rule traceability. Five other charter
+scenarios remain unexecuted.
+
 A first real response and its separate semantic review are recorded in
 [the September 13 run](runs/2026-09-13-rebound/README.md). It covers one case,
 with an honest lexical failure; it is not a full benchmark.
 
 The cases in `cases.json` are realistic requests used to check whether Green Codex applies the
 right rules, asks for evidence, and avoids universal technology or carbon claims.
+
+Seven charter cases cover workplace rollout, agent security and oversight,
+discrimination response, accessibility, lifecycle claims, unsupported certification
+and proportionate scope. Each includes semantic review criteria. All ten new
+`AI-CHARTER-*` rules must appear in at least one scenario. The non-AI scope control
+has no required charter rule: testing must not force irrelevant advice.
+
+Catalogue validation proves reference integrity and coverage by scenarios, not
+that an agent passes those scenarios. Real responses and separate semantic reviews
+are required to assess behaviour; application security and accessibility tests
+still need to run on the actual system under review.
 
 For each case, run the prompt with the skill and save the response as
 `evals/responses/<case-id>.md`. Then run:

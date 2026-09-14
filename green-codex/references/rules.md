@@ -560,6 +560,11 @@ identifier in findings.
 
 ## Responsible AI
 
+For human, ethical, trust and environmental commitments, use
+[responsible-ai-charter.md](responsible-ai-charter.md). Its `AI-CHARTER-*`
+identifiers are Green Codex rules; environmental rules below remain the common
+source for frugality checks. Read only commitments relevant to the task.
+
 - Use `AI-EFF-002` to compare total resources per successful task. Minimise context and cache
   stable prompts and outputs where safe, with privacy boundaries, expiry and invalidation.
 - Minimise personal and confidential data sent to a model. Set budgets, rate limits, and timeouts.
