@@ -32,8 +32,7 @@ def main():
             assert f"**{rule}" in rules, f"unknown rule: {rule}"
         for term in case.get("forbidden_terms", []):
             assert term.strip()
-        if case["id"].startswith("charter-"):
-            assert case.get("review_checks"), f"Missing semantic review criteria: {case['id']}"
+        assert case.get("review_checks"), f"Missing semantic review criteria: {case['id']}"
     exercised = {rule for case in cases for rule in case["expected_rules"]}
     assert set(charter_ids) <= exercised, "A charter rule has no evaluation scenario"
     sample = cases[0]

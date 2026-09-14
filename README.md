@@ -161,7 +161,7 @@ The skill is then available when Codex selects it automatically, or explicitly w
   with official sources for Codex-specific mechanisms;
 - `green-codex/scripts/check_sobriety.py`: conservative static checks for selected high-confidence
   anti-patterns;
-- `green-codex/scripts/run_evals.py`: lexical screening for the behavioural evaluation catalogue;
+- `green-codex/scripts/run_evals.py`: separate format checks and hash-bound semantic reviews;
 - `evals/cases.json`: realistic behavioral evaluation scenarios;
 - `evals/README.md`: procedure for running evaluations against saved Codex responses;
 - `green-codex/agents/openai.yaml`: UI metadata for skill discovery.
@@ -247,3 +247,20 @@ structured metadata, a sitemap, `robots.txt`, and an `llms.txt` summary for sear
 assistants:
 
 <https://institut-du-numerique-responsable.github.io/green-codex/>
+
+## Verification limits and practical scope
+
+The 3U starts with a confirmed need. Technical AI work uses efficiency rules;
+charter sections are read for explicit assessments or identified risks. Inspection
+can suffice for simple changes; benchmarks resolve material uncertainty. Rule
+aliases preserve existing identifiers without requiring duplicate findings.
+
+The scanner excludes direct SQL existence tests from excess-projection findings.
+JSX/TSX comments and string examples are masked; template media requires review
+because this scanner is not a JavaScript/Vue compiler. A clean scan cannot prove
+all runtime behaviour.
+
+Evaluation output separates `FORMAT` from `SEMANTIC`. Keyword matches alone never
+validate reasoning; `--strict-format` also requires literal identifiers and terms.
+See [evaluation instructions](evals/README.md) and the
+[audit and correction record](docs/audit-skill-2026-09-14.md).

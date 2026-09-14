@@ -7,7 +7,9 @@ certification or requirement to audit every small code change.
 
 ## A small, realistic test
 
-Choose one essential task, its intended users and the current alternative. Agree
+Choose one essential task, its intended users and the current alternative. Confirm
+why the task matters using user evidence (`SERVICE-EFF-001`); faster execution of
+an unnecessary task does not establish utility. Then agree
 what benefit matters, acceptable quality and the observation period before
 interpreting results. Use existing evidence first. A short worksheet and a few
 observed tasks can start an investigation; they do not prove population-wide fit.

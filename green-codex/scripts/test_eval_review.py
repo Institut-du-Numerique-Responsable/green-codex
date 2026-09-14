@@ -35,6 +35,18 @@ def main():
         command += ["--reviews", str(root / "reviews.json"), "--run", str(root / "run.json")]
         result = subprocess.run(command, capture_output=True, text=True)
         assert result.returncode == 0, result.stdout + result.stderr
+        # A correct reviewed answer must remain visible even without literal rule IDs.
+        concise = "The query transfers unused columns. Select only required fields."
+        (root / "fixture.md").write_text(concise)
+        review["fixture"]["response_sha256"] = digest(concise)
+        (root / "reviews.json").write_text(json.dumps(review))
+        result = subprocess.run(command, capture_output=True, text=True)
+        assert result.returncode == 0 and "FORMAT FAIL" in result.stdout and "SEMANTIC PASS" in result.stdout, result.stdout
+        strict = subprocess.run(command + ["--strict-format"], capture_output=True, text=True)
+        assert strict.returncode == 1 and "SEMANTIC PASS" in strict.stdout, strict.stdout
+        (root / "fixture.md").write_text(response)
+        review["fixture"]["response_sha256"] = digest(response)
+        (root / "reviews.json").write_text(json.dumps(review))
         for key, value in {"model": "different model", "skill_sha256": "b" * 64,
                            "settings": {"context": "different"}}.items():
             (root / "run.json").write_text(json.dumps({**run, key: value}))

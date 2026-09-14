@@ -45,8 +45,8 @@ still be wasteful when poorly designed.
 | Runtime, APIs, data | `CODE-*`, `API-*`, `DB-*`, matching languages |
 | User journeys, content, web | `WEB-*`, `NET-*`, Web quality and accessibility, matching languages/frameworks |
 | Infrastructure, procurement, operation | `INFRA-*`, `OPS-*`, `HW-*`, `NET-*` |
-| AI features or inference | `AI-*`, Responsible AI, `CODE-*`, `MEASURE-*` |
-| Responsible AI design, procurement, rollout, use or charter audit | `references/responsible-ai-charter.md` plus applicable `AI-*` and `MEASURE-*` rules |
+| Technical AI inference or resource optimisation | Relevant `AI-EFF-*`, `CODE-*`, `MEASURE-*`; no automatic organisational audit |
+| Explicit charter assessment or identified AI rights, data, source or oversight risk | Affected sections of `references/responsible-ai-charter.md` |
 | Resource or environmental comparison | `MEASURE-*`, `CODE-EFF-012`, `references/measurement.md` |
 | Serverless, edge, mobile, IoT, embedded, distributed, NoSQL, data platforms | Matching `ARCH-*` sections plus relevant rows above |
 

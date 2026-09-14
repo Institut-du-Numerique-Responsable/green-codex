@@ -37,11 +37,13 @@ For each case, run the prompt with the skill and save the response as
 python3 green-codex/scripts/run_evals.py --responses evals/responses
 ```
 
-The evaluator first performs lexical screening, then requires an independent semantic review bound
-to the exact case, response and run hashes. Supply `--reviews reviews.json --run run.json` for a
-review-backed result; without those files every lexical match remains `REVIEW_REQUIRED`. Missing
-responses are reported as `REVIEW_REQUIRED`; they are not silently treated as passing. The case
-schema and review binding are checked in CI with `test_evals.py` and `test_eval_review.py`.
+The evaluator always reports `FORMAT` and `SEMANTIC` separately. Default exit status
+follows the independent semantic review bound to the exact response, case and run.
+Missing or stale reviews remain `REVIEW_REQUIRED` even when keywords match. Supply
+`--reviews reviews.json --run run.json`. Add `--strict-format` to require literal
+identifiers, terms and statuses as well. Flagged substrings need interpretation,
+including negated claims. Missing responses remain `REVIEW_REQUIRED`.
+CI checks catalogue integrity and review binding, not unexecuted behaviour.
 
 Each review is keyed by case ID and contains `reviewer`, `verdict`, `checks`,
 `response_sha256`, `case_sha256` and `run_sha256`. Hash the UTF-8 response text
@@ -66,3 +68,8 @@ validation, lexical results and independent semantic review results separate in 
 
 New lifecycle cases cover service necessity, older devices, rebound arithmetic, unsupported
 compliance claims, muted autoplay, critical images, total AI task cost and safe retirement.
+
+All 25 cases have specific semantic criteria, including no-change SQL, rare essential
+services and compression trade-offs. Catalogue presence does not prove execution.
+Historical results describe the evaluator at the time; `--strict-format` reproduces
+its combined exit policy. Archived responses and run hashes remain unchanged.
