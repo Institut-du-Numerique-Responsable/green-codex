@@ -3,6 +3,10 @@
 Use this reference for AI design, procurement, rollout, use or audit, including
 responsible use of Codex itself. Apply only the commitments affected by the task.
 A small non-AI change does not require an organisational charter audit.
+For a daily check of a service's value or readiness, start with the small
+[3U tests: utile, utilisé, utilisable](three-u.md). Use this charter reference only
+for the affected issues or a requested charter assessment, not as a mandatory
+sixteen-commitment checklist.
 
 ## Source and limits
 

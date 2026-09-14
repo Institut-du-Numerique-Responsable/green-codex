@@ -166,5 +166,17 @@
       "Keeps the review and verification proportionate to the helper and does not require the full AI charter or organisational evidence.",
       "Does not invent code locations, findings or test results when only a description is available."
     ]
+  },
+  {
+    "id": "three-u-pilot",
+    "prompt": "Nous voulons évaluer les 3U (utile, utilisé, utilisable) d'un assistant de support avant de le généraliser. En pilote facultatif, sur 20 agents ayant chacun une tâche pertinente pendant deux semaines, 8 l'ont essayé et 3 l'ont réutilisé pour une autre tâche. Sur 10 dossiers comparables, le temps médian passe de 10 à 8 minutes avec l'assistant, mais 2 réponses restent incorrectes après relecture, contre aucune sans assistant. Sur 5 participants représentatifs, 4 terminent le parcours sans aide ; le cinquième est bloqué au clavier. Les tests techniques passent. Donne un verdict par U et les prochains tests réalisables avec peu de moyens. Ne déploie rien et ne prétends pas avoir exécuté les tests.",
+    "expected_rules": ["SERVICE-EFF-001", "SERVICE-EFF-006"],
+    "required_terms": ["utile", "utilisé", "utilisable", "clavier"],
+    "review_checks": [
+      "Separates all three U decisions; does not establish utility from speed despite residual errors and asks for total correction time and quality criteria.",
+      "Reports observed adoption with correct denominators, distinguishes it from adequacy without agreed thresholds, and does not infer repeat opportunity for every participant.",
+      "Treats the keyboard blocker as a usability failure despite four completions and passing technical tests, without generalising a five-person sample.",
+      "Proposes small feasible comparisons, usage observation and journey retests without imposing a full charter audit, deploying, collecting data or claiming tests were executed."
+    ]
   }
 ]

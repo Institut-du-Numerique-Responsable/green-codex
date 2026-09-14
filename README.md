@@ -71,6 +71,17 @@ with their edition in the criteria reference; this does not establish formal com
 
 ### Responsible AI charter
 
+Start daily service assessments with [the 3U guide](green-codex/references/three-u.md):
+**utile** (compare useful outcomes and correction effort with the current process),
+**utilisé** (observe real use when the need occurs), and **utilisable** (observe
+independent task completion, including accessible interaction). A few comparable
+tasks, a voluntary usage tally and observed journeys can start this assessment.
+Agree criteria for the service; there is no universal adoption target or combined
+score. Without usage evidence, actual adoption stays `REVIEW_REQUIRED`.
+
+The full charter remains a reference for relevant issues or an explicit charter
+audit, not a mandatory checklist for every AI task.
+
 For AI work, Green Codex also applies the INR/ISIT responsible AI charter through
 [a dedicated reference](green-codex/references/responsible-ai-charter.md). It maps
 the charter's sixteen commitments across four axes: people, inclusion and ethics,
@@ -142,6 +153,7 @@ The skill is then available when Codex selects it automatically, or explicitly w
 - `green-codex/references/criteria.md`: compact criteria map and evidence checklist;
 - `green-codex/references/measurement.md`: comparison protocol, evidence levels and carbon boundaries;
 - `green-codex/references/responsible-ai-charter.md`: charter traceability, daily actions and evidence requirements;
+- `green-codex/references/three-u.md`: small practical tests for utility, actual usage and usability;
 - `green-codex/references/rules.md`: complete rules for frontend, backend, data,
   accessibility, web quality, responsible AI, modern architectures, operations and
   language/framework-specific guidance;

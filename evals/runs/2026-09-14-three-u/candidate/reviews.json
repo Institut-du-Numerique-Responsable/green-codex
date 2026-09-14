@@ -1,0 +1,27 @@
+{
+  "three-u-pilot": {
+    "reviewer": "independent-three-u-review",
+    "verdict": "PASS",
+    "checks": {
+      "Separates all three U decisions; does not establish utility from speed despite residual errors and asks for total correction time and quality criteria.": {
+        "passed": true,
+        "evidence": "/tmp/three-u-candidate.md:5 and :11 separate decisions, identify residual errors and missing correction time/quality criteria, and propose comparison measuring time through a correct outcome."
+      },
+      "Reports observed adoption with correct denominators, distinguishes it from adequacy without agreed thresholds, and does not infer repeat opportunity for every participant.": {
+        "passed": true,
+        "evidence": "/tmp/three-u-candidate.md:6 reports 8/20, 3/20 and 3/8 correctly, names the unknown second opportunity denominator and missing adoption objective, and labels usage real but adequacy unknown."
+      },
+      "Treats the keyboard blocker as a usability failure despite four completions and passing technical tests, without generalising a five-person sample.": {
+        "passed": true,
+        "evidence": "/tmp/three-u-candidate.md:7 marks keyboard blockage FAIL despite four completions and technical checks, expressly limiting population inference from five participants."
+      },
+      "Proposes small feasible comparisons, usage observation and journey retests without imposing a full charter audit, deploying, collecting data or claiming tests were executed.": {
+        "passed": true,
+        "evidence": "/tmp/three-u-candidate.md:11-15 proposes small task comparisons, voluntary aggregated usage counts and full-journey keyboard retests, without requiring a charter audit or executing collection/tests/deployment."
+      }
+    },
+    "run_sha256": "8579f57c3bc174728cd42f06f96cfb84f71d627554db403ccd066445f7f0d5ee",
+    "case_sha256": "ff9ae57dbde129a0aeb35acd5e083f91fc9555223d88f2958280b9ed466323e8",
+    "response_sha256": "83ea6f6ca2df3e09925e3657696e6ae51d22711223008e82067eefc6744f3647"
+  }
+}

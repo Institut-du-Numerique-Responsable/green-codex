@@ -1,0 +1,27 @@
+{
+  "three-u-pilot": {
+    "reviewer": "independent-three-u-review",
+    "verdict": "FAIL",
+    "checks": {
+      "Separates all three U decisions; does not establish utility from speed despite residual errors and asks for total correction time and quality criteria.": {
+        "passed": true,
+        "evidence": "/tmp/three-u-baseline.md:5 and :11 separate the U decisions, reject speed-only utility despite 2/10 residual errors, and propose total review/correction time plus pre-agreed quality and benefit requirements."
+      },
+      "Reports observed adoption with correct denominators, distinguishes it from adequacy without agreed thresholds, and does not infer repeat opportunity for every participant.": {
+        "passed": false,
+        "evidence": "/tmp/three-u-baseline.md:6 correctly reports 8/20, 3/20 and 3/8 and explicitly says second opportunities are unknown. However, it does not identify the missing agreed adoption criterion or distinguish whether the observed level is adequate for the service; its judgment instead focuses on partial initial adoption and unestablished durable usage."
+      },
+      "Treats the keyboard blocker as a usability failure despite four completions and passing technical tests, without generalising a five-person sample.": {
+        "passed": true,
+        "evidence": "/tmp/three-u-baseline.md:7 marks keyboard blockage FAIL despite 4/5 completion and passing technical tests, and explicitly rejects population generalisation."
+      },
+      "Proposes small feasible comparisons, usage observation and journey retests without imposing a full charter audit, deploying, collecting data or claiming tests were executed.": {
+        "passed": true,
+        "evidence": "/tmp/three-u-baseline.md:11-15 proposes a small comparative task set, minimal voluntary usage observation and keyboard/full-journey retests. It imposes no charter audit and explicitly says no deployment or application test was executed; collection is proposed only."
+      }
+    },
+    "run_sha256": "f518e79d0f4c0c7f33e4754a433ac475437ff787cfad44c116f3ff0b791f97fd",
+    "case_sha256": "ff9ae57dbde129a0aeb35acd5e083f91fc9555223d88f2958280b9ed466323e8",
+    "response_sha256": "fec9ea4a9e3fd20a3b3040a851996fa65063616fc1158e5c0d419590325d3ab1"
+  }
+}
