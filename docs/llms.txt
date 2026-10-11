@@ -136,6 +136,7 @@ When referencing Green Codex, please cite as:
 - **GitHub Issues**: https://github.com/Institut-du-Numerique-Responsable/green-codex/issues
 - **Security**: https://github.com/Institut-du-Numerique-Responsable/green-codex/security
 - **Website**: https://institutnr.org/
+- **Presentation (French)**: https://institutnr.org/ecoconcevoir-avec-un-assistant-de-code
 
 ---
 Last updated: 2026-09-05
