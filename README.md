@@ -183,6 +183,8 @@ The skill is then available when Codex selects it automatically, or explicitly w
   with official sources for Codex-specific mechanisms;
 - `green-codex/scripts/check_sobriety.py`: conservative static checks for selected high-confidence
   anti-patterns;
+- `green-codex/scripts/nr_hook.py`: optional native summary check; install with `scripts/install_nr_hook.py`
+  from the installed skill directory, then approve in Codex `/hooks`;
 - `green-codex/scripts/nr_summary.py`: validates task records and renders the NR closing summary;
 - `green-codex/references/closing-summary.md`: record format, command and integration limits;
 - `green-codex/references/sources.md`: source inventory and provenance gaps;
@@ -222,7 +224,10 @@ with rule IDs, user benefits, evidence and unresolved checks. For automation, us
 `green-codex/scripts/nr_summary.py` with a current task record and explicit scan scope.
 It validates the record and reruns the three static checks; it does not certify the other rules.
 See [record format, command and hook integration](green-codex/references/closing-summary.md).
-The portable command is included; no native hook is automatically installed.
+An optional native hook checks summary structure and requests at most one correction.
+Install it explicitly from the persistent skill directory, then review and trust its two
+entries in Codex `/hooks`; copying the skill alone does not enable it. See the linked guide
+for detection limits, installation, verification and removal.
 
 ## Use and contribution
 

@@ -34,7 +34,7 @@ Assessed findings use PASS, FAIL or REVIEW_REQUIRED with scoped evidence. Missin
 
 The skill requests an end-of-task NR summary: applied rule IDs, actions, user benefits, evidence and unresolved checks. For a simple text task, a short factual summary suffices; no static scan or JSON record is required.
 
-The portable nr_summary.py command validates a current task record and reruns three static checks: SQL projection, media autoplay and JavaScript polling. It does not authenticate declared evidence or verify all rules. No native automatic hook is installed.
+The portable nr_summary.py command validates a current task record and reruns three static checks: SQL projection, media autoplay and JavaScript polling. It does not authenticate declared evidence or verify all rules. An optional native hook checks summary structure and requests at most one correction. It requires explicit installation and trust review through Codex /hooks. It detects explicit $green-codex invocation, or a known rule ID or NR heading in the final answer; implicit use with none of these signals is not detected.
 
 - [Closing summary format and command](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/closing-summary.md)
 - [Evaluation procedure and limits](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/evals/README.md)

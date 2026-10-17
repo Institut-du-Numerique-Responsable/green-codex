@@ -102,6 +102,10 @@ say so briefly. Use the user's language and keep the detail proportional to the 
 For a repeatable end-of-run check or audit record, follow `references/closing-summary.md`
 and run `scripts/nr_summary.py` with the current task record and explicit scan scope.
 A successful static scan alone never means all rules were applied.
+When the optional NR hook is configured, label the summary `Bilan NR` or `NR summary`
+and use `Action:`, `Intérêt:`/`Benefit:`, `Preuve:`/`Evidence:` and `Limites:`/`Limits:`
+with the applicable IDs. If none applies, use `NR: non applicable — reason` under that heading.
+This structure lets the hook detect missing fields; it does not authenticate evidence.
 
 ## Source attribution
 
