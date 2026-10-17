@@ -78,13 +78,51 @@ Review the final diff and cited results before reporting an action as verified.
 - **CI or execution wrapper:** run this command after the work and tests, publish its stdout,
   and propagate its exit status. `--strict` makes unresolved reviews visible as a failing gate.
   A scan-only CI job does not know which NR actions were performed; it needs the task record.
-- **Native Codex hook:** a `Stop` adapter can invoke the command using task-specific paths and
-  return the hook's JSON protocol. The command's Markdown is not valid direct `Stop` stdout.
-  Keep the adapter scoped to NR tasks and honour `stop_hook_active` to avoid repeated
-  continuations. Require a current task record; do not silently read a stale shared report.
+- **Native Codex hooks:** the optional adapter below checks summary structure without scanning code.
 
-[Official Codex hook documentation](https://developers.openai.com/codex/hooks), consulted
-2026-10-17, describes `Stop`, JSON output, `stop_hook_active`, project/user configuration,
-and trust review. A plain skill installation does not register this command as a hook.
-No native hook or global configuration is installed by this package. Test an adapter in the
-actual host before enabling it; the portable command is independently usable now.
+## Optional native hooks
+
+Install from the persistent skill directory, so the configured command does not depend on a
+checkout branch or temporary directory. Python 3.10 or newer is required. Preview first:
+
+```sh
+python3 /path/to/installed/green-codex/scripts/install_nr_hook.py
+python3 /path/to/installed/green-codex/scripts/install_nr_hook.py --apply
+```
+
+The installer adds `UserPromptSubmit` and `Stop` entries to `~/.codex/hooks.json`, preserves
+existing entries and backs up the configuration before a change. Repeating installation from
+the same script and interpreter does not add duplicates. If moving the skill, remove the old
+entries before installing from the new path. `--config` selects another configuration file.
+
+Open `/hooks` in Codex to review and trust both definitions. Installation alone does not activate
+untrusted hooks. Hosts without these events or the trust interface need the portable command;
+do not assume the current conversation has reloaded the configuration.
+[Official hook documentation](https://learn.chatgpt.com/docs/hooks), checked 2026-10-17.
+
+`UserPromptSubmit` arms only the turn whose prompt contains `$green-codex` and reminds the agent
+of the summary fields. `Stop` also recognises a summary heading or known rule ID in the last
+answer. Implicit skill use with neither an ID nor a heading is not detectable by this adapter.
+An explicit invocation quoted in a prompt can also arm it; this is lexical detection, not intent
+classification. Other turns pass through. A later unrelated prompt resets the explicit scope.
+
+Use `Bilan NR` or `NR summary` as a heading, followed by labelled fields `Action:`,
+`Intérêt:`/`Benefit:`, `Preuve:`/`Evidence:` and `Limites:`/`Limits:`, and applicable rule IDs.
+Place each field on its own line or separate fields with semicolons. When no action applies,
+write `NR: non applicable — reason` (or `NR: not applicable — reason`) below the heading.
+The hook checks presence, not truth, completeness of rule coverage or validity of the reason.
+
+If fields are missing, the hook requests one continuation. It honours `stop_hook_active` and
+never blocks that continuation again, even if the answer is still incomplete. It makes no model
+or network call, runs no shell commands from input and does not invoke the static scanner.
+Malformed or oversized input and local-state errors produce a warning, without blocking work.
+
+Local state under `~/.codex/green-codex-hook-state` stores only a turn ID in a file named from a
+session hash, not prompts, answers or evidence. It is removed at the matching Stop or next
+unrelated prompt; interrupted or abandoned sessions can leave small stale files that may be
+deleted when no session is running. Input is bounded to 1 MiB. No transcript is read.
+
+To disable, use `/hooks`. To uninstall, remove only the two entries invoking `nr_hook.py` from
+the selected hooks configuration; leave other hooks intact. The installer never grants trust
+or bypasses Codex's review. Unit tests exercise the event protocol; actual host execution must
+be checked after trust with an explicit `$green-codex` task and an initially missing summary.
