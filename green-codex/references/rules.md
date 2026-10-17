@@ -21,6 +21,14 @@ sample size and uncertainty. Do not copy a percentage from a vendor, benchmark o
 guarantee. Case studies (for example public-sector or railway deployments) belong in project notes,
 not in a compliance rule.
 
+## Overlapping rules
+
+Use one finding for one observed problem. Select the most specific applicable rule; cite a
+broader or source-guide rule as a correspondence only when useful. Compatibility aliases
+remain valid for older records but do not create another action, test or score. Reuse evidence
+only when it covers the same scope: a database limit does not prove that an API enforces its
+own page-size contract, and a written retention policy does not prove deletion works.
+
 ## Universal rules
 
 - Confirm the user need before adding functionality; prefer the smallest viable solution.
@@ -173,9 +181,9 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
 - **OPS-EFF-002 — Facility evidence:** for owned or procured infrastructure, track PUE or an
   equivalent facility metric and set a context-appropriate target. Consider liquid cooling or heat
   reuse only for suitable high-density deployments, backed by lifecycle and safety assessment.
-- **OPS-EFF-003 — Hardware lifecycle:** specify service life, repairability, reuse and end-of-life
-  channels in procurement. Prefer refurbished equipment when security, support and performance
-  requirements are met; verify labels such as TCO Certified, Energy Star or Blauer Engel.
+- **OPS-EFF-003:** for a hardware procurement review, use `HW-EFF-001`, `HW-EFF-002` and
+  `HW-EFF-003` for service life, purchase evidence and end of life. This is a routing identifier:
+  report the specific hardware rule rather than counting the same requirement twice.
 
 ### Networks and digital services
 
@@ -294,39 +302,21 @@ replicas and data movement as well as application code.
 
 ## Frontend, HTML, CSS, and media
 
-- Keep transferred bytes and request count low; load non-critical scripts with `defer` or `async`.
-- Use native HTML elements (`button`, `a`, `details`, `dialog`, `select`) before custom widgets.
-- Lazy-load below-the-fold images and embeds. Never autoplay video; use a poster and user action.
-- Prefer AVIF/WebP with fallbacks, responsive `srcset`/`sizes`, and explicit media dimensions.
-- Prefer SVG or CSS for simple icons. Keep the DOM shallow and remove dead markup.
-- Ship only the CSS and fonts used. Prefer system fonts; otherwise use limited WOFF2 families with
-  `font-display: swap`.
-- Animate only `transform` and `opacity`, honour `prefers-reduced-motion`, and avoid continuous
-  animations. Provide a usable print stylesheet.
-- Debounce expensive input, scroll, and resize handlers. Cache network responses explicitly.
+Use `WEB-EFF-*` for loading and media, `NET-EFF-004` for the critical path, and
+`LANG-HTML-*` / `LANG-CSS-*` for markup and styling. These are the authoritative checks;
+do not create another finding from this routing section. Preserve accessible alternatives.
+Use `NET-EFF-002` for network-response caching. For simple icons, consider SVG or CSS when
+it reduces transferred resources without losing accessible meaning. When custom fonts delay
+text, choose and test a font-display strategy such as `swap`, including layout shifts. If printing
+is part of the user journey, verify readable print output and hide irrelevant navigation.
 
 ## Backend, APIs, and data
 
-- Paginate collections and stream large responses. Select only required columns and fields.
-- Add and verify indexes for frequent filters and joins; eliminate N+1 access patterns.
-- Set timeouts, bounded retries, and circuit breakers for remote calls. Do not retry blindly.
-- Prefer asynchronous or event-driven refresh over polling. Measure CPU, memory, storage, and
-  network impact where practical.
-- Dispose resources deterministically and avoid loading an entire file or dataset into memory.
-
-## Language guidance
-
-Apply the backend rules to JavaScript/TypeScript, Java, C#, Python, PHP, Ruby, Rust, C, C++, SQL,
-and other server-side code. Additionally:
-
-- JavaScript/TypeScript: use code splitting and dynamic imports for optional features; avoid layout
-  thrashing and repeated framework re-renders.
-- Python: use iterators and generators for large data; avoid repeated serialisation and unbounded
-  DataFrame copies.
-- Java/C#: bound executor pools and caches; dispose streams, database handles, and HTTP clients.
-- PHP/Ruby: stream exports and avoid rendering unbounded collections in one response.
-- C/C++/Rust: release resources on every path; measure allocations and avoid needless copies.
-- SQL: use projections, predicates, pagination, and verified indexes; never use unbounded queries.
+Use `CODE-EFF-001` through `CODE-EFF-005` for bounded work and resource lifetime,
+`API-EFF-001` for collection endpoints, and `DB-EFF-*` for queries and storage.
+For repeated remote-service failures, consider a circuit breaker when bounded retries alone
+still overload a dependency; verify opening, recovery and fallback without hiding errors.
+Apply the language-specific implementation below only to the affected runtime.
 
 ## Language-specific sobriety guidance
 
@@ -341,9 +331,11 @@ identifier in findings.
   workload rather than copying production values.
 - **LANG-JAVA-002:** use try-with-resources for files, sockets and JDBC; profile allocation and GC
   before introducing object pools or changing collectors.
-- **LANG-JAVA-003:** for batch jobs, compare JVM, GraalVM native image and another suitable runtime
-  using startup, throughput, peak memory and energy; never disable GC without a benchmark and leak
-  safeguards.
+- **LANG-JAVA-003:** when startup or batch resource use exceeds an agreed budget, compare a targeted
+  JVM configuration change with a suitable deployment alternative only if the decision warrants it.
+  Include startup, warm-up, throughput and peak memory at equivalent output; measure energy only
+  when tooling supports it. A normal batch change does not require a runtime comparison.
+  Do not disable garbage collection without bounded-lifetime and memory-exhaustion safeguards.
 - **LANG-JAVA-004:** prefer primitive arrays and bounded collections in hot paths; inspect JFR or
   allocation profiles before replacing clear object-oriented code.
 - **LANG-JAVA-005:** batch JDBC writes with a bounded transaction and fetch size; avoid one commit
@@ -431,8 +423,9 @@ identifier in findings.
   or a small, subsetted WOFF2 set. Verify production CSS size.
 - **LANG-CSS-002:** animate only `transform` and `opacity`, honour reduced motion, and avoid
   continuous effects or broad `will-change` declarations.
-- **LANG-CSS-003:** prefer media queries and container queries over JavaScript-driven layout work;
-  remove unused selectors and verify computed-style cost on representative pages.
+- **LANG-CSS-003:** when layout is recalculated by JavaScript, check whether media or container
+  queries meet the same behaviour and supported-browser needs. Compare a representative resize
+  trace and layout result before changing it; unused CSS belongs to `LANG-CSS-001`.
 
 ### React (`LANG-REACT-*`)
 
@@ -440,8 +433,9 @@ identifier in findings.
   and prevent avoidable re-renders with profiling evidence.
 - **LANG-REACT-002:** split routes and optional features, virtualise long lists, and do not ship a
   client-side runtime for content that can be rendered statically or on the server.
-- **LANG-REACT-003:** use stable keys and selectors, avoid effect-driven derived state, and verify
-  render count with the React profiler before adding memoisation.
+- **LANG-REACT-003:** when a list is reordered or derived state becomes stale, use stable item
+  identities and compute values from their source where possible. Test insert, delete and reorder
+  behaviour. Rendering-performance findings and memoisation use `LANG-REACT-001`.
 
 ### Vue (`LANG-VUE-*`)
 
@@ -458,8 +452,9 @@ identifier in findings.
   identity, and avoid work in templates; verify change-detection frequency with profiling.
 - **LANG-ANGULAR-002:** use route-level lazy loading and remove unused polyfills, modules and locale
   data from production bundles.
-- **LANG-ANGULAR-003:** use `trackBy`/identity tracking and teardown subscriptions; avoid template
-  methods that recompute on every change-detection pass.
+- **LANG-ANGULAR-003:** when components subscribe to streams or allocate recurring work, ensure
+  teardown on destruction using the lifecycle mechanism supported by the project. Test that no
+  subscription or task remains active. Identity and change-detection findings use `LANG-ANGULAR-001`.
 
 ### Svelte (`LANG-SVELTE-*`)
 
@@ -467,13 +462,16 @@ identifier in findings.
   broad subscriptions and unnecessary client hydration.
 - **LANG-SVELTE-002:** prefer static rendering for non-interactive content and measure generated
   JavaScript rather than assuming compile-time output is always smaller.
-- **LANG-SVELTE-003:** unsubscribe stores and actions on teardown and keep reactive statements
-  narrow; verify update counts for large lists.
+- **LANG-SVELTE-003:** when custom subscriptions, actions or external resources are created,
+  provide lifecycle cleanup appropriate to the installed Svelte version. Test mount/unmount cycles
+  for remaining listeners or tasks; do not add manual teardown for framework-managed subscriptions.
+  Reactive update scope belongs to `LANG-SVELTE-001`.
 
 ### Preact (`LANG-PREACT-*`)
 
-- **LANG-PREACT-001:** use Preact when its compatibility and accessibility meet the requirements;
-  verify bundle size and runtime behaviour against the existing implementation.
+- **LANG-PREACT-001:** when Preact is already used or a migration is explicitly being evaluated,
+  compare production bundle and essential interactions against the current baseline. Verify library
+  compatibility and accessibility before proposing migration; this rule does not require adopting Preact.
 - **LANG-PREACT-002:** split optional features and avoid shipping compatibility layers that are not
   needed by the target browsers.
 - **LANG-PREACT-003:** avoid recreating context values and callbacks on every render; profile before
@@ -517,8 +515,9 @@ identifier in findings.
 
 ### SQL and PL/SQL (`LANG-SQL-*`, `LANG-PLSQL-*`)
 
-- **LANG-SQL-001:** use explicit projections, predicates and bounded pagination; inspect the query
-  plan for high-volume statements and reject accidental full-table scans.
+- **LANG-SQL-001:** apply `DB-EFF-001` to returned columns and `DB-EFF-002` to list bounds.
+  For a costly statement, inspect its plan on representative data; a full-table scan is not itself
+  a failure when the operation needs most rows. Cite one finding for the same projection or bound.
 - **LANG-SQL-002:** use parameterised statements, set transaction scope deliberately, and avoid
   repeated commits or round trips in a batch. Verify query count and lock duration in an integration
   test.
@@ -548,14 +547,17 @@ identifier in findings.
   and one streaming pipeline where this preserves readability and safety.
 - **LANG-SHELL-002:** use null-delimited, safe filename handling (`find -print0`/`xargs -0` or an
   equivalent) and quote expansions; correctness and security take precedence over micro-optimisation.
-- **LANG-SHELL-003:** bound retries, polling and recursive traversal; clean temporary files with a
-  trap and fail predictably with strict-mode settings appropriate to the script.
+- **LANG-SHELL-003:** for scripts with retries, polling or recursive traversal, define a limit and
+  a failure exit status; test exhaustion and cancellation. Choose error handling appropriate to
+  the shell rather than prescribing a universal strict mode. Temporary files use `LANG-SHELL-006`.
 - **LANG-SHELL-004:** for large data, stream rather than creating intermediate copies; measure
   whether compression reduces total CPU plus I/O before enabling it.
-- **LANG-SHELL-005:** prefer `awk`, `sed` or a single pipeline over repeatedly invoking `grep`,
-  `cut` or `expr`; preserve readability and quote data at every boundary.
-- **LANG-SHELL-006:** use `mktemp`, traps and bounded work directories; never write unbounded output
-  to logs or temporary storage.
+- **LANG-SHELL-005:** compatibility alias for `LANG-SHELL-001` when repeated text-processing commands
+  occur in a loop. Use one finding; compare process count on representative input before replacing
+  readable code with a pipeline.
+- **LANG-SHELL-006:** when a script creates temporary data, use `mktemp` or an equivalent safe API,
+  bound storage growth, and clean up on normal exit and handled signals. Test a failure path;
+  document recovery for abrupt termination where traps cannot run.
 
 ## Web quality and accessibility
 

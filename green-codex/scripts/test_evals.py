@@ -12,6 +12,7 @@ CASES = ROOT / "evals" / "cases.json"
 RULES = ROOT / "green-codex" / "references" / "rules.md"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from run_evals import evaluate
+from nr_summary import known_rules
 
 
 def main():
@@ -29,7 +30,7 @@ def main():
         assert case["expected_rules"] or case.get("scope_control") is True
         assert case["required_terms"]
         for rule in case["expected_rules"]:
-            assert f"**{rule}" in rules, f"unknown rule: {rule}"
+            assert rule in known_rules(), f"unknown rule: {rule}"
         for term in case.get("forbidden_terms", []):
             assert term.strip()
         assert case.get("review_checks"), f"Missing semantic review criteria: {case['id']}"

@@ -6,13 +6,13 @@ Code (including scripts, hooks, tests and executable website code) is licensed
 under the Apache License, Version 2.0.
 
 Rule catalogs and references, SKILL.md, documentation and
-original editorial website content are licensed under Creative Commons
+original editorial website content, except the explicitly marked adaptations below, are licensed under Creative Commons
 Attribution 4.0 International (CC BY 4.0). Embedded code examples in these
 materials may also be used under Apache-2.0.
 
 This is a division by content type, not a choice of license for every file.
 Repository metadata describing the combined distribution uses the SPDX
-expression Apache-2.0 AND CC-BY-4.0.
+expression Apache-2.0 AND CC-BY-4.0 AND CC-BY-SA-4.0.
 
 Full license texts are included in LICENSES/Apache-2.0.txt and
 LICENSES/CC-BY-4.0.txt beside this file. See NOTICE for attribution.
@@ -25,3 +25,10 @@ Third-party material and explicitly marked source attributions retain their
 applicable terms. These licenses grant no trademark rights in project names
 or logos. Previously published MIT versions remain available under MIT;
 this change does not revoke permissions already granted.
+
+Explicit adaptation exception: references/air-practices.md,
+references/stakeholder-maturity.md and references/ria31.md within the skill are
+licensed under CC BY-SA 4.0, including their Green Codex adaptations. Preserve
+the source attribution, revision/date, modification notice and same licence.
+The full text is in the skill's LICENSES/CC-BY-SA-4.0.txt. This exception does not
+relicense the other original files or claim ownership of third-party standards.

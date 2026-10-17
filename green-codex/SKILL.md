@@ -1,6 +1,6 @@
 ---
 name: green-codex
-description: Apply Green IT and responsible digital practices when designing, coding, reviewing, or auditing software and digital services.
+description: Apply Green IT and responsible digital practices when designing, coding, reviewing, or auditing software and digital services, or answering natural-language requests about responsible digital practices.
 ---
 
 # Green Codex
@@ -8,11 +8,8 @@ description: Apply Green IT and responsible digital practices when designing, co
 Use this skill when a request concerns eco-design, digital sobriety, accessibility, responsible
 AI, sustainable software, or an environmental audit of code or a digital service.
 
-No programming language, framework, database or hosting provider is inherently “green”. Assess the
-way it is used: architecture, algorithms, configuration, workload, lifecycle, accessibility and
-measured resource impact. A familiar or interpreted technology can be the most responsible choice
-when it meets the budget and avoids unnecessary migration; a compiled or lightweight technology can
-still be wasteful when poorly designed.
+Assess actual usage and evidence; no technology is inherently “green”. Preserve accessibility,
+privacy, security and correctness. Do not infer environmental savings from a tool score.
 
 ## Working method
 
@@ -25,9 +22,9 @@ still be wasteful when poorly designed.
 3. Select applicable families below and in `references/criteria.md`. Rule IDs are project-authored,
    not official criterion numbers. Read only relevant sections of `references/rules.md` using its
    headings or identifier prefixes; do not load unrelated languages or architectures.
-4. Establish a representative baseline and a useful functional unit (e.g. one completed search).
-   For resource comparisons, carbon claims or material optimisations, read
-   `references/measurement.md`. Missing measurements mean unknown gains, not zero impact.
+4. For resource comparisons, carbon claims or material optimisations, establish a representative
+   baseline and functional unit using `references/measurement.md`. A simple edit or explanation
+   needs no benchmark. Missing measurements mean unknown gains, not zero impact.
 5. Prioritise observed hotspots by expected total benefit, confidence, implementation cost and
    regression risk. Prefer reversible changes. Preserve accessibility, privacy, security,
    correctness and resilience; measure transfers between client, network and server costs.
@@ -44,6 +41,10 @@ still be wasteful when poorly designed.
 | Device support, inclusion, engagement or lifecycle review | Relevant `SERVICE-*`; retirement also `DB-EFF-005`, `OPS-EFF-001` |
 | Runtime, APIs, data | `CODE-*`, `API-*`, `DB-*`, matching languages |
 | User journeys, content, web | `WEB-*`, `NET-*`, Web quality and accessibility, matching languages/frameworks |
+| NR charter, practical code/language expectations, natural-language tasks or organisational responsibility | `references/nr-charter.md`; use its applicability matrix and select affected axes only |
+| Architecture programme or BP-AIR assessment | `references/air-practices.md`; source fiche IDs route to `AIR-*` |
+| Supplier/partner maturity or procurement preparation | `references/stakeholder-maturity.md`; `STAKE-*`, not a contract or certification |
+| Explicit RIA31 review or affected AI lifecycle risk | `references/ria31.md`; `RIA-*` operational adaptations, select affected stages |
 | Infrastructure, procurement, operation | `INFRA-*`, `OPS-*`, `HW-*`, `NET-*` |
 | Technical AI inference or resource optimisation | Relevant `AI-EFF-*`, `CODE-*`, `MEASURE-*`; no automatic organisational audit |
 | Explicit charter assessment or identified AI rights, data, source or oversight risk | Affected sections of `references/responsible-ai-charter.md` |
@@ -53,20 +54,22 @@ still be wasteful when poorly designed.
 In a full audit, list the assessed families, exclusions with reasons, and evidence gaps. Outside
 that mode, report affected rules and material findings only; do not enumerate the entire catalogue.
 
-Use the 3U as the practical starting point when assessing an AI service's value or
-readiness. Consult `references/responsible-ai-charter.md` for a requested charter
-assessment or a relevant issue such as data permissions, sources or risky actions;
-do not load all commitments for every AI task. A small non-AI edit needs neither a
-3U study nor the whole charter.
-Do not certify an organisation, regulatory compliance or a charter signature
-from code, a supplier declaration or passing tests.
+## Applicability gate
 
-## Responsible use of Codex itself
+Before applying a rule, identify its trigger in the current task and the evidence available:
 
-When the request concerns Codex context, prompts, tasks, agents, models, reasoning effort,
-automation, or instruction files, read and apply `references/usage-practices.md`. It contains 14
-project-authored practices adapted to Codex. Do not load that reference for an ordinary code audit
-unless Codex usage is also in scope.
+- **Outside scope:** omit it from execution; explain exclusions in a full audit. Never count it as PASS.
+- **Applicable and verifiable:** perform the authorised check; report the result and its exact scope.
+- **Applicable but inaccessible:** report REVIEW_REQUIRED and the missing evidence; do not exclude
+  a relevant rule merely because its tools, environment or documents are unavailable.
+- **Human decision:** prepare the analysis when requested. Do not claim signature, certification,
+  purchasing decisions, actual training or organisational adoption from generated documents.
+
+For charter application and natural-language tasks, select the matching rows in
+`references/nr-charter.md`. For Codex prompts, context, models, agents or automation, use
+`references/usage-practices.md` only for capabilities available in the actual host.
+A simple answer needs no static scan, JSON record or organisational audit. Required research
+and accuracy checks still apply. A rule's missing proof is not evidence of a violation.
 
 ## Language rule routing
 
@@ -74,28 +77,9 @@ Detect the languages and frameworks from file extensions, build manifests, lockf
 configuration before reviewing code. Read and apply each in-scope matching `LANG-*` section in
 `references/rules.md`; do not substitute a generic rule when a language-specific rule exists.
 
-| Evidence found | Required rule families |
-| --- | --- |
-| `.java`, Maven or Gradle | `LANG-JAVA-*` |
-| `.kt` | `LANG-KOTLIN-*` |
-| `.scala` | `LANG-SCALA-*` |
-| `.rs` | `LANG-RUST-*` |
-| `.c`, `.h` | `LANG-C-*` |
-| `.cc`, `.cpp`, `.cxx`, `.hpp` | `LANG-CPP-*` |
-| `.go` | `LANG-GO-*` |
-| `.py` | `LANG-PYTHON-*` |
-| `.js`, `.jsx`, `.ts`, `.tsx`, Node manifests | `LANG-JS-*` plus detected framework rules |
-| `.php` | `LANG-PHP-*` |
-| `.rb` | `LANG-RUBY-*` |
-| `.nim` | `LANG-NIM-*` |
-| `.zig` | `LANG-ZIG-*` |
-| `.jl` | `LANG-JULIA-*` |
-| `.sql` | `LANG-SQL-*` |
-| PL/SQL packages, procedures or `.pls`/`.pkb` | `LANG-PLSQL-*` |
-| `.html`, `.htm` | `LANG-HTML-*` |
-| `.css`, `.scss`, `.less` | `LANG-CSS-*` |
-| React, Vue, Angular, Svelte, Preact, Astro or Solid manifests/source | matching framework family |
-| Bash, Zsh, Tcsh or shell scripts | `LANG-SHELL-*` |
+Use the language/framework matrix in `references/nr-charter.md` when concrete expectations
+are needed. For a language without a dedicated family, use applicable generic rules and
+state that limitation; never invent a `LANG-*` identifier.
 
 Detection alone does not make every rule applicable: browser DOM rules do not apply to a Node-only
 worker, for example. Include the command, benchmark, profile, query plan, network trace or test
@@ -109,6 +93,16 @@ service evidence, observation, impact, confidence, action, and verification. Clo
 measurement gaps and next actions. Distinguish technical efficiency from environmental impact;
 never convert an EcoIndex, Lighthouse score or a clean scan into RGESN/RGAA compliance.
 
+## Closing summary for every task
+
+Before the final response, summarise all NR actions actually performed during this task:
+rule IDs, concrete action, user benefit, and verification evidence. Distinguish applied actions,
+remaining FAIL/REVIEW_REQUIRED items and unmeasured gains. If no NR action was applicable,
+say so briefly. Use the user's language and keep the detail proportional to the task.
+For a repeatable end-of-run check or audit record, follow `references/closing-summary.md`
+and run `scripts/nr_summary.py` with the current task record and explicit scan scope.
+A successful static scan alone never means all rules were applied.
+
 ## Source attribution
 
 Treat project-authored guidance as project guidance. A named person's advice, a quotation, or a
@@ -117,12 +111,9 @@ If no primary source is available, remove the attribution and quotation marks in
 an editorial recommendation as someone else's words. Verify version-dependent commands and product
 behavior in current official documentation.
 
-## Repositories and CI
+## Sources and reuse
 
-Before changing generated artefacts, locate the source of truth and its generator. Run the project's
-tests, linters, and data validators. Add a regression test for a new rule when practical. Never
-commit secrets, build caches, dependency directories, or local reports unless explicitly requested.
-
-Read `references/criteria.md` for the compact mapping of RGESN, GR491, Opquast, and RGAA concerns,
-`references/rules.md` for the complete software rule set, and `references/usage-practices.md` when
-the responsible use of Codex itself is in scope.
+Use `references/sources.md` for provenance and its documented gaps, and
+`references/reuse-rights.md` before adapting external material. Paraphrasing does not remove
+licence duties. BP-AIR, stakeholder and RIA31 adaptations are CC BY-SA 4.0.
+`RIA31` is distinct from the EU AI regulation. Project IDs are not legal obligations.
