@@ -11,6 +11,9 @@ designing, implementing, reviewing, or auditing software and digital services.
 It distils guidance from RGESN, GR491, Opquast, and RGAA into a practical workflow for Codex.
 The official acronyms are kept unchanged.
 
+The approach is presented on the INR website (in French):
+[Écoconcevoir avec un assistant de code](https://institutnr.org/ecoconcevoir-avec-un-assistant-de-code).
+
 The current package is version `1.0.0` (see [`VERSION`](VERSION)). Rule identifiers such as
 `CODE-EFF-*` and `LANG-*` belong to this project; they are routing and engineering guidance, not
 official criterion numbers or a compliance score.
