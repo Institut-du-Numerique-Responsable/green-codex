@@ -2,14 +2,16 @@
 
 [![Version](https://img.shields.io/github/v/release/Institut-du-Numerique-Responsable/green-codex?sort=semver)](https://github.com/Institut-du-Numerique-Responsable/green-codex/releases)
 [![CI](https://github.com/Institut-du-Numerique-Responsable/green-codex/actions/workflows/validate.yml/badge.svg)](https://github.com/Institut-du-Numerique-Responsable/green-codex/actions/workflows/validate.yml)
-[![License](https://img.shields.io/badge/license-Apache--2.0%20%2B%20CC%20BY%204.0-yellow.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-Apache--2.0%20%2B%20CC%20BY%204.0%20%2B%20CC%20BY--SA%204.0-yellow.svg)](LICENSE)
 [![INR](https://img.shields.io/badge/INR-Institut%20du%20Num%C3%A9rique%20Responsable-4CAF50?logo=leaf&style=flat)](https://institutnr.org/)
 
 Green Codex is a Codex skill for applying Green IT and responsible digital practices while
 designing, implementing, reviewing, or auditing software and digital services.
 
 It distils guidance from RGESN, GR491, Opquast, and RGAA into a practical workflow for Codex.
-The official acronyms are kept unchanged.
+The official acronyms are kept unchanged. It also includes scoped adaptations of the NR charter,
+BP-AIR, the stakeholder maturity guide and RIA31. See the
+[source inventory](green-codex/references/sources.md) for provenance and coverage limits.
 
 The approach is presented on the INR website (in French):
 [Écoconcevoir avec un assistant de code](https://institutnr.org/ecoconcevoir-avec-un-assistant-de-code).
@@ -56,7 +58,7 @@ When the skill is used, Codex follows this sequence:
    their respective rule sets.
 3. **Turn guidance into action.** For each applicable rule, it proposes a concrete change or
    confirms that the current implementation is adequate. Examples include bounding pagination,
-   removing `SELECT *`, preventing N+1 queries, streaming large files, limiting retries, lazy
+   removing unused returned columns, preventing N+1 queries, streaming large files, limiting retries, lazy
    loading media, or setting a data-retention period.
 4. **Require evidence.** Each applicable rule assessed is reported as `PASS`, `FAIL`, or
    `REVIEW_REQUIRED` and includes the file and line (or service evidence), environmental or user
@@ -116,6 +118,23 @@ verification, model and reasoning selection, justified parallel work, and minima
 runs. These practices are editorial guidance adapted to Codex, not personal advice attributed to
 an individual.
 
+## NR charter and additional guides
+
+Select these references for the task being assessed; they are not a checklist to run in full:
+
+- [NR charter](green-codex/references/nr-charter.md): five axes translated into concrete expectations
+  for programming languages and natural-language tasks.
+- [BP-AIR](green-codex/references/air-practices.md): architecture decisions adapted from 18 source fiches.
+- [Stakeholder maturity](green-codex/references/stakeholder-maturity.md): evidence requests based on
+  48 source questions, without reproducing the official scoring method.
+- [RIA31](green-codex/references/ria31.md): adaptations of 41 questions observed on the source site;
+  the reference explains the difference from the older 31-question document. RIA31 is distinct
+  from the EU AI regulation.
+
+An applicable check with missing evidence remains `REVIEW_REQUIRED`. Human decisions and actual
+organisational adoption cannot be established by generated documents. For a simple text request,
+use a short factual NR summary; no scanner or JSON record is required.
+
 ## Measurement and evidence
 
 For comparisons or environmental claims, read the
@@ -164,6 +183,10 @@ The skill is then available when Codex selects it automatically, or explicitly w
   with official sources for Codex-specific mechanisms;
 - `green-codex/scripts/check_sobriety.py`: conservative static checks for selected high-confidence
   anti-patterns;
+- `green-codex/scripts/nr_summary.py`: validates task records and renders the NR closing summary;
+- `green-codex/references/closing-summary.md`: record format, command and integration limits;
+- `green-codex/references/sources.md`: source inventory and provenance gaps;
+- `green-codex/references/reuse-rights.md`: attribution and reuse conditions;
 - `green-codex/scripts/run_evals.py`: separate format checks and hash-bound semantic reviews;
 - `evals/cases.json`: realistic behavioral evaluation scenarios;
 - `evals/README.md`: procedure for running evaluations against saved Codex responses;
