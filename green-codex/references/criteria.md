@@ -68,3 +68,14 @@ Opquast and RGAA remain complementary sources with their own assessment methods;
 between their scores or requirements is implied.
 
 Official sources: [RGESN](https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/), [GR491](https://gr491.isit-europe.org/), [Opquast](https://checklists.opquast.com/fr/qualite-numerique/), and [RGAA](https://accessibilite.numerique.gouv.fr/).
+
+## Additional INR guidance
+
+- [NR charter](nr-charter.md): five organisational commitments translated into scoped actions.
+- [BP-AIR](air-practices.md): 18 architecture fiches, with action and evidence for each.
+- [Stakeholder maturity](stakeholder-maturity.md): 48 source questions, ten families; no copied scoring model.
+- [RIA31](ria31.md): 41 questions observed on the live site, with version discrepancies documented.
+
+These complement the technical rules. Use organisational evidence for organisational claims;
+code tests do not establish training, purchasing practices or a charter signature.
+See [reuse rights](reuse-rights.md) for attribution and licence boundaries.

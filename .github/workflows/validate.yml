@@ -29,6 +29,10 @@ jobs:
         run: python green-codex/scripts/test_skill.py
       - name: Test sobriety checker
         run: python green-codex/scripts/test_sobriety.py
+      - name: Test NR closing summary
+        run: python green-codex/scripts/test_nr_summary.py
+      - name: Validate source coverage and rule registration
+        run: python green-codex/scripts/test_reference_catalog.py
       - name: Validate behavioral evaluation catalogue
         run: python green-codex/scripts/test_evals.py
       - name: Validate evaluation review binding

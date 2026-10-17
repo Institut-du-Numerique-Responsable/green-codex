@@ -163,3 +163,6 @@ Example: a RAG assistant cites a document despite a retrieval timeout. Report
 scenario. Recommend a source-unavailable response and an authorised human fallback.
 Verify with timeout, empty-result and access-denial cases. Do not mark it fixed
 until those tests run on the affected application.
+
+For the general NR charter use [nr-charter.md](nr-charter.md). For the RIA31 project-stage
+questions use [ria31.md](ria31.md); neither is interchangeable with this AI charter.

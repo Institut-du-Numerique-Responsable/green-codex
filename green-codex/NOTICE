@@ -4,12 +4,30 @@ Copyright (c) 2026 Institut du Numérique Responsable
 Source: https://github.com/Institut-du-Numerique-Responsable/green-codex
 Authors and contributors: see the repository Git history.
 
-Code: Apache License 2.0. Rules and documentation: CC BY 4.0.
+Code: Apache License 2.0. Original rules and documentation: CC BY 4.0,
+except the explicitly marked CC BY-SA 4.0 adaptations below.
 See LICENSE for content boundaries and LICENSES/ for full terms.
-When sharing adapted rules or documentation, credit the project and its
-contributors, link to https://creativecommons.org/licenses/by/4.0/ and
-indicate modifications. Referenced third-party standards retain their
+When sharing the original CC BY 4.0 material or adaptations of that material,
+credit the project and its contributors, link to
+https://creativecommons.org/licenses/by/4.0/ and indicate modifications.
+For the CC BY-SA 4.0 references listed below, preserve their own attribution
+and share-alike licence instead. Referenced third-party standards retain their
 applicable terms and attributions.
 
 Historical third-party contributions retain their original MIT terms;
 preserve LICENSES/MIT-legacy.txt when redistributing those portions.
+
+Adapted references (CC BY-SA 4.0):
+- air-practices.md: BP-AIR, INR/ISIT and contributors, revision f7b0f6b.
+  https://github.com/Institut-du-Numerique-Responsable/BP-AIR
+- stakeholder-maturity.md: Guide d'évaluation et d'influence de la maturité
+  numérique responsable des parties prenantes, INR / Institute for Sustainable IT,
+  v1.2, 2026-10-17, revision d28bdfc. https://institutnr.org/ and https://isit-be.org/
+  https://github.com/Institut-du-Numerique-Responsable/guide-maturite-parties-prenantes
+- ria31.md: RIA31, INR/ISIT and GT IA; live site consulted 2026-10-17,
+  with methodology v1.21 (June 2024), D. Didier, F. Abrikh, E. Benoits.
+  https://ref-ia.isit-europe.org/
+Changes: rewritten instructions, project IDs, source mapping and operational tests.
+Full credits and source/licence discrepancies are recorded in each adapted file.
+No endorsement by source authors or certification is implied.
+Licence: https://creativecommons.org/licenses/by-sa/4.0/

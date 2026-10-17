@@ -189,6 +189,15 @@ python3 green-codex/scripts/check_sobriety.py --path . --format json
 The same checks run in the `validate` GitHub Actions workflow. Project-specific thresholds and
 additional rules should be added only with a regression test and documented evidence.
 
+### End-of-task NR summary
+
+Every task using the skill now requests a concise explanation of the NR actions taken,
+with rule IDs, user benefits, evidence and unresolved checks. For automation, use
+`green-codex/scripts/nr_summary.py` with a current task record and explicit scan scope.
+It validates the record and reruns the three static checks; it does not certify the other rules.
+See [record format, command and hook integration](green-codex/references/closing-summary.md).
+The portable command is included; no native hook is automatically installed.
+
 ## Use and contribution
 
 Use the skill for audits, code reviews, architecture decisions, and implementation work. Findings
@@ -208,7 +217,8 @@ the checks executed on every pull request.
 ## License
 
 Code and test scripts are Apache-2.0 licensed. Documentation and rule content are available under
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). See [LICENSE](LICENSE) and
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), except explicitly marked
+[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) adaptations. See [LICENSE](LICENSE) and
 [LICENSE-CC-BY-4.0](LICENSE-CC-BY-4.0).
 
 ## Team
@@ -223,7 +233,21 @@ Green Codex is maintained by a core team at the Institut du Numérique Responsab
 
 See [AUTHORS.md](AUTHORS.md) for the full contributor list.
 
+## Additional INR references and reuse
+
+The skill includes scoped adaptations of the NR charter (5 axes), BP-AIR (18 fiches),
+the stakeholder maturity guide (48 questions) and the live RIA31 (41 visible questions).
+Each instruction links to its source and specifies an action and evidence. The new IDs
+are accepted by the end-of-task summary command; static scanner coverage remains unchanged.
+See [source inventory](green-codex/references/sources.md) and
+[reuse rights](green-codex/references/reuse-rights.md). BP-AIR, stakeholder and RIA31
+adaptations are explicitly CC BY-SA 4.0; rewriting does not waive source licence terms.
+
 ## Sources
+
+See the [complete documented source inventory and provenance gaps](green-codex/references/sources.md).
+
+- [Charte IA responsable — INR/ISIT](https://charter.isit-europe.org/charte-ia/?lang=fr_FR)
 
 - [RGESN](https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/)
 - [GR491](https://gr491.isit-europe.org/)

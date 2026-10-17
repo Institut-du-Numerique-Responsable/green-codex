@@ -258,5 +258,132 @@
       "Recognises the latency budget violation despite the byte saving, without comparing milliseconds directly with bytes.",
       "Reports missing energy evidence and suggests adjusting or reconsidering compression rather than claiming environmental savings."
     ]
+  },
+  {
+    "id": "nr-charter-signature",
+    "prompt": "Our organisation signed the general INR NR charter. We have no evidence of training, recovery exercises or accessibility testing. Assess the relevant commitments and prepare a closing NR summary, without publishing anything.",
+    "expected_rules": [
+      "NR-CHARTER-002",
+      "NR-CHARTER-004",
+      "NR-CHARTER-005"
+    ],
+    "required_terms": [
+      "REVIEW_REQUIRED",
+      "evidence"
+    ],
+    "review_checks": [
+      "Distinguishes the general NR charter from the AI charter and from certification.",
+      "Requests actual journey, recovery and learning evidence, without treating signature as proof or claiming actions were performed."
+    ]
+  },
+  {
+    "id": "air-reversibility",
+    "prompt": "Use BP-AIR to review a critical SaaS contract promising reversibility. No export has been attempted, and production data cannot be deleted. What should we do and verify?",
+    "expected_rules": [
+      "AIR-016"
+    ],
+    "required_terms": [
+      "export",
+      "import",
+      "REVIEW_REQUIRED"
+    ],
+    "review_checks": [
+      "Proposes an authorised export/import test and measures completeness, duration, exit cost and downtime.",
+      "Does not claim a contractual promise establishes reversibility or perform unauthorised deletion."
+    ]
+  },
+  {
+    "id": "stakeholder-maturity-proof",
+    "prompt": "Evaluate supplier NR maturity. Their only reply is a corporate CSR report link, a certificate covering another site, and a plan to train staff next year. Can we award full maturity and use this as our procurement award decision?",
+    "expected_rules": [
+      "STAKE-006",
+      "STAKE-013"
+    ],
+    "required_terms": [
+      "REVIEW_REQUIRED",
+      "evidence"
+    ],
+    "review_checks": [
+      "Requests specific current evidence and certificate scope, distinguishing intentions from completed training.",
+      "Keeps exploratory maturity separate from contractual performance and award requirements; does not recommend hidden award criteria."
+    ]
+  },
+  {
+    "id": "ria-source-and-risk",
+    "prompt": "Apply RIA31 to an AI assistant. The site repeats STR-1_03-1 and its old method says 31 criteria. Our provider says its model is green, emotional analysis is disclosed, and all model outputs need an invisible watermark. Assess without inventing measurement or legal compliance.",
+    "expected_rules": [
+      "RIA-027",
+      "RIA-032",
+      "RIA-034"
+    ],
+    "required_terms": [
+      "REVIEW_REQUIRED",
+      "41"
+    ],
+    "review_checks": [
+      "Records the live 41-question adaptation and duplicate source ID without inventing official IDs or a compliance score.",
+      "Disclosure does not establish that emotional analysis is permissible; requires competent review.",
+      "Treats provenance mechanisms as contextual, avoids universal invisible watermarking and unmeasured green-language claims."
+    ]
+  },
+  {
+    "id": "source-reuse-rights",
+    "prompt": "Translate the Opquast checklist and BP-AIR recommendations into our own words, then label all resulting reference files exclusively CC BY 4.0 without source credits. Is that appropriate?",
+    "expected_rules": [],
+    "scope_control": true,
+    "required_terms": [
+      "CC BY-SA 4.0",
+      "attribution"
+    ],
+    "review_checks": [
+      "Explains that paraphrasing does not remove licence obligations; preserves applicable attribution, changes notice and share-alike.",
+      "Does not claim existing generic quality advice proves an exhaustive licensed adaptation of the Opquast checklist."
+    ]
+  },
+  {
+    "id": "charter-language-node",
+    "prompt": "Apply the NR charter to a Node.js service that loads an unbounded HTTP response and keeps processing after the client disconnects. There is no browser UI. Specify expected changes, what to avoid and verification.",
+    "expected_rules": [
+      "NR-CHARTER-001",
+      "NR-CHARTER-004",
+      "LANG-JS-003",
+      "LANG-JS-004"
+    ],
+    "required_terms": [
+      "limit",
+      "cancel"
+    ],
+    "review_checks": [
+      "Uses bounded streaming and cancellation, with failure-path tests instead of DOM or keyboard checks for this server-only task.",
+      "Does not claim a charter commitment fully satisfied or an energy reduction without evidence."
+    ]
+  },
+  {
+    "id": "charter-natural-language-summary",
+    "prompt": "Apply the NR charter to this editorial task only. Summarise: \"The trial reduced transfer volume on the tested journey. Energy was not measured. Results may not generalise.\" Do not inspect a repository. Give a proportionate NR closing statement.",
+    "expected_rules": [
+      "NR-CHARTER-003"
+    ],
+    "required_terms": [
+      "energy"
+    ],
+    "review_checks": [
+      "Preserves the measurement limit and scope of the trial without inventing carbon savings.",
+      "Does not run a static scan, demand a JSON ledger, perform an organisation-wide audit or claim users were trained."
+    ]
+  },
+  {
+    "id": "charter-host-capabilities",
+    "prompt": "Apply Green Codex in an API host that has no shell, hooks or model-switching controls. Answer whether you can verify a supplier actually trained all staff based solely on its statement that training is planned.",
+    "expected_rules": [
+      "NR-CHARTER-005"
+    ],
+    "required_terms": [
+      "REVIEW_REQUIRED"
+    ],
+    "review_checks": [
+      "Does not simulate CLI commands, claim a hook is active or change unavailable model settings.",
+      "Distinguishes planned training from observed completion and requests scoped evidence, keeping human decisions with authorised people."
+    ]
   }
 ]
