@@ -1,144 +1,60 @@
 # Green Codex
 
-Green Codex is a Codex skill for applying Green IT and responsible digital practices while designing, implementing, reviewing, or auditing software and digital services.
+> A Codex skill for scoped Green IT and responsible digital practices, with evidence for each assessed finding.
 
-## Identity
-- **Name**: Green Codex
-- **Type**: Codex Skill (AI Assistant Plugin)
-- **Version**: 1.0.0
-- **License**: Apache-2.0 (code) + CC BY 4.0 (documentation)
-- **Maintainer**: Institut du Numérique Responsable (INR)
-- **Homepage**: https://institut-du-numerique-responsable.github.io/green-codex/
-- **Repository**: https://github.com/Institut-du-Numerique-Responsable/green-codex
+- Maintainer: Institut du Numérique Responsable (INR)
+- Repository: https://github.com/Institut-du-Numerique-Responsable/green-codex
+- Website: https://institut-du-numerique-responsable.github.io/green-codex/
+- Presentation in French: https://institutnr.org/ecoconcevoir-avec-un-assistant-de-code
+- Version: see https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/VERSION
 
-## Purpose
-Green Codex distills guidance from **RGESN, GR491, Opquast, and RGAA** into a practical workflow for AI coding assistants. It enables:
-- Evidence-based eco-design decisions during development
-- Systematic code reviews for environmental and accessibility impact
-- Architecture assessments with sustainability constraints
-- Compliance audits against official frameworks
-- Responsible AI usage recommendations
+## Scope
 
-## Core Capabilities
+Use the skill for software design, implementation, review and audits, or natural-language requests about responsible digital practices. Select only the rules relevant to the task. A small code change does not require an organisational audit.
 
-### 1. Eco-Design & Sustainability
-- Energy efficiency patterns for code and infrastructure
-- Data minimization and storage optimization strategies
-- Network efficiency and transfer reduction techniques
-- Lifecycle impact assessment methodologies
-- Carbon footprint estimation guidance
+The catalogue covers software efficiency, accessibility, data, infrastructure, lifecycle, responsible AI, language-specific practices and responsible use of Codex. It includes the NR charter, BP-AIR, stakeholder maturity and RIA31 adaptations alongside mappings to RGESN, GR491, Opquast and RGAA. Project rule identifiers are not official criterion numbers.
 
-### 2. Accessibility (RGAA)
-- Keyboard navigation and focus management
-- Semantic HTML and ARIA best practices
-- Color contrast and visual accessibility
-- Screen reader compatibility
-- Inclusive design principles
+## Main references
 
-### 3. Web Quality (Opquast)
-- Reliability and robustness checks
-- Performance optimization guidance
-- Maintainability and technical debt prevention
-- Cross-browser compatibility
-- User experience best practices
+- [Skill workflow](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/SKILL.md)
+- [Technical rules](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/rules.md)
+- [NR charter: language and natural-language expectations](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/nr-charter.md)
+- [BP-AIR: 18 architecture practice adaptations](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/air-practices.md)
+- [Stakeholder maturity: 48 question adaptations](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/stakeholder-maturity.md)
+- [RIA31: 41 observed questions and source-version limits](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/ria31.md)
+- [Responsible AI charter](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/responsible-ai-charter.md)
+- [Useful, used and usable: the 3U guide](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/three-u.md)
+- [Responsible Codex usage](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/usage-practices.md)
+- [Measurement and evidence](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/measurement.md)
+- [Sources and provenance gaps](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/sources.md)
 
-### 4. Responsible Digital (GR491)
-- Governance and compliance frameworks
-- Sustainable technology selection
-- Hosting and infrastructure recommendations
-- Data sovereignty and privacy considerations
-- Ethical AI usage patterns
+## Verification and closing summary
 
-### 5. Responsible AI
-- Model size and complexity optimization
-- Context window and caching strategies
-- Data minimization for AI inputs
-- Energy-efficient inference patterns
-- Bias and fairness considerations
+Assessed findings use PASS, FAIL or REVIEW_REQUIRED with scoped evidence. Missing proof does not establish a violation. Human decisions, training and organisational adoption require external evidence. Passing tests does not certify compliance. RIA31 is distinct from the EU AI regulation.
 
-## Target Users
-- Software developers (frontend, backend, full-stack)
-- Software architects and technical leads
-- Code reviewers and quality assurance teams
-- Accessibility specialists
-- DevOps and infrastructure engineers
-- AI/ML engineers and data scientists
-- Digital sustainability consultants
-- Educators and trainers
+The skill requests an end-of-task NR summary: applied rule IDs, actions, user benefits, evidence and unresolved checks. For a simple text task, a short factual summary suffices; no static scan or JSON record is required.
 
-## Integration Points
+The portable nr_summary.py command validates a current task record and reruns three static checks: SQL projection, media autoplay and JavaScript polling. It does not authenticate declared evidence or verify all rules. No native automatic hook is installed.
 
-### With AI Assistants
-- **Codex**: Native skill integration
-- **GitHub Copilot**: Can be referenced for Green IT patterns
-- **Claude**: Compatible with custom instructions
-- **Other LLM tools**: Can be adapted as a prompt library
+- [Closing summary format and command](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/closing-summary.md)
+- [Evaluation procedure and limits](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/evals/README.md)
 
-### With Development Workflows
-- **Code Review**: GitHub PR comments, inline suggestions
-- **IDE Integration**: VS Code, JetBrains, etc.
-- **CI/CD**: Can be integrated into pipelines
-- **Documentation**: Generates evidence-based reports
+## Example requests
 
-## Keywords for Indexing
+- Review this collection endpoint. Check bounds and returned fields; cite tests and evidence gaps.
+- Compare serverless and containers using our workload, latency and reliability requirements. Identify missing measurements before recommending a change.
+- Review the affected accessibility requirements of this component. Distinguish automated findings from manual checks still needed.
+- Compare AI solutions at equivalent task quality, including retries and tool use. Separate resource measurements from energy or carbon estimates.
 
-### Primary Keywords (Weight: High)
-Green IT, eco-design, software sustainability, digital sustainability, sustainable development, responsible digital, numerique responsable, sobriete numerique, green software, eco-friendly coding
+No fixed percentage saving follows from a runtime, hosting model, cache or quantisation choice. Environmental claims need a baseline, workload, measurement boundary and uncertainty.
 
-### Framework Keywords (Weight: High)
-RGESN, GR491, Opquast, RGAA, accessibility, WCAG, eco-conception, referentiel, green IT framework, digital quality, web quality
+## Reuse
 
-### Technical Keywords (Weight: Medium)
-carbon footprint, energy efficiency, data minimization, network optimization, storage efficiency, lifecycle assessment, circular economy, low-tech, frugal innovation
+Code and scripts use Apache-2.0. Original documentation and rules use CC BY 4.0. The BP-AIR, stakeholder maturity and RIA31 adaptations use CC BY-SA 4.0, with attribution in each file. Reformulation does not remove licence duties. Opquast is a thematic reference, not an imported full checklist.
 
-### Domain Keywords (Weight: Medium)
-frontend, backend, full-stack, cloud, infrastructure, data engineering, UX/UI, responsive design, performance optimization
+- [Licence scope](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/LICENSE)
+- [Reuse rights](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/reuse-rights.md)
 
-## Usage Examples
+Documentation is in English and French. Updates follow reviewed changes; no fixed monthly update schedule is promised.
 
-### Example 1: Code Review
-**Prompt**: "Review this API endpoint for environmental impact"
-**Output**: "Consider adding pagination (current limit: 100 items/response). Also, cache responses for 5 minutes to reduce database queries by ~40%."
-
-### Example 2: Architecture Decision
-**Prompt**: "Should I use serverless or containers for this microservice?"
-**Output**: "For your expected workload (50 requests/minute), serverless would be ~60% more energy-efficient and cost-effective."
-
-### Example 3: Accessibility Audit
-**Prompt**: "Does this component meet WCAG 2.1 AA standards?"
-**Output**: "Issues found: 1) Color contrast ratio is 4.1:1 (needs 4.5:1), 2) Missing aria-label on icon button."
-
-### Example 4: AI Optimization
-**Prompt**: "How can I reduce the carbon footprint of my LLM application?"
-**Output**: "Recommendations: 1) Quantize model to 8-bit (reduces size by 50%), 2) Implement response caching, 3) Use streaming for long responses."
-
-## Data Formats Supported
-- Markdown (rules, documentation)
-- YAML (skill configuration)
-- JSON (structured data)
-- HTML (documentation site)
-
-## Update Frequency
-- **Rules**: Monthly (aligned with framework updates)
-- **Skill**: As needed for bug fixes
-- **Documentation**: With each release
-- **Website**: Continuous deployment
-
-## Languages Supported
-- English (primary)
-- French (partial, in development)
-
-## Citation
-When referencing Green Codex, please cite as:
-> "Green Codex (Version 1.0.0). Institut du Numérique Responsable. https://github.com/Institut-du-Numerique-Responsable/green-codex"
-
-## Contact
-- **GitHub Issues**: https://github.com/Institut-du-Numerique-Responsable/green-codex/issues
-- **Security**: https://github.com/Institut-du-Numerique-Responsable/green-codex/security
-- **Website**: https://institutnr.org/
-- **Presentation (French)**: https://institutnr.org/ecoconcevoir-avec-un-assistant-de-code
-
----
-Last updated: 2026-09-05
-Format: LLMs.txt v2.0
-Maintainers: @gridboy, @bourgeoisguillaume01-glitch, @vincentcourboulay
+Last updated: 2026-10-17
