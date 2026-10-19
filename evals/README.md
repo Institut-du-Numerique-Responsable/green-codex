@@ -1,5 +1,7 @@
 # Behavioral evaluations
 
+The catalogue contains **33 scenarios**. A scenario is a test request, not a passing result.
+
 The `three-u-pilot` scenario checks practical utility, actual adoption and
 usability judgments from a small pilot, with errors, missing adoption criteria
 and a keyboard blocker. It tests the skill's reasoning about supplied evidence,
@@ -30,12 +32,68 @@ that an agent passes those scenarios. Real responses and separate semantic revie
 are required to assess behaviour; application security and accessibility tests
 still need to run on the actual system under review.
 
+## What each verification layer proves
+
+| Layer | Input | Result and boundary |
+| --- | --- | --- |
+| Catalogue validation | `cases.json` and rule references | Valid structure and IDs; no model is run |
+| Script regression tests | Controlled fixtures | Script behaviour for those cases; no judgement of a real answer |
+| Format evaluation | Saved real response | Expected IDs, terms and statuses; keywords do not prove reasoning |
+| Semantic review | Response, case, run metadata and evidence | A named reviewer's assessment, bound to those exact inputs |
+| NR hook | Current hook event and final answer | Summary fields are present; their claims are not authenticated |
+
+```mermaid
+flowchart LR
+    Case[Choose a catalogue scenario] --> Run[Run it with the skill]
+    Run --> Answer[Save the actual response]
+    Answer --> Format[Check format]
+    Answer --> Review[Independent reasoning review]
+    Meta[Record model, settings and limitations] --> Review
+    Review --> Bound[Bind review to response, case and run hashes]
+    Format --> Report[Report FORMAT and SEMANTIC separately]
+    Bound --> Report
+```
+
+In words: collect a real answer, check its format, review its reasoning, and bind that review
+to the exact answer and run. A missing review stays `REVIEW_REQUIRED` even if format checks pass.
+The [closing-summary guide](../green-codex/references/closing-summary.md) describes a separate
+end-of-task check; a successful hook is not a semantic evaluation.
+
+## Added NR scenarios
+
+The eight scenarios added on 2026-10-17 cover:
+
+| Scenario | Main decision being tested |
+| --- | --- |
+| `nr-charter-signature` | A signed charter alone does not demonstrate implementation |
+| `air-reversibility` | An export/import trial provides evidence beyond a contract clause |
+| `stakeholder-maturity-proof` | Current supplier practices need supporting evidence |
+| `ria-source-and-risk` | Source provenance and AI risks require scoped checks |
+| `source-reuse-rights` | Rewording does not remove licence obligations |
+| `charter-language-node` | Apply Node.js checks without irrelevant browser requirements |
+| `charter-natural-language-summary` | Keep text-only tasks proportionate and claims supported |
+| `charter-host-capabilities` | Do not claim unavailable tools or human actions were performed |
+
+Their presence and schema validation do not establish completed model evaluations.
+Use the linked dated records and the files in `runs/` to identify actual saved responses and reviews;
+manual walkthroughs without those artifacts are not benchmark results.
+
+## Run an evaluation
+
 For each case, run the prompt with the skill and save the response as
 `evals/responses/<case-id>.md`. Then run:
 
 ```bash
-python3 green-codex/scripts/run_evals.py --responses evals/responses
+python3 green-codex/scripts/run_evals.py \
+  --responses evals/responses \
+  --reviews /path/to/reviews.json \
+  --run /path/to/run.json
 ```
+
+Use actual metadata and reviews in those files, following the schema below. To run a subset,
+add `--case nr-charter-signature` (repeat the option for other cases). The report states partial
+coverage; do not describe it as a full run. Omitting `--reviews` or `--run` allows format inspection
+but leaves semantic results unresolved and causes a nonzero exit status.
 
 The evaluator always reports `FORMAT` and `SEMANTIC` separately. Default exit status
 follows the independent semantic review bound to the exact response, case and run.
@@ -69,7 +127,7 @@ validation, lexical results and independent semantic review results separate in 
 New lifecycle cases cover service necessity, older devices, rebound arithmetic, unsupported
 compliance claims, muted autoplay, critical images, total AI task cost and safe retirement.
 
-All 25 cases have specific semantic criteria, including no-change SQL, rare essential
+All 33 cases have specific semantic criteria, including no-change SQL, rare essential
 services and compression trade-offs. Catalogue presence does not prove execution.
 Historical results describe the evaluator at the time; `--strict-format` reproduces
 its combined exit policy. Archived responses and run hashes remain unchanged.

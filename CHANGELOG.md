@@ -2,6 +2,27 @@
 
 ## Unreleased
 
+### NR rules, reporting and hooks
+
+- Add the five NR charter axes, 18 BP-AIR practices, 48 stakeholder maturity questions
+  and 41 questions observed on the RIA31 site. Document source versions, coverage limits
+  and the difference between RIA31 and the EU AI regulation.
+- Record attribution and reuse terms, including CC BY-SA 4.0 for the three adapted guides.
+  Clarify that paraphrasing does not remove licence duties.
+- Translate charter expectations into actions for programming languages and natural-language
+  tasks. Separate verifiable checks, missing evidence, human decisions and exclusions.
+- Consolidate overlapping rules without breaking existing identifiers or counting findings twice.
+- Add the portable NR summary command, with task records, evidence pointers and fresh static findings.
+- Add optional UserPromptSubmit and Stop hooks to check summary structure and request at most
+  one correction. Provide an installer with configuration backup and require Codex trust review.
+  The hook does not authenticate evidence; implicit use without recognised signals is not detected.
+- Expand the evaluation catalogue from 25 to 33 scenarios and add tests for reference coverage,
+  summary records and hook behaviour. Catalogue validation does not prove model performance.
+- Update the README, public site and assistant summary; remove unsupported percentage savings.
+- Complete contribution and evaluation instructions, with diagrams explaining verification boundaries.
+
+### Earlier changes pending release
+
 - Fix SQL existence-test and JSX example false positives; template media requires review.
 - Separate evaluation format checks from bound semantic verdicts, with optional strict mode.
 - Make verification proportional, consolidate three aliases and clarify 3U/charter routing.
