@@ -122,6 +122,45 @@ session hash, not prompts, answers or evidence. It is removed at the matching St
 unrelated prompt; interrupted or abandoned sessions can leave small stale files that may be
 deleted when no session is running. Input is bounded to 1 MiB. No transcript is read.
 
+### Hook lifecycle at a glance
+
+```mermaid
+flowchart TD
+    Install[Install hook definitions] --> Trust[Review and trust both entries in Codex]
+    Trust --> Prompt[UserPromptSubmit event]
+    Prompt --> Arm[Explicit invocation arms this turn only]
+    Arm --> Stop[Stop event]
+    Stop --> Continued{Already continued by Stop?}
+    Continued -->|Yes| End[Allow completion]
+    Continued -->|No| Scope{Armed turn or recognised NR signal?}
+    Scope -->|No| End
+    Scope -->|Yes| Fields{Summary fields present?}
+    Fields -->|Yes| End
+    Fields -->|No| Once[Request one correction]
+    Once --> Stop
+```
+
+In words: installation adds definitions; trust permits execution. At the end of a turn, the
+hook checks only recognised NR work and requests at most one correction. The continuation is
+allowed to finish even if its summary is still incomplete. An untrusted hook is skipped.
+
+### Verify activation in the actual host
+
+1. Open `/hooks` in a Codex host that supports the events. Confirm that both entries point to
+   the installed `nr_hook.py`, then review and trust them. A configuration file alone is not proof.
+2. Start a task explicitly using `$green-codex`, for example a short review of a local document.
+   Check the host's hook execution output as well as the final summary; a summary alone may have
+   been produced by the skill instruction without a hook running.
+3. Confirm the summary contains an action, benefit, evidence and limits, or a justified
+   non-applicable statement. If a first answer lacks these fields, check that Stop requests only
+   one correction. Unit tests reproduce that missing-summary path independently of model behaviour.
+4. Send an unrelated greeting without an NR invocation. Confirm it does not trigger a summary
+   correction. If the host does not expose execution evidence, record activation as unverified.
+
+Keep configuration, trusted status and observed execution as three separate facts. Host or
+hook-definition changes may require a new trust review. No model settings or trust files need
+to be edited to run the package tests.
+
 To disable, use `/hooks`. To uninstall, remove only the two entries invoking `nr_hook.py` from
 the selected hooks configuration; leave other hooks intact. The installer never grants trust
 or bypasses Codex's review. Unit tests exercise the event protocol; actual host execution must
