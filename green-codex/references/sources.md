@@ -6,6 +6,14 @@ practices and 10 operational AI charter rules. The INR extension adds 112 identi
 instructions (5 NR charter, 18 AIR, 48 stakeholder and 41 RIA31), for 295 project IDs.
 The new licensed adaptations are attributed in their respective files. Some are aliases. These are not official criterion numbers.
 
+The token sobriety extension adds NR-TOK-001 through NR-TOK-030. Its inspiration
+and adaptation from Julius Brussee's Caveman rules are confirmed by the maintainer.
+See [third-party attribution](third-party-attributions.md) for Apache-2.0 terms,
+INR modifications and the distinction between the upstream revision consulted on
+2026-10-21 and the still undocumented version originally adapted. The
+[Codex application guide](codex-token-sobriety.md) cites official product documentation
+separately from these editorial rules.
+
 ## Environmental design, quality and inclusion
 
 | Documented source | Role in the skill | Traceability available |

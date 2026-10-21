@@ -1,5 +1,13 @@
 # Sources, reformulation et droits de réutilisation
 
+## Caveman
+
+Les références `token-sobriety.md` et `codex-token-sobriety.md` sont explicitement
+Apache-2.0. Conserver [l'attribution Caveman](third-party-attributions.md), les mentions
+de `../NOTICE` et le texte Apache inclus. Le mainteneur confirme l'inspiration et
+l'adaptation des règles ; la version d'origine des passages reste à documenter.
+Les adaptations INR ne doivent pas être attribuées à Julius Brussee.
+
 ## Opquast : constat sur le skill
 
 Inspection du 17 octobre 2026 : `rules.md` ne contient pas un import des 245 règles

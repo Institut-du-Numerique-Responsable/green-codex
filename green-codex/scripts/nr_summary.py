@@ -13,7 +13,8 @@ from check_sobriety import files_under, scan_file
 ROOT = Path(__file__).resolve().parents[1]
 STATUSES = {"PASS", "FAIL", "REVIEW_REQUIRED"}
 RULE_FILES = ("rules.md", "usage-practices.md", "responsible-ai-charter.md",
-              "nr-charter.md", "air-practices.md", "stakeholder-maturity.md", "ria31.md")
+              "nr-charter.md", "air-practices.md", "stakeholder-maturity.md", "ria31.md",
+              "token-sobriety.md")
 
 
 def known_rules():

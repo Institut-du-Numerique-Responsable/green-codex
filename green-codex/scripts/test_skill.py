@@ -32,6 +32,15 @@ def main():
     require(SKILL, "requires a verifiable primary source linked to the exact claim")
     require(SKILL, "remove the attribution and quotation marks")
     require(SKILL, "references/usage-practices.md")
+    require(SKILL, "references/token-sobriety.md")
+    require(SKILL, "references/codex-token-sobriety.md")
+    for name in ("token-sobriety.md", "codex-token-sobriety.md"):
+        require(ROOT / "references" / name, "third-party-attributions.md")
+        require(ROOT / "references" / name, "Apache-2.0")
+        require(ROOT / "LICENSE", name)
+        require(ROOT / "NOTICE", name)
+    require(ROOT / "references" / "third-party-attributions.md", "Copyright 2026 Julius Brussee")
+    require(ROOT / "LICENSES" / "Apache-2.0.txt", "Apache License")
     require(SKILL, "references/responsible-ai-charter.md")
     require(SKILL, "references/three-u.md")
     for criterion in ("RGESN", "GR491", "Opquast", "RGAA"):

@@ -92,6 +92,13 @@ State the trigger, concrete action and evidence needed. Reuse an existing rule f
 requirement; preserve old IDs as documented aliases when necessary. Update source attribution,
 reference coverage and evaluation scenarios when their scope changes.
 
+## Commit messages
+
+Apply the [expression and commit-message rules](green-codex/references/expression.md)
+to authored prose. Before each commit, compare its message with the staged diff:
+state the concrete change, its reason, actual verification and material limits.
+Review the final merge or squash message with the same requirements.
+
 ## Pull Requests
 
 One coherent change per PR is preferred. CI must pass and at least one CODEOWNER review is required
@@ -103,4 +110,6 @@ By contributing, you agree that your contributions are distributed under the pro
 Apache-2.0 for executable code and CC BY 4.0 for documentation and rule content, unless a file states
 otherwise. BP-AIR, stakeholder maturity and RIA31 adaptations are CC BY-SA 4.0.
 Keep their attribution and share-alike terms; do not relabel an adaptation as original content.
+The token sobriety references inspired and adapted from Caveman are Apache-2.0;
+preserve their copyright, modification notices and packaged third-party attribution.
 See [reuse rights](green-codex/references/reuse-rights.md) before incorporating outside material.

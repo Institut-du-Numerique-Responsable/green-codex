@@ -72,7 +72,8 @@ class SummaryTests(unittest.TestCase):
         self.assertEqual(self.run_summary(overrides={"rules": [item, item]}).returncode, 2)
 
     def test_new_reference_rules_participate_in_summary(self):
-        for rule_id in ("NR-CHARTER-005", "AIR-018", "STAKE-048", "RIA-041"):
+        for rule_id in ("NR-CHARTER-005", "AIR-018", "STAKE-048", "RIA-041",
+                        "NR-TOK-007", "NR-TOK-030"):
             with self.subTest(rule=rule_id):
                 result = self.run_summary(rule_id=rule_id)
                 self.assertEqual(result.returncode, 0, result.stderr)

@@ -20,7 +20,24 @@ The current package is version `1.0.0` (see [`VERSION`](VERSION)). Rule identifi
 `CODE-EFF-*` and `LANG-*` belong to this project; they are routing and engineering guidance, not
 official criterion numbers or a compliance score.
 
+## Expression in Codex and ChatGPT
+
+Green Codex applies [expression and commit-message rules](green-codex/references/expression.md)
+in every language. The skill loads this reference for every task. For ChatGPT, provide
+the standalone instructions in that file as conversation context. Repository changes
+do not update an account's instructions automatically. These are project editorial
+conventions, with manual review of actual outputs required.
+
 ## What it covers
+
+The [token sobriety rules](green-codex/references/token-sobriety.md) cover NR-TOK-001
+through NR-TOK-030 for development agents, including Codex, Claude Code and Mistral Vibe.
+They define mandatory safeguards, default recommendations, capability-dependent actions
+and a concise session report. Token and cost savings require comparable measurements;
+they do not establish environmental savings.
+The [Codex application guide](green-codex/references/codex-token-sobriety.md) documents
+targeted searches, stale evidence, compaction, cache, agent delegation, acceptance
+criteria and measurement boundaries, with official sources and a worked example.
 
 - digital and software eco-design;
 - energy, data, storage, network, and infrastructure efficiency;
@@ -251,6 +268,10 @@ Code and test scripts are Apache-2.0 licensed. Documentation and rule content ar
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), except explicitly marked
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) adaptations. See [LICENSE](LICENSE) and
 [LICENSE-CC-BY-4.0](LICENSE-CC-BY-4.0).
+
+The token sobriety references inspired and adapted from Caveman are Apache-2.0 licensed.
+See [third-party attribution](green-codex/references/third-party-attributions.md)
+for Julius Brussee's copyright, INR modifications, independence and provenance limits.
 
 ## Team
 

@@ -32,3 +32,10 @@ licensed under CC BY-SA 4.0, including their Green Codex adaptations. Preserve
 the source attribution, revision/date, modification notice and same licence.
 The full text is in the skill's LICENSES/CC-BY-SA-4.0.txt. This exception does not
 relicense the other original files or claim ownership of third-party standards.
+
+Caveman adaptation exception: green-codex/references/token-sobriety.md and
+green-codex/references/codex-token-sobriety.md are licensed under Apache-2.0,
+including their INR adaptations. Preserve the Caveman copyright and attribution
+in green-codex/NOTICE and green-codex/references/third-party-attributions.md.
+Historical upstream terms remain applicable to portions received under those
+terms; see the provenance limitations.
