@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Green Codex | Green IT guidance for coding assistants</title>
-  <meta name="description" content="Green Codex is an open Codex skill for eco-design, accessibility and responsible digital engineering, based on RGESN, GR491, Opquast and RGAA.">
+  <title>Green Codex | Développer avec le Numérique Responsable</title>
+  <meta name="description" content="Des règles de Numérique Responsable pour concevoir, coder et vérifier avec Codex. Un outil libre de l’Institut du Numérique Responsable.">
   <meta name="keywords" content="Green IT, eco-design, software sustainability, RGESN, GR491, Opquast, RGAA, sustainable development, responsible digital, numerique responsable, accessibility, AI assistant, Codex">
   <meta name="author" content="Institut du Numérique Responsable (INR)">
   <meta name="robots" content="index,follow">
@@ -12,25 +12,25 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="alternate icon" type="image/svg+xml" href="favicon.svg">
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#17352f">
+  <meta name="theme-color" content="#0d3280">
   <meta name="application-name" content="Green Codex">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Green Codex">
   <link rel="apple-touch-icon" href="favicon.svg">
-  <meta property="og:title" content="Green Codex | Green IT guidance for coding assistants">
-  <meta property="og:description" content="Evidence-based Green IT rules for design, coding, review and audit.">
+  <meta property="og:title" content="Green Codex | Développer avec le Numérique Responsable">
+  <meta property="og:description" content="Écoconception, sobriété des tokens et vérification des pratiques de développement.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://institut-du-numerique-responsable.github.io/green-codex/">
   <meta property="og:image" content="https://institut-du-numerique-responsable.github.io/green-codex/images/og-image.svg">
-  <meta property="og:image:alt" content="Green Codex — sustainable software guidance for coding assistants">
+  <meta property="og:image:alt" content="Green Codex : le Numérique Responsable dans votre code">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:type" content="image/svg+xml">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@INR_NumResponsable">
-  <meta name="twitter:title" content="Green Codex | Green IT for AI Assistants">
-  <meta name="twitter:description" content="Apply RGESN, GR491, Opquast, and RGAA rules in your coding workflow with Codex.">
+  <meta name="twitter:title" content="Green Codex | Institut du Numérique Responsable">
+  <meta name="twitter:description" content="Appliquer des règles de Numérique Responsable dans votre travail avec Codex.">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -53,52 +53,81 @@
     ]
   }
   </script>
-  <style>
-    :root { color-scheme: light; --ink:#17352f; --muted:#4d6860; --paper:#f4f7f1; --accent:#d1ef4a; --line:#cbd9d0; }
-    * { box-sizing:border-box; } body { margin:0; background:var(--paper); color:var(--ink); font:17px/1.6 system-ui,-apple-system,sans-serif; }
-    main { max-width:960px; margin:auto; padding:clamp(2rem,7vw,6rem) 1.25rem; }
-    header { max-width:760px; } .eyebrow { letter-spacing:.12em; text-transform:uppercase; font-size:.78rem; font-weight:700; color:var(--muted); }
-    h1 { max-width:720px; margin:.5rem 0 1rem; font-size:clamp(2.5rem,8vw,5.5rem); line-height:1; letter-spacing:-.06em; }
-    .lead { max-width:650px; font-size:clamp(1.15rem,2.5vw,1.5rem); color:var(--muted); }
-    .actions { display:flex; flex-wrap:wrap; gap:.75rem; margin:2rem 0 4rem; } a.button { display:inline-block; padding:.7rem 1rem; border:1px solid var(--ink); color:var(--ink); text-decoration:none; font-weight:700; } a.button.primary { background:var(--accent); }
-    section { border-top:1px solid var(--line); padding:2rem 0; } h2 { margin:0 0 .75rem; font-size:1.5rem; } ul { padding-left:1.25rem; } .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; } .card { padding:1rem; border:1px solid var(--line); background:#fff; } .card h3 { margin-top:0; }
-    a { color:#145f4d; } a:focus-visible { outline:3px solid #7b5cff; outline-offset:3px; } footer { color:var(--muted); font-size:.9rem; }
-    @media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto !important; } }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<main>
-  <header>
-    <p class="eyebrow">Open guidance for sustainable software</p>
-    <h1>Build less. Measure what matters.</h1>
-    <p class="lead">Green Codex brings Green IT, accessibility and responsible AI practices into the coding workflow. It gives Codex evidence-based rules for designing, implementing, reviewing and auditing digital services.</p>
-    <div class="actions"><a class="button primary" href="https://github.com/Institut-du-Numerique-Responsable/green-codex">View the repository</a><a class="button" href="https://github.com/Institut-du-Numerique-Responsable/green-codex#installation">Install the skill</a></div>
-  </header>
-  <section aria-labelledby="coverage"><h2 id="coverage">Reference frameworks and practical guides</h2><div class="grid"><article class="card"><h3>RGESN</h3><p>Environmental design of digital services, from user need to infrastructure and lifecycle.</p></article><article class="card"><h3>GR491</h3><p>Responsible design decisions across UX, frontend, backend, data, hosting and governance.</p></article><article class="card"><h3>Opquast</h3><p>Reliable, understandable and robust web experiences that complement environmental checks.</p></article><article class="card"><h3>RGAA</h3><p>Keyboard, focus, semantics, contrast, language and assistive technology checks.</p></article></div></section>
-  <section aria-labelledby="use"><h2 id="use">Use it in any project</h2><ul><li>Audit a codebase or architecture with cited evidence.</li><li>Review a pull request for environmental and accessibility risks.</li><li>Choose measurable, reversible improvements without sacrificing resilience.</li><li>Keep official acronyms and references intact.</li></ul></section>
-  <section aria-labelledby="rules"><h2 id="rules">Rules that adapt to your stack</h2><p>Green Codex routes universal NR practices and language-specific checks to the technologies it detects. The catalogue covers Java, Rust, C, C++, Go, Python, JavaScript and TypeScript, PHP, Ruby, Scala, Kotlin, Julia, Nim, Zig, Shell, SQL, PL/SQL, HTML5, CSS3, React, Vue, Angular, Svelte, Preact, Astro and Solid.</p><p>Each assessed rule returns <strong>PASS</strong>, <strong>FAIL</strong> or <strong>REVIEW_REQUIRED</strong> with code location, impact, severity and evidence.</p><p><a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/rules.md">Read the technical rules</a></p></section>
-  <section aria-labelledby="three-u"><h2 id="three-u">Useful, used and usable</h2><p>Start with a confirmed user need. Compare useful outcomes with the current approach, observe actual use when the need occurs, and test independent task completion, including keyboard access. Keep three separate decisions; missing evidence stays REVIEW_REQUIRED.</p><p>Technical AI changes use relevant efficiency rules. Consult the responsible AI charter for an explicit assessment or an identified risk, without imposing an organisational checklist on every task.</p><p>Evaluation reports format and semantic review separately. Automated scans find narrow patterns and cannot establish real adoption, accessibility compliance or environmental savings.</p></section>
-  <section aria-labelledby="nr-guides">
-    <h2 id="nr-guides">NR charter, architecture and stakeholder practices</h2>
-    <p>The <a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/nr-charter.md">NR charter guide</a> translates five axes into actions for programming languages and natural-language tasks. Additional references cover <a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/air-practices.md">BP-AIR architecture practices</a>, <a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/stakeholder-maturity.md">stakeholder maturity</a> and <a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/ria31.md">RIA31 responsible AI questions</a>.</p>
-    <p>Use only the rules relevant to the task. Missing evidence remains REVIEW_REQUIRED; generated documents cannot prove organisational adoption or replace human decisions. RIA31 is distinct from the EU AI regulation.</p>
-    <p>Read the <a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/sources.md">source inventory and coverage limits</a> and <a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/reuse-rights.md">reuse conditions</a>.</p>
-  </section>
-  <section aria-labelledby="nr-summary">
-    <h2 id="nr-summary">Understand the NR actions taken</h2>
-    <p>The skill requests a closing summary of applied rules, concrete actions, user benefits, evidence and unresolved checks. A simple text task needs only a proportionate explanation.</p>
-    <p>For repeatable reports, the included command validates a task record and reruns three static checks: SQL projection, media autoplay and JavaScript polling. It cannot verify every rule or establish environmental savings. An optional native hook checks summary structure and can request one correction. It requires explicit installation and trust review in Codex; it does not validate the truth of evidence.</p>
-    <p><a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/closing-summary.md">Use the closing summary command</a></p>
-  </section>
-  <section aria-labelledby="license"><h2 id="license">Open and reusable</h2><p>Code is licensed under Apache-2.0. Original rules and documentation use CC BY 4.0; the BP-AIR, stakeholder maturity and RIA31 adaptations use CC BY-SA 4.0. See the <a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/LICENSE">file-specific licence terms</a>. Contributions and translations are welcome through pull requests.</p><p><a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/CONTRIBUTING.md">Read the contribution guide</a> · <a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/releases">View releases</a></p></section>
-  <section aria-labelledby="team"><h2 id="team">Maintained by experts</h2><p>Green Codex is developed and maintained by the <a href="https://institutnr.org/">Institut du Numérique Responsable (INR)</a> team:</p>
-  <div class="grid">
-    <article class="card"><h3>Guillaume Gallon</h3><p><a href="https://github.com/gridboy">@gridboy</a><br>Lead Maintainer</p></article>
-    <article class="card"><h3>Guillaume Bourgeois</h3><p><a href="https://github.com/bourgeoisguillaume01-glitch">@bourgeoisguillaume01-glitch</a><br>Maintainer</p></article>
-    <article class="card"><h3>Vincent Courboulay</h3><p><a href="https://github.com/vincentcourboulay">@vincentcourboulay</a><br>Maintainer</p></article>
+<a class="skip-link" href="#content">Aller au contenu</a>
+<div class="institution-bar"><div class="wrap"><span>Un outil libre de l’Institut du Numérique Responsable</span><a href="https://institutnr.org/">Découvrir l’INR</a></div></div>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="https://institutnr.org/" aria-label="Institut du Numérique Responsable, site officiel"><img src="images/inr-logo.webp" width="360" height="114" alt="Institut du Numérique Responsable"></a>
+    <nav aria-label="Navigation principale"><a href="#use">Installer</a><a href="#rules">Les règles</a><a href="#nr-summary">Vérifier</a><a href="#license">Contribuer</a><a class="nav-repo" href="https://github.com/Institut-du-Numerique-Responsable/green-codex">GitHub</a></nav>
   </div>
-  <p><a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/MAINTAINERS.md">Meet the full team</a></p></section>
-  <footer><p>Maintained by the <a href="https://institutnr.org/">Institute for Sustainable IT (INR)</a>. <a href="https://github.com/Institut-du-Numerique-Responsable/green-codex">Source code and evidence on GitHub</a>. <a href="https://institutnr.org/ecoconcevoir-avec-un-assistant-de-code" hreflang="fr">Eco-design with a coding assistant: the INR approach (in French)</a>.</p></footer>
+</header>
+<main id="content" tabindex="-1">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="project-name">Green Codex</p>
+        <h1 id="hero-title">Le numérique responsable commence aussi dans votre code.</h1>
+        <p class="lead">Des règles pour concevoir, développer et vérifier avec Codex, en préservant la qualité, l’accessibilité et la sobriété des services numériques.</p>
+        <div class="actions"><a class="button primary" href="#use">Installer Green Codex</a><a class="button secondary" href="#rules">Explorer les règles</a></div>
+        <p class="hero-note">Un skill ouvert, maintenu par l’INR et sa communauté.</p>
+      </div>
+      <aside class="example" aria-label="Exemple d’utilisation de Green Codex">
+        <div class="example-top"><span>Dans votre projet</span><span class="code-mark" aria-hidden="true">&lt;/&gt;</span></div>
+        <p class="prompt"><code>$green-codex</code><br>Examine cette modification et propose des améliorations d’écoconception vérifiables.</p>
+        <div class="example-result"><h2>Un examen adapté au contexte</h2><ul><li>Les règles utiles à votre code</li><li>Des constats accompagnés de preuves</li><li>Des changements ciblés et vérifiés</li></ul></div>
+        <p class="example-caption">Exemple de demande. Les résultats dépendent du projet et des preuves disponibles.</p>
+      </aside>
+    </div>
+  </section>
+  <nav class="journeys wrap" aria-label="Accès rapides">
+    <a href="#use"><span>Prendre en main</span><strong>Installer le skill</strong></a>
+    <a href="#coverage"><span>Comprendre le socle</span><strong>Consulter les référentiels</strong></a>
+    <a href="#tokens"><span>Faire évoluer ses usages</span><strong>Réduire les traitements inutiles</strong></a>
+  </nav>
+  <section class="section wrap" aria-labelledby="rules">
+    <div class="section-heading"><h2 id="rules">Des pratiques qui suivent votre travail</h2><p>Green Codex sélectionne les règles pertinentes selon le besoin, les technologies et les éléments observables.</p></div>
+    <div class="practice-grid">
+      <article><span class="practice-icon" aria-hidden="true">◇</span><h3>Concevoir un service utile</h3><p>Vérifier le besoin, l’usage réel et la facilité d’utilisation avant de multiplier les fonctionnalités.</p><a href="#three-u">La démarche des 3U</a></article>
+      <article><span class="practice-icon" aria-hidden="true">&lt;/&gt;</span><h3>Améliorer le code</h3><p>Cibler les requêtes, les transferts, les ressources et les comportements coûteux dans votre environnement.</p><a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/rules.md">Le catalogue technique</a></article>
+      <article><span class="practice-icon" aria-hidden="true">✓</span><h3>Vérifier les résultats</h3><p>Associer les constats à une preuve, signaler les limites et tester les changements réellement effectués.</p><a href="#nr-summary">Le bilan de fin de tâche</a></article>
+    </div>
+    <details class="stack"><summary>Langages et environnements couverts</summary><p>Java, Rust, C, C++, Go, Python, JavaScript, TypeScript, PHP, Ruby, Scala, Kotlin, Julia, Nim, Zig, Shell, SQL, PL/SQL, HTML, CSS, React, Vue, Angular, Svelte, Preact, Astro et Solid. La détection d’une technologie ne rend pas toutes ses règles applicables.</p></details>
+  </section>
+  <section class="tinted section" aria-labelledby="use"><div class="wrap install-grid">
+    <div><h2 id="use">Commencer dans votre projet</h2><p>Récupérez le dépôt, puis copiez le dossier du skill dans votre répertoire de skills Codex.</p><p>Depuis la racine du dépôt téléchargé :</p><pre><code>mkdir -p ~/.codex/skills
+cp -R green-codex ~/.codex/skills/green-codex</code></pre><p>Appelez ensuite <code>$green-codex</code> dans votre demande. Le skill peut aussi être sélectionné automatiquement par Codex.</p><a class="button primary" href="https://github.com/Institut-du-Numerique-Responsable/green-codex#installation">Ouvrir le guide d’installation</a></div>
+    <aside class="getting-started"><h3>Une première demande</h3><blockquote>« Analyse cette pull request sous l’angle du Numérique Responsable. Cite les fichiers concernés, les preuves et les vérifications nécessaires. »</blockquote><p>Précisez le périmètre et le résultat attendu. Une correction simple demande une vérification proportionnée.</p><a href="https://github.com/Institut-du-Numerique-Responsable/green-codex">Récupérer le dépôt sur GitHub</a></aside>
+  </div></section>
+  <section class="section wrap" aria-labelledby="coverage">
+    <div class="section-heading"><h2 id="coverage">Des référentiels pour guider l’action</h2><p>Les règles du projet s’appuient sur des sources documentées. Elles ne constituent pas une certification de conformité.</p></div>
+    <div class="framework-grid">
+      <article><h3>RGESN</h3><p>Écoconception des services numériques, du besoin utilisateur au cycle de vie.</p></article>
+      <article><h3>GR491</h3><p>Conception responsable : expérience utilisateur, code, données et hébergement.</p></article>
+      <article><h3>Opquast</h3><p>Qualité, compréhension et robustesse des expériences web.</p></article>
+      <article><h3>RGAA</h3><p>Points de vigilance sur le clavier, le focus, les contrastes et la sémantique. Un audit RGAA complet reste distinct.</p></article>
+    </div>
+    <p><a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/sources.md">Consulter les sources et leurs limites de couverture</a></p>
+  </section>
+  <section class="section wrap split" aria-labelledby="three-u">
+    <div><h2 id="three-u">Utile, utilisé et utilisable</h2><p>Confirmer le besoin, observer les usages et vérifier que les personnes peuvent accomplir leur tâche, y compris au clavier.</p><p>Chaque dimension demande ses propres preuves. Une information manquante reste à vérifier.</p></div>
+    <div id="nr-guides"><h3>Les guides du Numérique Responsable</h3><ul class="resource-list"><li><a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/nr-charter.md">Appliquer la charte NR</a></li><li><a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/air-practices.md">Architecture responsable avec BP-AIR</a></li><li><a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/stakeholder-maturity.md">Maturité des parties prenantes</a></li><li><a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/ria31.md">Questions d’IA responsable avec RIA31</a></li></ul><p class="small">RIA31 est distinct du règlement européen sur l’IA. Les documents générés ne prouvent pas l’adoption des pratiques par une organisation.</p></div>
+  </section>
+  <section class="token-section section" aria-labelledby="tokens"><div class="wrap split">
+    <div><h2 id="tokens">La sobriété concerne aussi l’assistant</h2><p>Réduire les tokens et les appels inutiles contribue au Numérique Responsable en limitant les traitements mobilisés pour un même résultat, tout en préservant la qualité.</p><p>Le gain environnemental réel dépend du modèle, de l’infrastructure et de l’usage.</p></div>
+    <div><p>Les règles NR-TOK encadrent les lectures ciblées, la réutilisation du contexte, les opérations, les modèles et la mesure des reprises.</p><a class="button light" href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/codex-token-sobriety.md">Lire le guide de sobriété Codex</a><p class="small">Règles inspirées et adaptées de Caveman, de Julius Brussee. Les extensions INR sont documentées.</p></div>
+  </div></section>
+  <section class="section wrap split" aria-labelledby="nr-summary">
+    <div><h2 id="nr-summary">Des preuves pour chaque constat</h2><p>Le bilan indique les règles appliquées, les actions réalisées, leur intérêt, les vérifications et les limites.</p><p>Les outils statiques inclus contrôlent des motifs précis : projection SQL, lecture automatique des médias et interrogation périodique en JavaScript.</p><p>Un hook optionnel peut vérifier la structure du bilan. Son installation et sa validation de confiance sont explicites ; il ne vérifie pas la véracité des preuves.</p><a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/closing-summary.md">Utiliser le bilan NR</a></div>
+    <div class="evidence"><dl><div><dt>PASS</dt><dd>Le point examiné est vérifié dans le périmètre annoncé.</dd></div><div><dt>FAIL</dt><dd>Un écart est constaté et accompagné d’éléments vérifiables.</dd></div><div><dt>REVIEW_REQUIRED</dt><dd>Une preuve, une vérification ou une décision reste nécessaire.</dd></div></dl><p class="small">Un scan réussi ne démontre ni conformité globale ni économie d’énergie. Les évaluations distinguent format et revue du sens des réponses.</p></div>
+  </section>
+  <section class="tinted section" aria-labelledby="license"><div class="wrap split">
+    <div><h2 id="license">Un projet ouvert à vos contributions</h2><p>Proposez une correction, documentez un cas d’usage ou contribuez aux évaluations.</p><div class="actions"><a class="button primary" href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/CONTRIBUTING.md">Contribuer au projet</a><a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/releases">Consulter les versions</a></div><p class="small">Code et références adaptées de Caveman : Apache-2.0. Documentation originale : CC BY 4.0. Adaptations BP-AIR, maturité et RIA31 : CC BY-SA 4.0. <a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/LICENSE">Licences par fichier</a> et <a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/green-codex/references/third-party-attributions.md">attributions tierces</a>.</p></div>
+    <div><h3 id="team">Porté par l’INR</h3><p>Green Codex est maintenu par Guillaume Gallon, Guillaume Bourgeois et Vincent Courboulay, avec les contributions de la communauté.</p><a href="https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/MAINTAINERS.md">Retrouver l’équipe du projet</a><p><a href="https://institutnr.org/ecoconcevoir-avec-un-assistant-de-code">La démarche INR pour les assistants de code</a></p></div>
+  </div></section>
 </main>
+<footer class="site-footer"><div class="wrap"><p><strong>Green Codex</strong><br>Institut du Numérique Responsable</p><nav aria-label="Liens de pied de page"><a href="https://institutnr.org/">Le site de l’INR</a><a href="https://github.com/Institut-du-Numerique-Responsable/green-codex">Code source</a><a href="#hero-title">Retour en haut</a></nav></div></footer>
 </body>
 </html>

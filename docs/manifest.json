@@ -1,12 +1,12 @@
 {
   "name": "Green Codex",
   "short_name": "GreenCodex",
-  "description": "Green IT guidance for coding assistants - Apply RGESN, GR491, Opquast, and RGAA rules in your workflow",
+  "description": "Des règles de Numérique Responsable pour concevoir, coder et vérifier avec Codex.",
   "start_url": "/green-codex/",
   "scope": "/green-codex/",
   "display": "standalone",
-  "background_color": "#f4f7f1",
-  "theme_color": "#17352f",
+  "background_color": "#ffffff",
+  "theme_color": "#0d3280",
   "icons": [
     {
       "src": "favicon.svg",
@@ -25,35 +25,39 @@
   "prefer_related_applications": false,
   "iarc_ad_id": null,
   "iarc_org_id": null,
-  "lang": "en-US",
+  "lang": "fr",
   "orientation": "any",
-  "categories": ["productivity", "utilities", "education"],
+  "categories": [
+    "productivity",
+    "utilities",
+    "education"
+  ],
   "screenshots": [
     {
       "src": "images/og-image.svg",
       "sizes": "1200x630",
       "type": "image/svg+xml",
       "form_factor": "wide",
-      "label": "Green Codex - Build less. Measure what matters."
+      "label": "Green Codex : le Numérique Responsable dans votre code"
     }
   ],
   "shortcuts": [
     {
-      "name": "Install",
-      "short_name": "Install",
-      "description": "Install Green Codex skill",
+      "name": "Installer",
+      "short_name": "Installer",
+      "description": "Installer le skill Green Codex",
       "url": "./#use"
     },
     {
-      "name": "Documentation",
-      "short_name": "Docs",
-      "description": "View documentation",
-      "url": "./"
+      "name": "Les règles",
+      "short_name": "Règles",
+      "description": "Consulter les pratiques et référentiels",
+      "url": "./#rules"
     },
     {
-      "name": "Contribute",
-      "short_name": "Contribute",
-      "description": "Learn how to contribute",
+      "name": "Contribuer",
+      "short_name": "Contribuer",
+      "description": "Contribuer au projet",
       "url": "./#license"
     }
   ],
@@ -64,5 +68,10 @@
   "edge_side_panel": {
     "preferred_width": 400
   },
-  "display_override": ["window-controls-overlay", "standalone", "minimal-ui", "browser"]
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "minimal-ui",
+    "browser"
+  ]
 }

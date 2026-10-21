@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Site Green Codex
+
+- Rework the landing page around the INR identity, with a local INR logo, blue and
+  teal palette, French content and direct access to installation, rules and evidence.
+- Keep the page static with no JavaScript or remote fonts; add responsive layouts,
+  a skip link and visible keyboard focus. Include token sobriety and licence updates.
+
 ### Third-party attribution
 
 - Credit Julius Brussee and Caveman for inspiration and adapted token sobriety rules.
