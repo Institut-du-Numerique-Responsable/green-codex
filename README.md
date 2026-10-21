@@ -182,14 +182,30 @@ reliable energy data, the skill reports `REVIEW_REQUIRED` instead of inventing a
 
 ## Installation
 
-Copy the `green-codex` directory into your Codex skills directory:
+For a first installation on macOS or Linux, with Git and Codex already installed,
+clone this repository and open its root folder:
 
 ```bash
-mkdir -p ~/.codex/skills
-cp -R green-codex ~/.codex/skills/green-codex
+git clone https://github.com/Institut-du-Numerique-Responsable/green-codex.git
+cd green-codex
 ```
 
-The skill is then available when Codex selects it automatically, or explicitly with `$green-codex`.
+Copy the `green-codex` directory into your personal skills directory. If the destination
+already exists, inspect and back up your local changes before updating it; do not run
+a first-install copy into an existing installation.
+
+```bash
+mkdir -p ~/.agents/skills
+cp -R green-codex ~/.agents/skills/green-codex
+```
+
+Verify the copy with `ls ~/.agents/skills/green-codex/SKILL.md`. In Codex CLI or the IDE
+extension, invoke `$green-codex` in your request. If the skill does not appear, restart
+Codex. Personal skill discovery uses `~/.agents/skills` in the
+[official documentation](https://learn.chatgpt.com/docs/build-skills).
+
+Watch the [50-second installation walkthrough](https://institut-du-numerique-responsable.github.io/green-codex/#installation-video)
+or read its transcript on the same page.
 
 ## Included files
 

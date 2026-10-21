@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+### Installation walkthrough
+
+- Add a silent, locally generated 50-second installation video with native playback
+  controls, no autoplay or preloading, and an accessible command transcript.
+- Align first-install instructions with the documented personal skills location
+  `~/.agents/skills`, include prerequisites and distinguish the Codex prompt from shell commands.
+
+
 ### Site Green Codex
 
 - Rework the landing page around the INR identity, with a local INR logo, blue and

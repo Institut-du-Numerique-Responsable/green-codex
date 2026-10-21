@@ -97,10 +97,39 @@
     <details class="stack"><summary>Langages et environnements couverts</summary><p>Java, Rust, C, C++, Go, Python, JavaScript, TypeScript, PHP, Ruby, Scala, Kotlin, Julia, Nim, Zig, Shell, SQL, PL/SQL, HTML, CSS, React, Vue, Angular, Svelte, Preact, Astro et Solid. La détection d’une technologie ne rend pas toutes ses règles applicables.</p></details>
   </section>
   <section class="tinted section" aria-labelledby="use"><div class="wrap install-grid">
-    <div><h2 id="use">Commencer dans votre projet</h2><p>Récupérez le dépôt, puis copiez le dossier du skill dans votre répertoire de skills Codex.</p><p>Depuis la racine du dépôt téléchargé :</p><pre><code>mkdir -p ~/.codex/skills
-cp -R green-codex ~/.codex/skills/green-codex</code></pre><p>Appelez ensuite <code>$green-codex</code> dans votre demande. Le skill peut aussi être sélectionné automatiquement par Codex.</p><a class="button primary" href="https://github.com/Institut-du-Numerique-Responsable/green-codex#installation">Ouvrir le guide d’installation</a></div>
+    <div><h2 id="use">Commencer dans votre projet</h2><p>Pour une première installation sur macOS ou Linux, avec Git et Codex déjà installés, récupérez le dépôt puis copiez le dossier du skill. Si la destination existe déjà, consultez le guide avant de la modifier.</p><p>Depuis la racine du dépôt téléchargé :</p><pre><code>mkdir -p ~/.agents/skills
+cp -R green-codex ~/.agents/skills/green-codex</code></pre><p>Appelez ensuite <code>$green-codex</code> dans votre demande. Le skill peut aussi être sélectionné automatiquement par Codex.</p><a class="button primary" href="https://github.com/Institut-du-Numerique-Responsable/green-codex#installation">Ouvrir le guide d’installation</a></div>
     <aside class="getting-started"><h3>Une première demande</h3><blockquote>« Analyse cette pull request sous l’angle du Numérique Responsable. Cite les fichiers concernés, les preuves et les vérifications nécessaires. »</blockquote><p>Précisez le périmètre et le résultat attendu. Une correction simple demande une vérification proportionnée.</p><a href="https://github.com/Institut-du-Numerique-Responsable/green-codex">Récupérer le dépôt sur GitHub</a></aside>
   </div></section>
+  <section class="section wrap install-video" aria-labelledby="installation-video">
+    <div class="section-heading"><h2 id="installation-video">Installer Green Codex en vidéo</h2><p>Une démonstration animée de 50 secondes, sans audio, pour une première installation sur macOS ou Linux. Git et Codex doivent déjà être installés.</p></div>
+    <figure>
+      <video controls preload="none" playsinline width="1280" height="720" poster="media/installation-poster.webp" aria-label="Installer Green Codex, démonstration animée sans audio" aria-describedby="video-caption">
+        <source src="media/installation-greencodex.mp4" type="video/mp4">
+        Votre navigateur ne peut pas lire cette vidéo. Les instructions sont disponibles dans la transcription ci-dessous.
+      </video>
+      <figcaption id="video-caption">Les commandes apparaissent à l’écran. La lecture démarre uniquement à votre demande. <a href="media/installation-greencodex.mp4" download>Télécharger la vidéo MP4</a>.</figcaption>
+    </figure>
+    <details class="stack"><summary>Lire la transcription et copier les commandes</summary>
+      <p>Cette animation illustre les commandes à exécuter. Elle ne présente pas une session enregistrée ni une installation effectuée sur votre machine.</p>
+      <h3>Récupérer le projet</h3>
+      <p>Dans un terminal, depuis un dossier où vous souhaitez télécharger le dépôt :</p>
+      <pre><code>git clone https://github.com/Institut-du-Numerique-Responsable/green-codex.git
+cd green-codex</code></pre>
+      <h3>Copier le skill</h3>
+      <p>Depuis la racine du dépôt, pour une première installation. Si <code>~/.agents/skills/green-codex</code> existe déjà, examinez et sauvegardez vos modifications locales avant une mise à jour.</p>
+      <pre><code>mkdir -p ~/.agents/skills
+cp -R green-codex ~/.agents/skills/green-codex</code></pre>
+      <h3>Vérifier la copie</h3>
+      <pre><code>ls ~/.agents/skills/green-codex/SKILL.md</code></pre>
+      <p>Le chemin du fichier doit s’afficher sans erreur. Cela confirme la présence du fichier ; la disponibilité du skill se vérifie ensuite dans Codex.</p>
+      <h3>Utiliser Green Codex</h3>
+      <p>Ouvrez votre projet dans Codex CLI ou l’extension IDE et saisissez cette demande dans Codex, sans l’exécuter dans le terminal :</p>
+      <pre><code>$green-codex
+Examine ce projet et propose des améliorations d’écoconception vérifiables.</code></pre>
+      <p>Si le skill n’apparaît pas, redémarrez Codex. <a href="https://learn.chatgpt.com/docs/build-skills">Consulter la documentation officielle des skills Codex</a>.</p>
+    </details>
+  </section>
   <section class="section wrap" aria-labelledby="coverage">
     <div class="section-heading"><h2 id="coverage">Des référentiels pour guider l’action</h2><p>Les règles du projet s’appuient sur des sources documentées. Elles ne constituent pas une certification de conformité.</p></div>
     <div class="framework-grid">

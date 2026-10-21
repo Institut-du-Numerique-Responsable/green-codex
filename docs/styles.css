@@ -122,3 +122,9 @@ code { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; }
   .site-footer .wrap { flex-direction: column; align-items: flex-start; }
 }
 @media (max-width: 360px) { .framework-grid { grid-template-columns: 1fr; } }
+
+.install-video figure { margin: 0; max-width: 960px; }
+.install-video video { display: block; width: 100%; height: auto; background: var(--pale); border: 1px solid var(--line); border-radius: 6px; }
+.install-video video:focus-visible { outline: 3px solid #a83b00; outline-offset: 5px; }
+.install-video figcaption { margin-top: .8rem; color: var(--muted); font-size: .9rem; }
+.install-video details h3 { margin-top: 1.5rem; }
