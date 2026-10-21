@@ -35,6 +35,11 @@ through NR-TOK-030 for development agents, including Codex, Claude Code and Mist
 They define mandatory safeguards, default recommendations, capability-dependent actions
 and a concise session report. Token and cost savings require comparable measurements;
 they do not establish environmental savings.
+
+Réduire les tokens et les appels inutiles contribue au Numérique Responsable en
+limitant les traitements mobilisés pour un même résultat, tout en préservant la qualité ;
+le gain environnemental réel dépend du modèle, de l'infrastructure et de l'usage.
+
 The [Codex application guide](green-codex/references/codex-token-sobriety.md) documents
 targeted searches, stale evidence, compaction, cache, agent delegation, acceptance
 criteria and measurement boundaries, with official sources and a worked example.

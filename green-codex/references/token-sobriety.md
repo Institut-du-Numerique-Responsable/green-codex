@@ -9,6 +9,10 @@ Voir [l'attribution et la provenance](third-party-attributions.md).
 Réduire les tokens consommés, les appels aux modèles et les traitements inutiles,
 sans dégrader la qualité, la sécurité, la maintenabilité ni la compréhension du code.
 
+Réduire les tokens et les appels inutiles contribue au Numérique Responsable en
+limitant les traitements mobilisés pour un même résultat, tout en préservant la qualité ;
+le gain environnemental réel dépend du modèle, de l'infrastructure et de l'usage.
+
 Ces règles s'appliquent aux agents IA de développement, notamment Claude Code,
 OpenAI Codex et Mistral Vibe. Ce sont des conventions du projet. Les mécanismes
 disponibles doivent être vérifiés dans l'environnement utilisé ; aucune commande
