@@ -15,6 +15,12 @@ record must not be reused as current evidence.
 
 ## Evidence before status
 
+Include the [token sobriety session summary](token-sobriety.md#format-du-bilan-de-session)
+in the same report. NR-TOK identifiers are accepted in task records. The command does
+not collect token or cost metrics; add available measurements and their provenance to
+the textual report. Group unavailable metrics and avoid repeating actions. Keep the
+hook's required Action, Benefit, Evidence and Limits fields when it is enabled.
+
 Apply the applicability gate in `SKILL.md` before writing the record. Keep out-of-scope rules
 out of `rules`; explain material exclusions in `limitations`. An applicable check that could
 not run stays `REVIEW_REQUIRED`, with its missing tool, document or human decision identified.

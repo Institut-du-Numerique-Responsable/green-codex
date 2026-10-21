@@ -10,6 +10,14 @@ REFS = Path(__file__).resolve().parents[1] / "references"
 
 
 class ReferenceTests(unittest.TestCase):
+    def test_token_rules_complete_and_registered(self):
+        text = (REFS / "token-sobriety.md").read_text(encoding="utf-8")
+        definitions = re.findall(r"\*\*(NR-TOK-\d{3}) :", text)
+        expected = {f"NR-TOK-{number:03d}" for number in range(1, 31)}
+        self.assertEqual(set(definitions), expected)
+        self.assertEqual(len(definitions), len(expected))
+        self.assertTrue(expected <= known_rules())
+
     def test_definitions_unique_and_registered(self):
         definitions = []
         for name in RULE_FILES:

@@ -2,6 +2,35 @@
 
 ## Unreleased
 
+### Third-party attribution
+
+- Credit Julius Brussee and Caveman for inspiration and adapted token sobriety rules.
+  Preserve the copyright, Apache-2.0 terms, INR modification notice and independence
+  statement in the packaged references, NOTICE and license scopes. Document the
+  consulted upstream revision and the remaining source-version provenance gap.
+
+### Token sobriety
+
+- Clarify evidence freshness, safe compression, targeted edits, dependency ordering,
+  required checks and stopping conditions. Document Codex-specific application with
+  verified CLI capabilities, source links and complete-task measurement boundaries.
+
+- Add NR-TOK-001 through NR-TOK-030 for development agents, with mandatory rules,
+  default recommendations and capability-dependent model, cache and measurement actions.
+- Connect the skill and closing summary to the shared reference, preserve existing
+  Codex practice identifiers and avoid counting overlapping savings twice.
+- Register NR-TOK identifiers in the summary validator and verify catalogue coverage
+  and CLI acceptance. Token and cost metrics remain externally supplied evidence.
+
+### Expression and commit messages
+
+- Add shared editorial instructions for Codex and ChatGPT in every language, with
+  direct wording, prohibited rhetorical constructions and no Unicode U+2014 character.
+- Require commit messages to explain the change and its reason, record actual
+  verification, and match the committed diff, including merge and squash messages.
+- Route the skill and repository guidance to the shared reference and document manual
+  reuse in ChatGPT. Model adherence still requires review of actual responses.
+
 ### NR rules, reporting and hooks
 
 - Add the five NR charter axes, 18 BP-AIR practices, 48 stakeholder maturity questions

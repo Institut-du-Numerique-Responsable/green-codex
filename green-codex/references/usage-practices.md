@@ -10,6 +10,12 @@ none is a direct measurement of energy use or environmental impact.
 
 ## Manage context
 
+The cross-agent baseline is in [token sobriety](token-sobriety.md). Apply its mandatory
+rules when triggered and use this file for Codex-specific mechanisms. Group overlapping
+actions in the closing summary and never count the same savings twice.
+Use [the Codex application guide](codex-token-sobriety.md) for triggers, verification
+evidence, host capability limits and complete-task measurement.
+
 ### USAGE-CODEX-CTX-01 — Keep initial context relevant
 
 State the objective, constraints, acceptance criteria, and where Codex can retrieve evidence.

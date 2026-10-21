@@ -11,7 +11,24 @@ AI, sustainable software, or an environmental audit of code or a digital service
 Assess actual usage and evidence; no technology is inherently “green”. Preserve accessibility,
 privacy, security and correctness. Do not infer environmental savings from a tool score.
 
+## Expression
+
+Read and apply `references/expression.md` for every task, including natural-language
+answers, authored documentation, code comments, commit messages and pull requests.
+These editorial rules apply in every language. Before creating or proposing a commit,
+check its message against the actual diff and report only verification performed.
+
 ## Working method
+
+Apply the cross-agent baseline in `references/token-sobriety.md`: load only needed
+context (NR-TOK-007), preserve critical data when compressing (011), investigate before
+patching a problem (015), make targeted edits (016), stop at acceptance (022), preserve
+quality (027), and report actual actions and available measurements (030). These are
+mandatory when triggered. Other rules are recommended; 023 to 026 and 028 depend on
+host capabilities. Read the relevant sections for context, operations or model choices.
+Follow higher-priority host instructions, including required progress communication.
+For Codex configuration, token measurement or workflow audits, read the relevant
+sections of `references/codex-token-sobriety.md`; ordinary tasks need no full guide load.
 
 1. Establish the requested scope: targeted change, review, or service-wide audit. Reuse known user
    needs and project budgets; do not turn a small edit into a full audit or remove functionality
@@ -99,12 +116,17 @@ Before the final response, summarise all NR actions actually performed during th
 rule IDs, concrete action, user benefit, and verification evidence. Distinguish applied actions,
 remaining FAIL/REVIEW_REQUIRED items and unmeasured gains. If no NR action was applicable,
 say so briefly. Use the user's language and keep the detail proportional to the task.
+Integrate the `Sobriété des tokens` session summary from `references/token-sobriety.md`
+without repeating actions. Include applied NR-TOK IDs, optimisations, available input,
+output and cache tokens, model calls, cost, measured savings, quality checks and limits.
+Group unavailable metrics concisely. Never invent metrics or savings percentages without
+a comparable baseline; token, monetary and environmental savings are distinct.
 For a repeatable end-of-run check or audit record, follow `references/closing-summary.md`
 and run `scripts/nr_summary.py` with the current task record and explicit scan scope.
 A successful static scan alone never means all rules were applied.
 When the optional NR hook is configured, label the summary `Bilan NR` or `NR summary`
 and use `Action:`, `Intérêt:`/`Benefit:`, `Preuve:`/`Evidence:` and `Limites:`/`Limits:`
-with the applicable IDs. If none applies, use `NR: non applicable — reason` under that heading.
+with the applicable IDs. If none applies, use `NR: non applicable : reason` under that heading.
 This structure lets the hook detect missing fields; it does not authenticate evidence.
 
 ## Source attribution

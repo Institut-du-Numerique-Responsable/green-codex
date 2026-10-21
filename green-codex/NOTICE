@@ -17,6 +17,19 @@ applicable terms and attributions.
 Historical third-party contributions retain their original MIT terms;
 preserve LICENSES/MIT-legacy.txt when redistributing those portions.
 
+Caveman
+Copyright 2026 Julius Brussee
+Source: https://github.com/JuliusBrussee/caveman
+License: Apache License, Version 2.0 (Caveman 3.0.0 and later).
+Inspired and adapted rules: references/token-sobriety.md and
+references/codex-token-sobriety.md. INR changes: NR-TOK formulation and organisation,
+priorities, Codex guidance, quality safeguards, evidence and session reporting.
+These changes are not attributed to Julius Brussee. Green Codex is independent;
+no endorsement, affiliation or participation by the original author is implied.
+Preserve applicable historical MIT notices for any reused pre-3.0.0 contributions.
+See references/third-party-attributions.md for sources and provenance limitations.
+Full Apache license: LICENSES/Apache-2.0.txt.
+
 Adapted references (CC BY-SA 4.0):
 - air-practices.md: BP-AIR, INR/ISIT and contributors, revision f7b0f6b.
   https://github.com/Institut-du-Numerique-Responsable/BP-AIR
