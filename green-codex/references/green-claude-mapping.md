@@ -264,3 +264,58 @@ mesurer et de fixer le seuil dans le projet.
 | `ECO-VUE-02` | couverte | `LANG-VUE-002` | |
 | `ECO-ZIG-01` | couverte | `LANG-ZIG-001` | |
 | `ECO-ZIG-02` | nouvelle | `LANG-ZIG-003` | |
+
+## Usage (`usage.json`)
+
+| ID Green Claude | Statut | ID Green Codex | Raison |
+| --- | --- | --- | --- |
+| `USAGE-CTX-01` | couverte | `USAGE-CODEX-CTX-01` |  |
+| `USAGE-CTX-02` | adaptée | `USAGE-CODEX-CTX-02` | Le retour en arrière de Claude Code est remplacé par `/fork` et `codex fork`, documentés pour Codex ; un fork ne sert pas d'annulation. |
+| `USAGE-CTX-03` | adaptée | `USAGE-CODEX-CTX-03`, `USAGE-CODEX-CTX-04` | `/clear` est complété par `/new`, et `/compact` est conservé, selon la référence des commandes Codex. |
+| `USAGE-CTX-04` | couverte | `USAGE-CODEX-CTX-04` |  |
+| `USAGE-CTX-05` | adaptée | `USAGE-CODEX-CTX-05` | La règle visait l'agent Claude ; elle s'applique à Codex sans autre changement. |
+| `USAGE-BRIEF-01` | couverte | `USAGE-CODEX-BRIEF-01` |  |
+| `USAGE-BRIEF-02` | couverte | `USAGE-CODEX-BRIEF-02` |  |
+| `USAGE-BRIEF-03` | nouvelle | `USAGE-CODEX-BRIEF-03` |  |
+| `USAGE-MEM-01` | adaptée | `USAGE-CODEX-MEM-01` | `CLAUDE.md` est remplacé par `AGENTS.md`. |
+| `USAGE-MEM-02` | couverte | `USAGE-CODEX-MEM-02` |  |
+| `USAGE-MEM-03` | couverte | `CODE-EFF-016` |  |
+| `USAGE-VERIF-01` | adaptée | `USAGE-CODEX-VERIFY-01` | La règle visait l'agent Claude ; elle s'applique à Codex sans autre changement. |
+| `USAGE-CPU-03` | adaptée | `USAGE-CODEX-COMPUTE-03` | L'option `--bare` de Claude Code est remplacée par une exécution minimale avec `codex exec`. |
+
+## Sobriété des tokens (`tokens.json`)
+
+Les 30 règles gardent leur identifiant. Green Codex conserve sa rédaction française, de même substance.
+
+| ID Green Claude | Statut | ID Green Codex | Raison |
+| --- | --- | --- | --- |
+| `NR-TOK-001` | couverte | `NR-TOK-001` |  |
+| `NR-TOK-002` | couverte | `NR-TOK-002` |  |
+| `NR-TOK-003` | couverte | `NR-TOK-003` |  |
+| `NR-TOK-004` | couverte | `NR-TOK-004` |  |
+| `NR-TOK-005` | couverte | `NR-TOK-005` |  |
+| `NR-TOK-006` | couverte | `NR-TOK-006` |  |
+| `NR-TOK-007` | couverte | `NR-TOK-007` |  |
+| `NR-TOK-008` | couverte | `NR-TOK-008` |  |
+| `NR-TOK-009` | couverte | `NR-TOK-009` |  |
+| `NR-TOK-010` | couverte | `NR-TOK-010` |  |
+| `NR-TOK-011` | couverte | `NR-TOK-011` |  |
+| `NR-TOK-012` | adaptée | `NR-TOK-012` | `CLAUDE.md` est remplacé par les fichiers d'instructions équivalents des autres agents. |
+| `NR-TOK-013` | couverte | `NR-TOK-013` |  |
+| `NR-TOK-014` | couverte | `NR-TOK-014` |  |
+| `NR-TOK-015` | couverte | `NR-TOK-015` |  |
+| `NR-TOK-016` | couverte | `NR-TOK-016` |  |
+| `NR-TOK-017` | couverte | `NR-TOK-017` |  |
+| `NR-TOK-018` | couverte | `NR-TOK-018` |  |
+| `NR-TOK-019` | couverte | `NR-TOK-019` |  |
+| `NR-TOK-020` | couverte | `NR-TOK-020` |  |
+| `NR-TOK-021` | couverte | `NR-TOK-021` |  |
+| `NR-TOK-022` | couverte | `NR-TOK-022` |  |
+| `NR-TOK-023` | couverte | `NR-TOK-023` |  |
+| `NR-TOK-024` | couverte | `NR-TOK-024`, `USAGE-CODEX-COMPUTE-02` |  |
+| `NR-TOK-025` | couverte | `NR-TOK-025` |  |
+| `NR-TOK-026` | couverte | `NR-TOK-026` |  |
+| `NR-TOK-027` | couverte | `NR-TOK-027` |  |
+| `NR-TOK-028` | couverte | `NR-TOK-028` |  |
+| `NR-TOK-029` | couverte | `NR-TOK-029` |  |
+| `NR-TOK-030` | couverte | `NR-TOK-030` |  |

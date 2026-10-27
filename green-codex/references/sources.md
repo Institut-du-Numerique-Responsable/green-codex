@@ -38,7 +38,7 @@ inventory does not claim all current editions were rechecked on the inventory da
 4. [OpenAI best practices](https://learn.chatgpt.com/guides/best-practices): task context and proportionate reasoning effort.
 5. [OpenAI model guidance](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-5.5): evaluation, caching and retained task state. This is a version-dependent model reference, not a universal environmental standard.
 
-The 14 practices adapt an earlier Green Claude checklist, as stated in `usage-practices.md`.
+The 15 practices adapt an earlier Green Claude checklist, as stated in `usage-practices.md`.
 The repository does not pin that predecessor's source/version here, so that historical
 lineage cannot be reconstructed completely from these files. They are editorial practices,
 not quotations attributable to a named person.

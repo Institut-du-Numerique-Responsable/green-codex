@@ -62,8 +62,8 @@ def main():
     usage_contents = USAGE_PRACTICES.read_text(encoding="utf-8")
     for usage_id in usage_ids:
         require(USAGE_PRACTICES, usage_id)
-    if usage_contents.count("### USAGE-CODEX-") != 14:
-        raise AssertionError("usage-practices.md must contain exactly 14 identified practices")
+    if usage_contents.count("### USAGE-CODEX-") != 15:
+        raise AssertionError("usage-practices.md must contain exactly 15 identified practices")
     for codex_mechanism in (
         "`codex fork`", "`codex exec`", "`AGENTS.md`", "`/model`",
         "`/new`", "`/clear`", "`/compact`",

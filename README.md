@@ -132,7 +132,7 @@ including a control against expanding a small unrelated task into a charter audi
 
 ### Codex usage practices
 
-When the task concerns Codex itself, the skill applies the 14 project-authored practices in
+When the task concerns Codex itself, the skill applies the 15 project-authored practices in
 [`green-codex/references/usage-practices.md`](green-codex/references/usage-practices.md). They
 cover relevant initial context, forks and task boundaries, deliberate compaction, the maintained
 code map, complete briefs, bounded delegation, durable project guidance, proportionate
@@ -217,7 +217,7 @@ or read its transcript on the same page.
 - `green-codex/references/rules.md`: complete rules for frontend, backend, data,
   accessibility, web quality, responsible AI, modern architectures, operations and
   language/framework-specific guidance;
-- `green-codex/references/usage-practices.md`: 14 project-authored practices adapted to Codex,
+- `green-codex/references/usage-practices.md`: 15 project-authored practices adapted to Codex,
   with official sources for Codex-specific mechanisms;
 - `green-codex/scripts/check_sobriety.py`: conservative static checks for selected high-confidence
   anti-patterns;
