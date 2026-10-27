@@ -70,6 +70,18 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
   accessible and usable under degraded connectivity. Avoid mandatory accounts, tracking or heavy
   downloads where unnecessary. Prefer accessible text alternatives when media is optional, while
   preserving captions, descriptions and assistive functionality users need.
+- **SERVICE-EFF-007 — Open formats:** exchange and store data in open, widely readable formats
+  (CSV, JSON, Markdown, HTML, ODF) unless a proprietary format is required. Verify that the output
+  opens with a free tool on the oldest supported device profile.
+- **SERVICE-EFF-008 — Informed choice:** before a costly action, show its weight or quality (download
+  size, default video resolution) and let the user choose a lighter option. Verify that the
+  information appears before the transfer starts.
+- **SERVICE-EFF-009 — Measurable acceptance criteria:** add measurable sobriety criteria to user
+  stories, such as a page weight, request budget or EcoIndex threshold, and check them in review.
+  Verify that the review record cites the measured value.
+- **SERVICE-EFF-010 — Software longevity:** keep fixes separate from new features, ship incremental
+  updates, and plan data migration and long-term documentation so the service lasts without a
+  rewrite. Verify that a security fix can ship without forcing a feature upgrade.
 
 ### Code and runtime
 
@@ -109,6 +121,16 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
 - **CODE-EFF-013 — Leak detection:** run memory/resource leak checks for long-lived or native
   components when supported by the stack (for example Valgrind or a JVM profiler). Document any
   justified exception.
+- **CODE-EFF-014 — Smallest sufficient solution:** check whether static HTML, platform features or
+  plain code meet the need before adding a framework or abstraction. Write the specific version
+  until a second caller justifies a generalisation, and delete dead code and temporary debugging
+  paths before shipping. Verify with a review of the diff and a dead-code check where available.
+- **CODE-EFF-015 — Maintainable quality:** test code before shipping it, handle errors and edge
+  cases, and keep the structure simple enough to change without a rewrite. Verify with tests that
+  cover the error paths of the changed behaviour.
+- **CODE-EFF-016 — Readable comments and messages:** explain why non-obvious code exists, in plain
+  words, and update or remove a comment when the code changes. Apply the same care to commit
+  messages and pull requests, following `expression.md`. Verify comments against the final diff.
 
 ### APIs and frontend
 
@@ -129,6 +151,20 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
   video. Use an appropriate poster and explicit play action; defer optional media downloads until
   requested. Disable non-essential automatic animation, respect `prefers-reduced-motion`, and
   verify both playback and idle transfers on a constrained device or throttled profile.
+- **WEB-EFF-005 — Third-party services:** measure the weight and requests of a third-party service
+  before integrating it, prefer a lighter alternative, and load optional embeds only on user action.
+  Verify with a network trace before and after the integration.
+- **WEB-EFF-006 — Lightest medium:** carry information with the lightest medium that serves it
+  (text, then image, audio, video). Use SVG or CSS for simple icons rather than bitmaps or a full
+  icon font, keeping accessible names. Verify transferred bytes for the affected page.
+- **WEB-EFF-007 — Accessible baseline:** use native elements before ARIA workarounds, give every
+  informative image a text alternative, every control a visible focus and every field a label.
+  Verify the changed journey with a keyboard alone, then with a screen reader when available.
+- **WEB-EFF-008 — Minified and compressed assets:** minify production scripts and styles in the
+  build and serve text responses with Brotli or gzip. Verify response headers and transferred size
+  on the production build.
+- **WEB-EFF-009 — No broken references:** fix or remove links and resource references to files that
+  no longer exist. Verify with a link check on the built site.
 
 ### Databases and storage
 
@@ -158,6 +194,8 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
 - **DB-EFF-010 — Safe prepared queries:** use parameterised statements for external input and reuse
   prepared plans when the driver supports it. Verify both injection resistance and query latency;
   security takes precedence over a speculative micro-optimisation.
+- **DB-EFF-011 — Connection pooling:** reuse database connections through a bounded pool instead of
+  opening one per request. Verify the pool limit and connection count under load.
 
 ### Infrastructure and operations
 
@@ -175,6 +213,9 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
 - **INFRA-EFF-005 — Interruptible capacity:** use Spot or preemptible capacity only for workloads
   that tolerate interruption, checkpoint safely and do not expose personal data through requeued
   work. Compare interruption, retry and migration energy with the expected saving.
+- **INFRA-EFF-006 — Lean container images:** pin the base image to a version, start from a slim
+  base where the runtime allows, use a multi-stage build so build tools stay out of the final image,
+  and clean package caches in the layer that fills them. Verify the final image size.
 - **OPS-EFF-001 — Retention and observability:** set retention by data class and purpose; delete or
   archive logs and traces on schedule (for example with Elasticsearch ILM). Alert on growth and on
   a configurable deviation from a representative baseline, not an unexplained universal percentage.
@@ -184,6 +225,9 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
 - **OPS-EFF-003:** for a hardware procurement review, use `HW-EFF-001`, `HW-EFF-002` and
   `HW-EFF-003` for service life, purchase evidence and end of life. This is a routing identifier:
   report the specific hardware rule rather than counting the same requirement twice.
+- **OPS-EFF-004 — Sober continuous integration:** cache dependencies between runs, reuse what the
+  runner image already provides, merge short jobs that share a checkout, limit triggers to relevant
+  paths and bound artifact retention. Verify run duration and triggers on a representative change.
 
 ### Networks and digital services
 
@@ -198,6 +242,8 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
 - **NET-EFF-004 — Critical path:** preload or prefetch only resources proven critical to the next
   interaction. Defer optional resources, but do not lazy-load an above-the-fold/LCP image or delay
   essential controls. Verify the decision with a trace and task completion under slow connectivity.
+- **NET-EFF-005 — Secure transport:** use HTTPS for pages, third-party resources and outbound links,
+  with TLS 1.2 or later. Verify the server and client configuration with a TLS check.
 
 ### Hardware and facilities
 
@@ -227,6 +273,23 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
 - **AI-EFF-006 — Optimised inference:** evaluate batching, quantisation, pruning or a specialised
   runtime (such as ONNX Runtime) only when quality, safety, latency and energy are measured before
   and after. Never assume INT8, pruning or a particular GPU is universally better.
+- **AI-EFF-007 — Consumption tracking:** record tokens, calls and cache hit rate per use case, and
+  alert when a use case exceeds its budget. Verify that the records cover each production use case.
+- **AI-EFF-008 — Measured AI energy:** instrument AI runs with an energy measurement tool where the
+  hardware allows it (for example CodeCarbon or Zeus), and record hardware, duration and region.
+  Label estimates separately from measurements. Follow `measurement.md`.
+- **AI-EFF-009 — Direction, not ratio:** fewer tokens processed means less computation, and so less
+  energy and water. Do not convert a token count into watts, litres or grams of CO2: caching,
+  model size, batching, hardware and location dominate the result. Measure before stating a figure.
+- **AI-EFF-010 — Inference host limits:** on self-hosted inference, set memory limits that prevent
+  swapping, monitor swap use, and respect the hardware vendor's thermal limits. Verify with host
+  metrics under peak load.
+- **AI-EFF-011 — Interruptible generation:** stream long outputs so users can stop a generation they
+  no longer need, and stop the computation when they do. Verify that cancelling ends the request
+  on the server.
+- **AI-EFF-012 — Adaptation choice:** prefer prompting or retrieval over fine-tuning to add
+  knowledge; fine-tune only when a measured quality gap remains. Verify with the same test set
+  before and after.
 
 ### Measurement and continuous improvement
 
@@ -410,6 +473,10 @@ identifier in findings.
   bound promise concurrency with a queue.
 - **LANG-JS-005:** avoid serialising large objects repeatedly; prefer structured streaming or a
   compact representation when a measured transfer or CPU budget requires it.
+- **LANG-JS-006:** scope variables to a module or function; when a third-party script needs a
+  global, assign it explicitly on an existing global object. Verify with a linter rule.
+- **LANG-JS-007:** never issue a synchronous `XMLHttpRequest`; use `fetch()` or an asynchronous
+  request.
 
 ### HTML5 and CSS3 (`LANG-HTML-*`, `LANG-CSS-*`)
 
@@ -419,6 +486,8 @@ identifier in findings.
   content; apply `WEB-EFF-004` to disable automatic playback, including muted video.
 - **LANG-HTML-003:** keep the initial document useful without non-essential JavaScript and avoid
   duplicate navigation, tracking and preload hints; verify first-content payload size.
+- **LANG-HTML-004:** keep every `id` unique in a document; use a class for shared style or
+  behaviour. Verify with an HTML validator.
 - **LANG-CSS-001:** remove unused rules, limit selector and DOM complexity, and prefer system fonts
   or a small, subsetted WOFF2 set. Verify production CSS size.
 - **LANG-CSS-002:** animate only `transform` and `opacity`, honour reduced motion, and avoid
@@ -426,6 +495,9 @@ identifier in findings.
 - **LANG-CSS-003:** when layout is recalculated by JavaScript, check whether media or container
   queries meet the same behaviour and supported-browser needs. Compare a representative resize
   trace and layout result before changing it; unused CSS belongs to `LANG-CSS-001`.
+- **LANG-CSS-004:** merge duplicate selectors and properties, lower specificity instead of adding
+  `!important` (except for a documented third-party override), and remove hacks for browsers your
+  audience data no longer shows. Verify with a CSS linter.
 
 ### React (`LANG-REACT-*`)
 
