@@ -280,10 +280,12 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
   alert when a use case exceeds its budget. Verify that the records cover each production use case.
 - **AI-EFF-008 — Measured AI energy:** instrument AI runs with an energy measurement tool where the
   hardware allows it (for example CodeCarbon or Zeus), and record hardware, duration and region.
-  Label estimates separately from measurements. Follow `measurement.md`.
+  Label estimates separately from measurements, following `measurement.md`. Verify that each
+  reported figure names its tool and whether it is measured or estimated.
 - **AI-EFF-009 — Direction, not ratio:** fewer tokens processed means less computation, and so less
   energy and water. Do not convert a token count into watts, litres or grams of CO2: caching,
-  model size, batching, hardware and location dominate the result. Measure before stating a figure.
+  model size, batching, hardware and location dominate the result. Verify that any stated energy
+  or carbon figure comes from a measurement, not from a token count.
 - **AI-EFF-010 — Inference host limits:** on self-hosted inference, set memory limits that prevent
   swapping, monitor swap use, and respect the hardware vendor's thermal limits. Verify with host
   metrics under peak load.
@@ -408,8 +410,9 @@ identifier in findings.
   or network round trip per row.
 - **LANG-JAVA-006:** load the associations a loop walks with `JOIN FETCH` or `@EntityGraph`, and
   project read-only results into DTOs. Verify the query count with several records.
-- **LANG-JAVA-007:** keep streams sequential by default; use `parallelStream()` only after a
-  benchmark, on a pool sized for the workload.
+- **LANG-JAVA-007:** keep streams sequential by default; parallelise only after a benchmark, with an
+  explicit executor sized for the workload rather than the shared common pool. Verify the
+  benchmark result before and after.
 
 ### Kotlin and Scala (`LANG-KOTLIN-*`, `LANG-SCALA-*`)
 
@@ -422,7 +425,7 @@ identifier in findings.
 - **LANG-SCALA-001:** avoid unnecessary materialisation of collections and excessive implicit or
   effect layers in hot paths; benchmark lazy versus strict evaluation.
 - **LANG-SCALA-003:** bound the number of futures in flight with a throttled traversal or a
-  semaphore instead of starting one per list element.
+  semaphore instead of starting one per list element. Verify the maximum concurrency in a test.
 
 ### Rust, C and C++ (`LANG-RUST-*`, `LANG-C-*`, `LANG-CPP-*`)
 
@@ -447,41 +450,49 @@ identifier in findings.
   task remains alive after shutdown.
 - **LANG-RUST-004:** create network clients once and share them so their connection pool is reused;
   bound channels and caches. Verify the connection count under load.
-- **LANG-RUST-005:** justify each crate, disable unused default features, check the tree with
-  `cargo tree`, and ship `--release` builds.
-- **LANG-C-004:** hoist loop-invariant work such as `strlen()` out of loop conditions, and keep an
-  end pointer instead of repeated `strcat()`.
-- **LANG-C-005:** read and write in buffered blocks rather than byte by byte, and close every handle.
-- **LANG-CPP-004:** use `std::unique_ptr` by default and `std::shared_ptr` only for genuinely shared
-  ownership.
+- **LANG-RUST-005:** add a crate only when it earns its place, switch off default features you do not
+  use, and build production binaries in release mode. Verify the dependency graph with
+  `cargo tree` and the binary size.
+- **LANG-C-004:** compute string lengths once before a loop instead of calling `strlen()` in its
+  condition, and append through an end pointer rather than repeated `strcat()`. Verify with a
+  profile on long inputs.
+- **LANG-C-005:** move data in buffered blocks (`fread`, `fwrite`) instead of single bytes, and close
+  every handle. Verify the system-call count with `strace` or an equivalent tool.
+- **LANG-CPP-004:** own objects through `std::unique_ptr` unless ownership is truly shared; keep
+  `std::shared_ptr` for that case. Verify in review that each `shared_ptr` has more than one owner.
 
 ### C# and .NET (`LANG-CSHARP-*`)
 
 - **LANG-CSHARP-001:** filter, project, aggregate and paginate on the `IQueryable` before
   materialising it. Verify the generated SQL.
-- **LANG-CSHARP-002:** use `AsNoTracking()` and a targeted `Select` projection for read-only queries
-  instead of cascading `Include`.
-- **LANG-CSHARP-003:** use `Any()` for existence tests and avoid enumerating the same sequence
-  several times.
-- **LANG-CSHARP-004:** stay `async`/`await` end to end for I/O; never block on `.Result` or `.Wait()`.
+- **LANG-CSHARP-002:** for read-only queries, call `AsNoTracking()` and select only the fields you
+  need instead of cascading `Include`. Verify the generated SQL and the tracked-entity count.
+- **LANG-CSHARP-003:** test existence with `Any()` rather than `Count()`, and materialise a sequence
+  once if it is enumerated several times. Verify the query count in a test.
+- **LANG-CSHARP-004:** keep I/O asynchronous from end to end with `async`/`await`; do not block on
+  `.Result` or `.Wait()`. Verify with an analyser rule against blocking calls.
 - **LANG-CSHARP-005:** obtain `HttpClient` through `IHttpClientFactory` rather than creating one per
   request. Verify the connection count under load.
-- **LANG-CSHARP-006:** bound in-process caches with `SizeLimit` and an expiry, or use a distributed
-  cache with a TTL.
-- **LANG-CSHARP-007:** build repeated strings with `StringBuilder`, parse large inputs with
-  `Span<T>`, and use parameterised structured logging.
+- **LANG-CSHARP-006:** bound in-process caches: with `IMemoryCache`, set `SizeLimit` and give every
+  entry a `Size` (inserts fail otherwise) and an expiry; or use a distributed cache with a TTL.
+  Verify memory under a load test.
+- **LANG-CSHARP-007:** build repeated strings with `StringBuilder`, parse buffers without copying them
+  (`Span<T>` for in-memory data, `System.IO.Pipelines` for streams), and log with message templates
+  rather than interpolated strings. Verify allocations with a profiler on the hot path.
 
 ### Swift (`LANG-SWIFT-*`)
 
-- **LANG-SWIFT-001:** stop sensor updates as soon as the screen or task that needs them goes away,
-  request the coarsest accuracy that works, and prefer significant-change monitoring.
-- **LANG-SWIFT-002:** drive refreshes from events (push, WebSocket, delegate); invalidate any
-  unavoidable timer when its view disappears.
+- **LANG-SWIFT-001:** stop sensor and location updates as soon as the screen or task that needs them
+  goes away and request the coarsest accuracy that works; for location, prefer significant-change
+  monitoring. Verify with an energy profile in Xcode on a device.
+- **LANG-SWIFT-002:** apply `CODE-EFF-017` with push, WebSocket or delegate callbacks; invalidate any
+  unavoidable timer when its view disappears. Verify that no timer fires after the view closes.
 - **LANG-SWIFT-003:** keep the main thread for the interface and move other work to a background
-  task.
+  task. Verify with the Main Thread Checker and a hang report.
 - **LANG-SWIFT-004:** use `URLSession` download or stream tasks and decode incrementally instead of
-  holding a whole response in memory.
+  holding a whole response in memory. Verify peak memory with a large response.
 - **LANG-SWIFT-005:** share one configured `URLSession` instead of creating one per request.
+  Verify the connection count in a network trace.
 
 ### Go (`LANG-GO-*`)
 
@@ -493,10 +504,12 @@ identifier in findings.
   set client, idle-connection and response-size limits.
 - **LANG-GO-004:** use `pprof` and benchmarks to validate CPU, heap and blocking improvements; do not
   increase `GOMAXPROCS` or parallelism without workload evidence.
-- **LANG-GO-005:** close every response body with `defer resp.Body.Close()` right after the error
-  check, including early-return paths.
-- **LANG-GO-006:** build one shared `http.Client` with timeouts and transport limits, and give each
-  outbound request a deadline with `http.NewRequestWithContext`.
+- **LANG-GO-005:** after checking the request error, defer the closing of `resp.Body` so that every
+  return path releases it; read the body to the end when the connection should be reused. Verify
+  with a leak test or the open-connection count.
+- **LANG-GO-006:** reuse one `http.Client` across calls, and give each outbound request a deadline
+  through `http.NewRequestWithContext`; client and transport limits stay under `LANG-GO-003`.
+  Verify with a test against a server that never answers.
 
 ### Python (`LANG-PYTHON-*`)
 
@@ -529,11 +542,12 @@ identifier in findings.
 - **LANG-JS-006:** scope variables to a module or function; when a third-party script needs a
   global, assign it explicitly on an existing global object. Verify with a linter rule.
 - **LANG-JS-007:** never issue a synchronous `XMLHttpRequest`; use `fetch()` or an asynchronous
-  request.
+  request. Verify with a search for `open(` calls whose third argument is `false`.
 - **LANG-JS-008:** import only the functions used and prefer native APIs (`fetch`, `Intl`, `URL`,
   `structuredClone`) before adding a dependency. Verify the production bundle size.
-- **LANG-JS-009:** use asynchronous APIs instead of blocking synchronous variants, and move heavy
-  computation to a worker.
+- **LANG-JS-009:** call the asynchronous form of an API rather than its blocking `*Sync` variant, and
+  run heavy computation in a worker. Verify that the main thread or event loop stays responsive in
+  a profile.
 
 ### HTML5 and CSS3 (`LANG-HTML-*`, `LANG-CSS-*`)
 
@@ -565,8 +579,8 @@ identifier in findings.
 - **LANG-REACT-003:** when a list is reordered or derived state becomes stale, use stable item
   identities and compute values from their source where possible. Test insert, delete and reorder
   behaviour. Rendering-performance findings and memoisation use `LANG-REACT-001`.
-- **LANG-REACT-004:** give every effect a dependency array and a cleanup that aborts its request or
-  clears its timer. Verify with a mount/unmount test.
+- **LANG-REACT-004:** give each effect that starts a request, subscription or timer a dependency array
+  and a cleanup that cancels it. Verify with a mount/unmount test.
 
 ### Vue (`LANG-VUE-*`)
 
@@ -626,7 +640,7 @@ identifier in findings.
 - **LANG-SOLID-003:** compatibility alias for `LANG-SOLID-001` on reactive effects and list updates.
   Keep stable list identities without duplicating findings under both identifiers.
 - **LANG-SOLID-004:** render keyed lists with `For`, and use `Index` when the position identifies
-  the row.
+  the row. Verify that an update re-renders only the changed rows.
 
 ### PHP and Ruby (`LANG-PHP-*`, `LANG-RUBY-*`)
 
@@ -638,10 +652,12 @@ identifier in findings.
   `find_each`/batching and profile GC before changing allocation behaviour.
 - **LANG-RUBY-002:** stream enumerables and responses, bound Sidekiq/job concurrency and retries,
   and release database connections on every path.
-- **LANG-PHP-003:** load walked associations eagerly (`with()`, fetch joins), write rows in batches,
-  and use `exists()` rather than counting for an existence test.
-- **LANG-RUBY-003:** fetch only needed columns (`pluck`, `select`), preload walked associations,
-  use `exists?` for existence tests and bulk writes instead of `save` in a loop.
+- **LANG-PHP-003:** apply `DB-EFF-003` with eager loading (`with()`, fetch joins), insert rows in
+  batches, and test existence with `exists()` rather than a count. Verify the query count with
+  several records.
+- **LANG-RUBY-003:** apply `DB-EFF-001` and `DB-EFF-003` in Active Record: `pluck` or `select` the
+  columns you use, preload the associations you walk, test existence with `exists?`, and write in
+  bulk rather than calling `save` in a loop. Verify the query count with several records.
 
 ### Julia (`LANG-JULIA-*`)
 
@@ -666,13 +682,15 @@ identifier in findings.
   validate identifiers when dynamic statements cannot be avoided.
 - **LANG-PLSQL-003:** commit in bounded batches appropriate to undo/redo capacity, instrument PGA and
   TEMP usage, and make restart/checkpoint behaviour explicit.
-- **LANG-SQL-004:** write sargable predicates against the raw column, or add a matching functional
-  index. Verify with the query plan.
+- **LANG-SQL-004:** write conditions that an index can use: compare the raw column (a date range,
+  a direct comparison) rather than a function of it, or add a matching functional index. Verify
+  with the query plan.
 - **LANG-SQL-005:** check join cardinality instead of hiding duplicates with `SELECT DISTINCT`;
-  prefer `EXISTS` for large existence subqueries.
+  prefer `EXISTS` for large existence subqueries. Verify the row count and the query plan.
 - **LANG-SQL-006:** purge large volumes in bounded chunks, or use partitioning or `TRUNCATE` when
-  the semantics allow.
+  the semantics allow. Verify lock duration and log volume on representative data.
 - **LANG-SQL-007:** size column types to the data rather than defaulting to the widest type.
+  Verify table and index size on representative data.
 
 ### Nim and Zig (`LANG-NIM-*`, `LANG-ZIG-*`)
 
@@ -685,6 +703,7 @@ identifier in findings.
 - **LANG-ZIG-002:** use slices and fixed buffers where bounds are known, avoid needless sentinel
   copies, and profile allocator contention in concurrent code.
 - **LANG-ZIG-003:** set a maximum size on reads from external input, or read into a fixed buffer.
+  Verify with an input larger than the maximum.
 
 ### Shell, Bash, Zsh and Tcsh (`LANG-SHELL-*`)
 
@@ -703,8 +722,8 @@ identifier in findings.
 - **LANG-SHELL-006:** when a script creates temporary data, use `mktemp` or an equivalent safe API,
   bound storage growth, and clean up on normal exit and handled signals. Test a failure path;
   document recovery for abrupt termination where traps cannot run.
-- **LANG-SHELL-007:** bound what a script writes to logs or files with a level, rotation or
-  retention, and state who deletes the output.
+- **LANG-SHELL-007:** cap how much a script writes to logs or files, through a level, rotation or a
+  retention job, and name who removes old output. Verify the size after repeated runs.
 
 ## Web quality and accessibility
 

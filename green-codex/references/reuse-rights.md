@@ -11,7 +11,7 @@ Les adaptations INR ne doivent pas être attribuées à Julius Brussee.
 ## Green Claude
 
 Les règles importées de Green Claude 1.5.0 viennent de la même organisation (INR) et
-du même régime de contenu, CC BY 4.0. Elles sont reformulées, pas copiées ;
+du même régime de contenu, CC BY 4.0. Elles sont adaptées, c'est-à-dire reformulées ou condensées ; certaines restent proches du texte source.
 [la table de correspondance](green-claude-mapping.md) indique la provenance de chacune.
 Aucun script Apache-2.0 de Green Claude n'a été importé.
 

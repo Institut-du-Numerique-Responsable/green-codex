@@ -48,7 +48,7 @@ criteria and measurement boundaries, with official sources and a worked example.
 - energy, data, storage, network, and infrastructure efficiency;
 - accessible and resilient user interfaces;
 - responsible use of AI, including model size, context, caching, and data minimisation;
-- 14 responsible Codex usage practices for context, briefs, durable guidance, verification, and
+- 15 responsible Codex usage practices for context, briefs, durable guidance, verification, and
   proportionate compute;
 - evidence-based audits with severity, confidence, and verification steps;
 - service utility, device longevity, inclusive access, retirement and rebound effects;

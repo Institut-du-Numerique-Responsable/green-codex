@@ -145,7 +145,7 @@ mesurer et de fixer le seuil dans le projet.
 | `ECO-C-01` | couverte | `LANG-C-001` | |
 | `ECO-C-02` | couverte | `LANG-C-002` | |
 | `ECO-C-03` | nouvelle | `LANG-C-004` | |
-| `ECO-C-04` | nouvelle | `LANG-C-004`, `CODE-EFF-009` | |
+| `ECO-C-04` | nouvelle | `LANG-C-004` | |
 | `ECO-C-05` | nouvelle | `LANG-C-005` | |
 | `ECO-C-06` | nouvelle | `CODE-EFF-017` | |
 | `ECO-CPP-01` | couverte | `LANG-CPP-001` | |

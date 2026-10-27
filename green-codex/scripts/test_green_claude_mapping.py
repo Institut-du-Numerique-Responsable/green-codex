@@ -56,6 +56,19 @@ class MappingTests(unittest.TestCase):
         prefixes = {r["source"].rsplit("-", 1)[0] for r in rows}
         self.assertTrue({"ECO-STRAT", "USAGE-CTX", "NR-TOK", "ECO-CS", "ECO-SW"} <= prefixes)
 
+    def test_new_rules_state_verification(self):
+        text = (REFS / "rules.md").read_text(encoding="utf-8")
+        new = {t for r in parse_mapping(MAPPING) if r["status"] == "nouvelle"
+               for t in r["targets"].split(", ")}
+        for rule in sorted(new):
+            match = re.search(rf"\*\*{rule}\b.*?(?=\n- \*\*|\n\n)", text, re.S)
+            if match:
+                self.assertRegex(match.group(), r"\b[Vv]erify\b", rule)
+
+    def test_readme_practice_count_consistent(self):
+        readme = (REFS.parents[1] / "README.md").read_text(encoding="utf-8")
+        self.assertNotRegex(readme, r"\b14 (responsible|project-authored)")
+
     def test_language_families_routed(self):
         rules = (REFS / "rules.md").read_text(encoding="utf-8")
         charter = (REFS / "nr-charter.md").read_text(encoding="utf-8")
