@@ -131,6 +131,9 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
 - **CODE-EFF-016 — Readable comments and messages:** explain why non-obvious code exists, in plain
   words, and update or remove a comment when the code changes. Apply the same care to commit
   messages and pull requests, following `expression.md`. Verify comments against the final diff.
+- **CODE-EFF-017 — Event-driven waiting:** do not spin, sleep in a loop or poll on a short schedule
+  for a state that an event, callback, queue or blocking primitive can deliver. When polling is
+  unavoidable, document its interval, bound and stop condition. Verify idle CPU with a profile.
 
 ### APIs and frontend
 
@@ -403,6 +406,10 @@ identifier in findings.
   allocation profiles before replacing clear object-oriented code.
 - **LANG-JAVA-005:** batch JDBC writes with a bounded transaction and fetch size; avoid one commit
   or network round trip per row.
+- **LANG-JAVA-006:** load the associations a loop walks with `JOIN FETCH` or `@EntityGraph`, and
+  project read-only results into DTOs. Verify the query count with several records.
+- **LANG-JAVA-007:** keep streams sequential by default; use `parallelStream()` only after a
+  benchmark, on a pool sized for the workload.
 
 ### Kotlin and Scala (`LANG-KOTLIN-*`, `LANG-SCALA-*`)
 
@@ -414,6 +421,8 @@ identifier in findings.
   measure scheduler overhead before enabling parallelism.
 - **LANG-SCALA-001:** avoid unnecessary materialisation of collections and excessive implicit or
   effect layers in hot paths; benchmark lazy versus strict evaluation.
+- **LANG-SCALA-003:** bound the number of futures in flight with a throttled traversal or a
+  semaphore instead of starting one per list element.
 
 ### Rust, C and C++ (`LANG-RUST-*`, `LANG-C-*`, `LANG-CPP-*`)
 
@@ -436,6 +445,43 @@ identifier in findings.
   repeated reallocation and implicit temporary strings in hot paths.
 - **LANG-CPP-003:** bound thread pools and futures, use cancellation or deadlines, and verify no
   task remains alive after shutdown.
+- **LANG-RUST-004:** create network clients once and share them so their connection pool is reused;
+  bound channels and caches. Verify the connection count under load.
+- **LANG-RUST-005:** justify each crate, disable unused default features, check the tree with
+  `cargo tree`, and ship `--release` builds.
+- **LANG-C-004:** hoist loop-invariant work such as `strlen()` out of loop conditions, and keep an
+  end pointer instead of repeated `strcat()`.
+- **LANG-C-005:** read and write in buffered blocks rather than byte by byte, and close every handle.
+- **LANG-CPP-004:** use `std::unique_ptr` by default and `std::shared_ptr` only for genuinely shared
+  ownership.
+
+### C# and .NET (`LANG-CSHARP-*`)
+
+- **LANG-CSHARP-001:** filter, project, aggregate and paginate on the `IQueryable` before
+  materialising it. Verify the generated SQL.
+- **LANG-CSHARP-002:** use `AsNoTracking()` and a targeted `Select` projection for read-only queries
+  instead of cascading `Include`.
+- **LANG-CSHARP-003:** use `Any()` for existence tests and avoid enumerating the same sequence
+  several times.
+- **LANG-CSHARP-004:** stay `async`/`await` end to end for I/O; never block on `.Result` or `.Wait()`.
+- **LANG-CSHARP-005:** obtain `HttpClient` through `IHttpClientFactory` rather than creating one per
+  request. Verify the connection count under load.
+- **LANG-CSHARP-006:** bound in-process caches with `SizeLimit` and an expiry, or use a distributed
+  cache with a TTL.
+- **LANG-CSHARP-007:** build repeated strings with `StringBuilder`, parse large inputs with
+  `Span<T>`, and use parameterised structured logging.
+
+### Swift (`LANG-SWIFT-*`)
+
+- **LANG-SWIFT-001:** stop sensor updates as soon as the screen or task that needs them goes away,
+  request the coarsest accuracy that works, and prefer significant-change monitoring.
+- **LANG-SWIFT-002:** drive refreshes from events (push, WebSocket, delegate); invalidate any
+  unavoidable timer when its view disappears.
+- **LANG-SWIFT-003:** keep the main thread for the interface and move other work to a background
+  task.
+- **LANG-SWIFT-004:** use `URLSession` download or stream tasks and decode incrementally instead of
+  holding a whole response in memory.
+- **LANG-SWIFT-005:** share one configured `URLSession` instead of creating one per request.
 
 ### Go (`LANG-GO-*`)
 
@@ -447,6 +493,10 @@ identifier in findings.
   set client, idle-connection and response-size limits.
 - **LANG-GO-004:** use `pprof` and benchmarks to validate CPU, heap and blocking improvements; do not
   increase `GOMAXPROCS` or parallelism without workload evidence.
+- **LANG-GO-005:** close every response body with `defer resp.Body.Close()` right after the error
+  check, including early-return paths.
+- **LANG-GO-006:** build one shared `http.Client` with timeouts and transport limits, and give each
+  outbound request a deadline with `http.NewRequestWithContext`.
 
 ### Python (`LANG-PYTHON-*`)
 
@@ -460,6 +510,9 @@ identifier in findings.
   paths. Retain this identifier for existing references without duplicating findings.
 - **LANG-PYTHON-005:** reuse sessions and HTTP connections, set timeouts, and stream uploads and
   downloads; never use an unbounded `read()` on external input.
+- **LANG-PYTHON-006:** with an ORM, load walked associations eagerly (`select_related`,
+  `prefetch_related`, `selectinload`), fetch only the columns used (`only()`, `load_only()`), and
+  group writes with bounded bulk operations. Verify the query count with several records.
 
 ### JavaScript and TypeScript (`LANG-JS-*`)
 
@@ -477,6 +530,10 @@ identifier in findings.
   global, assign it explicitly on an existing global object. Verify with a linter rule.
 - **LANG-JS-007:** never issue a synchronous `XMLHttpRequest`; use `fetch()` or an asynchronous
   request.
+- **LANG-JS-008:** import only the functions used and prefer native APIs (`fetch`, `Intl`, `URL`,
+  `structuredClone`) before adding a dependency. Verify the production bundle size.
+- **LANG-JS-009:** use asynchronous APIs instead of blocking synchronous variants, and move heavy
+  computation to a worker.
 
 ### HTML5 and CSS3 (`LANG-HTML-*`, `LANG-CSS-*`)
 
@@ -508,6 +565,8 @@ identifier in findings.
 - **LANG-REACT-003:** when a list is reordered or derived state becomes stale, use stable item
   identities and compute values from their source where possible. Test insert, delete and reorder
   behaviour. Rendering-performance findings and memoisation use `LANG-REACT-001`.
+- **LANG-REACT-004:** give every effect a dependency array and a cleanup that aborts its request or
+  clears its timer. Verify with a mount/unmount test.
 
 ### Vue (`LANG-VUE-*`)
 
@@ -566,6 +625,8 @@ identifier in findings.
   power devices.
 - **LANG-SOLID-003:** compatibility alias for `LANG-SOLID-001` on reactive effects and list updates.
   Keep stable list identities without duplicating findings under both identifiers.
+- **LANG-SOLID-004:** render keyed lists with `For`, and use `Index` when the position identifies
+  the row.
 
 ### PHP and Ruby (`LANG-PHP-*`, `LANG-RUBY-*`)
 
@@ -577,6 +638,10 @@ identifier in findings.
   `find_each`/batching and profile GC before changing allocation behaviour.
 - **LANG-RUBY-002:** stream enumerables and responses, bound Sidekiq/job concurrency and retries,
   and release database connections on every path.
+- **LANG-PHP-003:** load walked associations eagerly (`with()`, fetch joins), write rows in batches,
+  and use `exists()` rather than counting for an existence test.
+- **LANG-RUBY-003:** fetch only needed columns (`pluck`, `select`), preload walked associations,
+  use `exists?` for existence tests and bulk writes instead of `save` in a loop.
 
 ### Julia (`LANG-JULIA-*`)
 
@@ -601,6 +666,13 @@ identifier in findings.
   validate identifiers when dynamic statements cannot be avoided.
 - **LANG-PLSQL-003:** commit in bounded batches appropriate to undo/redo capacity, instrument PGA and
   TEMP usage, and make restart/checkpoint behaviour explicit.
+- **LANG-SQL-004:** write sargable predicates against the raw column, or add a matching functional
+  index. Verify with the query plan.
+- **LANG-SQL-005:** check join cardinality instead of hiding duplicates with `SELECT DISTINCT`;
+  prefer `EXISTS` for large existence subqueries.
+- **LANG-SQL-006:** purge large volumes in bounded chunks, or use partitioning or `TRUNCATE` when
+  the semantics allow.
+- **LANG-SQL-007:** size column types to the data rather than defaulting to the widest type.
 
 ### Nim and Zig (`LANG-NIM-*`, `LANG-ZIG-*`)
 
@@ -612,6 +684,7 @@ identifier in findings.
   test allocation failure and cleanup paths.
 - **LANG-ZIG-002:** use slices and fixed buffers where bounds are known, avoid needless sentinel
   copies, and profile allocator contention in concurrent code.
+- **LANG-ZIG-003:** set a maximum size on reads from external input, or read into a fixed buffer.
 
 ### Shell, Bash, Zsh and Tcsh (`LANG-SHELL-*`)
 
@@ -630,6 +703,8 @@ identifier in findings.
 - **LANG-SHELL-006:** when a script creates temporary data, use `mktemp` or an equivalent safe API,
   bound storage growth, and clean up on normal exit and handled signals. Test a failure path;
   document recovery for abrupt termination where traps cannot run.
+- **LANG-SHELL-007:** bound what a script writes to logs or files with a level, rotation or
+  retention, and state who deletes the output.
 
 ## Web quality and accessibility
 

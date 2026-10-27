@@ -132,3 +132,135 @@ mesurer et de fixer le seuil dans le projet.
 | `ECO-HOST-02` | couverte | `AI-EFF-004`, `INFRA-EFF-003` | |
 | `ECO-HOST-03` | couverte | `INFRA-EFF-001`, `INFRA-EFF-002` | |
 | `ECO-HOST-04` | couverte | `AI-EFF-004` | |
+
+## Langages (`langages/*.json`)
+
+| ID Green Claude | Statut | ID Green Codex | Raison |
+| --- | --- | --- | --- |
+| `ECO-NG-01` | couverte | `LANG-ANGULAR-001` | |
+| `ECO-NG-02` | couverte | `LANG-ANGULAR-001` | |
+| `ECO-NG-03` | couverte | `LANG-ANGULAR-003` | |
+| `ECO-ASTRO-01` | couverte | `LANG-ASTRO-003` | |
+| `ECO-ASTRO-02` | couverte | `LANG-ASTRO-002` | |
+| `ECO-C-01` | couverte | `LANG-C-001` | |
+| `ECO-C-02` | couverte | `LANG-C-002` | |
+| `ECO-C-03` | nouvelle | `LANG-C-004` | |
+| `ECO-C-04` | nouvelle | `LANG-C-004`, `CODE-EFF-009` | |
+| `ECO-C-05` | nouvelle | `LANG-C-005` | |
+| `ECO-C-06` | nouvelle | `CODE-EFF-017` | |
+| `ECO-CPP-01` | couverte | `LANG-CPP-001` | |
+| `ECO-CPP-02` | couverte | `LANG-CPP-002` | |
+| `ECO-CPP-03` | nouvelle | `LANG-CPP-004` | |
+| `ECO-CPP-04` | couverte | `CODE-EFF-009` | |
+| `ECO-CPP-05` | couverte | `CODE-EFF-004` | |
+| `ECO-CPP-06` | nouvelle | `CODE-EFF-017` | |
+| `ECO-CS-01` | nouvelle | `LANG-CSHARP-001` | |
+| `ECO-CS-02` | nouvelle | `LANG-CSHARP-002` | |
+| `ECO-CS-03` | nouvelle | `LANG-CSHARP-003` | |
+| `ECO-CS-04` | nouvelle | `LANG-CSHARP-004` | |
+| `ECO-CS-05` | nouvelle | `LANG-CSHARP-005` | |
+| `ECO-CS-06` | nouvelle | `CODE-EFF-017` | |
+| `ECO-CS-07` | nouvelle | `LANG-CSHARP-006` | |
+| `ECO-CS-08` | nouvelle | `LANG-CSHARP-007` | |
+| `ECO-GO-01` | couverte | `LANG-GO-001` | |
+| `ECO-GO-02` | nouvelle | `CODE-EFF-017` | |
+| `ECO-GO-03` | nouvelle | `LANG-GO-005` | |
+| `ECO-GO-04` | couverte | `LANG-GO-003` | |
+| `ECO-GO-05` | nouvelle | `LANG-GO-006` | |
+| `ECO-GO-06` | nouvelle | `LANG-GO-006` | |
+| `ECO-JAVA-01` | couverte | `DB-EFF-002` | |
+| `ECO-JAVA-02` | nouvelle | `LANG-JAVA-006` | |
+| `ECO-JAVA-03` | couverte | `LANG-JAVA-005` | |
+| `ECO-JAVA-04` | nouvelle | `LANG-JAVA-007` | |
+| `ECO-JAVA-05` | couverte | `CODE-EFF-009`, `LANG-JAVA-004` | |
+| `ECO-JAVA-06` | couverte | `LANG-JAVA-001` | |
+| `ECO-JAVA-07` | couverte | `CODE-EFF-010` | |
+| `ECO-JAVA-08` | nouvelle | `CODE-EFF-017` | |
+| `ECO-JS-01` | nouvelle | `LANG-JS-008` | |
+| `ECO-JS-02` | nouvelle | `LANG-JS-009` | |
+| `ECO-JS-03` | couverte | `WEB-EFF-003` | |
+| `ECO-JS-04` | couverte | `LANG-JS-001` | |
+| `ECO-JS-05` | couverte | `CODE-EFF-009` | |
+| `ECO-JS-06` | couverte | `LANG-JS-003` | |
+| `ECO-JS-07` | couverte | `LANG-JS-003` | |
+| `ECO-JS-08` | couverte | `LANG-JS-004` | |
+| `ECO-JS-09` | couverte | `LANG-JS-002`, `CODE-EFF-003` | |
+| `ECO-JULIA-01` | couverte | `LANG-JULIA-001` | |
+| `ECO-JULIA-02` | couverte | `LANG-JULIA-001` | |
+| `ECO-JULIA-03` | couverte | `LANG-JULIA-002` | |
+| `ECO-KT-01` | couverte | `LANG-KOTLIN-002` | |
+| `ECO-KT-02` | couverte | `LANG-KOTLIN-002` | |
+| `ECO-KT-03` | couverte | `LANG-KOTLIN-002` | |
+| `ECO-KT-04` | couverte | `LANG-KOTLIN-001` | |
+| `ECO-KT-05` | couverte | `CODE-EFF-009` | |
+| `ECO-NIM-01` | couverte | `LANG-NIM-001` | |
+| `ECO-NIM-02` | couverte | `LANG-NIM-002` | |
+| `ECO-NIM-03` | couverte | `LANG-NIM-001` | |
+| `ECO-PHP-01` | couverte | `LANG-PHP-002`, `DB-EFF-002` | |
+| `ECO-PHP-02` | nouvelle | `LANG-PHP-003` | |
+| `ECO-PHP-03` | nouvelle | `LANG-PHP-003` | |
+| `ECO-PHP-04` | couverte | `LANG-PHP-001`, `LANG-PHP-002` | |
+| `ECO-PHP-05` | couverte | `CODE-EFF-009` | |
+| `ECO-PHP-06` | couverte | `LANG-PHP-001` | |
+| `ECO-PHP-07` | couverte | `LANG-PHP-002`, `CODE-EFF-003` | |
+| `ECO-PY-01` | nouvelle | `LANG-PYTHON-006` | |
+| `ECO-PY-02` | couverte | `LANG-PYTHON-001`, `DB-EFF-002` | |
+| `ECO-PY-03` | nouvelle | `LANG-PYTHON-006` | |
+| `ECO-PY-04` | nouvelle | `LANG-PYTHON-006` | |
+| `ECO-PY-05` | couverte | `LANG-PYTHON-001` | |
+| `ECO-PY-06` | couverte | `LANG-PYTHON-002` | |
+| `ECO-PY-07` | couverte | `CODE-EFF-009` | |
+| `ECO-PY-08` | couverte | `CODE-EFF-009` | |
+| `ECO-PY-09` | couverte | `CODE-EFF-003` | |
+| `ECO-PY-10` | couverte | `LANG-PYTHON-005` | |
+| `ECO-PY-11` | nouvelle | `CODE-EFF-017` | |
+| `ECO-REACT-01` | nouvelle | `LANG-REACT-004` | |
+| `ECO-REACT-02` | couverte | `LANG-REACT-002`, `LANG-REACT-003` | |
+| `ECO-REACT-03` | couverte | `LANG-REACT-001` | |
+| `ECO-RB-01` | couverte | `LANG-RUBY-001` | |
+| `ECO-RB-02` | nouvelle | `LANG-RUBY-003` | |
+| `ECO-RB-03` | nouvelle | `LANG-RUBY-003` | |
+| `ECO-RB-04` | couverte | `CODE-EFF-009` | |
+| `ECO-RB-05` | couverte | `CODE-EFF-009` | |
+| `ECO-RB-06` | couverte | `CODE-EFF-003` | |
+| `ECO-RB-07` | couverte | `LANG-RUBY-002`, `CODE-EFF-017` | |
+| `ECO-RS-01` | couverte | `LANG-RUST-001` | |
+| `ECO-RS-02` | couverte | `LANG-RUST-001` | |
+| `ECO-RS-03` | couverte | `LANG-RUST-003` | |
+| `ECO-RS-04` | couverte | `LANG-RUST-002` | |
+| `ECO-RS-05` | nouvelle | `LANG-RUST-004` | |
+| `ECO-RS-06` | couverte | `CODE-EFF-015` | |
+| `ECO-RS-07` | nouvelle | `LANG-RUST-005` | |
+| `ECO-SCALA-01` | couverte | `LANG-SCALA-002` | |
+| `ECO-SCALA-02` | couverte | `LANG-SCALA-002` | |
+| `ECO-SCALA-03` | nouvelle | `LANG-SCALA-003` | |
+| `ECO-SH-01` | couverte | `LANG-SHELL-001` | |
+| `ECO-SH-02` | couverte | `LANG-SHELL-001` | |
+| `ECO-SH-03` | couverte | `LANG-SHELL-001` | |
+| `ECO-SH-04` | couverte | `LANG-SHELL-003` | |
+| `ECO-SH-05` | couverte | `LANG-SHELL-006` | |
+| `ECO-SH-06` | nouvelle | `LANG-SHELL-007` | |
+| `ECO-SOLID-01` | couverte | `LANG-SOLID-001` | |
+| `ECO-SOLID-02` | nouvelle | `LANG-SOLID-004` | |
+| `ECO-SQL-01` | couverte | `LANG-SQL-001` | |
+| `ECO-SQL-02` | couverte | `API-EFF-001` | |
+| `ECO-SQL-03` | nouvelle | `LANG-SQL-004` | |
+| `ECO-SQL-04` | nouvelle | `LANG-SQL-005` | |
+| `ECO-SQL-05` | couverte | `DB-EFF-004` | |
+| `ECO-SQL-06` | couverte | `LANG-SQL-003`, `LANG-PLSQL-001` | |
+| `ECO-SQL-07` | couverte | `LANG-SQL-002`, `LANG-PLSQL-003` | |
+| `ECO-SQL-08` | nouvelle | `LANG-SQL-006` | |
+| `ECO-SQL-09` | couverte | `CODE-EFF-010` | |
+| `ECO-SQL-10` | nouvelle | `LANG-SQL-007` | |
+| `ECO-SQL-11` | couverte | `DB-EFF-005`, `DB-EFF-006` | |
+| `ECO-SVELTE-01` | couverte | `LANG-SVELTE-003` | |
+| `ECO-SVELTE-02` | couverte | `LANG-SVELTE-001` | |
+| `ECO-SW-01` | nouvelle | `LANG-SWIFT-001` | |
+| `ECO-SW-02` | nouvelle | `LANG-SWIFT-002` | |
+| `ECO-SW-03` | nouvelle | `LANG-SWIFT-003` | |
+| `ECO-SW-04` | nouvelle | `LANG-SWIFT-004` | |
+| `ECO-SW-05` | nouvelle | `LANG-SWIFT-005` | |
+| `ECO-VUE-01` | couverte | `LANG-VUE-001` | |
+| `ECO-VUE-02` | couverte | `LANG-VUE-002` | |
+| `ECO-ZIG-01` | couverte | `LANG-ZIG-001` | |
+| `ECO-ZIG-02` | nouvelle | `LANG-ZIG-003` | |

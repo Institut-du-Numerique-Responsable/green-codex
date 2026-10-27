@@ -50,6 +50,14 @@ class MappingTests(unittest.TestCase):
         text = MAPPING.read_text(encoding="utf-8")
         self.assertNotRegex(text, r"(?:\*\*|### )[A-Z][A-Z0-9-]+-\d{2,3}")
 
+    def test_language_families_routed(self):
+        rules = (REFS / "rules.md").read_text(encoding="utf-8")
+        charter = (REFS / "nr-charter.md").read_text(encoding="utf-8")
+        for family in ("LANG-CSHARP", "LANG-SWIFT"):
+            self.assertIn(f"`{family}-*`", rules)
+            self.assertRegex(charter, rf"{family}-\d{{3}}")
+        self.assertNotIn("inventer une famille `LANG-CSHARP-*`", charter)
+
     def test_no_claude_specific_wording(self):
         pattern = re.compile(r"\b(CLAUDE\.md|Haiku|Sonnet|Opus|Anthropic)\b")
         for name in RULE_FILES:
