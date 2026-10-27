@@ -8,6 +8,13 @@ de `../NOTICE` et le texte Apache inclus. Le mainteneur confirme l'inspiration e
 l'adaptation des règles ; la version d'origine des passages reste à documenter.
 Les adaptations INR ne doivent pas être attribuées à Julius Brussee.
 
+## Green Claude
+
+Les règles importées de Green Claude 1.5.0 viennent de la même organisation (INR) et
+du même régime de contenu, CC BY 4.0. Elles sont reformulées, pas copiées ;
+[la table de correspondance](green-claude-mapping.md) indique la provenance de chacune.
+Aucun script Apache-2.0 de Green Claude n'a été importé.
+
 ## Opquast : constat sur le skill
 
 Inspection du 17 octobre 2026 : `rules.md` ne contient pas un import des 245 règles

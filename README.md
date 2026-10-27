@@ -56,7 +56,7 @@ criteria and measurement boundaries, with official sources and a worked example.
 
 The catalogue also routes guidance for serverless and edge deployments, mobile and offline-first
 services, IoT and embedded systems, distributed systems, NoSQL and data platforms, and the
-following languages and frameworks: Java, Kotlin, Scala, Rust, C, C++, Go, Python, JavaScript,
+following languages and frameworks: Java, Kotlin, Scala, Rust, C, C++, C#, Swift, Go, Python, JavaScript,
 TypeScript, PHP, Ruby, Julia, Nim, Zig, Shell, SQL, PL/SQL, HTML, CSS, React, Vue, Angular,
 Svelte, Preact, Astro and Solid. Detection narrows the review; it does not make every rule
 applicable to every file.
@@ -217,6 +217,8 @@ or read its transcript on the same page.
 - `green-codex/references/rules.md`: complete rules for frontend, backend, data,
   accessibility, web quality, responsible AI, modern architectures, operations and
   language/framework-specific guidance;
+- `green-codex/references/green-claude-mapping.md`: correspondence between the 277 Green Claude 1.5.0
+  rules and Green Codex identifiers, with the status of each rule.
 - `green-codex/references/usage-practices.md`: 15 project-authored practices adapted to Codex,
   with official sources for Codex-specific mechanisms;
 - `green-codex/scripts/check_sobriety.py`: conservative static checks for selected high-confidence

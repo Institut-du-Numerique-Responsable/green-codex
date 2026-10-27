@@ -50,6 +50,12 @@ class MappingTests(unittest.TestCase):
         text = MAPPING.read_text(encoding="utf-8")
         self.assertNotRegex(text, r"(?:\*\*|### )[A-Z][A-Z0-9-]+-\d{2,3}")
 
+    def test_mapping_complete(self):
+        rows = parse_mapping(MAPPING)
+        self.assertEqual(len(rows), 277)
+        prefixes = {r["source"].rsplit("-", 1)[0] for r in rows}
+        self.assertTrue({"ECO-STRAT", "USAGE-CTX", "NR-TOK", "ECO-CS", "ECO-SW"} <= prefixes)
+
     def test_language_families_routed(self):
         rules = (REFS / "rules.md").read_text(encoding="utf-8")
         charter = (REFS / "nr-charter.md").read_text(encoding="utf-8")
