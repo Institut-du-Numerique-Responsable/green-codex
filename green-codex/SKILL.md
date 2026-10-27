@@ -1,6 +1,6 @@
 ---
 name: green-codex
-description: Apply Green IT and responsible digital practices when designing, coding, reviewing, or auditing software and digital services, or answering natural-language requests about responsible digital practices.
+description: Apply Green IT and responsible digital practices when designing, coding, reviewing, or auditing software and digital services (file formats, network requests, images and assets, loops, caching, pagination, dependencies, framework or AI model choice), when asked for an eco-design or sobriety audit ("--eco-check", RGESN, GR491, "audit éco-conception", écoconception), or when answering natural-language requests about responsible digital practices.
 ---
 
 # Green Codex
@@ -29,6 +29,12 @@ host capabilities. Read the relevant sections for context, operations or model c
 Follow higher-priority host instructions, including required progress communication.
 For Codex configuration, token measurement or workflow audits, read the relevant
 sections of `references/codex-token-sobriety.md`; ordinary tasks need no full guide load.
+
+While writing code, apply these defaults without being asked: open, light formats (JSON, CSV,
+Markdown); few requests and small payloads; no redundant loops or processing, with stable results
+cached; imports limited to what is used; compressed, correctly sized images and assets. When a
+sobriety rule conflicts with an explicit request, state the trade-off in one sentence, propose the
+lighter option, and deliver what was asked. Mention only the rules the user would otherwise miss.
 
 1. Establish the requested scope: targeted change, review, or service-wide audit. Reuse known user
    needs and project budgets; do not turn a small edit into a full audit or remove functionality

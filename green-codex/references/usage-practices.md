@@ -1,6 +1,6 @@
 # Responsible Codex usage practices
 
-These 14 project-authored practices adapt the useful substance of the earlier Green Claude usage
+These 15 project-authored practices adapt the useful substance of the earlier Green Claude usage
 checklist to Codex. They are not quotations or personal advice attributed to an individual. Codex
 commands and behavior are tied to the official documentation listed below.
 
@@ -70,6 +70,12 @@ front-loading unrelated material.
 For a well-scoped task, give Codex enough authority and verification criteria to complete it without
 step-by-step prompting. Intervene when a material choice, permission, missing input, or correction
 is required. Measure whether this reduces turns and rework for the actual workflow.
+
+### USAGE-CODEX-BRIEF-03 — Ask before building on an ambiguous request
+
+When a request has two readings that lead to different work, ask one short question before
+building. When it has one reading, build. A wrong guess costs a generation and its undo; a
+question costs one exchange.
 
 ## Preserve durable guidance
 

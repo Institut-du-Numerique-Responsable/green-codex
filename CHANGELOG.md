@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+### Green Claude alignment
+
+- Map all 277 Green Claude 1.5.0 rules to Green Codex in `green-claude-mapping.md`: covered,
+  rewritten or adapted to Codex. No rule had to be excluded.
+- Add 63 rewritten rules and practices, including the new `LANG-CSHARP-*` and `LANG-SWIFT-*`
+  families, `CODE-EFF-017` for event-driven waiting and `USAGE-CODEX-BRIEF-03`.
+- Widen the skill trigger to file formats, network requests, assets, loops, caching,
+  pagination, dependencies and framework or model choices, and add default sobriety reflexes.
+- Add `test_green_claude_mapping.py` to CI.
+
 ### Installation walkthrough
 
 - Add a silent, locally generated 50-second installation video with native playback

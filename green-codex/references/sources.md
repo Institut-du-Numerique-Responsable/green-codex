@@ -6,6 +6,13 @@ practices and 10 operational AI charter rules. The INR extension adds 112 identi
 instructions (5 NR charter, 18 AIR, 48 stakeholder and 41 RIA31), for 295 project IDs.
 The new licensed adaptations are attributed in their respective files. Some are aliases. These are not official criterion numbers.
 
+The Green Claude 1.5.0 alignment (commit `1a3d260`, CC BY 4.0, INR) adds 63 rewritten
+rules and practices, including the `LANG-CSHARP-*` and `LANG-SWIFT-*` families, for 388
+project IDs. [green-claude-mapping.md](green-claude-mapping.md) records the status of each of
+the 277 source rules. Green Claude states that its rules `ECO-ALGO-09` to `ECO-ALGO-27`
+(physical resources of AI systems) are original contributions; their Green Codex rewrites are
+listed in the mapping.
+
 The token sobriety extension adds NR-TOK-001 through NR-TOK-030. Its inspiration
 and adaptation from Julius Brussee's Caveman rules are confirmed by the maintainer.
 See [third-party attribution](third-party-attributions.md) for Apache-2.0 terms,
@@ -38,7 +45,7 @@ inventory does not claim all current editions were rechecked on the inventory da
 4. [OpenAI best practices](https://learn.chatgpt.com/guides/best-practices): task context and proportionate reasoning effort.
 5. [OpenAI model guidance](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-5.5): evaluation, caching and retained task state. This is a version-dependent model reference, not a universal environmental standard.
 
-The 14 practices adapt an earlier Green Claude checklist, as stated in `usage-practices.md`.
+The 15 practices adapt an earlier Green Claude checklist, as stated in `usage-practices.md`.
 The repository does not pin that predecessor's source/version here, so that historical
 lineage cannot be reconstructed completely from these files. They are editorial practices,
 not quotations attributable to a named person.

@@ -70,6 +70,18 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
   accessible and usable under degraded connectivity. Avoid mandatory accounts, tracking or heavy
   downloads where unnecessary. Prefer accessible text alternatives when media is optional, while
   preserving captions, descriptions and assistive functionality users need.
+- **SERVICE-EFF-007 — Open formats:** exchange and store data in open, widely readable formats
+  (CSV, JSON, Markdown, HTML, ODF) unless a proprietary format is required. Verify that the output
+  opens with a free tool on the oldest supported device profile.
+- **SERVICE-EFF-008 — Informed choice:** before a costly action, show its weight or quality (download
+  size, default video resolution) and let the user choose a lighter option. Verify that the
+  information appears before the transfer starts.
+- **SERVICE-EFF-009 — Measurable acceptance criteria:** add measurable sobriety criteria to user
+  stories, such as a page weight, request budget or EcoIndex threshold, and check them in review.
+  Verify that the review record cites the measured value.
+- **SERVICE-EFF-010 — Software longevity:** keep fixes separate from new features, ship incremental
+  updates, and plan data migration and long-term documentation so the service lasts without a
+  rewrite. Verify that a security fix can ship without forcing a feature upgrade.
 
 ### Code and runtime
 
@@ -109,6 +121,19 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
 - **CODE-EFF-013 — Leak detection:** run memory/resource leak checks for long-lived or native
   components when supported by the stack (for example Valgrind or a JVM profiler). Document any
   justified exception.
+- **CODE-EFF-014 — Smallest sufficient solution:** check whether static HTML, platform features or
+  plain code meet the need before adding a framework or abstraction. Write the specific version
+  until a second caller justifies a generalisation, and delete dead code and temporary debugging
+  paths before shipping. Verify with a review of the diff and a dead-code check where available.
+- **CODE-EFF-015 — Maintainable quality:** test code before shipping it, handle errors and edge
+  cases, and keep the structure simple enough to change without a rewrite. Verify with tests that
+  cover the error paths of the changed behaviour.
+- **CODE-EFF-016 — Readable comments and messages:** explain why non-obvious code exists, in plain
+  words, and update or remove a comment when the code changes. Apply the same care to commit
+  messages and pull requests, following `expression.md`. Verify comments against the final diff.
+- **CODE-EFF-017 — Event-driven waiting:** do not spin, sleep in a loop or poll on a short schedule
+  for a state that an event, callback, queue or blocking primitive can deliver. When polling is
+  unavoidable, document its interval, bound and stop condition. Verify idle CPU with a profile.
 
 ### APIs and frontend
 
@@ -129,6 +154,20 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
   video. Use an appropriate poster and explicit play action; defer optional media downloads until
   requested. Disable non-essential automatic animation, respect `prefers-reduced-motion`, and
   verify both playback and idle transfers on a constrained device or throttled profile.
+- **WEB-EFF-005 — Third-party services:** measure the weight and requests of a third-party service
+  before integrating it, prefer a lighter alternative, and load optional embeds only on user action.
+  Verify with a network trace before and after the integration.
+- **WEB-EFF-006 — Lightest medium:** carry information with the lightest medium that serves it
+  (text, then image, audio, video). Use SVG or CSS for simple icons rather than bitmaps or a full
+  icon font, keeping accessible names. Verify transferred bytes for the affected page.
+- **WEB-EFF-007 — Accessible baseline:** use native elements before ARIA workarounds, give every
+  informative image a text alternative, every control a visible focus and every field a label.
+  Verify the changed journey with a keyboard alone, then with a screen reader when available.
+- **WEB-EFF-008 — Minified and compressed assets:** minify production scripts and styles in the
+  build and serve text responses with Brotli or gzip. Verify response headers and transferred size
+  on the production build.
+- **WEB-EFF-009 — No broken references:** fix or remove links and resource references to files that
+  no longer exist. Verify with a link check on the built site.
 
 ### Databases and storage
 
@@ -158,6 +197,8 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
 - **DB-EFF-010 — Safe prepared queries:** use parameterised statements for external input and reuse
   prepared plans when the driver supports it. Verify both injection resistance and query latency;
   security takes precedence over a speculative micro-optimisation.
+- **DB-EFF-011 — Connection pooling:** reuse database connections through a bounded pool instead of
+  opening one per request. Verify the pool limit and connection count under load.
 
 ### Infrastructure and operations
 
@@ -175,6 +216,9 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
 - **INFRA-EFF-005 — Interruptible capacity:** use Spot or preemptible capacity only for workloads
   that tolerate interruption, checkpoint safely and do not expose personal data through requeued
   work. Compare interruption, retry and migration energy with the expected saving.
+- **INFRA-EFF-006 — Lean container images:** pin the base image to a version, start from a slim
+  base where the runtime allows, use a multi-stage build so build tools stay out of the final image,
+  and clean package caches in the layer that fills them. Verify the final image size.
 - **OPS-EFF-001 — Retention and observability:** set retention by data class and purpose; delete or
   archive logs and traces on schedule (for example with Elasticsearch ILM). Alert on growth and on
   a configurable deviation from a representative baseline, not an unexplained universal percentage.
@@ -184,6 +228,9 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
 - **OPS-EFF-003:** for a hardware procurement review, use `HW-EFF-001`, `HW-EFF-002` and
   `HW-EFF-003` for service life, purchase evidence and end of life. This is a routing identifier:
   report the specific hardware rule rather than counting the same requirement twice.
+- **OPS-EFF-004 — Sober continuous integration:** cache dependencies between runs, reuse what the
+  runner image already provides, merge short jobs that share a checkout, limit triggers to relevant
+  paths and bound artifact retention. Verify run duration and triggers on a representative change.
 
 ### Networks and digital services
 
@@ -198,6 +245,8 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
 - **NET-EFF-004 — Critical path:** preload or prefetch only resources proven critical to the next
   interaction. Defer optional resources, but do not lazy-load an above-the-fold/LCP image or delay
   essential controls. Verify the decision with a trace and task completion under slow connectivity.
+- **NET-EFF-005 — Secure transport:** use HTTPS for pages, third-party resources and outbound links,
+  with TLS 1.2 or later. Verify the server and client configuration with a TLS check.
 
 ### Hardware and facilities
 
@@ -227,6 +276,25 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
 - **AI-EFF-006 — Optimised inference:** evaluate batching, quantisation, pruning or a specialised
   runtime (such as ONNX Runtime) only when quality, safety, latency and energy are measured before
   and after. Never assume INT8, pruning or a particular GPU is universally better.
+- **AI-EFF-007 — Consumption tracking:** record tokens, calls and cache hit rate per use case, and
+  alert when a use case exceeds its budget. Verify that the records cover each production use case.
+- **AI-EFF-008 — Measured AI energy:** instrument AI runs with an energy measurement tool where the
+  hardware allows it (for example CodeCarbon or Zeus), and record hardware, duration and region.
+  Label estimates separately from measurements, following `measurement.md`. Verify that each
+  reported figure names its tool and whether it is measured or estimated.
+- **AI-EFF-009 — Direction, not ratio:** fewer tokens processed means less computation, and so less
+  energy and water. Do not convert a token count into watts, litres or grams of CO2: caching,
+  model size, batching, hardware and location dominate the result. Verify that any stated energy
+  or carbon figure comes from a measurement, not from a token count.
+- **AI-EFF-010 — Inference host limits:** on self-hosted inference, set memory limits that prevent
+  swapping, monitor swap use, and respect the hardware vendor's thermal limits. Verify with host
+  metrics under peak load.
+- **AI-EFF-011 — Interruptible generation:** stream long outputs so users can stop a generation they
+  no longer need, and stop the computation when they do. Verify that cancelling ends the request
+  on the server.
+- **AI-EFF-012 — Adaptation choice:** prefer prompting or retrieval over fine-tuning to add
+  knowledge; fine-tune only when a measured quality gap remains. Verify with the same test set
+  before and after.
 
 ### Measurement and continuous improvement
 
@@ -340,6 +408,11 @@ identifier in findings.
   allocation profiles before replacing clear object-oriented code.
 - **LANG-JAVA-005:** batch JDBC writes with a bounded transaction and fetch size; avoid one commit
   or network round trip per row.
+- **LANG-JAVA-006:** load the associations a loop walks with `JOIN FETCH` or `@EntityGraph`, and
+  project read-only results into DTOs. Verify the query count with several records.
+- **LANG-JAVA-007:** keep streams sequential by default; parallelise only after a benchmark, with an
+  explicit executor sized for the workload rather than the shared common pool. Verify the
+  benchmark result before and after.
 
 ### Kotlin and Scala (`LANG-KOTLIN-*`, `LANG-SCALA-*`)
 
@@ -351,6 +424,8 @@ identifier in findings.
   measure scheduler overhead before enabling parallelism.
 - **LANG-SCALA-001:** avoid unnecessary materialisation of collections and excessive implicit or
   effect layers in hot paths; benchmark lazy versus strict evaluation.
+- **LANG-SCALA-003:** bound the number of futures in flight with a throttled traversal or a
+  semaphore instead of starting one per list element. Verify the maximum concurrency in a test.
 
 ### Rust, C and C++ (`LANG-RUST-*`, `LANG-C-*`, `LANG-CPP-*`)
 
@@ -373,6 +448,51 @@ identifier in findings.
   repeated reallocation and implicit temporary strings in hot paths.
 - **LANG-CPP-003:** bound thread pools and futures, use cancellation or deadlines, and verify no
   task remains alive after shutdown.
+- **LANG-RUST-004:** create network clients once and share them so their connection pool is reused;
+  bound channels and caches. Verify the connection count under load.
+- **LANG-RUST-005:** add a crate only when it earns its place, switch off default features you do not
+  use, and build production binaries in release mode. Verify the dependency graph with
+  `cargo tree` and the binary size.
+- **LANG-C-004:** compute string lengths once before a loop instead of calling `strlen()` in its
+  condition, and append through an end pointer rather than repeated `strcat()`. Verify with a
+  profile on long inputs.
+- **LANG-C-005:** move data in buffered blocks (`fread`, `fwrite`) instead of single bytes, and close
+  every handle. Verify the system-call count with `strace` or an equivalent tool.
+- **LANG-CPP-004:** own objects through `std::unique_ptr` unless ownership is truly shared; keep
+  `std::shared_ptr` for that case. Verify in review that each `shared_ptr` has more than one owner.
+
+### C# and .NET (`LANG-CSHARP-*`)
+
+- **LANG-CSHARP-001:** filter, project, aggregate and paginate on the `IQueryable` before
+  materialising it. Verify the generated SQL.
+- **LANG-CSHARP-002:** for read-only queries, call `AsNoTracking()` and select only the fields you
+  need instead of cascading `Include`. Verify the generated SQL and the tracked-entity count.
+- **LANG-CSHARP-003:** test existence with `Any()` rather than `Count()`, and materialise a sequence
+  once if it is enumerated several times. Verify the query count in a test.
+- **LANG-CSHARP-004:** keep I/O asynchronous from end to end with `async`/`await`; do not block on
+  `.Result` or `.Wait()`. Verify with an analyser rule against blocking calls.
+- **LANG-CSHARP-005:** obtain `HttpClient` through `IHttpClientFactory` rather than creating one per
+  request. Verify the connection count under load.
+- **LANG-CSHARP-006:** bound in-process caches: with `IMemoryCache`, set `SizeLimit` and give every
+  entry a `Size` (inserts fail otherwise) and an expiry; or use a distributed cache with a TTL.
+  Verify memory under a load test.
+- **LANG-CSHARP-007:** build repeated strings with `StringBuilder`, parse buffers without copying them
+  (`Span<T>` for in-memory data, `System.IO.Pipelines` for streams), and log with message templates
+  rather than interpolated strings. Verify allocations with a profiler on the hot path.
+
+### Swift (`LANG-SWIFT-*`)
+
+- **LANG-SWIFT-001:** stop sensor and location updates as soon as the screen or task that needs them
+  goes away and request the coarsest accuracy that works; for location, prefer significant-change
+  monitoring. Verify with an energy profile in Xcode on a device.
+- **LANG-SWIFT-002:** apply `CODE-EFF-017` with push, WebSocket or delegate callbacks; invalidate any
+  unavoidable timer when its view disappears. Verify that no timer fires after the view closes.
+- **LANG-SWIFT-003:** keep the main thread for the interface and move other work to a background
+  task. Verify with the Main Thread Checker and a hang report.
+- **LANG-SWIFT-004:** use `URLSession` download or stream tasks and decode incrementally instead of
+  holding a whole response in memory. Verify peak memory with a large response.
+- **LANG-SWIFT-005:** share one configured `URLSession` instead of creating one per request.
+  Verify the connection count in a network trace.
 
 ### Go (`LANG-GO-*`)
 
@@ -384,6 +504,12 @@ identifier in findings.
   set client, idle-connection and response-size limits.
 - **LANG-GO-004:** use `pprof` and benchmarks to validate CPU, heap and blocking improvements; do not
   increase `GOMAXPROCS` or parallelism without workload evidence.
+- **LANG-GO-005:** after checking the request error, defer the closing of `resp.Body` so that every
+  return path releases it; read the body to the end when the connection should be reused. Verify
+  with a leak test or the open-connection count.
+- **LANG-GO-006:** reuse one `http.Client` across calls, and give each outbound request a deadline
+  through `http.NewRequestWithContext`; client and transport limits stay under `LANG-GO-003`.
+  Verify with a test against a server that never answers.
 
 ### Python (`LANG-PYTHON-*`)
 
@@ -397,6 +523,9 @@ identifier in findings.
   paths. Retain this identifier for existing references without duplicating findings.
 - **LANG-PYTHON-005:** reuse sessions and HTTP connections, set timeouts, and stream uploads and
   downloads; never use an unbounded `read()` on external input.
+- **LANG-PYTHON-006:** with an ORM, load walked associations eagerly (`select_related`,
+  `prefetch_related`, `selectinload`), fetch only the columns used (`only()`, `load_only()`), and
+  group writes with bounded bulk operations. Verify the query count with several records.
 
 ### JavaScript and TypeScript (`LANG-JS-*`)
 
@@ -410,6 +539,15 @@ identifier in findings.
   bound promise concurrency with a queue.
 - **LANG-JS-005:** avoid serialising large objects repeatedly; prefer structured streaming or a
   compact representation when a measured transfer or CPU budget requires it.
+- **LANG-JS-006:** scope variables to a module or function; when a third-party script needs a
+  global, assign it explicitly on an existing global object. Verify with a linter rule.
+- **LANG-JS-007:** never issue a synchronous `XMLHttpRequest`; use `fetch()` or an asynchronous
+  request. Verify with a search for `open(` calls whose third argument is `false`.
+- **LANG-JS-008:** import only the functions used and prefer native APIs (`fetch`, `Intl`, `URL`,
+  `structuredClone`) before adding a dependency. Verify the production bundle size.
+- **LANG-JS-009:** call the asynchronous form of an API rather than its blocking `*Sync` variant, and
+  run heavy computation in a worker. Verify that the main thread or event loop stays responsive in
+  a profile.
 
 ### HTML5 and CSS3 (`LANG-HTML-*`, `LANG-CSS-*`)
 
@@ -419,6 +557,8 @@ identifier in findings.
   content; apply `WEB-EFF-004` to disable automatic playback, including muted video.
 - **LANG-HTML-003:** keep the initial document useful without non-essential JavaScript and avoid
   duplicate navigation, tracking and preload hints; verify first-content payload size.
+- **LANG-HTML-004:** keep every `id` unique in a document; use a class for shared style or
+  behaviour. Verify with an HTML validator.
 - **LANG-CSS-001:** remove unused rules, limit selector and DOM complexity, and prefer system fonts
   or a small, subsetted WOFF2 set. Verify production CSS size.
 - **LANG-CSS-002:** animate only `transform` and `opacity`, honour reduced motion, and avoid
@@ -426,6 +566,9 @@ identifier in findings.
 - **LANG-CSS-003:** when layout is recalculated by JavaScript, check whether media or container
   queries meet the same behaviour and supported-browser needs. Compare a representative resize
   trace and layout result before changing it; unused CSS belongs to `LANG-CSS-001`.
+- **LANG-CSS-004:** merge duplicate selectors and properties, lower specificity instead of adding
+  `!important` (except for a documented third-party override), and remove hacks for browsers your
+  audience data no longer shows. Verify with a CSS linter.
 
 ### React (`LANG-REACT-*`)
 
@@ -436,6 +579,8 @@ identifier in findings.
 - **LANG-REACT-003:** when a list is reordered or derived state becomes stale, use stable item
   identities and compute values from their source where possible. Test insert, delete and reorder
   behaviour. Rendering-performance findings and memoisation use `LANG-REACT-001`.
+- **LANG-REACT-004:** give each effect that starts a request, subscription or timer a dependency array
+  and a cleanup that cancels it. Verify with a mount/unmount test.
 
 ### Vue (`LANG-VUE-*`)
 
@@ -494,6 +639,8 @@ identifier in findings.
   power devices.
 - **LANG-SOLID-003:** compatibility alias for `LANG-SOLID-001` on reactive effects and list updates.
   Keep stable list identities without duplicating findings under both identifiers.
+- **LANG-SOLID-004:** render keyed lists with `For`, and use `Index` when the position identifies
+  the row. Verify that an update re-renders only the changed rows.
 
 ### PHP and Ruby (`LANG-PHP-*`, `LANG-RUBY-*`)
 
@@ -505,6 +652,12 @@ identifier in findings.
   `find_each`/batching and profile GC before changing allocation behaviour.
 - **LANG-RUBY-002:** stream enumerables and responses, bound Sidekiq/job concurrency and retries,
   and release database connections on every path.
+- **LANG-PHP-003:** apply `DB-EFF-003` with eager loading (`with()`, fetch joins), insert rows in
+  batches, and test existence with `exists()` rather than a count. Verify the query count with
+  several records.
+- **LANG-RUBY-003:** apply `DB-EFF-001` and `DB-EFF-003` in Active Record: `pluck` or `select` the
+  columns you use, preload the associations you walk, test existence with `exists?`, and write in
+  bulk rather than calling `save` in a loop. Verify the query count with several records.
 
 ### Julia (`LANG-JULIA-*`)
 
@@ -529,6 +682,15 @@ identifier in findings.
   validate identifiers when dynamic statements cannot be avoided.
 - **LANG-PLSQL-003:** commit in bounded batches appropriate to undo/redo capacity, instrument PGA and
   TEMP usage, and make restart/checkpoint behaviour explicit.
+- **LANG-SQL-004:** write conditions that an index can use: compare the raw column (a date range,
+  a direct comparison) rather than a function of it, or add a matching functional index. Verify
+  with the query plan.
+- **LANG-SQL-005:** check join cardinality instead of hiding duplicates with `SELECT DISTINCT`;
+  prefer `EXISTS` for large existence subqueries. Verify the row count and the query plan.
+- **LANG-SQL-006:** purge large volumes in bounded chunks, or use partitioning or `TRUNCATE` when
+  the semantics allow. Verify lock duration and log volume on representative data.
+- **LANG-SQL-007:** size column types to the data rather than defaulting to the widest type.
+  Verify table and index size on representative data.
 
 ### Nim and Zig (`LANG-NIM-*`, `LANG-ZIG-*`)
 
@@ -540,6 +702,8 @@ identifier in findings.
   test allocation failure and cleanup paths.
 - **LANG-ZIG-002:** use slices and fixed buffers where bounds are known, avoid needless sentinel
   copies, and profile allocator contention in concurrent code.
+- **LANG-ZIG-003:** set a maximum size on reads from external input, or read into a fixed buffer.
+  Verify with an input larger than the maximum.
 
 ### Shell, Bash, Zsh and Tcsh (`LANG-SHELL-*`)
 
@@ -558,6 +722,8 @@ identifier in findings.
 - **LANG-SHELL-006:** when a script creates temporary data, use `mktemp` or an equivalent safe API,
   bound storage growth, and clean up on normal exit and handled signals. Test a failure path;
   document recovery for abrupt termination where traps cannot run.
+- **LANG-SHELL-007:** cap how much a script writes to logs or files, through a level, rotation or a
+  retention job, and name who removes old output. Verify the size after repeated runs.
 
 ## Web quality and accessibility
 

@@ -48,7 +48,7 @@ criteria and measurement boundaries, with official sources and a worked example.
 - energy, data, storage, network, and infrastructure efficiency;
 - accessible and resilient user interfaces;
 - responsible use of AI, including model size, context, caching, and data minimisation;
-- 14 responsible Codex usage practices for context, briefs, durable guidance, verification, and
+- 15 responsible Codex usage practices for context, briefs, durable guidance, verification, and
   proportionate compute;
 - evidence-based audits with severity, confidence, and verification steps;
 - service utility, device longevity, inclusive access, retirement and rebound effects;
@@ -56,7 +56,7 @@ criteria and measurement boundaries, with official sources and a worked example.
 
 The catalogue also routes guidance for serverless and edge deployments, mobile and offline-first
 services, IoT and embedded systems, distributed systems, NoSQL and data platforms, and the
-following languages and frameworks: Java, Kotlin, Scala, Rust, C, C++, Go, Python, JavaScript,
+following languages and frameworks: Java, Kotlin, Scala, Rust, C, C++, C#, Swift, Go, Python, JavaScript,
 TypeScript, PHP, Ruby, Julia, Nim, Zig, Shell, SQL, PL/SQL, HTML, CSS, React, Vue, Angular,
 Svelte, Preact, Astro and Solid. Detection narrows the review; it does not make every rule
 applicable to every file.
@@ -132,7 +132,7 @@ including a control against expanding a small unrelated task into a charter audi
 
 ### Codex usage practices
 
-When the task concerns Codex itself, the skill applies the 14 project-authored practices in
+When the task concerns Codex itself, the skill applies the 15 project-authored practices in
 [`green-codex/references/usage-practices.md`](green-codex/references/usage-practices.md). They
 cover relevant initial context, forks and task boundaries, deliberate compaction, the maintained
 code map, complete briefs, bounded delegation, durable project guidance, proportionate
@@ -217,7 +217,9 @@ or read its transcript on the same page.
 - `green-codex/references/rules.md`: complete rules for frontend, backend, data,
   accessibility, web quality, responsible AI, modern architectures, operations and
   language/framework-specific guidance;
-- `green-codex/references/usage-practices.md`: 14 project-authored practices adapted to Codex,
+- `green-codex/references/green-claude-mapping.md`: correspondence between the 277 Green Claude 1.5.0
+  rules and Green Codex identifiers, with the status of each rule.
+- `green-codex/references/usage-practices.md`: 15 project-authored practices adapted to Codex,
   with official sources for Codex-specific mechanisms;
 - `green-codex/scripts/check_sobriety.py`: conservative static checks for selected high-confidence
   anti-patterns;

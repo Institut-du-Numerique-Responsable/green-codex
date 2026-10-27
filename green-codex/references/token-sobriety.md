@@ -84,7 +84,7 @@ un résumé plus complet.
 
 **NR-TOK-012 : Optimiser les fichiers d'instructions**
 
-Maintenir des fichiers `AGENTS.md`, `CLAUDE.md` et `SKILL.md` concis. Éviter les instructions
+Maintenir concis `AGENTS.md`, `SKILL.md` et les fichiers d'instructions équivalents des autres agents. Éviter les instructions
 dupliquées et charger les règles spécialisées uniquement lorsque nécessaire.
 
 **NR-TOK-013 : Externaliser les connaissances secondaires**
