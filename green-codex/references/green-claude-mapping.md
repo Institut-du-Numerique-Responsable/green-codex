@@ -9,7 +9,8 @@ Source : dépôt Green Claude de l'INR, version 1.5.0, commit `1a3d260`, dossier
 
 Statuts :
 
-- `couverte` : une règle Green Codex existante porte déjà la même substance.
+- `couverte` : une règle Green Codex porte déjà la même substance. Elle peut avoir été ajoutée
+  pour une autre règle source de cette table.
 - `nouvelle` : la règle a été réécrite dans Green Codex sous l'identifiant indiqué.
 - `adaptée` : la règle citait un mécanisme propre à Claude ; elle a été reformulée pour Codex.
 - `exclue` : la règle ne peut pas s'appliquer à Codex. La raison commence par un code :
@@ -20,6 +21,10 @@ Statuts :
 Les seuils chiffrés de la source (taille de police, température, taux de swap, taille de lot)
 n'ont pas été repris lorsqu'ils n'étaient pas sourcés : les règles Green Codex demandent de
 mesurer et de fixer le seuil dans le projet.
+
+La concaténation de chaînes et la recherche linéaire relèvent de `CODE-EFF-009`, et l'attente
+active de `CODE-EFF-017`. Une règle par langage ne les reprend que pour un idiome propre au
+langage (`strcat` en C, `StringBuilder` en C#, timers Swift), avec un renvoi à la règle générique.
 
 ## Écoconception (`ecoconception.json`)
 
@@ -237,7 +242,7 @@ mesurer et de fixer le seuil dans le projet.
 | `ECO-SH-01` | couverte | `LANG-SHELL-001` | |
 | `ECO-SH-02` | couverte | `LANG-SHELL-001` | |
 | `ECO-SH-03` | couverte | `LANG-SHELL-001` | |
-| `ECO-SH-04` | couverte | `LANG-SHELL-003` | |
+| `ECO-SH-04` | couverte | `LANG-SHELL-003`, `CODE-EFF-017` | |
 | `ECO-SH-05` | couverte | `LANG-SHELL-006` | |
 | `ECO-SH-06` | nouvelle | `LANG-SHELL-007` | |
 | `ECO-SOLID-01` | couverte | `LANG-SOLID-001` | |

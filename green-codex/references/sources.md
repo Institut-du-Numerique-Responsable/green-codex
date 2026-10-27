@@ -6,9 +6,9 @@ practices and 10 operational AI charter rules. The INR extension adds 112 identi
 instructions (5 NR charter, 18 AIR, 48 stakeholder and 41 RIA31), for 295 project IDs.
 The new licensed adaptations are attributed in their respective files. Some are aliases. These are not official criterion numbers.
 
-The Green Claude 1.5.0 alignment (commit `1a3d260`, CC BY 4.0, INR) adds 63 rewritten
-rules and practices, including the `LANG-CSHARP-*` and `LANG-SWIFT-*` families, for 388
-project IDs. [green-claude-mapping.md](green-claude-mapping.md) records the status of each of
+With the 30 token sobriety rules described below, the catalogue reached 325 IDs. The Green
+Claude 1.5.0 alignment (commit `1a3d260`, CC BY 4.0, INR) adds 63 rewritten rules and
+practices, including the `LANG-CSHARP-*` and `LANG-SWIFT-*` families, for 388 project IDs. [green-claude-mapping.md](green-claude-mapping.md) records the status of each of
 the 277 source rules. Green Claude states that its rules `ECO-ALGO-09` to `ECO-ALGO-27`
 (physical resources of AI systems) are original contributions; their Green Codex rewrites are
 listed in the mapping.

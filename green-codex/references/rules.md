@@ -109,7 +109,8 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
   path. Choose a data structure for the access pattern and memory footprint, supported by a
   benchmark or allocation profile. Do not prescribe one language or collection universally.
 - **CODE-EFF-010 — Production logging:** logs must be level-controlled, sampled where appropriate,
-  and exclude duplicate or high-cardinality payloads. Verify that normal traffic does not create
+  and exclude duplicate or high-cardinality payloads. Use parameterised messages so that a
+  disabled level does not build its text. Verify that normal traffic does not create
   unnecessary CPU, memory or disk I/O.
 - **CODE-EFF-011 — Language fit:** choose a runtime using measured CPU, memory, energy, latency,
   portability and maintenance constraints. Rust, Go, Java/GraalVM or another compiled alternative
@@ -150,6 +151,7 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
   no media asset may exceed the repository's documented size limit without justification.
 - **WEB-EFF-003 — Idle work:** do not use frequent polling or continuous animation for a state that
   can be event-driven. If polling is unavoidable, document its interval, stop condition and cost.
+  This is the browser case of `CODE-EFF-017`; report one finding for one problem.
 - **WEB-EFF-004 — Motion and autoplay:** disable automatic audio/video playback, including muted
   video. Use an appropriate poster and explicit play action; defer optional media downloads until
   requested. Disable non-essential automatic animation, respect `prefers-reduced-motion`, and
@@ -270,7 +272,8 @@ These rules are deliberately technology-neutral. Apply the relevant ones and rec
   stable results where safe. Document quality and privacy checks after reduction.
 - **AI-EFF-004 — Hardware fit:** choose accelerator and deployment mode from measured utilisation,
   latency, memory and energy. A low-power GPU is not automatically preferable if it increases
-  runtime or failures.
+  runtime or failures. Keep tokenisation, decoding and other preprocessing on the CPU when that
+  frees the accelerator.
 - **AI-EFF-005 — AI budget:** define a per-request or per-job token, time, cost or energy budget,
   enforce it at runtime, and test refusal or fallback when the budget is exceeded.
 - **AI-EFF-006 — Optimised inference:** evaluate batching, quantisation, pruning or a specialised
@@ -408,7 +411,7 @@ identifier in findings.
   allocation profiles before replacing clear object-oriented code.
 - **LANG-JAVA-005:** batch JDBC writes with a bounded transaction and fetch size; avoid one commit
   or network round trip per row.
-- **LANG-JAVA-006:** load the associations a loop walks with `JOIN FETCH` or `@EntityGraph`, and
+- **LANG-JAVA-006:** apply `DB-EFF-003` in JPA: load the associations a loop walks with `JOIN FETCH` or `@EntityGraph`, and
   project read-only results into DTOs. Verify the query count with several records.
 - **LANG-JAVA-007:** keep streams sequential by default; parallelise only after a benchmark, with an
   explicit executor sized for the workload rather than the shared common pool. Verify the
@@ -435,6 +438,11 @@ identifier in findings.
   avoid blocking an async executor thread.
 - **LANG-RUST-003:** choose an allocator or `Vec` capacity from measured growth; avoid premature
   capacity over-allocation and verify with heap profiling.
+- **LANG-RUST-004:** create network clients once and share them so their connection pool is reused;
+  channel and cache bounds stay under `LANG-RUST-002`. Verify the connection count under load.
+- **LANG-RUST-005:** add a crate only when it earns its place, switch off default features you do not
+  use, and build production binaries in release mode. Verify the dependency graph with
+  `cargo tree` and the binary size.
 - **LANG-C-001:** bound buffers and loops, release every allocation on every path, and run a
   sanitizer or leak check for changed native code.
 - **LANG-C-002:** prefer streaming and caller-provided buffers for large data; document ownership,
@@ -442,22 +450,17 @@ identifier in findings.
 - **LANG-C-003:** keep standard supported optimisation settings; benchmark unusual or aggressive
   changes when their benefit or correctness is uncertain. Preserve warnings and undefined-behaviour
   fixes rather than trading correctness for speed.
+- **LANG-C-004:** apply `CODE-EFF-009` in C: compute string lengths once before a loop instead of calling `strlen()` in its
+  condition, and append through an end pointer rather than repeated `strcat()`. Verify with a
+  profile on long inputs.
+- **LANG-C-005:** move data in buffered blocks (`fread`, `fwrite`) instead of single bytes, and close
+  every handle. Verify the system-call count with `strace` or an equivalent tool.
 - **LANG-CPP-001:** prefer RAII, move semantics and views (`std::span`/equivalent) over raw owning
   pointers and needless copies; verify with sanitizers and an allocation profile.
 - **LANG-CPP-002:** reserve containers only from measured bounds and use standard algorithms; avoid
   repeated reallocation and implicit temporary strings in hot paths.
 - **LANG-CPP-003:** bound thread pools and futures, use cancellation or deadlines, and verify no
   task remains alive after shutdown.
-- **LANG-RUST-004:** create network clients once and share them so their connection pool is reused;
-  bound channels and caches. Verify the connection count under load.
-- **LANG-RUST-005:** add a crate only when it earns its place, switch off default features you do not
-  use, and build production binaries in release mode. Verify the dependency graph with
-  `cargo tree` and the binary size.
-- **LANG-C-004:** compute string lengths once before a loop instead of calling `strlen()` in its
-  condition, and append through an end pointer rather than repeated `strcat()`. Verify with a
-  profile on long inputs.
-- **LANG-C-005:** move data in buffered blocks (`fread`, `fwrite`) instead of single bytes, and close
-  every handle. Verify the system-call count with `strace` or an equivalent tool.
 - **LANG-CPP-004:** own objects through `std::unique_ptr` unless ownership is truly shared; keep
   `std::shared_ptr` for that case. Verify in review that each `shared_ptr` has more than one owner.
 
@@ -465,7 +468,7 @@ identifier in findings.
 
 - **LANG-CSHARP-001:** filter, project, aggregate and paginate on the `IQueryable` before
   materialising it. Verify the generated SQL.
-- **LANG-CSHARP-002:** for read-only queries, call `AsNoTracking()` and select only the fields you
+- **LANG-CSHARP-002:** apply `DB-EFF-001` with Entity Framework: for read-only queries, call `AsNoTracking()` and select only the fields you
   need instead of cascading `Include`. Verify the generated SQL and the tracked-entity count.
 - **LANG-CSHARP-003:** test existence with `Any()` rather than `Count()`, and materialise a sequence
   once if it is enumerated several times. Verify the query count in a test.
@@ -476,7 +479,7 @@ identifier in findings.
 - **LANG-CSHARP-006:** bound in-process caches: with `IMemoryCache`, set `SizeLimit` and give every
   entry a `Size` (inserts fail otherwise) and an expiry; or use a distributed cache with a TTL.
   Verify memory under a load test.
-- **LANG-CSHARP-007:** build repeated strings with `StringBuilder`, parse buffers without copying them
+- **LANG-CSHARP-007:** apply `CODE-EFF-009` in .NET: build repeated strings with `StringBuilder`, parse buffers without copying them
   (`Span<T>` for in-memory data, `System.IO.Pipelines` for streams), and log with message templates
   rather than interpolated strings. Verify allocations with a profiler on the hot path.
 
@@ -523,7 +526,7 @@ identifier in findings.
   paths. Retain this identifier for existing references without duplicating findings.
 - **LANG-PYTHON-005:** reuse sessions and HTTP connections, set timeouts, and stream uploads and
   downloads; never use an unbounded `read()` on external input.
-- **LANG-PYTHON-006:** with an ORM, load walked associations eagerly (`select_related`,
+- **LANG-PYTHON-006:** apply `DB-EFF-001` and `DB-EFF-003` with an ORM: load walked associations eagerly (`select_related`,
   `prefetch_related`, `selectinload`), fetch only the columns used (`only()`, `load_only()`), and
   group writes with bounded bulk operations. Verify the query count with several records.
 
@@ -648,13 +651,13 @@ identifier in findings.
   rendering unbounded collections in a template.
 - **LANG-PHP-002:** use generators and bounded iterators for imports; configure OPcache and measure
   its memory trade-off rather than enabling every cache blindly.
+- **LANG-PHP-003:** apply `DB-EFF-003` with eager loading (`with()`, fetch joins), insert rows in
+  batches, and test existence with `exists()` rather than a count. Verify the query count with
+  several records.
 - **LANG-RUBY-001:** avoid object churn in hot loops and unbounded ActiveRecord relations; use
   `find_each`/batching and profile GC before changing allocation behaviour.
 - **LANG-RUBY-002:** stream enumerables and responses, bound Sidekiq/job concurrency and retries,
   and release database connections on every path.
-- **LANG-PHP-003:** apply `DB-EFF-003` with eager loading (`with()`, fetch joins), insert rows in
-  batches, and test existence with `exists()` rather than a count. Verify the query count with
-  several records.
 - **LANG-RUBY-003:** apply `DB-EFF-001` and `DB-EFF-003` in Active Record: `pluck` or `select` the
   columns you use, preload the associations you walk, test existence with `exists?`, and write in
   bulk rather than calling `save` in a loop. Verify the query count with several records.
@@ -676,12 +679,6 @@ identifier in findings.
   test.
 - **LANG-SQL-003:** use set-based operations, window functions and bulk loading instead of row-by-row
   client loops; compare execution time, memory, locks and temporary storage.
-- **LANG-PLSQL-001:** prefer set-based SQL over row-by-row loops; use `BULK COLLECT`/`FORALL` with
-  a bounded batch size when procedural work is necessary, and measure PGA memory and redo volume.
-- **LANG-PLSQL-002:** avoid unbounded cursors and dynamic SQL; close cursors deterministically and
-  validate identifiers when dynamic statements cannot be avoided.
-- **LANG-PLSQL-003:** commit in bounded batches appropriate to undo/redo capacity, instrument PGA and
-  TEMP usage, and make restart/checkpoint behaviour explicit.
 - **LANG-SQL-004:** write conditions that an index can use: compare the raw column (a date range,
   a direct comparison) rather than a function of it, or add a matching functional index. Verify
   with the query plan.
@@ -691,6 +688,12 @@ identifier in findings.
   the semantics allow. Verify lock duration and log volume on representative data.
 - **LANG-SQL-007:** size column types to the data rather than defaulting to the widest type.
   Verify table and index size on representative data.
+- **LANG-PLSQL-001:** prefer set-based SQL over row-by-row loops; use `BULK COLLECT`/`FORALL` with
+  a bounded batch size when procedural work is necessary, and measure PGA memory and redo volume.
+- **LANG-PLSQL-002:** avoid unbounded cursors and dynamic SQL; close cursors deterministically and
+  validate identifiers when dynamic statements cannot be avoided.
+- **LANG-PLSQL-003:** commit in bounded batches appropriate to undo/redo capacity, instrument PGA and
+  TEMP usage, and make restart/checkpoint behaviour explicit.
 
 ### Nim and Zig (`LANG-NIM-*`, `LANG-ZIG-*`)
 

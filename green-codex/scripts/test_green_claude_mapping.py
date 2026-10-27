@@ -77,6 +77,12 @@ class MappingTests(unittest.TestCase):
             self.assertRegex(charter, rf"{family}-\d{{3}}")
         self.assertNotIn("inventer une famille `LANG-CSHARP-*`", charter)
 
+    def test_charter_table_rows_closed(self):
+        charter = (REFS / "nr-charter.md").read_text(encoding="utf-8")
+        for line in charter.splitlines():
+            if line.startswith("| "):
+                self.assertTrue(line.rstrip().endswith("|"), line[:60])
+
     def test_no_claude_specific_wording(self):
         pattern = re.compile(r"\b(CLAUDE\.md|Haiku|Sonnet|Opus|Anthropic)\b")
         for name in RULE_FILES:
