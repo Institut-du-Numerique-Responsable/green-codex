@@ -40,6 +40,10 @@ def main():
     response = "DB-EFF-003 API-EFF-001 LANG-PYTHON-001 query pagination verification FAIL"
     missing_rules, missing_terms, forbidden, statuses = evaluate(sample, response)
     assert not missing_rules and not missing_terms and not forbidden and statuses == 1
+    # The README count drifted once when cases were added; keep it tied to the catalogue.
+    readme = (ROOT / "evals" / "README.md").read_text(encoding="utf-8")
+    stated = {int(n) for n in re.findall(r"\b(\d+) (?:scenarios|cases)\b", readme)}
+    assert stated == {len(cases)}, f"evals/README.md states {sorted(stated)}, catalogue has {len(cases)}"
     print(f"Evaluation schema checks passed ({len(cases)} cases)")
 
 

@@ -28,6 +28,7 @@ section, h2, h3, main { scroll-margin-top: 1rem; }
 .institution-bar { background: var(--blue); color: #fff; font-size: .82rem; padding: .55rem 0; }
 .institution-bar .wrap { display: flex; justify-content: space-between; gap: 1rem; }
 .institution-bar a { color: #fff; }
+.institution-bar .bar-links { display: flex; gap: 1rem; align-items: center; }
 .header-inner { display: flex; justify-content: space-between; align-items: center; gap: 2rem; padding-block: 1.4rem; }
 .brand { display: inline-flex; flex: 0 0 auto; }
 .brand img { width: 220px; height: auto; max-width: 100%; }
@@ -110,6 +111,8 @@ code { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; }
   .wrap { width: calc(100% - 2rem); }
   .institution-bar span { max-width: 26ch; }
   .institution-bar a { align-self: center; flex-shrink: 0; }
+  .institution-bar .bar-links { max-width: none; flex-direction: column; align-items: flex-end; gap: .2rem; flex-shrink: 0; }
+  .institution-bar .bar-links a { align-self: auto; }
   .brand img { width: 190px; }
   .site-header nav { gap: .5rem 1.2rem; }
   .hero { padding: 2.5rem 0 3.5rem; }
