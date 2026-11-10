@@ -1,5 +1,7 @@
 # Green Codex
 
+**English** | [Français](README.fr.md)
+
 [![Version](https://img.shields.io/github/v/release/Institut-du-Numerique-Responsable/green-codex?sort=semver)](https://github.com/Institut-du-Numerique-Responsable/green-codex/releases)
 [![CI](https://github.com/Institut-du-Numerique-Responsable/green-codex/actions/workflows/validate.yml/badge.svg)](https://github.com/Institut-du-Numerique-Responsable/green-codex/actions/workflows/validate.yml)
 [![License](https://img.shields.io/badge/license-Apache--2.0%20%2B%20CC%20BY%204.0%20%2B%20CC%20BY--SA%204.0-yellow.svg)](LICENSE)

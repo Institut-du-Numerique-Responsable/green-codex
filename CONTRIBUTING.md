@@ -104,6 +104,10 @@ Review the final merge or squash message with the same requirements.
 One coherent change per PR is preferred. CI must pass and at least one CODEOWNER review is required
 before merging. Do not include secrets, generated caches, personal data, or unrelated formatting.
 
+`README.md` and `README.fr.md` are translations of each other, as are the French and English
+website pages (`docs/index.html`, `docs/en/index.html`). Carry every change over to both.
+`scripts/check-metadata.py` fails if the READMEs differ in sections, local links or code blocks.
+
 ## Licensing
 
 By contributing, you agree that your contributions are distributed under the project licences:

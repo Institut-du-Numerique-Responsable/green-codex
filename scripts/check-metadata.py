@@ -1,6 +1,7 @@
 """Validate repository metadata and static-site navigation before publishing."""
 
 import json
+import re
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urljoin, urlsplit
@@ -23,7 +24,32 @@ class Page(HTMLParser):
             self.ids.add(attributes["id"])
 
 
+def check_readme_translation():
+    # The French README is a translation; these checks catch a section, link or command
+    # added to one README and forgotten in the other. They do not check the wording.
+    english = (ROOT / "README.md").read_text(encoding="utf-8")
+    french = (ROOT / "README.fr.md").read_text(encoding="utf-8")
+    assert "[Français](README.fr.md)" in english, "README.md lacks the French link"
+    assert "[English](README.md)" in french, "README.fr.md lacks the English link"
+
+    def outline(text):
+        headings = re.findall(r"^#{1,3} ", text, re.M)
+        local = {
+            target for target in re.findall(r"\]\(([^)#]+)[^)]*\)", text)
+            if not target.startswith("http") and not target.startswith("README")
+        }
+        code = re.findall(r"```[a-z]*\n(.*?)```", text, re.S)
+        return headings, local, code
+
+    en_headings, en_links, en_code = outline(english)
+    fr_headings, fr_links, fr_code = outline(french)
+    assert en_headings == fr_headings, "README.md and README.fr.md have different sections"
+    assert en_links == fr_links, f"Local links differ: {sorted(en_links ^ fr_links)}"
+    assert en_code == fr_code, "README.md and README.fr.md have different code blocks"
+
+
 def main():
+    check_readme_translation()
     yaml = YAML(typ="safe")
     for path in sorted((ROOT / ".github/workflows").glob("*.yml")):
         workflow = yaml.load(path.read_text())
