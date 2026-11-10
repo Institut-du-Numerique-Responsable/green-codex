@@ -22,7 +22,8 @@ La traduction anglaise se trouve dans `en/index.html` et partage la feuille de s
 les images et la vidéo par des chemins relatifs. Chaque page signale l’autre avec
 `hreflang` et propose un lien de bascule dans la barre institutionnelle. Le texte
 affiché dans la vidéo reste en français ; la transcription anglaise le remplace.
-Toute modification de contenu doit être reportée dans les deux pages.
+Toute modification de contenu doit être reportée dans les deux pages. La page française
+renvoie au guide d'installation de `README.fr.md`, la page anglaise à celui de `README.md`.
 Le manifeste, le favicon et l’image de partage reprennent la langue et les couleurs.
 Le logo INR provient du fichier fourni dans l’espace de travail INR
 `logos/Logo INR/inr-logo.webp`, conservé sans modification (360 × 114 pixels, 5 550 octets).

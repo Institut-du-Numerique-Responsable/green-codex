@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### French README
+
+- Add `README.fr.md`, a French translation of the README, with a language switch at the top
+  of both files. The French website now links to the French installation guide.
+- The English website marks the Codex sobriety guide and third-party attributions as French.
+- Any change to one README must be carried over to the other.
+
 ### Bilingual website and documentation counts
 
 - Add an English version of the website at `/en/`, linked from the French page with
