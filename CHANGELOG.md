@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+### Bilingual website and documentation counts
+
+- Add an English version of the website at `/en/`, linked from the French page with
+  `hreflang` alternates, a language switch and sitemap entries. French stays the default.
+- Correct `evals/README.md`: the catalogue holds 37 scenarios, not 33. The evaluation test
+  now fails if the stated count differs from `evals/cases.json`.
+- Update `docs/ai.txt`: current skill structure, the 388 project IDs by family, the CC BY-SA
+  licence of the adapted guides, and examples without invented percentages.
+
 ### Green Claude alignment
 
 - Map all 277 Green Claude 1.5.0 rules to Green Codex in `green-claude-mapping.md`: covered,

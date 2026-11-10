@@ -204,7 +204,7 @@ extension, invoke `$green-codex` in your request. If the skill does not appear, 
 Codex. Personal skill discovery uses `~/.agents/skills` in the
 [official documentation](https://learn.chatgpt.com/docs/build-skills).
 
-Watch the [50-second installation walkthrough](https://institut-du-numerique-responsable.github.io/green-codex/#installation-video)
+Watch the [50-second installation walkthrough](https://institut-du-numerique-responsable.github.io/green-codex/en/#installation-video)
 or read its transcript on the same page.
 
 ## Included files
@@ -343,9 +343,10 @@ should verify current versions and document their own evidence before making a f
 
 The project website is published from [`docs/`](docs/) with a lightweight, accessible landing page,
 structured metadata, a sitemap, `robots.txt`, and an `llms.txt` summary for search engines and AI
-assistants:
+assistants. It is available in French and English:
 
-<https://institut-du-numerique-responsable.github.io/green-codex/>
+- French: <https://institut-du-numerique-responsable.github.io/green-codex/>
+- English: <https://institut-du-numerique-responsable.github.io/green-codex/en/>
 
 ## Verification limits and practical scope
 

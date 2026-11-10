@@ -4,7 +4,8 @@
 
 - Maintainer: Institut du Numérique Responsable (INR)
 - Repository: https://github.com/Institut-du-Numerique-Responsable/green-codex
-- Website: https://institut-du-numerique-responsable.github.io/green-codex/
+- Website (French): https://institut-du-numerique-responsable.github.io/green-codex/
+- Website (English): https://institut-du-numerique-responsable.github.io/green-codex/en/
 - Presentation in French: https://institutnr.org/ecoconcevoir-avec-un-assistant-de-code
 - Version: see https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/VERSION
 

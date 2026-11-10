@@ -1,6 +1,6 @@
 # Behavioral evaluations
 
-The catalogue contains **33 scenarios**. A scenario is a test request, not a passing result.
+The catalogue contains **37 scenarios**. A scenario is a test request, not a passing result.
 
 The `three-u-pilot` scenario checks practical utility, actual adoption and
 usability judgments from a small pilot, with errors, missing adoption criteria
@@ -127,7 +127,7 @@ validation, lexical results and independent semantic review results separate in 
 New lifecycle cases cover service necessity, older devices, rebound arithmetic, unsupported
 compliance claims, muted autoplay, critical images, total AI task cost and safe retirement.
 
-All 33 cases have specific semantic criteria, including no-change SQL, rare essential
+All 37 cases have specific semantic criteria, including no-change SQL, rare essential
 services and compression trade-offs. Catalogue presence does not prove execution.
 Historical results describe the evaluator at the time; `--strict-format` reproduces
 its combined exit policy. Archived responses and run hashes remain unchanged.

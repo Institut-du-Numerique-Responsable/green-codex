@@ -76,13 +76,20 @@ This project enables developers, architects, and auditors to:
 ### Skill Structure
 ```
 green-codex/
-├── SKILL.md          # Main workflow and guidance
+├── SKILL.md              # Main workflow and routing
+├── agents/openai.yaml    # Codex interface metadata
 ├── references/
-│   ├── criteria.md    # Compact criteria map
-│   └── rules.md      # Complete rule set
-└── scripts/
-    └── test_skill.py  # Validation tests
+│   ├── rules.md          # Technical rule catalogue (221 IDs)
+│   ├── criteria.md       # Thematic map to RGESN, GR491, Opquast, RGAA
+│   ├── token-sobriety.md # NR-TOK-001 to NR-TOK-030
+│   ├── sources.md        # Provenance and ID counts
+│   └── ...               # Charters, BP-AIR, stakeholder maturity, RIA31, usage practices
+└── scripts/              # Static checker, NR summary, optional hooks, tests
 ```
+
+The catalogue holds 388 project IDs: 221 in rules.md, 15 Codex usage practices,
+10 AI charter rules, 5 NR charter, 18 BP-AIR, 48 stakeholder maturity, 41 RIA31 and
+30 token sobriety rules. These are project identifiers, not official criterion numbers.
 
 ### Supported Environments
 - **Codex**: Native integration as a skill
@@ -120,13 +127,13 @@ frontend, backend, full-stack, cloud, infrastructure, data engineering, UX/UI, r
 
 ### 3. Compliance Audit
 - **Input**: Existing codebase or service
-- **Output**: Compliance report against RGESN, GR491, Opquast, RGAA
-- **Example**: "The service meets 75% of RGESN criteria; here are the gaps and fixes"
+- **Output**: Evidence-based findings mapped to RGESN, GR491, Opquast, RGAA (not a certification)
+- **Example**: "RGESN-related findings: 3 FAIL, 2 REVIEW_REQUIRED, with evidence; this is not a conformance rate"
 
 ### 4. Development Guidance
 - **Input**: Feature specification
 - **Output**: Implementation guidance with Green IT considerations
-- **Example**: "Use this caching strategy to reduce database queries by 40%"
+- **Example**: "Cache this lookup, then measure query count before and after on the same workload"
 
 ### 5. AI Model Optimization
 - **Input**: LLM or AI model specifications
@@ -144,7 +151,6 @@ frontend, backend, full-stack, cloud, infrastructure, data engineering, UX/UI, r
 ### Unstructured Data
 - **Guidance**: Narrative explanations of Green IT principles
 - **Rationale**: Evidence and sources for each recommendation
-- **Case Studies**: Real-world examples of successful implementations
 
 ## Integration Points
 
@@ -156,7 +162,8 @@ frontend, backend, full-stack, cloud, infrastructure, data engineering, UX/UI, r
 - **Actions**: CI/CD for validation and deployment
 
 ### Documentation
-- **Website**: https://institut-du-numerique-responsable.github.io/green-codex/
+- **Website (French)**: https://institut-du-numerique-responsable.github.io/green-codex/
+- **Website (English)**: https://institut-du-numerique-responsable.github.io/green-codex/en/
 - **README**: https://github.com/Institut-du-Numerique-Responsable/green-codex#readme
 - **API Docs**: skill-creator validation
 
@@ -169,6 +176,7 @@ frontend, backend, full-stack, cloud, infrastructure, data engineering, UX/UI, r
 ### Content Licenses
 - **Code and scripts**: Apache-2.0 License (see [LICENSE](LICENSE))
 - **Documentation and rules**: CC BY 4.0 (see [LICENSE-CC-BY-4.0](LICENSE-CC-BY-4.0))
+- **BP-AIR, stakeholder maturity and RIA31 adaptations**: CC BY-SA 4.0, with attribution in each file
 
 ### Permitted Uses
 - **Commercial use**: Allowed
@@ -205,5 +213,5 @@ frontend, backend, full-stack, cloud, infrastructure, data engineering, UX/UI, r
 - **Changelog**: See [CHANGELOG.md](https://github.com/Institut-du-Numerique-Responsable/green-codex/blob/main/CHANGELOG.md)
 
 ---
-*Last updated: 2026-09-05*
+*Last updated: 2026-11-10*
 *Format: AI.txt v1.0*
